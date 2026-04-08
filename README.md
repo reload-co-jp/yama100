@@ -1,94 +1,170 @@
-# Next.js Static Site Template
+#　Yama100
 
-Next.js 16 + React 19 + TypeScript を使用した静的サイト生成のテンプレートリポジトリです。GitHub Pages へのデプロイが自動化されています。
+百名山チェックリスト Webアプリ
 
-## 技術スタック
+## 1. 概要
 
-- **Next.js** 16 - App Router / Static Export
-- **React** 19
-- **TypeScript** 5
-- **ESLint** 9 - Flat Config
-- **Prettier** 3
+日本百名山の一覧を表示し、ユーザーがブラウザ上で登頂状況を管理できるWebアプリ。
+ログイン不要で利用可能とし、登頂状況はローカル保存およびURL共有で保持する。
 
-## このテンプレートの使い方
+---
 
-1. **「Use this template」ボタン**をクリックして新しいリポジトリを作成
-2. リポジトリをクローン
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-   cd YOUR_REPO
-   ```
-3. 依存関係をインストール
-   ```bash
-   pnpm install
-   ```
-4. 開発サーバーを起動
-   ```bash
-   pnpm dev
-   ```
+## 2. 機能要件
 
-## セットアップ後にやること
+### 2.1 山一覧表示
 
-### 1. `next.config.js` の修正
+- JSONデータから百名山を一覧表示
+- 表示項目：
+  - 名称
+  - 説明
+  - 所在地
 
-`basePath` をリポジトリ名に変更してください：
+- 並び順：切り替え可能（後述）
 
-```js
-basePath: process.env.NODE_ENV === "production" ? "/YOUR_REPO_NAME" : "",
-```
+- 地図表示
+  - 国土地理院地図
 
-### 2. `app/layout.tsx` の修正
+---
 
-メタデータとサイト情報を更新してください：
+### 2.2 登頂チェック機能
 
-```tsx
-export const metadata: Metadata = {
-  title: "Your Site Title",
-  description: "Your site description",
+- 各山にチェックボックスを配置
+- 状態：
+  - 未登頂：false
+  - 登頂済：true
+
+---
+
+### 2.3 状態管理
+
+DBを使用せず、以下の方法で管理する。
+
+#### localStorage
+
+```json
+{
+  "checked": [1, 2]
 }
 ```
 
-### 3. GitHub Pages の設定
+#### URL共有
 
-1. リポジトリの **Settings** → **Pages** へ移動
-2. **Source** を「GitHub Actions」に設定
-
-## ディレクトリ構成
+- 状態をエンコードしてクエリパラメータに付与
+- 例：
 
 ```
-.
-├── app/
-│   ├── layout.tsx      # ルートレイアウト
-│   ├── page.tsx        # ホームページ
-│   └── reset.css       # CSSリセット
-├── .github/
-│   └── workflows/
-│       ├── lint.yml    # リント自動実行
-│       └── deploy.yml  # GitHub Pages 自動デプロイ
-├── next.config.js      # Next.js 設定
-├── tsconfig.json       # TypeScript 設定
-├── eslint.config.mjs   # ESLint 設定
-└── .prettierrc.json    # Prettier 設定
+?data=xxxxx
 ```
 
-## スクリプト
+- アクセス時にデコードして復元
 
-| コマンド | 説明 |
-|---------|------|
-| `pnpm dev` | 開発サーバーを起動 |
-| `pnpm build` | 静的サイトをビルド（`/out` に出力） |
-| `pnpm lint` | ESLint を実行 |
-| `pnpm format` | Prettier でコードをフォーマット |
-| `pnpm typecheck` | TypeScript の型チェック |
+---
 
-## 機能
+### 2.4 進捗表示
 
-- **静的サイト生成** - `next build` で `/out` に HTML を出力
-- **自動デプロイ** - main ブランチへの push で GitHub Pages に自動デプロイ
-- **自動リント** - push 時に ESLint / Prettier チェックを実行
-- **依存関係の自動更新** - Dependabot による週次チェック
-- **エディタ設定** - VS Code での自動フォーマット設定済み
+- 登頂数 / 100 を表示
+- 進捗率（%）を表示
 
-## ライセンス
+---
 
-ISC
+### 2.5 シェア機能
+
+- 現在の状態をURL化
+- ボタンでコピーまたは共有
+- 並び順も含めて復元可能
+
+---
+
+## 3. 並び順仕様
+
+ユーザーが以下を選択可能。
+
+### 3.1 北から順
+
+- 緯度（latitude）で降順ソート（北→南）
+
+### 3.2 五十音順
+
+- nameを日本語ロケールでソート
+
+### 3.3 標高順
+
+- elevationで降順ソート（高い→低い）
+
+---
+
+## 4. データ仕様
+
+### 4.1 山データJSON
+
+```json
+[
+  {
+    "id": 1,
+    "name": "富士山",
+    "description": "説明文",
+    "location": ["山梨県", "静岡県"],
+    "latitude": 35.3606,
+    "longitude": 138.7274,
+    "elevation": 3776
+  }
+]
+```
+
+### 4.2 ID仕様
+
+- 数値（1〜100）
+- 一意で不変
+
+---
+
+## 5. 画面仕様
+
+### 5.1 一覧画面
+
+- チェックボックス付きリスト
+- 上部に以下を配置：
+  - 進捗表示
+  - 並び順切り替え
+  - シェアボタン
+
+---
+
+## 6. 技術構成
+
+- フロントエンド：Next.js
+- データ：静的JSON（/public/mountains.json）
+- 状態管理：React state + localStorage
+
+---
+
+## 7. 非機能要件
+
+### 7.1 パフォーマンス
+
+- 初期ロード1秒以内
+
+### 7.2 対応ブラウザ
+
+- Chrome / Safari（モダンブラウザ）
+
+### 7.3 永続性
+
+- localStorage依存
+- 別端末ではURL共有が必要
+
+---
+
+## 8. 注意点・設計判断
+
+- IDは表示順と切り離す
+- URL長対策として圧縮（例：LZ-string）を検討
+- データは固定のためDB不要
+
+---
+
+## 9. 今後の拡張
+
+- ログイン機能
+- 写真投稿
+- フィルタ・検索機能
