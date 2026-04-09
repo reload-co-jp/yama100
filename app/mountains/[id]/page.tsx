@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import mountainsData from "../../../public/mountains.json"
 import MountainDetailClient from "../../../components/MountainDetailClient"
+import { SITE_URL, fetchWikiThumbnail } from "../../../lib/site"
 
 type Mountain = {
   id: number
@@ -23,9 +24,28 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params
   const mountain = mountains.find((m) => m.id === Number(id))
   if (!mountain) return {}
+
+  const imageUrl = await fetchWikiThumbnail(mountain.name)
+  const pageUrl = `${SITE_URL}/mountains/${mountain.id}/`
+
   return {
     title: `${mountain.name} - 日本百名山`,
     description: mountain.description,
+    openGraph: {
+      title: `${mountain.name}（${mountain.elevation.toLocaleString()}m）- 日本百名山`,
+      description: mountain.description,
+      url: pageUrl,
+      siteName: "Yama100 - 日本百名山チェックリスト",
+      locale: "ja_JP",
+      type: "article",
+      ...(imageUrl ? { images: [{ url: imageUrl, alt: mountain.name }] } : {}),
+    },
+    twitter: {
+      card: imageUrl ? "summary_large_image" : "summary",
+      title: `${mountain.name}（${mountain.elevation.toLocaleString()}m）- 日本百名山`,
+      description: mountain.description,
+      ...(imageUrl ? { images: [imageUrl] } : {}),
+    },
   }
 }
 
@@ -37,8 +57,39 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
   const prev = mountains.find((m) => m.id === mountain.id - 1) ?? null
   const next = mountains.find((m) => m.id === mountain.id + 1) ?? null
 
+  const pageUrl = `${SITE_URL}/mountains/${mountain.id}/`
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    name: mountain.name,
+    description: mountain.description,
+    url: pageUrl,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: mountain.latitude,
+      longitude: mountain.longitude,
+      elevation: mountain.elevation,
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressRegion: mountain.location.join("・"),
+      addressCountry: "JP",
+    },
+    additionalProperty: {
+      "@type": "PropertyValue",
+      name: "標高",
+      value: `${mountain.elevation.toLocaleString()}m`,
+    },
+  }
+
   return (
     <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Back link */}
       <div style={{ marginBottom: "20px" }}>
         <Link
@@ -62,7 +113,6 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
           overflow: "hidden",
         }}
       >
-        {/* Photo */}
         <MountainDetailClient mountain={mountain} />
 
         {/* Info */}

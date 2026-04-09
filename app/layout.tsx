@@ -1,9 +1,24 @@
 import { Title } from "components/elements/layout"
 import "./reset.css"
 
+import { SITE_URL } from "../lib/site"
+
 export const metadata = {
   title: "Yama100 - 日本百名山チェックリスト",
   description: "日本百名山の登頂状況を管理できるチェックリスト。ログイン不要でURLで共有できます。",
+  openGraph: {
+    title: "Yama100 - 日本百名山チェックリスト",
+    description: "日本百名山の登頂状況を管理できるチェックリスト。ログイン不要でURLで共有できます。",
+    url: SITE_URL,
+    siteName: "Yama100 - 日本百名山チェックリスト",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Yama100 - 日本百名山チェックリスト",
+    description: "日本百名山の登頂状況を管理できるチェックリスト。ログイン不要でURLで共有できます。",
+  },
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
