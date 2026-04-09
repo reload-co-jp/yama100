@@ -130,24 +130,34 @@ export default function MountainApp() {
     <div>
       <HeroSection count={count} />
 
+      <style>{`
+        .map-container {
+          flex-shrink: 0;
+          height: 32rem;
+          overflow: hidden;
+          position: relative;
+          width: 100%;
+        }
+        @media (min-width: 40rem) {
+          .map-container {
+            height: calc(100dvh - 5rem);
+            position: sticky;
+            top: 0;
+            width: 45%;
+          }
+        }
+      `}</style>
+
       <div
         style={{
           alignItems: "flex-start",
           display: "flex",
+          flexWrap: "wrap",
           gap: "16px",
         }}
       >
-        {/* Map – sticky on the left */}
-        <div
-          style={{
-            flexShrink: 0,
-            height: "calc(100dvh - 5rem)",
-            overflow: "hidden",
-            position: "sticky",
-            top: "0",
-            width: "45%",
-          }}
-        >
+        {/* Map */}
+        <div className="map-container">
           <Suspense
             fallback={
               <div
