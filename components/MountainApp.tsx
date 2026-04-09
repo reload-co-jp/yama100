@@ -1,0 +1,373 @@
+'use client'
+
+import { useEffect, useState, useCallback, Suspense, lazy } from 'react'
+import mountainsData from '../public/mountains.json'
+import MountainPhoto from './MountainPhoto'
+import HeroSection from './HeroSection'
+
+const MountainMap = lazy(() => import('./MountainMap'))
+
+type Mountain = {
+  id: number
+  name: string
+  description: string
+  location: string[]
+  latitude: number
+  longitude: number
+  elevation: number
+}
+
+type SortOrder = 'latitude' | 'name' | 'elevation'
+
+function encodeChecked(checked: Set<number>): string {
+  const bytes = new Uint8Array(13)
+  for (const id of checked) {
+    const bit = id - 1
+    bytes[Math.floor(bit / 8)] |= 1 << (bit % 8)
+  }
+  return btoa(String.fromCharCode(...Array.from(bytes)))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '')
+}
+
+function decodeChecked(encoded: string): Set<number> {
+  try {
+    const padded =
+      encoded.replace(/-/g, '+').replace(/_/g, '/') +
+      '=='.slice(0, (4 - (encoded.length % 4)) % 4)
+    const bytes = Uint8Array.from(atob(padded), (c) => c.charCodeAt(0))
+    const checked = new Set<number>()
+    for (let i = 0; i < 100; i++) {
+      if (bytes[Math.floor(i / 8)] & (1 << (i % 8))) {
+        checked.add(i + 1)
+      }
+    }
+    return checked
+  } catch {
+    return new Set()
+  }
+}
+
+function sortMountains(mountains: Mountain[], sort: SortOrder): Mountain[] {
+  const sorted = [...mountains]
+  switch (sort) {
+    case 'latitude':
+      return sorted.sort((a, b) => b.latitude - a.latitude)
+    case 'name':
+      return sorted.sort((a, b) => a.name.localeCompare(b.name, 'ja'))
+    case 'elevation':
+      return sorted.sort((a, b) => b.elevation - a.elevation)
+  }
+}
+
+const mountains = mountainsData as Mountain[]
+
+export default function MountainApp() {
+  const [checked, setChecked] = useState<Set<number>>(new Set())
+  const [sort, setSort] = useState<SortOrder>('latitude')
+  const [copied, setCopied] = useState(false)
+  const [initialized, setInitialized] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const dataParam = params.get('data')
+    const sortParam = params.get('sort') as SortOrder | null
+
+    if (dataParam) {
+      setChecked(decodeChecked(dataParam))
+    } else {
+      try {
+        const stored = localStorage.getItem('yama100')
+        if (stored) {
+          const { checked: ids } = JSON.parse(stored)
+          if (Array.isArray(ids)) setChecked(new Set(ids))
+        }
+      } catch {}
+    }
+
+    if (sortParam && ['latitude', 'name', 'elevation'].includes(sortParam)) {
+      setSort(sortParam)
+    }
+
+    setInitialized(true)
+  }, [])
+
+  useEffect(() => {
+    if (!initialized) return
+    localStorage.setItem('yama100', JSON.stringify({ checked: [...checked] }))
+  }, [checked, initialized])
+
+  const toggle = useCallback((id: number) => {
+    setChecked((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }, [])
+
+  const handleShare = useCallback(async () => {
+    const params = new URLSearchParams()
+    params.set('data', encodeChecked(checked))
+    params.set('sort', sort)
+    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      window.prompt('以下のURLをコピーしてください', url)
+    }
+  }, [checked, sort])
+
+  const sorted = sortMountains(mountains, sort)
+  const count = checked.size
+  const percent = Math.round((count / 100) * 100)
+
+  return (
+    <div>
+      <HeroSection count={count} />
+
+      <div
+        style={{
+          alignItems: 'flex-start',
+          display: 'flex',
+          gap: '16px',
+        }}
+      >
+      {/* Map – sticky on the left */}
+      <div
+        style={{
+          flexShrink: 0,
+          height: 'calc(100dvh - 5rem)',
+          overflow: 'hidden',
+          position: 'sticky',
+          top: '0',
+          width: '45%',
+        }}
+      >
+        <Suspense
+          fallback={
+            <div
+              style={{
+                alignItems: 'center',
+                background: '#2a2a2a',
+                borderRadius: '8px',
+                color: '#aaa',
+                display: 'flex',
+                height: '100%',
+                justifyContent: 'center',
+              }}
+            >
+              地図を読み込み中…
+            </div>
+          }
+        >
+          <MountainMap mountains={mountains} checked={checked} onToggle={toggle} />
+        </Suspense>
+      </div>
+
+      {/* List – scrollable on the right */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        {/* Progress + controls */}
+        <div
+          style={{
+            background: '#2a2a2a',
+            borderRadius: '8px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px',
+            marginBottom: '16px',
+            padding: '16px',
+          }}
+        >
+          <div style={{ alignItems: 'center', display: 'flex', gap: '12px' }}>
+            <span style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
+              {count} / 100
+            </span>
+            <span style={{ color: '#aaa', fontSize: '.875rem' }}>
+              登頂済 ({percent}%)
+            </span>
+          </div>
+          <div
+            style={{
+              background: '#444',
+              borderRadius: '4px',
+              height: '8px',
+              overflow: 'hidden',
+            }}
+          >
+            <div
+              style={{
+                background: '#4caf50',
+                borderRadius: '4px',
+                height: '100%',
+                transition: 'width .3s ease',
+                width: `${percent}%`,
+              }}
+            />
+          </div>
+          <div
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '8px',
+            }}
+          >
+            <label style={{ color: '#ccc', fontSize: '.875rem' }}>
+              並び順：
+            </label>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as SortOrder)}
+              style={{
+                background: '#3a3a3a',
+                border: '1px solid #555',
+                borderRadius: '4px',
+                color: '#f0f0f0',
+                fontSize: '.875rem',
+                padding: '4px 8px',
+              }}
+            >
+              <option value="latitude">北から順</option>
+              <option value="name">五十音順</option>
+              <option value="elevation">標高順</option>
+            </select>
+            <button
+              onClick={handleShare}
+              style={{
+                background: copied ? '#388e3c' : '#1976d2',
+                border: 'none',
+                borderRadius: '4px',
+                color: '#fff',
+                cursor: 'pointer',
+                fontSize: '.875rem',
+                padding: '4px 12px',
+                transition: 'background .2s',
+              }}
+            >
+              {copied ? 'コピーしました！' : 'URLをシェア'}
+            </button>
+          </div>
+        </div>
+
+        {/* Mountain list */}
+        <ul
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            listStyle: 'none',
+            padding: 0,
+          }}
+        >
+          {sorted.map((mountain) => {
+            const isChecked = checked.has(mountain.id)
+            const mapUrl = `https://maps.gsi.go.jp/#15/${mountain.latitude}/${mountain.longitude}/`
+            return (
+              <li
+                key={mountain.id}
+                style={{
+                  background: isChecked ? '#1b3a1c' : '#2a2a2a',
+                  borderLeft: `4px solid ${isChecked ? '#4caf50' : '#555'}`,
+                  borderRadius: '6px',
+                  padding: '12px',
+                  transition: 'background .2s, border-color .2s',
+                }}
+              >
+                <div
+                  style={{
+                    alignItems: 'flex-start',
+                    display: 'flex',
+                    gap: '12px',
+                  }}
+                >
+                  <label
+                    style={{
+                      alignItems: 'flex-start',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      flex: 1,
+                      gap: '12px',
+                      minWidth: 0,
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => toggle(mountain.id)}
+                      style={{
+                        accentColor: '#4caf50',
+                        cursor: 'pointer',
+                        flexShrink: 0,
+                        height: '18px',
+                        marginTop: '2px',
+                        width: '18px',
+                      }}
+                    />
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div
+                        style={{
+                          alignItems: 'baseline',
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          gap: '8px',
+                          marginBottom: '4px',
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: '1rem',
+                            fontWeight: 'bold',
+                            opacity: isChecked ? 0.6 : 1,
+                            textDecoration: isChecked ? 'line-through' : 'none',
+                          }}
+                        >
+                          {mountain.name}
+                        </span>
+                        <span style={{ color: '#aaa', fontSize: '.8rem' }}>
+                          {mountain.elevation.toLocaleString()}m
+                        </span>
+                        <span style={{ color: '#888', fontSize: '.8rem' }}>
+                          {mountain.location.join('・')}
+                        </span>
+                      </div>
+                      <p
+                        style={{
+                          color: '#bbb',
+                          fontSize: '.8rem',
+                          lineHeight: 1.5,
+                          marginBottom: '6px',
+                          opacity: isChecked ? 0.5 : 1,
+                        }}
+                      >
+                        {mountain.description}
+                      </p>
+                      <a
+                        href={mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                          color: '#64b5f6',
+                          fontSize: '.75rem',
+                          textDecoration: 'none',
+                        }}
+                      >
+                        地図を見る →
+                      </a>
+                    </div>
+                  </label>
+                  <MountainPhoto name={mountain.name} />
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      </div>
+    </div>
+  )
+}
