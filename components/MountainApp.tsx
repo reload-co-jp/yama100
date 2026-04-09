@@ -18,7 +18,7 @@ type Mountain = {
   elevation: number
 }
 
-type SortOrder = "latitude" | "name" | "elevation"
+type SortOrder = "latitude" | "name" | "elevation" | "prefecture"
 
 function encodeChecked(checked: Set<number>): string {
   const bytes = new Uint8Array(13)
@@ -59,10 +59,125 @@ function sortMountains(mountains: Mountain[], sort: SortOrder): Mountain[] {
       return sorted.sort((a, b) => a.name.localeCompare(b.name, "ja"))
     case "elevation":
       return sorted.sort((a, b) => b.elevation - a.elevation)
+    case "prefecture":
+      return sorted.sort((a, b) => b.latitude - a.latitude)
   }
 }
 
+type PrefectureGroup = { prefecture: string; mountains: Mountain[] }
+
+function groupByPrefecture(mountains: Mountain[]): PrefectureGroup[] {
+  const sorted = [...mountains].sort((a, b) => b.latitude - a.latitude)
+  const map = new Map<string, Mountain[]>()
+  for (const m of sorted) {
+    const pref = m.location[0]
+    if (!map.has(pref)) map.set(pref, [])
+    map.get(pref)!.push(m)
+  }
+  return Array.from(map.entries()).map(([prefecture, mountains]) => ({
+    prefecture,
+    mountains,
+  }))
+}
+
 const mountains = mountainsData as Mountain[]
+
+function MountainListItem({
+  mountain,
+  isChecked,
+  onToggle,
+}: {
+  mountain: Mountain
+  isChecked: boolean
+  onToggle: (id: number) => void
+}) {
+  return (
+    <li
+      style={{
+        background: isChecked ? "#1b3a1c" : "#2a2a2a",
+        borderLeft: `4px solid ${isChecked ? "#4caf50" : "#555"}`,
+        borderRadius: "6px",
+        padding: "12px",
+        transition: "background .2s, border-color .2s",
+      }}
+    >
+      <div style={{ alignItems: "flex-start", display: "flex", gap: "12px" }}>
+        <input
+          id={`checkbox-${mountain.id}`}
+          type="checkbox"
+          checked={isChecked}
+          onChange={() => onToggle(mountain.id)}
+          style={{
+            accentColor: "#4caf50",
+            cursor: "pointer",
+            flexShrink: 0,
+            height: "18px",
+            marginTop: "2px",
+            width: "18px",
+          }}
+        />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <label
+            htmlFor={`checkbox-${mountain.id}`}
+            style={{ cursor: "pointer", display: "block", marginBottom: "6px" }}
+          >
+            <div
+              style={{
+                alignItems: "baseline",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "8px",
+                marginBottom: "4px",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  opacity: isChecked ? 0.6 : 1,
+                  textDecoration: isChecked ? "line-through" : "none",
+                }}
+              >
+                {mountain.name}
+              </span>
+              <span style={{ color: "#aaa", fontSize: ".8rem" }}>
+                {mountain.elevation.toLocaleString()}m
+              </span>
+              <span style={{ color: "#888", fontSize: ".8rem" }}>
+                {mountain.location.join("・")}
+              </span>
+            </div>
+            <p
+              style={{
+                color: "#bbb",
+                fontSize: ".8rem",
+                lineHeight: 1.5,
+                opacity: isChecked ? 0.5 : 1,
+              }}
+            >
+              {mountain.description}
+            </p>
+          </label>
+          <Link
+            href={`/mountains/${mountain.id}/`}
+            style={{
+              background: "#3a3a3a",
+              borderRadius: "4px",
+              color: "#aaa",
+              display: "inline-block",
+              fontSize: ".75rem",
+              padding: "3px 10px",
+              textDecoration: "none",
+            }}
+          >
+            詳細 →
+          </Link>
+        </div>
+        <MountainPhoto name={mountain.name} />
+      </div>
+    </li>
+  )
+}
 
 function initChecked(): Set<number> {
   if (typeof window === "undefined") return new Set()
@@ -84,7 +199,7 @@ function initSort(): SortOrder {
   const sortParam = params.get("sort") as SortOrder | null
   if (
     sortParam &&
-    (["latitude", "name", "elevation"] as SortOrder[]).includes(sortParam)
+    (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(sortParam)
   ) {
     return sortParam
   }
@@ -124,6 +239,7 @@ export default function MountainApp() {
   }, [checked, sort])
 
   const sorted = sortMountains(mountains, sort)
+  const groups = sort === "prefecture" ? groupByPrefecture(mountains) : null
   const count = checked.size
   const percent = Math.round((count / 100) * 100)
 
@@ -254,6 +370,7 @@ export default function MountainApp() {
                 <option value="latitude">北から順</option>
                 <option value="name">五十音順</option>
                 <option value="elevation">標高順</option>
+                <option value="prefecture">都道府県別</option>
               </select>
               <button
                 onClick={handleShare}
@@ -274,118 +391,46 @@ export default function MountainApp() {
           </div>
 
           {/* Mountain list */}
-          <ul
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-              listStyle: "none",
-              padding: 0,
-            }}
-          >
-            {sorted.map((mountain) => {
-              const isChecked = checked.has(mountain.id)
-              return (
-                <li
-                  key={mountain.id}
-                  style={{
-                    background: isChecked ? "#1b3a1c" : "#2a2a2a",
-                    borderLeft: `4px solid ${isChecked ? "#4caf50" : "#555"}`,
-                    borderRadius: "6px",
-                    padding: "12px",
-                    transition: "background .2s, border-color .2s",
-                  }}
-                >
+          {groups ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              {groups.map(({ prefecture, mountains: prefMountains }) => (
+                <div key={prefecture}>
                   <div
                     style={{
-                      alignItems: "flex-start",
-                      display: "flex",
-                      gap: "12px",
+                      borderBottom: "1px solid #444",
+                      color: "#7ecfb3",
+                      fontSize: ".875rem",
+                      fontWeight: "bold",
+                      marginBottom: "8px",
+                      paddingBottom: "4px",
                     }}
                   >
-                    <input
-                      id={`checkbox-${mountain.id}`}
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => toggle(mountain.id)}
-                      style={{
-                        accentColor: "#4caf50",
-                        cursor: "pointer",
-                        flexShrink: 0,
-                        height: "18px",
-                        marginTop: "2px",
-                        width: "18px",
-                      }}
-                    />
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <label
-                        htmlFor={`checkbox-${mountain.id}`}
-                        style={{
-                          cursor: "pointer",
-                          display: "block",
-                          marginBottom: "6px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            alignItems: "baseline",
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: "8px",
-                            marginBottom: "4px",
-                          }}
-                        >
-                          <span
-                            style={{
-                              fontSize: "1rem",
-                              fontWeight: "bold",
-                              opacity: isChecked ? 0.6 : 1,
-                              textDecoration: isChecked
-                                ? "line-through"
-                                : "none",
-                            }}
-                          >
-                            {mountain.name}
-                          </span>
-                          <span style={{ color: "#aaa", fontSize: ".8rem" }}>
-                            {mountain.elevation.toLocaleString()}m
-                          </span>
-                          <span style={{ color: "#888", fontSize: ".8rem" }}>
-                            {mountain.location.join("・")}
-                          </span>
-                        </div>
-                        <p
-                          style={{
-                            color: "#bbb",
-                            fontSize: ".8rem",
-                            lineHeight: 1.5,
-                            opacity: isChecked ? 0.5 : 1,
-                          }}
-                        >
-                          {mountain.description}
-                        </p>
-                      </label>
-                      <Link
-                        href={`/mountains/${mountain.id}/`}
-                        style={{
-                          background: "#3a3a3a",
-                          borderRadius: "4px",
-                          color: "#aaa",
-                          display: "inline-block",
-                          fontSize: ".75rem",
-                          padding: "3px 10px",
-                          textDecoration: "none",
-                        }}
-                      >
-                        詳細 →
-                      </Link>
-                    </div>
-                    <MountainPhoto name={mountain.name} />
+                    {prefecture}
+                    <span style={{ color: "#666", fontWeight: "normal", marginLeft: "8px" }}>
+                      {prefMountains.filter((m) => checked.has(m.id)).length} / {prefMountains.length}
+                    </span>
                   </div>
-                </li>
-              )
-            })}
-          </ul>
+                  <ul style={{ display: "flex", flexDirection: "column", gap: "8px", listStyle: "none", padding: 0 }}>
+                    {prefMountains.map((mountain) => <MountainListItem key={mountain.id} mountain={mountain} isChecked={checked.has(mountain.id)} onToggle={toggle} />)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ul
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
+                listStyle: "none",
+                padding: 0,
+              }}
+            >
+              {sorted.map((mountain) => (
+                <MountainListItem key={mountain.id} mountain={mountain} isChecked={checked.has(mountain.id)} onToggle={toggle} />
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
