@@ -3,21 +3,30 @@ import "./reset.css"
 
 import { SITE_URL } from "../lib/site"
 
+const TITLE = "Yama100 - 日本百名山チェックリスト"
+const DESCRIPTION =
+  "深田久弥が選んだ日本百名山の登頂記録をチェックできるアプリ。ログイン不要でURLで共有できます。"
+
 export const metadata = {
-  title: "Yama100 - 日本百名山チェックリスト",
-  description: "日本百名山の登頂状況を管理できるチェックリスト。ログイン不要でURLで共有できます。",
+  title: {
+    default: TITLE,
+    template: "%s | Yama100",
+  },
+  description: DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Yama100 - 日本百名山チェックリスト",
-    description: "日本百名山の登頂状況を管理できるチェックリスト。ログイン不要でURLで共有できます。",
-    url: SITE_URL,
-    siteName: "Yama100 - 日本百名山チェックリスト",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: TITLE,
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Yama100 - 日本百名山チェックリスト",
-    description: "日本百名山の登頂状況を管理できるチェックリスト。ログイン不要でURLで共有できます。",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 }
 

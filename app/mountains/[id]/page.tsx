@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import mountainsData from "../../../public/mountains.json"
 import MountainDetailClient from "../../../components/MountainDetailClient"
-import { SITE_URL, fetchWikiThumbnail } from "../../../lib/site"
+import { fetchWikiThumbnail } from "../../../lib/site"
 
 type Mountain = {
   id: number
@@ -26,23 +26,24 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!mountain) return {}
 
   const imageUrl = await fetchWikiThumbnail(mountain.name)
-  const pageUrl = `${SITE_URL}/mountains/${mountain.id}/`
+  const canonicalPath = `/mountains/${mountain.id}/`
+  const ogTitle = `${mountain.name}（${mountain.elevation.toLocaleString()}m）- 日本百名山`
 
   return {
-    title: `${mountain.name} - 日本百名山`,
+    title: mountain.name,
     description: mountain.description,
+    alternates: { canonical: canonicalPath },
     openGraph: {
-      title: `${mountain.name}（${mountain.elevation.toLocaleString()}m）- 日本百名山`,
+      title: ogTitle,
       description: mountain.description,
-      url: pageUrl,
-      siteName: "Yama100 - 日本百名山チェックリスト",
+      url: canonicalPath,
       locale: "ja_JP",
       type: "article",
       ...(imageUrl ? { images: [{ url: imageUrl, alt: mountain.name }] } : {}),
     },
     twitter: {
       card: imageUrl ? "summary_large_image" : "summary",
-      title: `${mountain.name}（${mountain.elevation.toLocaleString()}m）- 日本百名山`,
+      title: ogTitle,
       description: mountain.description,
       ...(imageUrl ? { images: [imageUrl] } : {}),
     },
@@ -57,14 +58,12 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
   const prev = mountains.find((m) => m.id === mountain.id - 1) ?? null
   const next = mountains.find((m) => m.id === mountain.id + 1) ?? null
 
-  const pageUrl = `${SITE_URL}/mountains/${mountain.id}/`
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Place",
     name: mountain.name,
     description: mountain.description,
-    url: pageUrl,
+    url: `/mountains/${mountain.id}/`,
     geo: {
       "@type": "GeoCoordinates",
       latitude: mountain.latitude,
