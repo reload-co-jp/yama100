@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0a1628"/>
+  <!-- 遠景の山 -->
+  <path d="M2 26 L10 14 L18 26 Z" fill="rgba(255,255,255,0.18)"/>
+  <!-- 前景の山 -->
+  <path d="M8 26 L18 8 L28 26 Z" fill="rgba(255,255,255,0.85)"/>
+  <!-- 雪化粧 -->
+  <path d="M18 8 L21.5 14.5 L14.5 14.5 Z" fill="#4caf50"/>
+  <!-- 地面 -->
+  <rect x="0" y="26" width="32" height="6" rx="0" fill="#0a1628"/>
+</svg>
