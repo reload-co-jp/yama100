@@ -19,9 +19,10 @@ const cache = new Map<string, string | null>()
 
 type Props = {
   name: string
+  size?: 'thumb' | 'full'
 }
 
-export default function MountainPhoto({ name }: Props) {
+export default function MountainPhoto({ name, size = 'thumb' }: Props) {
   const [src, setSrc] = useState<string | null | 'pending'>(
     cache.has(name) ? cache.get(name)! : 'pending'
   )
@@ -59,16 +60,18 @@ export default function MountainPhoto({ name }: Props) {
     return () => observer.disconnect()
   }, [name, src])
 
+  const isThumb = size === 'thumb'
+
   return (
     <div
       ref={containerRef}
       style={{
         background: '#3a3a3a',
-        borderRadius: '6px',
-        flexShrink: 0,
-        height: '80px',
+        borderRadius: isThumb ? '6px' : '0',
+        flexShrink: isThumb ? 0 : undefined,
+        height: isThumb ? '80px' : '100%',
         overflow: 'hidden',
-        width: '80px',
+        width: isThumb ? '80px' : '100%',
       }}
     >
       {src === 'pending' && (

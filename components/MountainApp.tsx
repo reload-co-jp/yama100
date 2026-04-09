@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useCallback, Suspense, lazy } from "react"
+import Link from "next/link"
 import mountainsData from "../public/mountains.json"
 import MountainPhoto from "./MountainPhoto"
 import HeroSection from "./HeroSection"
@@ -284,7 +285,6 @@ export default function MountainApp() {
           >
             {sorted.map((mountain) => {
               const isChecked = checked.has(mountain.id)
-              const mapUrl = `https://maps.gsi.go.jp/#15/${mountain.latitude}/${mountain.longitude}/`
               return (
                 <li
                   key={mountain.id}
@@ -365,18 +365,20 @@ export default function MountainApp() {
                           {mountain.description}
                         </p>
                       </label>
-                      <a
-                        href={mapUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        href={`/mountains/${mountain.id}/`}
                         style={{
-                          color: "#64b5f6",
+                          background: "#3a3a3a",
+                          borderRadius: "4px",
+                          color: "#aaa",
+                          display: "inline-block",
                           fontSize: ".75rem",
+                          padding: "3px 10px",
                           textDecoration: "none",
                         }}
                       >
-                        地図を見る →
-                      </a>
+                        詳細 →
+                      </Link>
                     </div>
                     <MountainPhoto name={mountain.name} />
                   </div>
