@@ -1,4 +1,5 @@
 import { Title } from "components/elements/layout"
+import Link from "next/link"
 import "./reset.css"
 
 import { SITE_URL } from "../lib/site"
@@ -42,7 +43,35 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             position: "relative",
           }}
         >
-          <Title>Yama100 - 日本百名山チェックリスト</Title>
+          <div style={{ alignItems: "center", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "space-between" }}>
+            <Title>Yama100</Title>
+            <nav style={{ display: "flex", gap: "8px" }}>
+              <Link
+                href="/"
+                style={{
+                  borderRadius: "4px",
+                  color: "#ccc",
+                  fontSize: ".8rem",
+                  padding: "4px 10px",
+                  textDecoration: "none",
+                }}
+              >
+                百名山
+              </Link>
+              <Link
+                href="/mountains200/"
+                style={{
+                  borderRadius: "4px",
+                  color: "#ccc",
+                  fontSize: ".8rem",
+                  padding: "4px 10px",
+                  textDecoration: "none",
+                }}
+              >
+                二百名山
+              </Link>
+            </nav>
+          </div>
         </header>
         <main
           style={{
