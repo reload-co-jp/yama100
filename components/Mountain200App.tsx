@@ -5,6 +5,7 @@ import Link from "next/link"
 import mountainsData from "../public/mountains200.json"
 import MountainPhoto from "./MountainPhoto"
 import HeroSection200 from "./HeroSection200"
+import DigestModal from "./DigestModal"
 
 const MountainMap = lazy(() => import("./MountainMap"))
 
@@ -179,36 +180,33 @@ function MountainListItem({
   )
 }
 
-function initChecked(): Set<number> {
-  if (typeof window === "undefined") return new Set()
-  const params = new URLSearchParams(window.location.search)
-  const dataParam = params.get("data")
-  if (dataParam) return decodeChecked(dataParam)
-  const stored = localStorage.getItem("yama200")
-  if (stored) {
-    const { checked: ids } = JSON.parse(stored)
-    if (Array.isArray(ids)) return new Set<number>(ids)
-  }
-  return new Set()
-}
-
-function initSort(): SortOrder {
-  if (typeof window === "undefined") return "latitude"
-  const params = new URLSearchParams(window.location.search)
-  const sortParam = params.get("sort") as SortOrder | null
-  if (
-    sortParam &&
-    (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(sortParam)
-  ) {
-    return sortParam
-  }
-  return "latitude"
-}
-
 export default function Mountain200App() {
-  const [checked, setChecked] = useState<Set<number>>(initChecked)
-  const [sort, setSort] = useState<SortOrder>(initSort)
+  const [checked, setChecked] = useState<Set<number>>(() => new Set())
+  const [sort, setSort] = useState<SortOrder>("latitude")
   const [copied, setCopied] = useState(false)
+  const [digestChecked, setDigestChecked] = useState<Set<number> | null>(null)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const dataParam = params.get("data")
+
+    // 自分のデータは常に localStorage から復元
+    const stored = localStorage.getItem("yama200")
+    if (stored) {
+      const { checked: ids } = JSON.parse(stored)
+      if (Array.isArray(ids)) setChecked(new Set<number>(ids))
+    }
+
+    // 共有リンクのデータはダイジスト専用 state に格納（localStorage には触らない）
+    if (dataParam) {
+      setDigestChecked(decodeChecked(dataParam))
+    }
+
+    const sortParam = params.get("sort") as SortOrder | null
+    if (sortParam && (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(sortParam)) {
+      setSort(sortParam)
+    }
+  }, [])
 
   useEffect(() => {
     localStorage.setItem("yama200", JSON.stringify({ checked: [...checked] }))
@@ -243,8 +241,17 @@ export default function Mountain200App() {
   const count = checked.size
   const percent = Math.round((count / 100) * 100)
 
+  const digestMountains = digestChecked ? mountains.filter((m) => digestChecked.has(m.id)) : []
+
   return (
     <div>
+      {digestChecked !== null && (
+        <DigestModal
+          mountains={digestMountains}
+          hero={<HeroSection200 count={digestMountains.length} />}
+          onClose={() => setDigestChecked(null)}
+        />
+      )}
       <HeroSection200 count={count} />
 
       <style>{`
