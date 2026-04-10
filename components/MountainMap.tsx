@@ -88,11 +88,12 @@ export default function MountainMap({ mountains, checked, onToggle }: Props) {
 
     init()
 
+    const markers = markersRef.current
     return () => {
       mounted = false
       mapRef.current?.remove()
       mapRef.current = null
-      markersRef.current.clear()
+      markers.clear()
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

@@ -30,7 +30,9 @@ function readChecked(): Set<number> {
       const { checked: ids } = JSON.parse(stored)
       if (Array.isArray(ids)) return (_cache = new Set<number>(ids))
     }
-  } catch {}
+  } catch {
+    // ignore parse errors
+  }
   return (_cache = EMPTY)
 }
 

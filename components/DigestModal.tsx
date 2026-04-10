@@ -28,6 +28,9 @@ export default function DigestModal({ mountains, hero, onClose }: Props) {
     <>
       <div
         onClick={onClose}
+        onKeyDown={onClose}
+        role="button"
+        tabIndex={-1}
         style={{
           background: "rgba(0,0,0,0.75)",
           bottom: 0,

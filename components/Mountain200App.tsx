@@ -181,32 +181,33 @@ function MountainListItem({
 }
 
 export default function Mountain200App() {
-  const [checked, setChecked] = useState<Set<number>>(() => new Set())
-  const [sort, setSort] = useState<SortOrder>("latitude")
-  const [copied, setCopied] = useState(false)
-  const [digestChecked, setDigestChecked] = useState<Set<number> | null>(null)
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const dataParam = params.get("data")
-
-    // 自分のデータは常に localStorage から復元
+  const [checked, setChecked] = useState<Set<number>>(() => {
+    if (typeof window === "undefined") return new Set<number>()
     const stored = localStorage.getItem("yama200")
     if (stored) {
-      const { checked: ids } = JSON.parse(stored)
-      if (Array.isArray(ids)) setChecked(new Set<number>(ids))
+      try {
+        const { checked: ids } = JSON.parse(stored)
+        if (Array.isArray(ids)) return new Set<number>(ids)
+      } catch {
+        // ignore parse errors
+      }
     }
-
-    // 共有リンクのデータはダイジスト専用 state に格納（localStorage には触らない）
-    if (dataParam) {
-      setDigestChecked(decodeChecked(dataParam))
-    }
-
-    const sortParam = params.get("sort") as SortOrder | null
+    return new Set<number>()
+  })
+  const [sort, setSort] = useState<SortOrder>(() => {
+    if (typeof window === "undefined") return "latitude"
+    const sortParam = new URLSearchParams(window.location.search).get("sort") as SortOrder | null
     if (sortParam && (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(sortParam)) {
-      setSort(sortParam)
+      return sortParam
     }
-  }, [])
+    return "latitude"
+  })
+  const [copied, setCopied] = useState(false)
+  const [digestChecked, setDigestChecked] = useState<Set<number> | null>(() => {
+    if (typeof window === "undefined") return null
+    const dataParam = new URLSearchParams(window.location.search).get("data")
+    return dataParam ? decodeChecked(dataParam) : null
+  })
 
   useEffect(() => {
     localStorage.setItem("yama200", JSON.stringify({ checked: [...checked] }))
