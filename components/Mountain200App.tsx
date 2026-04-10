@@ -228,12 +228,13 @@ export default function Mountain200App() {
     params.set("data", encodeChecked(checked))
     params.set("sort", sort)
     const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`
+    const text = `${checked.size}座の二百名山に登頂しました！\n${url}`
     try {
-      await navigator.clipboard.writeText(url)
+      await navigator.clipboard.writeText(text)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      window.prompt("以下のURLをコピーしてください", url)
+      window.prompt("以下のテキストをコピーしてください", text)
     }
   }, [checked, sort])
 
