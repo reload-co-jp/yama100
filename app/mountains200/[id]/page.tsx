@@ -196,6 +196,21 @@ export default async function Mountain200Page({ params }: { params: Promise<{ id
         >
           Wikipedia →
         </a>
+        <a
+          href={`https://yamap.com/search/activities?keyword=${encodeURIComponent(mountain.name)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            background: "#3a3a3a",
+            borderRadius: "4px",
+            color: "#ccc",
+            fontSize: ".875rem",
+            padding: "6px 14px",
+            textDecoration: "none",
+          }}
+        >
+          YAMAP →
+        </a>
       </div>
 
       <div
