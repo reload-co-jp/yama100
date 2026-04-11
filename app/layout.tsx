@@ -31,9 +31,29 @@ export const metadata = {
   },
 }
 
+const GA_ID = "G-KY5MNFQJMW"
+const isProduction = process.env.NODE_ENV === "production"
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ja">
+      <head>
+        {isProduction && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
+      </head>
       <body>
         <header
           style={{
