@@ -90,6 +90,18 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               >
                 二百名山
               </Link>
+              <Link
+                href="/mountains300/"
+                style={{
+                  borderRadius: "4px",
+                  color: "#ccc",
+                  fontSize: ".8rem",
+                  padding: "4px 10px",
+                  textDecoration: "none",
+                }}
+              >
+                三百名山
+              </Link>
             </nav>
           </div>
         </header>
