@@ -41,7 +41,7 @@ const Page: FC = () => {
         storageKey="yama100"
         themeColor="#4caf50"
         pathPrefix="/mountains/"
-        heroSection={<HeroSection count={0} />}
+        heroSection={<HeroSection count={0} type="100" />}
         totalCount={100}
         idOffset={0}
       />
