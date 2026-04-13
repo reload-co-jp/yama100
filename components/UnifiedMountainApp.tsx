@@ -107,9 +107,12 @@ export default function UnifiedMountainApp({
       {digestChecked !== null && (
         <DigestModal
           mountains={digestMountains}
-          hero={React.cloneElement(heroSection as React.ReactElement<{ count: number }>, {
-            count: digestMountains.length,
-          })}
+          hero={React.cloneElement(
+            heroSection as React.ReactElement<{ count: number }>,
+            {
+              count: digestMountains.length,
+            }
+          )}
           onClose={() => setDigestChecked(null)}
         />
       )}
@@ -409,6 +412,10 @@ function MountainListItem({
                 fontSize: ".875rem",
                 lineHeight: 1.5,
                 opacity: isChecked ? 0.5 : 1,
+                overflow: "hidden",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 2,
+                display: "-webkit-box",
               }}
             >
               {mountain.description}
