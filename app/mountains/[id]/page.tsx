@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import mountainsData from "../../../public/mountains.json"
-import MountainDetailClient from "../../../components/MountainDetailClient"
+import UnifiedMountainDetailClient from "../../../components/UnifiedMountainDetailClient"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
 type Mountain = {
@@ -112,7 +112,13 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
           overflow: "hidden",
         }}
       >
-        <MountainDetailClient mountain={mountain} />
+        <UnifiedMountainDetailClient
+          mountain={mountain}
+          storageKey="yama100"
+          themeColor="#4caf50"
+          overlayColor="rgba(76,175,80,0.85)"
+          activeBgColor="#1b3a1c"
+        />
 
         {/* Info */}
         <div style={{ padding: "24px" }}>

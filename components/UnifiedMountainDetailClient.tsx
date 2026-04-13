@@ -1,6 +1,6 @@
 "use client"
 
-import { useSyncExternalStore } from "react"
+import { useSyncExternalStore, useCallback } from "react"
 import MountainPhoto from "./MountainPhoto"
 
 type Mountain = {
@@ -15,49 +15,67 @@ type Mountain = {
 
 type Props = {
   mountain: Mountain
+  storageKey: string
+  themeColor: string
+  overlayColor: string
+  activeBgColor: string
 }
 
-let _cache: Set<number> | null = null
-const _listeners = new Set<() => void>()
+// Module-level caches by storageKey
+const _caches: Record<string, Set<number> | null> = {}
+const _listeners: Record<string, Set<() => void>> = {}
 const EMPTY = new Set<number>()
 
-function readChecked(): Set<number> {
-  if (_cache !== null) return _cache
+function getCache(key: string) {
+  if (_caches[key] !== undefined) return _caches[key]
   try {
-    const stored = localStorage.getItem("yama300")
+    const stored = localStorage.getItem(key)
     if (stored) {
       const { checked: ids } = JSON.parse(stored)
-      if (Array.isArray(ids)) return (_cache = new Set<number>(ids))
+      if (Array.isArray(ids)) return (_caches[key] = new Set<number>(ids))
     }
   } catch {
     // ignore parse errors
   }
-  return (_cache = EMPTY)
+  return (_caches[key] = EMPTY)
 }
 
-function writeChecked(next: Set<number>) {
-  _cache = next
-  localStorage.setItem("yama300", JSON.stringify({ checked: [...next] }))
-  _listeners.forEach((l) => l())
+function writeChecked(key: string, next: Set<number>) {
+  _caches[key] = next
+  localStorage.setItem(key, JSON.stringify({ checked: [...next] }))
+  _listeners[key]?.forEach((l) => l())
 }
 
-function subscribe(listener: () => void) {
-  _listeners.add(listener)
+function subscribe(key: string, listener: () => void) {
+  if (!_listeners[key]) _listeners[key] = new Set()
+  _listeners[key].add(listener)
   return () => {
-    _listeners.delete(listener)
+    _listeners[key].delete(listener)
   }
 }
 
-export default function MountainDetailClient300({ mountain }: Props) {
-  const checked = useSyncExternalStore(subscribe, readChecked, () => EMPTY)
+export default function UnifiedMountainDetailClient({
+  mountain,
+  storageKey,
+  themeColor,
+  overlayColor,
+  activeBgColor,
+}: Props) {
+  const subscribeFn = useCallback(
+    (listener: () => void) => subscribe(storageKey, listener),
+    [storageKey]
+  )
+  const readFn = useCallback(() => getCache(storageKey), [storageKey])
+
+  const checked = useSyncExternalStore(subscribeFn, readFn, () => EMPTY)
   const isChecked = checked.has(mountain.id)
 
   const toggle = () => {
-    const prev = readChecked()
+    const prev = getCache(storageKey)
     const next = new Set(prev)
     if (next.has(mountain.id)) next.delete(mountain.id)
     else next.add(mountain.id)
-    writeChecked(next)
+    writeChecked(storageKey, next)
   }
 
   return (
@@ -76,7 +94,7 @@ export default function MountainDetailClient300({ mountain }: Props) {
         {isChecked && (
           <div
             style={{
-              background: "rgba(33,150,243,0.85)",
+              background: overlayColor,
               borderRadius: "4px",
               color: "#fff",
               fontSize: ".8rem",
@@ -96,10 +114,10 @@ export default function MountainDetailClient300({ mountain }: Props) {
         <button
           onClick={toggle}
           style={{
-            background: isChecked ? "#1a2d3a" : "#2a2a2a",
-            border: `2px solid ${isChecked ? "#2196f3" : "#555"}`,
+            background: isChecked ? activeBgColor : "#2a2a2a",
+            border: `2px solid ${isChecked ? themeColor : "#555"}`,
             borderRadius: "6px",
-            color: isChecked ? "#2196f3" : "#aaa",
+            color: isChecked ? themeColor : "#aaa",
             cursor: "pointer",
             fontSize: ".9rem",
             fontWeight: 600,
