@@ -116,7 +116,12 @@ export default function UnifiedMountainApp({
           onClose={() => setDigestChecked(null)}
         />
       )}
-      {heroSection}
+      {React.cloneElement(
+        heroSection as React.ReactElement<{ count: number }>,
+        {
+          count: count,
+        }
+      )}
 
       <style>{`
         .map-container {
