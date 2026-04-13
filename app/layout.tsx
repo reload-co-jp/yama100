@@ -102,6 +102,18 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               >
                 三百名山
               </Link>
+              <Link
+                href="/about/"
+                style={{
+                  borderRadius: "4px",
+                  color: "#ccc",
+                  fontSize: ".8rem",
+                  padding: "4px 10px",
+                  textDecoration: "none",
+                }}
+              >
+                このサイトについて
+              </Link>
             </nav>
           </div>
         </header>
