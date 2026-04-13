@@ -1,9 +1,26 @@
 import { FC } from "react"
 import Link from "next/link"
+import { Metadata } from "next"
 
-export const metadata = {
-  title: "花の百名山について",
+export const metadata: Metadata = {
+  title: "花の百名山について | Yama100",
   description: "田中澄江が選定した「花の百名山」の歴史とコンセプトの解説",
+  openGraph: {
+    title: "花の百名山について | Yama100",
+    description: "田中澄江が選定した「花の百名山」の歴史とコンセプトの解説",
+    url: "https://yama100.reload.co.jp/articles/flowers",
+    siteName: "Yama100",
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yama100.reload.co.jp" },
+    { "@type": "ListItem", "position": 2, "name": "読み物一覧", "item": "https://yama100.reload.co.jp/articles" },
+    { "@type": "ListItem", "position": 3, "name": "花の百名山について", "item": "https://yama100.reload.co.jp/articles/flowers" }
+  ]
 }
 
 const Page: FC = () => {
@@ -16,6 +33,10 @@ const Page: FC = () => {
         color: "#ccc",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link
         href="/articles/"
         style={{ color: "#7ecfb3", textDecoration: "none" }}

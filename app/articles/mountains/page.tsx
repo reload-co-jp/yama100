@@ -1,14 +1,35 @@
 import { FC } from "react"
 import Link from "next/link"
+import { Metadata } from "next"
 
-export const metadata = {
-  title: "深田久弥が登った山々",
+export const metadata: Metadata = {
+  title: "深田久弥が登った山々 | Yama100",
   description: "深田久弥の山行の記録と日本百名山への道",
+  openGraph: {
+    title: "深田久弥が登った山々 | Yama100",
+    description: "深田久弥の山行の記録と日本百名山への道",
+    url: "https://yama100.reload.co.jp/articles/mountains",
+    siteName: "Yama100",
+  },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yama100.reload.co.jp" },
+    { "@type": "ListItem", "position": 2, "name": "読み物一覧", "item": "https://yama100.reload.co.jp/articles" },
+    { "@type": "ListItem", "position": 3, "name": "深田久弥が登った山々", "item": "https://yama100.reload.co.jp/articles/mountains" }
+  ]
 }
 
 const Page: FC = () => {
   return (
     <div style={{ maxWidth: "720px", margin: "40px auto", padding: "0 24px", color: "#ccc" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/articles/" style={{ color: "#7ecfb3", textDecoration: "none" }}>
         ← 読み物一覧に戻る
       </Link>
