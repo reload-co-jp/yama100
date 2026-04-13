@@ -25,18 +25,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  const articlePages = [
-    { url: `${SITE_URL}/articles/`, priority: 0.5 },
-    { url: `${SITE_URL}/articles/history/`, priority: 0.5 },
-    { url: `${SITE_URL}/articles/criteria/`, priority: 0.5 },
-    { url: `${SITE_URL}/articles/fukada/`, priority: 0.5 },
-    { url: `${SITE_URL}/articles/mountains/`, priority: 0.5 },
-    { url: `${SITE_URL}/articles/mountains200/`, priority: 0.5 },
-    { url: `${SITE_URL}/articles/mountains300/`, priority: 0.5 },
-    { url: `${SITE_URL}/articles/flowers/`, priority: 0.5 },
-  ].map((a) => ({
-    ...a,
+  const articles = [
+    "/articles/",
+    "/articles/history/",
+    "/articles/criteria/",
+    "/articles/fukada/",
+    "/articles/mountains/",
+    "/articles/mountains200/",
+    "/articles/mountains300/",
+    "/articles/flowers/",
+  ]
+
+  const articlePages = articles.map((url) => ({
+    url: `${SITE_URL}${url}`,
     changeFrequency: "monthly" as const,
+    priority: 0.5,
   }))
 
   return [
@@ -50,9 +53,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...articlePages,
     ...mountainPages,
     ...mountain200Pages,
     ...mountain300Pages,
-    ...articlePages,
   ]
 }
