@@ -103,7 +103,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                 三百名山
               </Link>
               <Link
-                href="/about/"
+                href="/articles/"
                 style={{
                   borderRadius: "4px",
                   color: "#ccc",
@@ -112,7 +112,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                   textDecoration: "none",
                 }}
               >
-                このサイトについて
+                読み物
               </Link>
             </nav>
           </div>
@@ -132,9 +132,14 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             boxShadow: "0 -4px 6px rgba(0, 0, 0, 0.1)",
             fontSize: ".75rem",
             padding: "1rem",
+            color: "#ccc",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
           }}
         >
           <p>&copy; Yama100</p>
+          <Link href="/about/" style={{ color: "#7ecfb3", textDecoration: "none" }}>このサイトについて</Link>
         </footer>
       </body>
     </html>

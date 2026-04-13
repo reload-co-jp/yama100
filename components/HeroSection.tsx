@@ -132,6 +132,7 @@ export default function HeroSection({ count, type }: Props) {
           {c.desc.split('\n').map((line, i) => (
             <span key={i}>{line}<br /></span>
           ))}
+          <a href="/about/" style={{ color: c.subColor, textDecoration: 'none', marginLeft: '8px' }}>百名山とは →</a>
         </p>
 
         <div

@@ -14,12 +14,18 @@ const Page: FC = () => {
       </Link>
       
       <h1 style={{ color: "#fff", fontSize: "2rem", marginTop: "24px", marginBottom: "16px" }}>
-        日本百名山とは
+        このサイトについて
       </h1>
       
       <p style={{ lineHeight: 1.8, marginBottom: "24px" }}>
         日本百名山は、登山家で随筆家の深田久弥が選定した日本を代表する100の名峰です。
         品格、歴史、個性を兼ね備えた山々が選ばれており、多くの登山家にとっての目標となっています。
+      </p>
+
+      <p style={{ lineHeight: 1.8, marginBottom: "24px" }}>
+        <Link href="/articles/history/" style={{ color: "#7ecfb3" }}>
+          → 百名山の成立について詳しく見る
+        </Link>
       </p>
 
       <h2 style={{ color: "#fff", fontSize: "1.5rem", marginTop: "32px", marginBottom: "16px" }}>
