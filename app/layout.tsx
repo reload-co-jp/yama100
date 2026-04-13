@@ -134,12 +134,24 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             padding: "1rem",
             color: "#ccc",
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
+            flexDirection: "column",
+            gap: "12px",
           }}
         >
-          <p>&copy; Yama100</p>
-          <Link href="/about/" style={{ color: "#7ecfb3", textDecoration: "none" }}>このサイトについて</Link>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <p style={{ margin: 0 }}>&copy; Yama100</p>
+            <Link href="/about/" style={{ color: "#7ecfb3", textDecoration: "none" }}>このサイトについて</Link>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+            <Link href="/articles/" style={{ color: "#aaa", textDecoration: "none" }}>読み物一覧</Link>
+            <Link href="/articles/history/" style={{ color: "#aaa", textDecoration: "none" }}>百名山の成立</Link>
+            <Link href="/articles/criteria/" style={{ color: "#aaa", textDecoration: "none" }}>選考基準</Link>
+            <Link href="/articles/fukada/" style={{ color: "#aaa", textDecoration: "none" }}>深田久弥</Link>
+            <Link href="/articles/mountains/" style={{ color: "#aaa", textDecoration: "none" }}>登った山々</Link>
+            <Link href="/articles/mountains200/" style={{ color: "#aaa", textDecoration: "none" }}>二百名山</Link>
+            <Link href="/articles/mountains300/" style={{ color: "#aaa", textDecoration: "none" }}>三百名山</Link>
+            <Link href="/articles/flowers/" style={{ color: "#aaa", textDecoration: "none" }}>花の百名山</Link>
+          </div>
         </footer>
       </body>
     </html>
