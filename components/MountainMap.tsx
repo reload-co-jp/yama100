@@ -16,6 +16,8 @@ type Props = {
   mountains: Mountain[]
   checked: Set<number>
   onToggle: (id: number) => void
+  center?: [number, number]
+  zoom?: number
 }
 
 function markerStyle(isChecked: boolean) {
@@ -28,7 +30,7 @@ function markerStyle(isChecked: boolean) {
   }
 }
 
-export default function MountainMap({ mountains, checked, onToggle }: Props) {
+export default function MountainMap({ mountains, checked, onToggle, center, zoom }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<LeafletMap | null>(null)
   const markersRef = useRef(new Map<number, CircleMarker>())
@@ -51,8 +53,8 @@ export default function MountainMap({ mountains, checked, onToggle }: Props) {
       if (!mounted || !containerRef.current || mapRef.current) return
 
       const map = L.map(containerRef.current, {
-        center: [37, 137],
-        zoom: 5,
+        center: center || [37, 137],
+        zoom: zoom || (mountains.length === 1 ? 12 : 5),
       })
 
       L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
@@ -93,6 +95,7 @@ export default function MountainMap({ mountains, checked, onToggle }: Props) {
       markers.clear()
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
 
   // Sync marker colors when checked state changes
   useEffect(() => {

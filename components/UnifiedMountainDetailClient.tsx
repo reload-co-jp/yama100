@@ -54,13 +54,7 @@ function subscribe(key: string, listener: () => void) {
   }
 }
 
-export default function UnifiedMountainDetailClient({
-  mountain,
-  storageKey,
-  themeColor,
-  overlayColor,
-  activeBgColor,
-}: Props) {
+export function useMountainDetail(storageKey: string, mountainId: number) {
   const subscribeFn = useCallback(
     (listener: () => void) => subscribe(storageKey, listener),
     [storageKey]
@@ -68,15 +62,27 @@ export default function UnifiedMountainDetailClient({
   const readFn = useCallback(() => getCache(storageKey), [storageKey])
 
   const checked = useSyncExternalStore(subscribeFn, readFn, () => EMPTY)
-  const isChecked = checked.has(mountain.id)
+  const isChecked = checked.has(mountainId)
 
   const toggle = () => {
     const prev = getCache(storageKey)
     const next = new Set(prev)
-    if (next.has(mountain.id)) next.delete(mountain.id)
-    else next.add(mountain.id)
+    if (next.has(mountainId)) next.delete(mountainId)
+    else next.add(mountainId)
     writeChecked(storageKey, next)
   }
+
+  return { isChecked, toggle, checked }
+}
+
+export default function UnifiedMountainDetailClient({
+  mountain,
+  storageKey,
+  themeColor,
+  overlayColor,
+  activeBgColor,
+}: Props) {
+  const { isChecked, toggle } = useMountainDetail(storageKey, mountain.id)
 
   return (
     <>

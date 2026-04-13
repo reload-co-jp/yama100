@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import mountainsData from "../../../public/mountains.json"
 import UnifiedMountainDetailClient from "../../../components/UnifiedMountainDetailClient"
+import DetailMap from "../../../components/DetailMap"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
 type Mountain = {
@@ -20,7 +21,11 @@ export function generateStaticParams() {
   return mountains.map((m) => ({ id: String(m.id) }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
   const { id } = await params
   const mountain = mountains.find((m) => m.id === Number(id))
   if (!mountain) return {}
@@ -50,7 +55,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 }
 
-export default async function MountainPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function MountainPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
   const { id } = await params
   const mountain = mountains.find((m) => m.id === Number(id))
   if (!mountain) notFound()
@@ -89,7 +98,6 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Back link */}
       <div style={{ marginBottom: "20px" }}>
         <Link
           href="/"
@@ -103,7 +111,6 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
         </Link>
       </div>
 
-      {/* Header */}
       <div
         style={{
           background: "#2a2a2a",
@@ -120,7 +127,6 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
           activeBgColor="#1b3a1c"
         />
 
-        {/* Info */}
         <div style={{ padding: "24px" }}>
           <div
             style={{
@@ -160,10 +166,11 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
           >
             {mountain.description}
           </p>
+          
+          <DetailMap mountain={mountain} storageKey="yama100" />
         </div>
       </div>
 
-      {/* External links */}
       <div
         style={{
           background: "#2a2a2a",
@@ -222,7 +229,6 @@ export default async function MountainPage({ params }: { params: Promise<{ id: s
         </a>
       </div>
 
-      {/* Prev / Next navigation */}
       <div
         style={{
           display: "flex",

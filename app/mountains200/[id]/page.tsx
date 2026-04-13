@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import mountainsData from "../../../public/mountains200.json"
 import UnifiedMountainDetailClient from "../../../components/UnifiedMountainDetailClient"
+import DetailMap from "../../../components/DetailMap"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
 type Mountain = {
@@ -158,6 +159,8 @@ export default async function Mountain200Page({ params }: { params: Promise<{ id
           >
             {mountain.description}
           </p>
+
+          <DetailMap mountain={mountain} storageKey="yama200" />
         </div>
       </div>
 
