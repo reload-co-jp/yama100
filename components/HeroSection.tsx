@@ -1,4 +1,4 @@
-type HeroType = '100' | '200' | '300'
+type HeroType = '100' | '200' | '300' | 'flowers'
 
 type Props = {
   count: number
@@ -33,6 +33,8 @@ const CONFIG = {
     subtitle: "Japan's 100 Famous Mountains",
     desc: '深田久弥が選定した日本を代表する100の名峰。\nあなたはいくつ登頂しましたか？',
     stars: STARS_100_200,
+    link: "/about/",
+    linkLabel: "百名山とは →"
   },
   '200': {
     bg: 'linear-gradient(180deg, #050c18 0%, #0a1628 35%, #0f2035 65%, #152530 100%)',
@@ -43,6 +45,8 @@ const CONFIG = {
     subtitle: "Japan's 200 Famous Mountains",
     desc: '山と渓谷社が選定した日本を代表する200の名峰のうち、\n百名山以外の100峰。あなたはいくつ登頂しましたか？',
     stars: STARS_100_200,
+    link: "/articles/mountains200/",
+    linkLabel: "二百名山とは →"
   },
   '300': {
     bg: 'linear-gradient(180deg, #080d1a 0%, #0d1a2e 35%, #122238 65%, #182a30 100%)',
@@ -53,6 +57,20 @@ const CONFIG = {
     subtitle: "Japan's 300 Famous Mountains",
     desc: '山と渓谷社が選定した日本を代表する300の名峰のうち、\n百名山・二百名山以外の100峰。あなたはいくつ登頂しましたか？',
     stars: STARS_300,
+    link: "/articles/mountains300/",
+    linkLabel: "三百名山とは →"
+  },
+  'flowers': {
+    bg: 'linear-gradient(180deg, #1a050a 0%, #2e0d18 35%, #441525 65%, #501b2a 100%)',
+    subColor: '#f48fb1',
+    progressColor: 'linear-gradient(90deg, #e91e63, #f06292)',
+    progressLabelColor: '#f06292',
+    title: '花の百名山',
+    subtitle: "Japan's 100 Famous Flower Mountains",
+    desc: '田中澄江が選定した季節の花を楽しめる100の名峰。\nあなたはいくつ登頂しましたか？',
+    stars: STARS_100_200,
+    link: "/articles/flowers/",
+    linkLabel: "花の百名山とは →"
   },
 } as const
 
@@ -132,7 +150,7 @@ export default function HeroSection({ count, type }: Props) {
           {c.desc.split('\n').map((line, i) => (
             <span key={i}>{line}<br /></span>
           ))}
-          <a href="/about/" style={{ color: c.subColor, textDecoration: 'none', marginLeft: '8px' }}>百名山とは →</a>
+          <a href={c.link} style={{ color: c.subColor, textDecoration: 'none', marginLeft: '8px' }}>{c.linkLabel}</a>
         </p>
 
         <div
