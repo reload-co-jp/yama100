@@ -105,7 +105,11 @@ export default function DigestModal({ mountains, hero, onClose }: Props) {
                 </div>
               }
             >
-              <MountainMap mountains={mountains} checked={allChecked} onToggle={noop} />
+              <MountainMap
+                mountains={mountains}
+                checked={allChecked}
+                onToggle={noop}
+              />
             </Suspense>
           ) : (
             <div
@@ -146,12 +150,18 @@ export default function DigestModal({ mountains, hero, onClose }: Props) {
                 padding: "10px 0",
               }}
             >
-              <span style={{ color: "#4caf50", flexShrink: 0, fontSize: ".75rem" }}>✓</span>
+              <span
+                style={{ color: "#4caf50", flexShrink: 0, fontSize: ".75rem" }}
+              >
+                ✓
+              </span>
               <span style={{ fontWeight: 600 }}>{m.name}</span>
               <span style={{ color: "#aaa", fontSize: ".8rem" }}>
                 {m.elevation.toLocaleString()}m
               </span>
-              <span style={{ color: "#666", fontSize: ".8rem", marginLeft: "auto" }}>
+              <span
+                style={{ color: "#666", fontSize: ".8rem", marginLeft: "auto" }}
+              >
                 {m.location.join("・")}
               </span>
             </li>

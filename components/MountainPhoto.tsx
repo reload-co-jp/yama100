@@ -1,17 +1,17 @@
-'use client'
+"use client"
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react"
 
 // Wikipedia 記事名が山データの名称と異なるものの対応表
 const wikiTitleOverrides: Record<string, string> = {
-  利尻岳: '利尻山',
-  阿寒岳: '雄阿寒岳',
-  大雪山: '大雪山_(北海道)',
-  後方羊蹄山: '羊蹄山',
-  朝日岳: '大朝日岳',
-  吾妻山: '吾妻連峰',
-  悪沢岳: '荒川岳',
-  九重山: '九重連山',
+  利尻岳: "利尻山",
+  阿寒岳: "雄阿寒岳",
+  大雪山: "大雪山_(北海道)",
+  後方羊蹄山: "羊蹄山",
+  朝日岳: "大朝日岳",
+  吾妻山: "吾妻連峰",
+  悪沢岳: "荒川岳",
+  九重山: "九重連山",
 }
 
 // セッション中のキャッシュ（同じ山を複数回レンダリングしたときの再リクエスト防止）
@@ -19,17 +19,17 @@ const cache = new Map<string, string | null>()
 
 type Props = {
   name: string
-  size?: 'thumb' | 'full'
+  size?: "thumb" | "full"
 }
 
-export default function MountainPhoto({ name, size = 'thumb' }: Props) {
-  const [src, setSrc] = useState<string | null | 'pending'>(
-    cache.has(name) ? cache.get(name)! : 'pending'
+export default function MountainPhoto({ name, size = "thumb" }: Props) {
+  const [src, setSrc] = useState<string | null | "pending">(
+    cache.has(name) ? cache.get(name)! : "pending"
   )
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (src !== 'pending') return
+    if (src !== "pending") return
     const el = containerRef.current
     if (!el) return
 
@@ -53,46 +53,47 @@ export default function MountainPhoto({ name, size = 'thumb' }: Props) {
             setSrc(null)
           })
       },
-      { rootMargin: '400px' }
+      { rootMargin: "400px" }
     )
 
     observer.observe(el)
     return () => observer.disconnect()
   }, [name, src])
 
-  const isThumb = size === 'thumb'
+  const isThumb = size === "thumb"
 
   return (
     <div
       ref={containerRef}
       style={{
-        background: '#3a3a3a',
-        borderRadius: isThumb ? '6px' : '0',
+        background: "#3a3a3a",
+        borderRadius: isThumb ? "6px" : "0",
         flexShrink: isThumb ? 0 : undefined,
-        height: isThumb ? '80px' : '100%',
-        overflow: 'hidden',
-        width: isThumb ? '80px' : '100%',
+        height: isThumb ? "80px" : "100%",
+        overflow: "hidden",
+        width: isThumb ? "80px" : "100%",
       }}
     >
-      {src === 'pending' && (
+      {src === "pending" && (
         <div
           style={{
-            animation: 'pulse 1.5s ease-in-out infinite',
-            background: 'linear-gradient(90deg, #3a3a3a 25%, #484848 50%, #3a3a3a 75%)',
-            backgroundSize: '200% 100%',
-            height: '100%',
-            width: '100%',
+            animation: "pulse 1.5s ease-in-out infinite",
+            background:
+              "linear-gradient(90deg, #3a3a3a 25%, #484848 50%, #3a3a3a 75%)",
+            backgroundSize: "200% 100%",
+            height: "100%",
+            width: "100%",
           }}
         />
       )}
       {src === null && (
         <div
           style={{
-            alignItems: 'center',
-            display: 'flex',
-            height: '100%',
-            justifyContent: 'center',
-            width: '100%',
+            alignItems: "center",
+            display: "flex",
+            height: "100%",
+            justifyContent: "center",
+            width: "100%",
           }}
         >
           <svg
@@ -110,14 +111,14 @@ export default function MountainPhoto({ name, size = 'thumb' }: Props) {
           </svg>
         </div>
       )}
-      {src && src !== 'pending' && (
+      {src && src !== "pending" && (
         <img
           src={src}
           alt={name}
           style={{
-            height: '100%',
-            objectFit: 'cover',
-            width: '100%',
+            height: "100%",
+            objectFit: "cover",
+            width: "100%",
           }}
         />
       )}

@@ -130,7 +130,7 @@ export default async function Image() {
         </div>
 
         {/* 山シルエット（画像として埋め込み） */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
+        { }
         <img
           src={mountainDataUrl}
           alt=""

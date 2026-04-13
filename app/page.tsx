@@ -1,9 +1,18 @@
 import { FC } from "react"
-import MountainApp from "components/MountainApp"
+import UnifiedMountainApp from "components/UnifiedMountainApp"
+import HeroSection from "components/HeroSection"
 import mountainsData from "../public/mountains.json"
 import { SITE_URL } from "../lib/site"
 
-type Mountain = { id: number; name: string; elevation: number }
+type Mountain = {
+  id: number
+  name: string
+  description: string
+  location: string[]
+  latitude: number
+  longitude: number
+  elevation: number
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -27,7 +36,15 @@ const Page: FC = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MountainApp />
+      <UnifiedMountainApp
+        mountains={mountainsData as Mountain[]}
+        storageKey="yama100"
+        themeColor="#4caf50"
+        pathPrefix="/mountains/"
+        heroSection={<HeroSection count={0} />}
+        totalCount={100}
+        idOffset={0}
+      />
     </>
   )
 }

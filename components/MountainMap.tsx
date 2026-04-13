@@ -1,7 +1,7 @@
-'use client'
+"use client"
 
-import { useEffect, useRef } from 'react'
-import type { Map as LeafletMap, CircleMarker } from 'leaflet'
+import { useEffect, useRef } from "react"
+import type { Map as LeafletMap, CircleMarker } from "leaflet"
 
 type Mountain = {
   id: number
@@ -20,8 +20,8 @@ type Props = {
 
 function markerStyle(isChecked: boolean) {
   return {
-    color: isChecked ? '#4caf50' : '#1976d2',
-    fillColor: isChecked ? '#4caf50' : '#1976d2',
+    color: isChecked ? "#4caf50" : "#1976d2",
+    fillColor: isChecked ? "#4caf50" : "#1976d2",
     fillOpacity: 0.85,
     radius: 7,
     weight: 2,
@@ -45,8 +45,8 @@ export default function MountainMap({ mountains, checked, onToggle }: Props) {
     let mounted = true
 
     const init = async () => {
-      const L = (await import('leaflet')).default
-      await import('leaflet/dist/leaflet.css' as string)
+      const L = (await import("leaflet")).default
+      await import("leaflet/dist/leaflet.css" as string)
 
       if (!mounted || !containerRef.current || mapRef.current) return
 
@@ -55,14 +55,11 @@ export default function MountainMap({ mountains, checked, onToggle }: Props) {
         zoom: 5,
       })
 
-      L.tileLayer(
-        'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
-        {
-          attribution:
-            '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>',
-          maxZoom: 18,
-        }
-      ).addTo(map)
+      L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+        attribution:
+          '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a>',
+        maxZoom: 18,
+      }).addTo(map)
 
       mapRef.current = map
 
@@ -76,12 +73,12 @@ export default function MountainMap({ mountains, checked, onToggle }: Props) {
           .bindPopup(
             `<div style="font-family:sans-serif;line-height:1.5">
               <strong>${m.name}</strong><br>
-              ${m.elevation.toLocaleString()}m &nbsp;${m.location.join('・')}
+              ${m.elevation.toLocaleString()}m &nbsp;${m.location.join("・")}
             </div>`,
             { maxWidth: 200 }
           )
 
-        marker.on('click', () => onToggleRef.current(m.id))
+        marker.on("click", () => onToggleRef.current(m.id))
         markersRef.current.set(m.id, marker)
       })
     }
@@ -105,5 +102,5 @@ export default function MountainMap({ mountains, checked, onToggle }: Props) {
     })
   }, [checked])
 
-  return <div ref={containerRef} style={{ height: '100%', width: '100%' }} />
+  return <div ref={containerRef} style={{ height: "100%", width: "100%" }} />
 }

@@ -1,11 +1,14 @@
 "use client"
 
-import { useEffect, useState, useCallback, Suspense, lazy } from "react"
+import { useState, useCallback, Suspense, lazy, useMemo } from "react"
 import Link from "next/link"
-import mountainsData from "../public/mountains300.json"
 import MountainPhoto from "./MountainPhoto"
-import HeroSection300 from "./HeroSection300"
 import DigestModal from "./DigestModal"
+import {
+  useMountainState,
+  SortOrder,
+  encodeChecked,
+} from "../hooks/useMountainState"
 
 const MountainMap = lazy(() => import("./MountainMap"))
 
@@ -19,36 +22,14 @@ type Mountain = {
   elevation: number
 }
 
-type SortOrder = "latitude" | "name" | "elevation" | "prefecture"
-
-function encodeChecked(checked: Set<number>): string {
-  const bytes = new Uint8Array(13)
-  for (const id of checked) {
-    const bit = id - 201
-    bytes[Math.floor(bit / 8)] |= 1 << (bit % 8)
-  }
-  return btoa(String.fromCharCode(...Array.from(bytes)))
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=/g, "")
-}
-
-function decodeChecked(encoded: string): Set<number> {
-  try {
-    const padded =
-      encoded.replace(/-/g, "+").replace(/_/g, "/") +
-      "==".slice(0, (4 - (encoded.length % 4)) % 4)
-    const bytes = Uint8Array.from(atob(padded), (c) => c.charCodeAt(0))
-    const checked = new Set<number>()
-    for (let i = 0; i < 100; i++) {
-      if (bytes[Math.floor(i / 8)] & (1 << (i % 8))) {
-        checked.add(i + 201)
-      }
-    }
-    return checked
-  } catch {
-    return new Set()
-  }
+type UnifiedMountainAppProps = {
+  mountains: Mountain[]
+  storageKey: string
+  themeColor: string
+  pathPrefix: string
+  heroSection: React.ReactNode
+  totalCount: number
+  idOffset: number
 }
 
 function sortMountains(mountains: Mountain[], sort: SortOrder): Mountain[] {
@@ -81,22 +62,296 @@ function groupByPrefecture(mountains: Mountain[]): PrefectureGroup[] {
   }))
 }
 
-const mountains = mountainsData as Mountain[]
+export default function UnifiedMountainApp({
+  mountains,
+  storageKey,
+  themeColor,
+  pathPrefix,
+  heroSection,
+  totalCount,
+  idOffset,
+}: UnifiedMountainAppProps) {
+  const { checked, sort, setSort, digestChecked, setDigestChecked, toggle } =
+    useMountainState(storageKey, totalCount, idOffset)
+  const [copied, setCopied] = useState(false)
+
+  const handleShare = useCallback(async () => {
+    const params = new URLSearchParams()
+    params.set("data", encodeChecked(checked, totalCount, idOffset))
+    params.set("sort", sort)
+    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`
+    const text = `${checked.size}座の登頂しました！\n${url}`
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      window.prompt("以下のテキストをコピーしてください", text)
+    }
+  }, [checked, sort, totalCount, idOffset])
+
+  const sorted = useMemo(
+    () => sortMountains(mountains, sort),
+    [mountains, sort]
+  )
+  const groups = sort === "prefecture" ? groupByPrefecture(mountains) : null
+  const count = checked.size
+  const percent = Math.round((count / totalCount) * 100)
+
+  const digestMountains = digestChecked
+    ? mountains.filter((m) => digestChecked.has(m.id))
+    : []
+
+  return (
+    <div>
+      {digestChecked !== null && (
+        <DigestModal
+          mountains={digestMountains}
+          hero={React.cloneElement(heroSection as React.ReactElement<{ count: number }>, {
+            count: digestMountains.length,
+          })}
+          onClose={() => setDigestChecked(null)}
+        />
+      )}
+      {heroSection}
+
+      <style>{`
+        .map-container {
+          flex-shrink: 0;
+          height: 32rem;
+          overflow: hidden;
+          position: relative;
+          width: 100%;
+        }
+        @media (min-width: 40rem) {
+          .map-container {
+            height: calc(100dvh - 5rem);
+            position: sticky;
+            top: 0;
+            width: 45%;
+          }
+        }
+      `}</style>
+
+      <div
+        style={{
+          alignItems: "flex-start",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "16px",
+        }}
+      >
+        <div className="map-container">
+          <Suspense
+            fallback={
+              <div
+                style={{
+                  alignItems: "center",
+                  background: "#2a2a2a",
+                  borderRadius: "8px",
+                  color: "#aaa",
+                  display: "flex",
+                  height: "100%",
+                  justifyContent: "center",
+                }}
+              >
+                地図を読み込み中…
+              </div>
+            }
+          >
+            <MountainMap
+              mountains={mountains}
+              checked={checked}
+              onToggle={toggle}
+            />
+          </Suspense>
+        </div>
+
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div
+            style={{
+              background: "#2a2a2a",
+              borderRadius: "8px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+              marginBottom: "16px",
+              padding: "16px",
+            }}
+          >
+            <div style={{ alignItems: "center", display: "flex", gap: "12px" }}>
+              <span style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
+                {count} / {totalCount}
+              </span>
+              <span style={{ color: "#aaa", fontSize: ".875rem" }}>
+                登頂済 ({percent}%)
+              </span>
+            </div>
+            <div
+              style={{
+                background: "#444",
+                borderRadius: "4px",
+                height: "8px",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                style={{
+                  background: themeColor,
+                  borderRadius: "4px",
+                  height: "100%",
+                  transition: "width .3s ease",
+                  width: `${percent}%`,
+                }}
+              />
+            </div>
+            <div
+              style={{
+                alignItems: "center",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "8px",
+              }}
+            >
+              <label
+                style={{ color: "#ccc", fontSize: ".875rem" }}
+                htmlFor="sort"
+              >
+                並び順：
+              </label>
+              <select
+                id="sort"
+                value={sort}
+                onChange={(e) => setSort(e.target.value as SortOrder)}
+                style={{
+                  background: "#3a3a3a",
+                  border: "1px solid #555",
+                  borderRadius: "4px",
+                  color: "#f0f0f0",
+                  fontSize: ".875rem",
+                  padding: "4px 8px",
+                }}
+              >
+                <option value="latitude">北から順</option>
+                <option value="name">五十音順</option>
+                <option value="elevation">標高順</option>
+                <option value="prefecture">都道府県別</option>
+              </select>
+              <button
+                onClick={handleShare}
+                style={{
+                  background: copied ? "#388e3c" : "#1976d2",
+                  border: "none",
+                  borderRadius: "4px",
+                  color: "#fff",
+                  cursor: "pointer",
+                  fontSize: ".875rem",
+                  padding: "4px 12px",
+                  transition: "background .2s",
+                }}
+              >
+                {copied ? "コピーしました！" : "URLをシェア"}
+              </button>
+            </div>
+          </div>
+
+          {groups ? (
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+            >
+              {groups.map(({ prefecture, mountains: prefMountains }) => (
+                <div key={prefecture}>
+                  <div
+                    style={{
+                      borderBottom: "1px solid #444",
+                      color: "#7ecfb3",
+                      fontSize: ".875rem",
+                      fontWeight: "bold",
+                      marginBottom: "8px",
+                      paddingBottom: "4px",
+                    }}
+                  >
+                    {prefecture}
+                    <span
+                      style={{
+                        color: "#666",
+                        fontWeight: "normal",
+                        marginLeft: "8px",
+                      }}
+                    >
+                      {prefMountains.filter((m) => checked.has(m.id)).length} /{" "}
+                      {prefMountains.length}
+                    </span>
+                  </div>
+                  <ul
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "8px",
+                      listStyle: "none",
+                      padding: 0,
+                    }}
+                  >
+                    {prefMountains.map((mountain) => (
+                      <MountainListItem
+                        key={mountain.id}
+                        mountain={mountain}
+                        isChecked={checked.has(mountain.id)}
+                        onToggle={toggle}
+                        themeColor={themeColor}
+                        pathPrefix={pathPrefix}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ul
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
+                listStyle: "none",
+                padding: 0,
+              }}
+            >
+              {sorted.map((mountain) => (
+                <MountainListItem
+                  key={mountain.id}
+                  mountain={mountain}
+                  isChecked={checked.has(mountain.id)}
+                  onToggle={toggle}
+                  themeColor={themeColor}
+                  pathPrefix={pathPrefix}
+                />
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 function MountainListItem({
   mountain,
   isChecked,
   onToggle,
+  themeColor,
+  pathPrefix,
 }: {
   mountain: Mountain
   isChecked: boolean
   onToggle: (id: number) => void
+  themeColor: string
+  pathPrefix: string
 }) {
   return (
     <li
       style={{
-        background: isChecked ? "#1a2d3a" : "#2a2a2a",
-        borderLeft: `4px solid ${isChecked ? "#2196f3" : "#555"}`,
+        background: isChecked ? "#1b3a1c" : "#2a2a2a",
+        borderLeft: `4px solid ${isChecked ? themeColor : "#555"}`,
         borderRadius: "6px",
         padding: "12px",
         transition: "background .2s, border-color .2s",
@@ -109,7 +364,7 @@ function MountainListItem({
           checked={isChecked}
           onChange={() => onToggle(mountain.id)}
           style={{
-            accentColor: "#2196f3",
+            accentColor: themeColor,
             cursor: "pointer",
             flexShrink: 0,
             height: "18px",
@@ -141,17 +396,17 @@ function MountainListItem({
               >
                 {mountain.name}
               </span>
-              <span style={{ color: "#aaa", fontSize: ".8rem" }}>
+              <span style={{ color: "#aaa", fontSize: ".875rem" }}>
                 {mountain.elevation.toLocaleString()}m
               </span>
-              <span style={{ color: "#888", fontSize: ".8rem" }}>
+              <span style={{ color: "#888", fontSize: ".875rem" }}>
                 {mountain.location.join("・")}
               </span>
             </div>
             <p
               style={{
                 color: "#bbb",
-                fontSize: ".8rem",
+                fontSize: ".875rem",
                 lineHeight: 1.5,
                 opacity: isChecked ? 0.5 : 1,
               }}
@@ -160,7 +415,7 @@ function MountainListItem({
             </p>
           </label>
           <Link
-            href={`/mountains300/${mountain.id}/`}
+            href={`${pathPrefix}${mountain.id}/`}
             style={{
               background: "#3a3a3a",
               borderRadius: "4px",
@@ -179,270 +434,4 @@ function MountainListItem({
     </li>
   )
 }
-
-export default function Mountain300App() {
-  const [checked, setChecked] = useState<Set<number>>(() => {
-    if (typeof window === "undefined") return new Set<number>()
-    const stored = localStorage.getItem("yama300")
-    if (stored) {
-      try {
-        const { checked: ids } = JSON.parse(stored)
-        if (Array.isArray(ids)) return new Set<number>(ids)
-      } catch {
-        // ignore parse errors
-      }
-    }
-    return new Set<number>()
-  })
-  const [sort, setSort] = useState<SortOrder>(() => {
-    if (typeof window === "undefined") return "latitude"
-    const sortParam = new URLSearchParams(window.location.search).get("sort") as SortOrder | null
-    if (sortParam && (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(sortParam)) {
-      return sortParam
-    }
-    return "latitude"
-  })
-  const [copied, setCopied] = useState(false)
-  const [digestChecked, setDigestChecked] = useState<Set<number> | null>(() => {
-    if (typeof window === "undefined") return null
-    const dataParam = new URLSearchParams(window.location.search).get("data")
-    return dataParam ? decodeChecked(dataParam) : null
-  })
-
-  useEffect(() => {
-    localStorage.setItem("yama300", JSON.stringify({ checked: [...checked] }))
-  }, [checked])
-
-  const toggle = useCallback((id: number) => {
-    setChecked((prev) => {
-      const next = new Set(prev)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
-      return next
-    })
-  }, [])
-
-  const handleShare = useCallback(async () => {
-    const params = new URLSearchParams()
-    params.set("data", encodeChecked(checked))
-    params.set("sort", sort)
-    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`
-    const text = `${checked.size}座の三百名山に登頂しました！\n${url}`
-    try {
-      await navigator.clipboard.writeText(text)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch {
-      window.prompt("以下のテキストをコピーしてください", text)
-    }
-  }, [checked, sort])
-
-  const sorted = sortMountains(mountains, sort)
-  const groups = sort === "prefecture" ? groupByPrefecture(mountains) : null
-  const count = checked.size
-  const percent = Math.round((count / 100) * 100)
-
-  const digestMountains = digestChecked ? mountains.filter((m) => digestChecked.has(m.id)) : []
-
-  return (
-    <div>
-      {digestChecked !== null && (
-        <DigestModal
-          mountains={digestMountains}
-          hero={<HeroSection300 count={digestMountains.length} />}
-          onClose={() => setDigestChecked(null)}
-        />
-      )}
-      <HeroSection300 count={count} />
-
-      <style>{`
-        .map-container {
-          flex-shrink: 0;
-          height: 32rem;
-          overflow: hidden;
-          position: relative;
-          width: 100%;
-        }
-        @media (min-width: 40rem) {
-          .map-container {
-            height: calc(100dvh - 5rem);
-            position: sticky;
-            top: 0;
-            width: 45%;
-          }
-        }
-      `}</style>
-
-      <div
-        style={{
-          alignItems: "flex-start",
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "16px",
-        }}
-      >
-        {/* Map */}
-        <div className="map-container">
-          <Suspense
-            fallback={
-              <div
-                style={{
-                  alignItems: "center",
-                  background: "#2a2a2a",
-                  borderRadius: "8px",
-                  color: "#aaa",
-                  display: "flex",
-                  height: "100%",
-                  justifyContent: "center",
-                }}
-              >
-                地図を読み込み中…
-              </div>
-            }
-          >
-            <MountainMap
-              mountains={mountains}
-              checked={checked}
-              onToggle={toggle}
-            />
-          </Suspense>
-        </div>
-
-        {/* List */}
-        <div style={{ flex: 1, minWidth: 0 }}>
-          {/* Progress + controls */}
-          <div
-            style={{
-              background: "#2a2a2a",
-              borderRadius: "8px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "12px",
-              marginBottom: "16px",
-              padding: "16px",
-            }}
-          >
-            <div style={{ alignItems: "center", display: "flex", gap: "12px" }}>
-              <span style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
-                {count} / 100
-              </span>
-              <span style={{ color: "#aaa", fontSize: ".875rem" }}>
-                登頂済 ({percent}%)
-              </span>
-            </div>
-            <div
-              style={{
-                background: "#444",
-                borderRadius: "4px",
-                height: "8px",
-                overflow: "hidden",
-              }}
-            >
-              <div
-                style={{
-                  background: "#2196f3",
-                  borderRadius: "4px",
-                  height: "100%",
-                  transition: "width .3s ease",
-                  width: `${percent}%`,
-                }}
-              />
-            </div>
-            <div
-              style={{
-                alignItems: "center",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "8px",
-              }}
-            >
-              <label
-                style={{ color: "#ccc", fontSize: ".875rem" }}
-                htmlFor="sort300"
-              >
-                並び順：
-              </label>
-              <select
-                id="sort300"
-                value={sort}
-                onChange={(e) => setSort(e.target.value as SortOrder)}
-                style={{
-                  background: "#3a3a3a",
-                  border: "1px solid #555",
-                  borderRadius: "4px",
-                  color: "#f0f0f0",
-                  fontSize: ".875rem",
-                  padding: "4px 8px",
-                }}
-              >
-                <option value="latitude">北から順</option>
-                <option value="name">五十音順</option>
-                <option value="elevation">標高順</option>
-                <option value="prefecture">都道府県別</option>
-              </select>
-              <button
-                onClick={handleShare}
-                style={{
-                  background: copied ? "#1565c0" : "#1976d2",
-                  border: "none",
-                  borderRadius: "4px",
-                  color: "#fff",
-                  cursor: "pointer",
-                  fontSize: ".875rem",
-                  padding: "4px 12px",
-                  transition: "background .2s",
-                }}
-              >
-                {copied ? "コピーしました！" : "URLをシェア"}
-              </button>
-            </div>
-          </div>
-
-          {/* Mountain list */}
-          {groups ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              {groups.map(({ prefecture, mountains: prefMountains }) => (
-                <div key={prefecture}>
-                  <div
-                    style={{
-                      borderBottom: "1px solid #444",
-                      color: "#64b5f6",
-                      fontSize: ".875rem",
-                      fontWeight: "bold",
-                      marginBottom: "8px",
-                      paddingBottom: "4px",
-                    }}
-                  >
-                    {prefecture}
-                    <span style={{ color: "#666", fontWeight: "normal", marginLeft: "8px" }}>
-                      {prefMountains.filter((m) => checked.has(m.id)).length} / {prefMountains.length}
-                    </span>
-                  </div>
-                  <ul style={{ display: "flex", flexDirection: "column", gap: "8px", listStyle: "none", padding: 0 }}>
-                    {prefMountains.map((mountain) => (
-                      <MountainListItem key={mountain.id} mountain={mountain} isChecked={checked.has(mountain.id)} onToggle={toggle} />
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <ul
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
-                listStyle: "none",
-                padding: 0,
-              }}
-            >
-              {sorted.map((mountain) => (
-                <MountainListItem key={mountain.id} mountain={mountain} isChecked={checked.has(mountain.id)} onToggle={toggle} />
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    </div>
-  )
-}
+import React from "react"
