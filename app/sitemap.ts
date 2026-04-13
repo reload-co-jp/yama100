@@ -25,14 +25,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  const articlePages = [
+    { url: `${SITE_URL}/articles/`, priority: 0.5 },
+    { url: `${SITE_URL}/articles/history/`, priority: 0.5 },
+    { url: `${SITE_URL}/articles/criteria/`, priority: 0.5 },
+    { url: `${SITE_URL}/articles/fukada/`, priority: 0.5 },
+    { url: `${SITE_URL}/articles/mountains/`, priority: 0.5 },
+    { url: `${SITE_URL}/articles/mountains200/`, priority: 0.5 },
+    { url: `${SITE_URL}/articles/mountains300/`, priority: 0.5 },
+    { url: `${SITE_URL}/articles/flowers/`, priority: 0.5 },
+  ].map((a) => ({
+    ...a,
+    changeFrequency: "monthly" as const,
+  }))
+
   return [
     {
       url: `${SITE_URL}/`,
       changeFrequency: "weekly",
       priority: 1.0,
     },
+    {
+      url: `${SITE_URL}/about/`,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     ...mountainPages,
     ...mountain200Pages,
     ...mountain300Pages,
+    ...articlePages,
   ]
 }
