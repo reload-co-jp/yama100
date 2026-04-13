@@ -82,7 +82,7 @@ export default function UnifiedMountainDetailClient({
     <>
       <div
         style={{
-          height: "240px",
+          height: "50vh",
           overflow: "hidden",
           position: "relative",
           width: "100%",
