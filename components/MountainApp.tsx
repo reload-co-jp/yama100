@@ -106,6 +106,7 @@ export default function MountainApp({
       {digestChecked !== null && (
         <DigestModal
           mountains={digestMountains}
+          heroType={storageKey}
           onClose={() => setDigestChecked(null)}
         />
       )}

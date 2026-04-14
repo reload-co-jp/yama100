@@ -16,12 +16,13 @@ type Mountain = {
 
 type Props = {
   mountains: Mountain[]
+  heroType: string
   onClose: () => void
 }
 
 const noop = () => {}
 
-export default function DigestModal({ mountains, onClose }: Props) {
+export default function DigestModal({ mountains, heroType, onClose }: Props) {
   const allChecked = new Set(mountains.map((m) => m.id))
 
   return (
@@ -61,7 +62,7 @@ export default function DigestModal({ mountains, onClose }: Props) {
       >
         {/* Hero — 1rem padding so negative margins in HeroSection cancel out */}
         <div style={{ flexShrink: 0, padding: "1rem", position: "relative" }}>
-          <HeroSection type="yama100" mountainCount={mountains.length} />
+          <HeroSection type={heroType} mountainCount={mountains.length} />
           <button
             onClick={onClose}
             aria-label="閉じる"
