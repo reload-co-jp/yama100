@@ -23,7 +23,7 @@ type Mountain = {
   elevation: number
 }
 
-type UnifiedMountainAppProps = {
+type MountainAppProps = {
   mountains: Mountain[]
   storageKey: string
   themeColor: string
@@ -62,14 +62,14 @@ function groupByPrefecture(mountains: Mountain[]): PrefectureGroup[] {
   }))
 }
 
-export default function UnifiedMountainApp({
+export default function MountainApp({
   mountains,
   storageKey,
   themeColor,
   pathPrefix,
   totalCount,
   idOffset,
-}: UnifiedMountainAppProps) {
+}: MountainAppProps) {
   const { checked, sort, setSort, digestChecked, setDigestChecked, toggle } =
     useMountainState(storageKey, totalCount, idOffset)
   const [copied, setCopied] = useState(false)

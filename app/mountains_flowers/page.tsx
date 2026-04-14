@@ -1,5 +1,5 @@
 import { FC } from "react"
-import UnifiedMountainApp from "../../components/UnifiedMountainApp"
+import MountainApp from "../../components/MountainApp"
 import mountainsData from "../../public/mountains_flowers.json"
 import { SITE_URL } from "../../lib/site"
 
@@ -35,7 +35,7 @@ const Page: FC = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <UnifiedMountainApp
+      <MountainApp
         mountains={mountainsData as Mountain[]}
         storageKey="yama_flowers"
         themeColor="#e91e63"

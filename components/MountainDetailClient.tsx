@@ -75,7 +75,7 @@ export function useMountainDetail(storageKey: string, mountainId: number) {
   return { isChecked, toggle, checked }
 }
 
-export default function UnifiedMountainDetailClient({
+export default function MountainDetailClient({
   mountain,
   storageKey,
   themeColor,

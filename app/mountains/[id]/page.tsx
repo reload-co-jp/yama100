@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import mountainsData from "../../../public/mountains.json"
-import UnifiedMountainDetailClient from "../../../components/UnifiedMountainDetailClient"
+import MountainDetailClient from "../../../components/MountainDetailClient"
 import DetailMap from "../../../components/DetailMap"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
@@ -119,7 +119,7 @@ export default async function MountainPage({
           overflow: "hidden",
         }}
       >
-        <UnifiedMountainDetailClient
+        <MountainDetailClient
           mountain={mountain}
           storageKey="yama100"
           themeColor="#4caf50"
@@ -166,7 +166,7 @@ export default async function MountainPage({
           >
             {mountain.description}
           </p>
-          
+
           <DetailMap mountain={mountain} storageKey="yama100" />
         </div>
       </div>

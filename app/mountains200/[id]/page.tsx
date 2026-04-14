@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import mountainsData from "../../../public/mountains200.json"
-import UnifiedMountainDetailClient from "../../../components/UnifiedMountainDetailClient"
+import MountainDetailClient from "../../../components/MountainDetailClient"
 import DetailMap from "../../../components/DetailMap"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
@@ -21,7 +21,11 @@ export function generateStaticParams() {
   return mountains.map((m) => ({ id: String(m.id) }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
   const { id } = await params
   const mountain = mountains.find((m) => m.id === Number(id))
   if (!mountain) return {}
@@ -51,7 +55,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 }
 
-export default async function Mountain200Page({ params }: { params: Promise<{ id: string }> }) {
+export default async function Mountain200Page({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
   const { id } = await params
   const mountain = mountains.find((m) => m.id === Number(id))
   if (!mountain) notFound()
@@ -112,7 +120,7 @@ export default async function Mountain200Page({ params }: { params: Promise<{ id
           overflow: "hidden",
         }}
       >
-        <UnifiedMountainDetailClient
+        <MountainDetailClient
           mountain={mountain}
           storageKey="yama200"
           themeColor="#4caf50"
