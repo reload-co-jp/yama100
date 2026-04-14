@@ -1,23 +1,43 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 
 export type SortOrder = "latitude" | "name" | "elevation" | "prefecture"
 
+function readCheckedFromStorage(storageKey: string) {
+  const stored = localStorage.getItem(storageKey)
+  if (stored) {
+    const { checked: ids } = JSON.parse(stored)
+    if (Array.isArray(ids)) return new Set<number>(ids)
+  }
+  return new Set<number>()
+}
+
+function readSortFromLocation() {
+  const sortParam = new URLSearchParams(window.location.search).get(
+    "sort"
+  ) as SortOrder | null
+  if (
+    sortParam &&
+    (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(
+      sortParam
+    )
+  ) {
+    return sortParam
+  }
+  return "latitude"
+}
+
 export function useMountainCountState(storageKey: string) {
-  const [checked, setChecked] = useState<Set<number>>(() => {
-    if (typeof window === "undefined") return new Set<number>()
-    const stored = localStorage.getItem(storageKey)
-    if (stored) {
-      try {
-        const { checked: ids } = JSON.parse(stored)
-        if (Array.isArray(ids)) return new Set<number>(ids)
-      } catch {
-        console.error("Failed to parse stored mountain count:", stored)
-      }
+  const [checked, setChecked] = useState<Set<number>>(new Set<number>())
+
+  useEffect(() => {
+    try {
+      setChecked(readCheckedFromStorage(storageKey))
+    } catch (error) {
+      console.error("Failed to parse stored mountain count:", error)
     }
-    return new Set<number>()
-  })
+  }, [storageKey])
 
   return { checked, setChecked }
 }
@@ -27,41 +47,26 @@ export function useMountainState(
   totalMountains: number,
   idOffset: number = 0
 ) {
-  const [checked, setChecked] = useState<Set<number>>(() => {
-    if (typeof window === "undefined") return new Set<number>()
-    const stored = localStorage.getItem(storageKey)
-    if (stored) {
-      try {
-        const { checked: ids } = JSON.parse(stored)
-        if (Array.isArray(ids)) return new Set<number>(ids)
-      } catch {
-        console.error("Failed to parse stored mountain count:", stored)
-      }
-    }
-    return new Set<number>()
-  })
+  const [checked, setChecked] = useState<Set<number>>(new Set<number>())
+  const [sort, setSort] = useState<SortOrder>("latitude")
+  const [digestChecked, setDigestChecked] = useState<Set<number> | null>(null)
 
-  const [sort, setSort] = useState<SortOrder>(() => {
-    if (typeof window === "undefined") return "latitude"
-    const sortParam = new URLSearchParams(window.location.search).get(
-      "sort"
-    ) as SortOrder | null
-    if (
-      sortParam &&
-      (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(
-        sortParam
-      )
-    ) {
-      return sortParam
+  useEffect(() => {
+    try {
+      setChecked(readCheckedFromStorage(storageKey))
+    } catch (error) {
+      console.error("Failed to parse stored mountain count:", error)
     }
-    return "latitude"
-  })
+  }, [storageKey])
 
-  const [digestChecked, setDigestChecked] = useState<Set<number> | null>(() => {
-    if (typeof window === "undefined") return null
+  useEffect(() => {
+    setSort(readSortFromLocation())
+
     const dataParam = new URLSearchParams(window.location.search).get("data")
-    return dataParam ? decodeChecked(dataParam, totalMountains, idOffset) : null
-  })
+    setDigestChecked(
+      dataParam ? decodeChecked(dataParam, totalMountains, idOffset) : null
+    )
+  }, [idOffset, totalMountains])
 
   const saveToStorage = useCallback(
     (ids: Set<number>) => {
