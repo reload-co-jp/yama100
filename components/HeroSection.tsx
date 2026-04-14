@@ -2,7 +2,8 @@ import { useMountainCountState } from "hooks/useMountainState"
 
 type Props = {
   type: string
-  storageKey: string
+  storageKey?: string
+  mountainCount?: number
 }
 
 const STARS = [
@@ -99,9 +100,11 @@ const CONFIG = {
   },
 } as const
 
-export default function HeroSection({ type, storageKey }: Props) {
-  const { checked } = useMountainCountState(storageKey)
-  const percent = Math.round((checked.size / 100) * 100)
+export default function HeroSection({
+  type,
+  storageKey,
+  mountainCount,
+}: Props) {
   const c = CONFIG[type]
 
   return (
@@ -190,52 +193,13 @@ export default function HeroSection({ type, storageKey }: Props) {
             {c.linkLabel}
           </a>
         </p>
-
-        <div
-          style={{
-            alignItems: "center",
-            background: "rgba(255,255,255,0.07)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: "999px",
-            display: "inline-flex",
-            gap: "12px",
-            marginBottom: "48px",
-            padding: "8px 20px",
-          }}
-        >
-          <span style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700 }}>
-            {checked.size}
-            <span style={{ color: "#aaa", fontWeight: 400 }}> / 100</span>
-          </span>
-          <div
-            style={{
-              background: "rgba(255,255,255,0.15)",
-              borderRadius: "999px",
-              height: "6px",
-              overflow: "hidden",
-              width: "120px",
-            }}
-          >
-            <div
-              style={{
-                background: c.progressColor,
-                borderRadius: "999px",
-                height: "100%",
-                transition: "width .4s ease",
-                width: `${percent}%`,
-              }}
-            />
-          </div>
-          <span
-            style={{
-              color: c.progressLabelColor,
-              fontSize: ".875rem",
-              fontWeight: 600,
-            }}
-          >
-            {percent}%
-          </span>
-        </div>
+        {storageKey ? (
+          <HeroProgress storageKey={storageKey} config={c} />
+        ) : (
+          mountainCount != undefined && (
+            <HeroProgressCore count={mountainCount} config={c} />
+          )
+        )}
       </div>
 
       <svg
@@ -272,5 +236,77 @@ export default function HeroSection({ type, storageKey }: Props) {
         <path d="M0,150 L1440,150 L1440,160 L0,160 Z" fill="#222" />
       </svg>
     </section>
+  )
+}
+
+function HeroProgress({
+  storageKey,
+  config,
+}: {
+  storageKey: string
+  config: (typeof CONFIG)[keyof typeof CONFIG]
+}) {
+  const { checked } = useMountainCountState(storageKey)
+  return (
+    <>
+      <HeroProgressCore config={config} count={checked.size} />
+    </>
+  )
+}
+
+function HeroProgressCore({
+  count,
+  config,
+}: {
+  count: number
+  config: (typeof CONFIG)[keyof typeof CONFIG]
+}) {
+  const percent = Math.round((count / 100) * 100)
+  return (
+    <div
+      style={{
+        alignItems: "center",
+        background: "rgba(255,255,255,0.07)",
+        border: "1px solid rgba(255,255,255,0.12)",
+        borderRadius: "999px",
+        display: "inline-flex",
+        gap: "12px",
+        marginBottom: "48px",
+        padding: "8px 20px",
+      }}
+    >
+      <span style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700 }}>
+        {count}
+        <span style={{ color: "#aaa", fontWeight: 400 }}> / 100</span>
+      </span>
+      <div
+        style={{
+          background: "rgba(255,255,255,0.15)",
+          borderRadius: "999px",
+          height: "6px",
+          overflow: "hidden",
+          width: "120px",
+        }}
+      >
+        <div
+          style={{
+            background: config.progressColor,
+            borderRadius: "999px",
+            height: "100%",
+            transition: "width .4s ease",
+            width: `${percent}%`,
+          }}
+        />
+      </div>
+      <span
+        style={{
+          color: config.progressLabelColor,
+          fontSize: ".875rem",
+          fontWeight: 600,
+        }}
+      >
+        {percent}%
+      </span>
+    </div>
   )
 }

@@ -1,6 +1,7 @@
 "use client"
 
-import { Suspense, lazy, type ReactNode } from "react"
+import { Suspense, lazy } from "react"
+import HeroSection from "./HeroSection"
 
 const MountainMap = lazy(() => import("./MountainMap"))
 
@@ -15,13 +16,12 @@ type Mountain = {
 
 type Props = {
   mountains: Mountain[]
-  hero: ReactNode
   onClose: () => void
 }
 
 const noop = () => {}
 
-export default function DigestModal({ mountains, hero, onClose }: Props) {
+export default function DigestModal({ mountains, onClose }: Props) {
   const allChecked = new Set(mountains.map((m) => m.id))
 
   return (
@@ -61,7 +61,7 @@ export default function DigestModal({ mountains, hero, onClose }: Props) {
       >
         {/* Hero — 1rem padding so negative margins in HeroSection cancel out */}
         <div style={{ flexShrink: 0, padding: "1rem", position: "relative" }}>
-          {hero}
+          <HeroSection type="yama100" mountainCount={mountains.length} />
           <button
             onClick={onClose}
             aria-label="閉じる"
