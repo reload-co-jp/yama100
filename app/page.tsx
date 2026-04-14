@@ -20,12 +20,14 @@ const jsonLd = {
   description: "深田久弥が選定した日本を代表する100の名峰の一覧",
   url: `${SITE_URL}/`,
   numberOfItems: 100,
-  itemListElement: (mountainsData as Mountain[]).map((m, i) => ({
+  itemListElement: [...(mountainsData as Mountain[])]
+    .sort((a, b) => a.id - b.id)
+    .map((m, i) => ({
     "@type": "ListItem",
     position: i + 1,
     name: m.name,
     url: `${SITE_URL}/mountains/${m.id}/`,
-  })),
+    })),
 }
 
 const Page: FC = () => {

@@ -2,7 +2,12 @@
 
 import { useState, useCallback, useEffect } from "react"
 
-export type SortOrder = "latitude" | "name" | "elevation" | "prefecture"
+export type SortOrder =
+  | "number"
+  | "latitude"
+  | "name"
+  | "elevation"
+  | "prefecture"
 
 function readCheckedFromStorage(storageKey: string) {
   const stored = localStorage.getItem(storageKey)
@@ -19,13 +24,13 @@ function readSortFromLocation() {
   ) as SortOrder | null
   if (
     sortParam &&
-    (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(
-      sortParam
-    )
+    (
+      ["number", "latitude", "name", "elevation", "prefecture"] as SortOrder[]
+    ).includes(sortParam)
   ) {
     return sortParam
   }
-  return "latitude"
+  return "number"
 }
 
 export function useMountainCountState(storageKey: string) {
@@ -48,7 +53,7 @@ export function useMountainState(
   idOffset: number = 0
 ) {
   const [checked, setChecked] = useState<Set<number>>(new Set<number>())
-  const [sort, setSort] = useState<SortOrder>("latitude")
+  const [sort, setSort] = useState<SortOrder>("number")
   const [digestChecked, setDigestChecked] = useState<Set<number> | null>(null)
 
   useEffect(() => {

@@ -35,6 +35,8 @@ type MountainAppProps = {
 function sortMountains(mountains: Mountain[], sort: SortOrder): Mountain[] {
   const sorted = [...mountains]
   switch (sort) {
+    case "number":
+      return sorted.sort((a, b) => a.id - b.id)
     case "latitude":
       return sorted.sort((a, b) => b.latitude - a.latitude)
     case "name":
@@ -229,6 +231,7 @@ export default function MountainApp({
                   padding: "4px 8px",
                 }}
               >
+                <option value="number">番号順</option>
                 <option value="latitude">北から順</option>
                 <option value="name">五十音順</option>
                 <option value="elevation">標高順</option>
