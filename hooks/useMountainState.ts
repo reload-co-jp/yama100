@@ -4,6 +4,24 @@ import { useState, useCallback } from "react"
 
 export type SortOrder = "latitude" | "name" | "elevation" | "prefecture"
 
+export function useMountainCountState(storageKey: string) {
+  const [checked, setChecked] = useState<Set<number>>(() => {
+    if (typeof window === "undefined") return new Set<number>()
+    const stored = localStorage.getItem(storageKey)
+    if (stored) {
+      try {
+        const { checked: ids } = JSON.parse(stored)
+        if (Array.isArray(ids)) return new Set<number>(ids)
+      } catch {
+        console.error("Failed to parse stored mountain count:", stored)
+      }
+    }
+    return new Set<number>()
+  })
+
+  return { checked, setChecked }
+}
+
 export function useMountainState(
   storageKey: string,
   totalMountains: number,
@@ -17,7 +35,7 @@ export function useMountainState(
         const { checked: ids } = JSON.parse(stored)
         if (Array.isArray(ids)) return new Set<number>(ids)
       } catch {
-        // ignore parse errors
+        console.error("Failed to parse stored mountain count:", stored)
       }
     }
     return new Set<number>()
@@ -25,8 +43,15 @@ export function useMountainState(
 
   const [sort, setSort] = useState<SortOrder>(() => {
     if (typeof window === "undefined") return "latitude"
-    const sortParam = new URLSearchParams(window.location.search).get("sort") as SortOrder | null
-    if (sortParam && (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(sortParam)) {
+    const sortParam = new URLSearchParams(window.location.search).get(
+      "sort"
+    ) as SortOrder | null
+    if (
+      sortParam &&
+      (["latitude", "name", "elevation", "prefecture"] as SortOrder[]).includes(
+        sortParam
+      )
+    ) {
       return sortParam
     }
     return "latitude"
@@ -38,24 +63,34 @@ export function useMountainState(
     return dataParam ? decodeChecked(dataParam, totalMountains, idOffset) : null
   })
 
-  const saveToStorage = useCallback((ids: Set<number>) => {
-    localStorage.setItem(storageKey, JSON.stringify({ checked: [...ids] }))
-  }, [storageKey])
+  const saveToStorage = useCallback(
+    (ids: Set<number>) => {
+      localStorage.setItem(storageKey, JSON.stringify({ checked: [...ids] }))
+    },
+    [storageKey]
+  )
 
-  const toggle = useCallback((id: number) => {
-    setChecked((prev) => {
-      const next = new Set(prev)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
-      saveToStorage(next)
-      return next
-    })
-  }, [saveToStorage])
+  const toggle = useCallback(
+    (id: number) => {
+      setChecked((prev) => {
+        const next = new Set(prev)
+        if (next.has(id)) next.delete(id)
+        else next.add(id)
+        saveToStorage(next)
+        return next
+      })
+    },
+    [saveToStorage]
+  )
 
   return { checked, sort, setSort, digestChecked, setDigestChecked, toggle }
 }
 
-export function encodeChecked(checked: Set<number>, total: number, offset: number): string {
+export function encodeChecked(
+  checked: Set<number>,
+  total: number,
+  offset: number
+): string {
   const bytes = new Uint8Array(Math.ceil(total / 8))
   for (const id of checked) {
     const bit = id - 1 - offset
@@ -69,7 +104,11 @@ export function encodeChecked(checked: Set<number>, total: number, offset: numbe
     .replace(/=/g, "")
 }
 
-export function decodeChecked(encoded: string, total: number, offset: number): Set<number> {
+export function decodeChecked(
+  encoded: string,
+  total: number,
+  offset: number
+): Set<number> {
   try {
     const padded =
       encoded.replace(/-/g, "+").replace(/_/g, "/") +

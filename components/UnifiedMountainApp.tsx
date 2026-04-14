@@ -9,6 +9,7 @@ import {
   SortOrder,
   encodeChecked,
 } from "../hooks/useMountainState"
+import HeroSection from "./HeroSection"
 
 const MountainMap = lazy(() => import("./MountainMap"))
 
@@ -27,7 +28,6 @@ type UnifiedMountainAppProps = {
   storageKey: string
   themeColor: string
   pathPrefix: string
-  heroSection: React.ReactNode
   totalCount: number
   idOffset: number
 }
@@ -67,7 +67,6 @@ export default function UnifiedMountainApp({
   storageKey,
   themeColor,
   pathPrefix,
-  heroSection,
   totalCount,
   idOffset,
 }: UnifiedMountainAppProps) {
@@ -107,21 +106,11 @@ export default function UnifiedMountainApp({
       {digestChecked !== null && (
         <DigestModal
           mountains={digestMountains}
-          hero={React.cloneElement(
-            heroSection as React.ReactElement<{ count: number }>,
-            {
-              count: digestMountains.length,
-            }
-          )}
+          hero={<HeroSection type={storageKey} storageKey={storageKey} />}
           onClose={() => setDigestChecked(null)}
         />
       )}
-      {React.cloneElement(
-        heroSection as React.ReactElement<{ count: number }>,
-        {
-          count: count,
-        }
-      )}
+      <HeroSection type={storageKey} storageKey={storageKey} />
 
       <style>{`
         .map-container {
@@ -446,4 +435,3 @@ function MountainListItem({
     </li>
   )
 }
-import React from "react"

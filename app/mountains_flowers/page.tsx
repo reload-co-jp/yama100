@@ -1,6 +1,5 @@
 import { FC } from "react"
 import UnifiedMountainApp from "../../components/UnifiedMountainApp"
-import HeroSection from "../../components/HeroSection"
 import mountainsData from "../../public/mountains_flowers.json"
 import { SITE_URL } from "../../lib/site"
 
@@ -41,12 +40,6 @@ const Page: FC = () => {
         storageKey="yama_flowers"
         themeColor="#e91e63"
         pathPrefix="/mountains_flowers/"
-        heroSection={
-          <HeroSection 
-            count={0} 
-            type="flowers" 
-          />
-        }
         totalCount={100}
         idOffset={0}
       />

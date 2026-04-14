@@ -1,6 +1,5 @@
 import { FC } from "react"
 import UnifiedMountainApp from "components/UnifiedMountainApp"
-import HeroSection from "components/HeroSection"
 import mountainsData from "../../public/mountains300.json"
 import { SITE_URL } from "../../lib/site"
 
@@ -18,7 +17,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "日本三百名山",
-  description: "山と渓谷社が選定した日本を代表する300の名峰のうち、百名山・二百名山以外の100峰の一覧",
+  description:
+    "山と渓谷社が選定した日本を代表する300の名峰のうち、百名山・二百名山以外の100峰の一覧",
   url: `${SITE_URL}/mountains300/`,
   numberOfItems: 100,
   itemListElement: (mountainsData as Mountain[]).map((m, i) => ({
@@ -31,7 +31,8 @@ const jsonLd = {
 
 export const metadata = {
   title: "日本三百名山チェックリスト",
-  description: "山と渓谷社が選定した日本三百名山のうち、百名山・二百名山以外の100峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+  description:
+    "山と渓谷社が選定した日本三百名山のうち、百名山・二百名山以外の100峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
   alternates: { canonical: "/mountains300/" },
 }
 
@@ -47,7 +48,6 @@ const Page: FC = () => {
         storageKey="yama300"
         themeColor="#2196f3"
         pathPrefix="/mountains300/"
-        heroSection={<HeroSection count={0} type="300" />}
         totalCount={100}
         idOffset={200}
       />
