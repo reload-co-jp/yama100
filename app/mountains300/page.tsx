@@ -18,21 +18,23 @@ const jsonLd = {
   "@type": "ItemList",
   name: "日本三百名山",
   description:
-    "山と渓谷社が選定した日本を代表する300の名峰のうち、百名山・二百名山以外の100峰の一覧",
+    "山レコ準拠の日本三百名山一覧のうち、百名山・二百名山以外の101峰の一覧",
   url: `${SITE_URL}/mountains300/`,
-  numberOfItems: 100,
-  itemListElement: (mountainsData as Mountain[]).map((m, i) => ({
+  numberOfItems: 101,
+  itemListElement: [...(mountainsData as Mountain[])]
+    .sort((a, b) => a.id - b.id)
+    .map((m, i) => ({
     "@type": "ListItem",
     position: i + 1,
     name: m.name,
     url: `${SITE_URL}/mountains300/${m.id}/`,
-  })),
+    })),
 }
 
 export const metadata = {
   title: "日本三百名山チェックリスト",
   description:
-    "山と渓谷社が選定した日本三百名山のうち、百名山・二百名山以外の100峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+    "山レコ準拠の日本三百名山一覧のうち、百名山・二百名山以外の101峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
   alternates: { canonical: "/mountains300/" },
 }
 
@@ -48,7 +50,7 @@ const Page: FC = () => {
         storageKey="yama300"
         themeColor="#2196f3"
         pathPrefix="/mountains300/"
-        totalCount={100}
+        totalCount={101}
         idOffset={200}
       />
     </>

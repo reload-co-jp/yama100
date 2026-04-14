@@ -109,10 +109,15 @@ export default function MountainApp({
         <DigestModal
           mountains={digestMountains}
           heroType={storageKey}
+          totalCount={totalCount}
           onClose={() => setDigestChecked(null)}
         />
       )}
-      <HeroSection type={storageKey} storageKey={storageKey} />
+      <HeroSection
+        type={storageKey}
+        storageKey={storageKey}
+        totalCount={totalCount}
+      />
 
       <style>{`
         .map-container {

@@ -21,12 +21,14 @@ const jsonLd = {
     "山と渓谷社が選定した日本を代表する200の名峰のうち、百名山以外の100峰の一覧",
   url: `${SITE_URL}/mountains200/`,
   numberOfItems: 100,
-  itemListElement: (mountainsData as Mountain[]).map((m, i) => ({
+  itemListElement: [...(mountainsData as Mountain[])]
+    .sort((a, b) => a.id - b.id)
+    .map((m, i) => ({
     "@type": "ListItem",
     position: i + 1,
     name: m.name,
     url: `${SITE_URL}/mountains200/${m.id}/`,
-  })),
+    })),
 }
 
 export const metadata = {

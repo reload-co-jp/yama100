@@ -4,6 +4,7 @@ type Props = {
   type: string
   storageKey?: string
   mountainCount?: number
+  totalCount?: number
 }
 
 const STARS = [
@@ -81,7 +82,7 @@ const CONFIG = {
     progressLabelColor: "#64b5f6",
     title: "日本三百名山",
     subtitle: "Japan's 300 Famous Mountains",
-    desc: "山と渓谷社が選定した日本を代表する300の名峰のうち、\n百名山・二百名山以外の100峰。あなたはいくつ登頂しましたか？",
+    desc: "山レコ準拠の日本三百名山一覧のうち、\n百名山・二百名山以外の101峰。あなたはいくつ登頂しましたか？",
     stars: STARS,
     link: "/articles/mountains300/",
     linkLabel: "三百名山とは →",
@@ -104,6 +105,7 @@ export default function HeroSection({
   type,
   storageKey,
   mountainCount,
+  totalCount = 100,
 }: Props) {
   const c = CONFIG[type]
 
@@ -194,10 +196,14 @@ export default function HeroSection({
           </a>
         </p>
         {storageKey ? (
-          <HeroProgress storageKey={storageKey} config={c} />
+          <HeroProgress storageKey={storageKey} config={c} totalCount={totalCount} />
         ) : (
           mountainCount != undefined && (
-            <HeroProgressCore count={mountainCount} config={c} />
+            <HeroProgressCore
+              count={mountainCount}
+              config={c}
+              totalCount={totalCount}
+            />
           )
         )}
       </div>
@@ -242,14 +248,16 @@ export default function HeroSection({
 function HeroProgress({
   storageKey,
   config,
+  totalCount,
 }: {
   storageKey: string
   config: (typeof CONFIG)[keyof typeof CONFIG]
+  totalCount: number
 }) {
   const { checked } = useMountainCountState(storageKey)
   return (
     <>
-      <HeroProgressCore config={config} count={checked.size} />
+      <HeroProgressCore config={config} count={checked.size} totalCount={totalCount} />
     </>
   )
 }
@@ -257,11 +265,13 @@ function HeroProgress({
 function HeroProgressCore({
   count,
   config,
+  totalCount,
 }: {
   count: number
   config: (typeof CONFIG)[keyof typeof CONFIG]
+  totalCount: number
 }) {
-  const percent = Math.round((count / 100) * 100)
+  const percent = Math.round((count / totalCount) * 100)
   return (
     <div
       style={{
@@ -277,7 +287,7 @@ function HeroProgressCore({
     >
       <span style={{ color: "#fff", fontSize: "1.1rem", fontWeight: 700 }}>
         {count}
-        <span style={{ color: "#aaa", fontWeight: 400 }}> / 100</span>
+        <span style={{ color: "#aaa", fontWeight: 400 }}> / {totalCount}</span>
       </span>
       <div
         style={{
