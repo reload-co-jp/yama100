@@ -1,20 +1,10 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
-import { usePathname, useSearchParams } from "next/navigation"
-
-function getSearchTarget(pathname: string) {
-  if (pathname.startsWith("/mountains200")) return "/mountains200/"
-  if (pathname.startsWith("/mountains300")) return "/mountains300/"
-  if (pathname.startsWith("/mountains_flowers")) return "/mountains_flowers/"
-  if (pathname.startsWith("/mountains")) return "/"
-  return "/"
-}
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
 
 export default function HeaderSearch() {
-  const pathname = usePathname()
   const searchParams = useSearchParams()
-  const target = useMemo(() => getSearchTarget(pathname), [pathname])
   const [query, setQuery] = useState(searchParams.get("q") ?? "")
 
   useEffect(() => {
@@ -23,7 +13,7 @@ export default function HeaderSearch() {
 
   return (
     <form
-      action={target}
+      action="/search"
       method="get"
       style={{
         display: "flex",

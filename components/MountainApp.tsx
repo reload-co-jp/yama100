@@ -2,7 +2,6 @@
 
 import { useState, useCallback, Suspense, lazy, useMemo } from "react"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import MountainPhoto from "./MountainPhoto"
 import DigestModal from "./DigestModal"
 import {
@@ -75,16 +74,12 @@ export default function MountainApp({
 }: MountainAppProps) {
   const { checked, sort, setSort, digestChecked, setDigestChecked, toggle } =
     useMountainState(storageKey, totalCount, idOffset)
-  const searchParams = useSearchParams()
   const [copied, setCopied] = useState(false)
-  const searchQuery = (searchParams.get("q") ?? "").trim()
-  const normalizedSearchQuery = searchQuery.normalize("NFKC").toLowerCase()
 
   const handleShare = useCallback(async () => {
     const params = new URLSearchParams()
     params.set("data", encodeChecked(checked, totalCount, idOffset))
     params.set("sort", sort)
-    if (searchQuery) params.set("q", searchQuery)
     const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`
     const text = `${checked.size}座の登頂しました！\n${url}`
     try {
@@ -94,22 +89,13 @@ export default function MountainApp({
     } catch {
       window.prompt("以下のテキストをコピーしてください", text)
     }
-  }, [checked, sort, totalCount, idOffset, searchQuery])
+  }, [checked, sort, totalCount, idOffset])
 
   const sorted = useMemo(
     () => sortMountains(mountains, sort),
     [mountains, sort]
   )
-  const filteredMountains = useMemo(() => {
-    if (!normalizedSearchQuery) return sorted
-    return sorted.filter((mountain) =>
-      mountain.name.normalize("NFKC").toLowerCase().includes(normalizedSearchQuery)
-    )
-  }, [normalizedSearchQuery, sorted])
-  const groups = useMemo(() => {
-    if (sort !== "prefecture") return null
-    return groupByPrefecture(filteredMountains)
-  }, [filteredMountains, sort])
+  const groups = sort === "prefecture" ? groupByPrefecture(mountains) : null
   const count = checked.size
   const percent = Math.round((count / totalCount) * 100)
 
@@ -178,7 +164,7 @@ export default function MountainApp({
             }
           >
             <MountainMap
-              mountains={filteredMountains}
+              mountains={mountains}
               checked={checked}
               onToggle={toggle}
             />
@@ -229,63 +215,48 @@ export default function MountainApp({
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "8px",
-                justifyContent: "space-between",
               }}
             >
-              <div
+              <label
+                style={{ color: "#ccc", fontSize: ".875rem" }}
+                htmlFor="sort"
+              >
+                並び順：
+              </label>
+              <select
+                id="sort"
+                value={sort}
+                onChange={(e) => setSort(e.target.value as SortOrder)}
                 style={{
-                  alignItems: "center",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "8px",
+                  background: "#3a3a3a",
+                  border: "1px solid #555",
+                  borderRadius: "4px",
+                  color: "#f0f0f0",
+                  fontSize: ".875rem",
+                  padding: "4px 8px",
                 }}
               >
-                <label
-                  style={{ color: "#ccc", fontSize: ".875rem" }}
-                  htmlFor="sort"
-                >
-                  並び順：
-                </label>
-                <select
-                  id="sort"
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value as SortOrder)}
-                  style={{
-                    background: "#3a3a3a",
-                    border: "1px solid #555",
-                    borderRadius: "4px",
-                    color: "#f0f0f0",
-                    fontSize: ".875rem",
-                    padding: "4px 8px",
-                  }}
-                >
-                  <option value="number">番号順</option>
-                  <option value="latitude">北から順</option>
-                  <option value="name">五十音順</option>
-                  <option value="elevation">標高順</option>
-                  <option value="prefecture">都道府県別</option>
-                </select>
-                <button
-                  onClick={handleShare}
-                  style={{
-                    background: copied ? "#388e3c" : "#1976d2",
-                    border: "none",
-                    borderRadius: "4px",
-                    color: "#fff",
-                    cursor: "pointer",
-                    fontSize: ".875rem",
-                    padding: "4px 12px",
-                    transition: "background .2s",
-                  }}
-                >
-                  {copied ? "コピーしました！" : "URLをシェア"}
-                </button>
-              </div>
-              <span style={{ color: "#888", fontSize: ".8rem" }}>
-                {searchQuery
-                  ? `検索結果 ${filteredMountains.length}件`
-                  : `全${mountains.length}件`}
-              </span>
+                <option value="number">番号順</option>
+                <option value="latitude">北から順</option>
+                <option value="name">五十音順</option>
+                <option value="elevation">標高順</option>
+                <option value="prefecture">都道府県別</option>
+              </select>
+              <button
+                onClick={handleShare}
+                style={{
+                  background: copied ? "#388e3c" : "#1976d2",
+                  border: "none",
+                  borderRadius: "4px",
+                  color: "#fff",
+                  cursor: "pointer",
+                  fontSize: ".875rem",
+                  padding: "4px 12px",
+                  transition: "background .2s",
+                }}
+              >
+                {copied ? "コピーしました！" : "URLをシェア"}
+              </button>
             </div>
           </div>
 
@@ -350,7 +321,7 @@ export default function MountainApp({
                 padding: 0,
               }}
             >
-              {filteredMountains.map((mountain) => (
+              {sorted.map((mountain) => (
                 <MountainListItem
                   key={mountain.id}
                   mountain={mountain}
@@ -361,19 +332,6 @@ export default function MountainApp({
                 />
               ))}
             </ul>
-          )}
-          {filteredMountains.length === 0 && (
-            <div
-              style={{
-                background: "#2a2a2a",
-                borderRadius: "8px",
-                color: "#aaa",
-                padding: "20px",
-                textAlign: "center",
-              }}
-            >
-              「{searchQuery}」に一致する山はありません
-            </div>
           )}
         </div>
       </div>

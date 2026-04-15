@@ -61,6 +61,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${SITE_URL}/search/`,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: `${SITE_URL}/mountains_flowers/`,
       changeFrequency: "monthly",
       priority: 0.8,
