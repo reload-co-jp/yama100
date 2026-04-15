@@ -1,3 +1,4 @@
+import HeaderSearch from "components/HeaderSearch"
 import { Title } from "components/elements/layout"
 import Link from "next/link"
 import "./reset.css"
@@ -65,68 +66,79 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         >
           <div style={{ alignItems: "center", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "space-between" }}>
             <Title>Yama100</Title>
-            <nav style={{ display: "flex", gap: "8px" }}>
-              <Link
-                href="/"
-                style={{
-                  borderRadius: "4px",
-                  color: "#ccc",
-                  fontSize: ".8rem",
-                  padding: "4px 10px",
-                  textDecoration: "none",
-                }}
-              >
-                百名山
-              </Link>
-              <Link
-                href="/mountains200/"
-                style={{
-                  borderRadius: "4px",
-                  color: "#ccc",
-                  fontSize: ".8rem",
-                  padding: "4px 10px",
-                  textDecoration: "none",
-                }}
-              >
-                二百名山
-              </Link>
-              <Link
-                href="/mountains300/"
-                style={{
-                  borderRadius: "4px",
-                  color: "#ccc",
-                  fontSize: ".8rem",
-                  padding: "4px 10px",
-                  textDecoration: "none",
-                }}
-              >
-                三百名山
-              </Link>
-              <Link
-                href="/mountains_flowers/"
-                style={{
-                  borderRadius: "4px",
-                  color: "#ccc",
-                  fontSize: ".8rem",
-                  padding: "4px 10px",
-                  textDecoration: "none",
-                }}
-              >
-                花の百名山
-              </Link>
-              <Link
-                href="/articles/"
-                style={{
-                  borderRadius: "4px",
-                  color: "#ccc",
-                  fontSize: ".8rem",
-                  padding: "4px 10px",
-                  textDecoration: "none",
-                }}
-              >
-                読み物
-              </Link>
-            </nav>
+            <div
+              style={{
+                alignItems: "flex-end",
+                display: "flex",
+                flex: "1 1 520px",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              <HeaderSearch />
+              <nav style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end" }}>
+                <Link
+                  href="/"
+                  style={{
+                    borderRadius: "4px",
+                    color: "#ccc",
+                    fontSize: ".8rem",
+                    padding: "4px 10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  百名山
+                </Link>
+                <Link
+                  href="/mountains200/"
+                  style={{
+                    borderRadius: "4px",
+                    color: "#ccc",
+                    fontSize: ".8rem",
+                    padding: "4px 10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  二百名山
+                </Link>
+                <Link
+                  href="/mountains300/"
+                  style={{
+                    borderRadius: "4px",
+                    color: "#ccc",
+                    fontSize: ".8rem",
+                    padding: "4px 10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  三百名山
+                </Link>
+                <Link
+                  href="/mountains_flowers/"
+                  style={{
+                    borderRadius: "4px",
+                    color: "#ccc",
+                    fontSize: ".8rem",
+                    padding: "4px 10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  花の百名山
+                </Link>
+                <Link
+                  href="/articles/"
+                  style={{
+                    borderRadius: "4px",
+                    color: "#ccc",
+                    fontSize: ".8rem",
+                    padding: "4px 10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  読み物
+                </Link>
+              </nav>
+            </div>
           </div>
         </header>
         <main
