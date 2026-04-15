@@ -1,6 +1,7 @@
 import HeaderSearch from "components/HeaderSearch"
 import { Title } from "components/elements/layout"
 import Link from "next/link"
+import { Suspense } from "react"
 import "./reset.css"
 
 import { SITE_URL } from "../lib/site"
@@ -75,7 +76,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                 gap: "10px",
               }}
             >
-              <HeaderSearch />
+              <Suspense fallback={<div style={{ maxWidth: "360px", width: "100%" }} />}>
+                <HeaderSearch />
+              </Suspense>
               <nav style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end" }}>
                 <Link
                   href="/"

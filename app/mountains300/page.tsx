@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, Suspense } from "react"
 import MountainApp from "components/MountainApp"
 import mountainsData from "../../public/mountains300.json"
 import { SITE_URL } from "../../lib/site"
@@ -45,14 +45,16 @@ const Page: FC = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <MountainApp
-        mountains={mountainsData as Mountain[]}
-        storageKey="yama300"
-        themeColor="#2196f3"
-        pathPrefix="/mountains300/"
-        totalCount={101}
-        idOffset={200}
-      />
+      <Suspense fallback={null}>
+        <MountainApp
+          mountains={mountainsData as Mountain[]}
+          storageKey="yama300"
+          themeColor="#2196f3"
+          pathPrefix="/mountains300/"
+          totalCount={101}
+          idOffset={200}
+        />
+      </Suspense>
     </>
   )
 }
