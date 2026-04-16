@@ -57,6 +57,43 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         )}
       </head>
       <body>
+        <style>{`
+          .site-header-inner {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+          }
+
+          .site-header-tools {
+            align-items: flex-end;
+            display: flex;
+            flex: 1 1 520px;
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          .site-header-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
+          }
+
+          @media (min-width: 980px) {
+            .site-header-tools {
+              align-items: center;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: flex-end;
+            }
+
+            .site-header-nav {
+              align-items: center;
+            }
+          }
+        `}</style>
         <header
           style={{
             backgroundColor: "#333",
@@ -65,21 +102,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             position: "relative",
           }}
         >
-          <div style={{ alignItems: "center", display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "space-between" }}>
+          <div className="site-header-inner">
             <Title>Yama100</Title>
-            <div
-              style={{
-                alignItems: "flex-end",
-                display: "flex",
-                flex: "1 1 520px",
-                flexDirection: "column",
-                gap: "10px",
-              }}
-            >
+            <div className="site-header-tools">
               <Suspense fallback={<div style={{ maxWidth: "360px", width: "100%" }} />}>
                 <HeaderSearch />
               </Suspense>
-              <nav style={{ display: "flex", flexWrap: "wrap", gap: "8px", justifyContent: "flex-end" }}>
+              <nav className="site-header-nav">
                 <Link
                   href="/"
                   style={{
