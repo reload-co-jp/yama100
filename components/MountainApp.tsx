@@ -72,9 +72,13 @@ export default function MountainApp({
   totalCount,
   idOffset,
 }: MountainAppProps) {
-  const { checked, sort, setSort, digestChecked, setDigestChecked, toggle } =
-    useMountainState(storageKey, totalCount, idOffset)
+  const { checked, sort, setSort, digestChecked, toggle } = useMountainState(
+    storageKey,
+    totalCount,
+    idOffset
+  )
   const [copied, setCopied] = useState(false)
+  const [isDigestDismissed, setIsDigestDismissed] = useState(false)
 
   const handleShare = useCallback(async () => {
     const params = new URLSearchParams()
@@ -102,15 +106,16 @@ export default function MountainApp({
   const digestMountains = digestChecked
     ? mountains.filter((m) => digestChecked.has(m.id))
     : []
+  const isDigestOpen = digestChecked !== null && !isDigestDismissed
 
   return (
     <div>
-      {digestChecked !== null && (
+      {isDigestOpen && (
         <DigestModal
           mountains={digestMountains}
           heroType={storageKey}
           totalCount={totalCount}
-          onClose={() => setDigestChecked(null)}
+          onClose={() => setIsDigestDismissed(true)}
         />
       )}
       <HeroSection

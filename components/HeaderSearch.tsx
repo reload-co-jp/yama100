@@ -1,15 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 
 export default function HeaderSearch() {
   const searchParams = useSearchParams()
-  const [query, setQuery] = useState(searchParams.get("q") ?? "")
-
-  useEffect(() => {
-    setQuery(searchParams.get("q") ?? "")
-  }, [searchParams])
+  const query = searchParams.get("q") ?? ""
 
   return (
     <form
@@ -24,8 +19,9 @@ export default function HeaderSearch() {
     >
       <input
         aria-label="山の名前で検索"
+        defaultValue={query}
+        key={query}
         name="q"
-        onChange={(e) => setQuery(e.target.value)}
         placeholder="山の名前で検索"
         style={{
           background: "#262626",
@@ -37,7 +33,6 @@ export default function HeaderSearch() {
           minWidth: 0,
           padding: "8px 14px",
         }}
-        value={query}
       />
       <button
         style={{

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useSyncExternalStore } from "react"
 
 export type SortOrder =
   | "number"
@@ -18,6 +18,31 @@ function readCheckedFromStorage(storageKey: string) {
   return new Set<number>()
 }
 
+const EMPTY = new Set<number>()
+const _checkedListeners: Record<string, Set<() => void>> = {}
+
+function getCheckedSnapshot(storageKey: string) {
+  try {
+    return readCheckedFromStorage(storageKey)
+  } catch (error) {
+    console.error("Failed to parse stored mountain count:", error)
+    return EMPTY
+  }
+}
+
+function subscribeChecked(storageKey: string, listener: () => void) {
+  if (!_checkedListeners[storageKey]) _checkedListeners[storageKey] = new Set()
+  _checkedListeners[storageKey].add(listener)
+  return () => {
+    _checkedListeners[storageKey].delete(listener)
+  }
+}
+
+function writeChecked(storageKey: string, checked: Set<number>) {
+  localStorage.setItem(storageKey, JSON.stringify({ checked: [...checked] }))
+  _checkedListeners[storageKey]?.forEach((listener) => listener())
+}
+
 function readSortFromLocation() {
   const sortParam = new URLSearchParams(window.location.search).get(
     "sort"
@@ -33,18 +58,26 @@ function readSortFromLocation() {
   return "number"
 }
 
+function readDigestFromLocation(totalMountains: number, idOffset: number) {
+  const dataParam = new URLSearchParams(window.location.search).get("data")
+  return dataParam ? decodeChecked(dataParam, totalMountains, idOffset) : null
+}
+
+function subscribeLocation(listener: () => void) {
+  window.addEventListener("popstate", listener)
+  return () => {
+    window.removeEventListener("popstate", listener)
+  }
+}
+
 export function useMountainCountState(storageKey: string) {
-  const [checked, setChecked] = useState<Set<number>>(new Set<number>())
+  const checked = useSyncExternalStore(
+    (listener) => subscribeChecked(storageKey, listener),
+    () => getCheckedSnapshot(storageKey),
+    () => EMPTY
+  )
 
-  useEffect(() => {
-    try {
-      setChecked(readCheckedFromStorage(storageKey))
-    } catch (error) {
-      console.error("Failed to parse stored mountain count:", error)
-    }
-  }, [storageKey])
-
-  return { checked, setChecked }
+  return { checked }
 }
 
 export function useMountainState(
@@ -52,48 +85,46 @@ export function useMountainState(
   totalMountains: number,
   idOffset: number = 0
 ) {
-  const [checked, setChecked] = useState<Set<number>>(new Set<number>())
-  const [sort, setSort] = useState<SortOrder>("number")
-  const [digestChecked, setDigestChecked] = useState<Set<number> | null>(null)
+  const checked = useSyncExternalStore(
+    (listener) => subscribeChecked(storageKey, listener),
+    () => getCheckedSnapshot(storageKey),
+    () => EMPTY
+  )
+  const initialSort = useSyncExternalStore(
+    subscribeLocation,
+    readSortFromLocation,
+    (): SortOrder => "number"
+  )
+  const digestChecked = useSyncExternalStore(
+    subscribeLocation,
+    () => readDigestFromLocation(totalMountains, idOffset),
+    () => null
+  )
+  const [sortOverride, setSortOverride] = useState<SortOrder | null>(null)
+  const sort = sortOverride ?? initialSort
 
-  useEffect(() => {
-    try {
-      setChecked(readCheckedFromStorage(storageKey))
-    } catch (error) {
-      console.error("Failed to parse stored mountain count:", error)
-    }
-  }, [storageKey])
-
-  useEffect(() => {
-    setSort(readSortFromLocation())
-
-    const dataParam = new URLSearchParams(window.location.search).get("data")
-    setDigestChecked(
-      dataParam ? decodeChecked(dataParam, totalMountains, idOffset) : null
-    )
-  }, [idOffset, totalMountains])
+  const setSort = useCallback((nextSort: SortOrder) => {
+    setSortOverride(nextSort)
+  }, [])
 
   const saveToStorage = useCallback(
     (ids: Set<number>) => {
-      localStorage.setItem(storageKey, JSON.stringify({ checked: [...ids] }))
+      writeChecked(storageKey, ids)
     },
     [storageKey]
   )
 
   const toggle = useCallback(
     (id: number) => {
-      setChecked((prev) => {
-        const next = new Set(prev)
-        if (next.has(id)) next.delete(id)
-        else next.add(id)
-        saveToStorage(next)
-        return next
-      })
+      const next = new Set(checked)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      saveToStorage(next)
     },
-    [saveToStorage]
+    [checked, saveToStorage]
   )
 
-  return { checked, sort, setSort, digestChecked, setDigestChecked, toggle }
+  return { checked, sort, setSort, digestChecked, toggle }
 }
 
 export function encodeChecked(
