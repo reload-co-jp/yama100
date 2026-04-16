@@ -20,10 +20,21 @@ function readCheckedFromStorage(storageKey: string) {
 
 const EMPTY = new Set<number>()
 const _checkedListeners: Record<string, Set<() => void>> = {}
+const _checkedCache: Record<
+  string,
+  { raw: string | null; snapshot: Set<number> }
+> = {}
+const _digestCache = new Map<string, Set<number> | null>()
 
 function getCheckedSnapshot(storageKey: string) {
   try {
-    return readCheckedFromStorage(storageKey)
+    const raw = localStorage.getItem(storageKey)
+    const cached = _checkedCache[storageKey]
+    if (cached && cached.raw === raw) return cached.snapshot
+
+    const snapshot = raw ? readCheckedFromStorage(storageKey) : EMPTY
+    _checkedCache[storageKey] = { raw, snapshot }
+    return snapshot
   } catch (error) {
     console.error("Failed to parse stored mountain count:", error)
     return EMPTY
@@ -39,7 +50,9 @@ function subscribeChecked(storageKey: string, listener: () => void) {
 }
 
 function writeChecked(storageKey: string, checked: Set<number>) {
-  localStorage.setItem(storageKey, JSON.stringify({ checked: [...checked] }))
+  const raw = JSON.stringify({ checked: [...checked] })
+  _checkedCache[storageKey] = { raw, snapshot: checked }
+  localStorage.setItem(storageKey, raw)
   _checkedListeners[storageKey]?.forEach((listener) => listener())
 }
 
@@ -60,7 +73,14 @@ function readSortFromLocation() {
 
 function readDigestFromLocation(totalMountains: number, idOffset: number) {
   const dataParam = new URLSearchParams(window.location.search).get("data")
-  return dataParam ? decodeChecked(dataParam, totalMountains, idOffset) : null
+  const cacheKey = `${dataParam ?? ""}:${totalMountains}:${idOffset}`
+  if (_digestCache.has(cacheKey)) return _digestCache.get(cacheKey) ?? null
+
+  const snapshot = dataParam
+    ? decodeChecked(dataParam, totalMountains, idOffset)
+    : null
+  _digestCache.set(cacheKey, snapshot)
+  return snapshot
 }
 
 function subscribeLocation(listener: () => void) {
