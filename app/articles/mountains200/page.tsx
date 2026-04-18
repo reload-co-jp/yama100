@@ -1,6 +1,7 @@
 import { FC } from "react"
 import Link from "next/link"
 import { Metadata } from "next"
+import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
   title: "二百名山について | Yama100",
@@ -22,6 +23,19 @@ const jsonLd = {
     { "@type": "ListItem", "position": 3, "name": "二百名山について", "item": "https://yama100.reload.co.jp/articles/mountains200" }
   ]
 }
+
+const sources = [
+  {
+    href: "https://www.yamareco.com/modules/yamainfo/ptlist.php?groupid=2",
+    label: "ヤマレコ「日本二百名山」",
+    note: "深田クラブ創立10周年（1984年）に作成されたリストであること、山上ヶ岳と荒沢岳の扱いを参照。",
+  },
+  {
+    href: "https://www.yamakei.co.jp/products/2807530500%20.html",
+    label: "山と溪谷社『決定版 日本二百名山登山ガイド 中』",
+    note: "深田クラブ選定の100山という説明を参照。",
+  },
+] as const
 
 const Page: FC = () => {
   return (
@@ -56,7 +70,7 @@ const Page: FC = () => {
       </h1>
 
       <p style={{ lineHeight: 1.8, marginBottom: "24px" }}>
-        「日本二百名山」は、1984年に山と溪谷社が創立50周年を記念して選定した、日本を代表する山々のリストです。百名山が個人の選定であるのに対し、二百名山はより広い視点から日本の山岳の魅力を再発見するために企画されました。
+        「日本二百名山」は、1984年に深田久弥の愛好組織である深田クラブが、創立10周年を記念して作成したリストです。山と溪谷社が選定主体という説明は原典ベースでは確認できず、この点は本文を修正しました。
       </p>
 
       <h2
@@ -70,10 +84,7 @@ const Page: FC = () => {
         百名山との違い
       </h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
-        最大の大きな違いは、<strong>「選定者」</strong>
-        です。百名山は深田久弥という一人の登山家による「個人的な感性」で選び抜かれたものですが、二百名山は山と溪谷社が公募や専門家の意見を取り入れ、
-        <strong>「より多くの山への関心」</strong>
-        を広げることを目指して選定されました。
+        二百名山は、深田の百名山100座をそのまま含みつつ、さらに100座を加えて200座にしたものです。現在よく参照される解説では、日本三百名山を母体にしながら、三百名山に含まれていた山上ヶ岳を外し、その代わりに荒沢岳を加えた構成だと説明されています。
       </p>
 
       <h2
@@ -87,14 +98,14 @@ const Page: FC = () => {
         選定の目的
       </h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
-        百名山の人気が高まる一方で、登山者が特定の山に集中するという課題も生まれました。二百名山は、それらの名峰に並ぶ魅力的な山々を広く知らしめることで、
-        <strong>「より深く、多様な日本の山登りを楽しむ」</strong>
-        ことを目的としています。
+        山と溪谷社のガイドでも、二百名山は「百名山を登り終えた次の目標」として紹介されています。つまり二百名山は、百名山の延長としてより多くの名峰に目を向けるためのリストであり、完登後の次の視野を開く役割を担ってきました。
       </p>
 
       <p style={{ lineHeight: 1.8 }}>
-        百名山を登り終えた登山家が、次の挑戦の舞台として選ぶ場所として、二百名山は今や日本の登山文化において欠かせないリストとなっています。
+        本サイトの二百名山ページでも、番号付けは現在の利用実態に合わせてヤマレコの項番を参照しています。成立史そのものは深田クラブ由来、実用上の番号参照はヤマレコ、という二層で捉えるのが実態に近いと思います。
       </p>
+
+      <ArticleSources sources={sources} />
     </div>
   )
 }

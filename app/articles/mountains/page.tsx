@@ -1,6 +1,7 @@
 import { FC } from "react"
 import Link from "next/link"
 import { Metadata } from "next"
+import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
   title: "深田久弥が登った山々 | Yama100",
@@ -23,6 +24,24 @@ const jsonLd = {
   ]
 }
 
+const sources = [
+  {
+    href: "https://yamanobunkakan.com/?page_id=87",
+    label: "深田久弥山の文化館「深田久弥について」",
+    note: "初登山、白山登頂、『日本百名山』連載開始、茅ヶ岳での逝去を参照。",
+  },
+  {
+    href: "https://www.shinchosha.co.jp/book/318405",
+    label: "新潮社『日本百名山 新装版』",
+    note: "著者プロフィールと受賞情報。",
+  },
+  {
+    href: "https://jac1.or.jp/document/2021102912982.html",
+    label: "日本山岳会「日本山岳会に描かれた深田久弥①」",
+    note: "茅ヶ岳での最期に関する補足。",
+  },
+] as const
+
 const Page: FC = () => {
   return (
     <div style={{ maxWidth: "720px", margin: "40px auto", padding: "0 24px", color: "#ccc" }}>
@@ -39,66 +58,24 @@ const Page: FC = () => {
       </h1>
       
       <p style={{ lineHeight: 1.8, marginBottom: "24px" }}>
-        深田久弥の山行は、若き日の白山登頂から始まり、生涯を通じて日本各地の峻険な山々へと向けられました。彼が実際にその足で踏みしめ、肌で感じた山々の記録が、後の『日本百名山』という結晶を生み出す源泉となりました。
+        深田久弥の山行は、加賀の山々に親しんだ少年時代から始まり、日本各地の名峰、さらにヒマラヤ踏査へと広がっていきました。『日本百名山』は、その積み重ねのうえに生まれた本です。
       </p>
 
-      <h2 style={{ color: "#fff", fontSize: "1.25rem", marginTop: "24px", marginBottom: "12px" }}>原点としての白山</h2>
+      <h2 style={{ color: "#fff", fontSize: "1.25rem", marginTop: "24px", marginBottom: "12px" }}>加賀の山々から始まった歩み</h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
-        幼少期から仰ぎ見た霊峰・白山は、彼にとって登山家としての原点です。峻厳でありながら、四季折々の豊かな表情を見せるその山容に、彼は生涯を通じて強い愛着を抱き続けました。
+        深田の最初の登山は1914年の富士写ヶ岳、白山初登頂は1918年でした。ふるさとの山を見上げながら育った体験は、その後に全国の山を歩くようになっても消えず、文化館の解説でも白山を描く文章は彼の山の文学の白眉だと位置づけられています。
       </p>
 
-      <h2 style={{ color: "#fff", fontSize: "1.25rem", marginTop: "24px", marginBottom: "12px" }}>山行の足跡</h2>
+      <h2 style={{ color: "#fff", fontSize: "1.25rem", marginTop: "24px", marginBottom: "12px" }}>全国の山と、戦後の山岳随筆</h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
-        深田久弥が登った山々は非常に多岐にわたります。その生涯にわたる記録の中から、主要な山行を年代順に列挙します。
+        東京帝大入学後も山への関心は続き、戦後には小説よりも山の文章を多く書くようになります。1958年にはジュガール・ヒマール、ランタン・ヒマールの踏査隊長を務め、1959年には『山と高原』で「日本百名山」の連載を開始しました。山行の範囲は、国内名山の歩きから海外踏査までかなり広いものでした。
       </p>
-      
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "24px", fontSize: ".875rem" }}>
-        <div style={{ background: "#2a2a2a", padding: "12px", borderRadius: "8px" }}>
-          <div style={{ fontWeight: 600, color: "#7ecfb3", marginBottom: "8px" }}>少年・学生時代</div>
-          <ul style={{ paddingLeft: "20px", margin: 0 }}>
-            <li>錦城山 (1910年代)</li>
-            <li>富士写ヶ岳 (1915)</li>
-            <li>白山 (1918)</li>
-            <li>槍ヶ岳 (1922)</li>
-            <li>浅間山 (1922)</li>
-            <li>金峰山 (1922)</li>
-            <li>白馬岳 (1923)</li>
-            <li>苗場山 (1925)</li>
-            <li>朝日岳、薬師岳、赤城山、至仏山 (1926)</li>
-          </ul>
-        </div>
-        <div style={{ background: "#2a2a2a", padding: "12px", borderRadius: "8px" }}>
-          <div style={{ fontWeight: 600, color: "#7ecfb3", marginBottom: "8px" }}>戦前・戦中</div>
-          <ul style={{ paddingLeft: "20px", margin: 0 }}>
-            <li>鳳凰山 (1932)</li>
-            <li>谷川岳 (1933)</li>
-            <li>鹿島槍ヶ岳 (1934)</li>
-            <li>巻機山 (1936)</li>
-            <li>会津駒ヶ岳 (1936)</li>
-            <li>霧島山 (1939)</li>
-            <li>宮之浦岳 (1939)</li>
-            <li>八ヶ岳 (1942)</li>
-            <li>男体山 (1942)</li>
-            <li>石鎚山 (1942)</li>
-          </ul>
-        </div>
-        <div style={{ background: "#2a2a2a", padding: "12px", borderRadius: "8px" }}>
-          <div style={{ fontWeight: 600, color: "#7ecfb3", marginBottom: "8px" }}>戦後〜晩年</div>
-          <ul style={{ paddingLeft: "20px", margin: 0 }}>
-            <li>岩木山 (1947)</li>
-            <li>五竜岳、光岳、蓼科山 (1952)</li>
-            <li>雨飾山 (1957)</li>
-            <li>ジュガールヒマール、ランタンヒマール (1958)</li>
-            <li>斜里岳、雄阿寒岳 (1959)</li>
-            <li>恵那山、富士見台高原 (1960)</li>
-            <li>茅ヶ岳 (1971)</li>
-          </ul>
-        </div>
-      </div>
 
       <p style={{ lineHeight: 1.8 }}>
-        彼が登った数々の山々は、単なる場所としての「山」ではなく、深田久弥という一人の人間の精神が、日本の風土と対話し続けた道のりそのものであると言えるでしょう。
+        1971年、深田は茅ヶ岳山頂近くの尾根で倒れ、そのまま帰らぬ人となりました。けれども彼の山行の足跡は、単なる登頂記録としてではなく、山をどう読み、どう書くかという文化的な遺産として残っています。
       </p>
+
+      <ArticleSources sources={sources} />
     </div>
   )
 }

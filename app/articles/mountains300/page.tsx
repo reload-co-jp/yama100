@@ -1,6 +1,7 @@
 import { FC } from "react"
 import Link from "next/link"
 import { Metadata } from "next"
+import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
   title: "三百名山について | Yama100",
@@ -22,6 +23,24 @@ const jsonLd = {
     { "@type": "ListItem", "position": 3, "name": "三百名山について", "item": "https://yama100.reload.co.jp/articles/mountains300" }
   ]
 }
+
+const sources = [
+  {
+    href: "https://books.jtbpublishing.co.jp/book/60001-202406421911-000/",
+    label: "JTBパブリッシング『日本三百名山 山あるきガイド 下』",
+    note: "日本三百名山を日本山岳会が1978年に選定したという説明を参照。",
+  },
+  {
+    href: "https://www.yamareco.com/modules/yamainfo/ptlist.php?groupid=3",
+    label: "ヤマレコ「日本三百名山」",
+    note: "山上ヶ岳と荒沢岳の差し替え、および本サイトで採用している101座の項番整理を参照。",
+  },
+  {
+    href: "https://www.yamakei.co.jp/products/2814530620.html",
+    label: "山と溪谷社『新版 日本三百名山登山ガイド 上』",
+    note: "日本山岳会著の実用ガイド。",
+  },
+] as const
 
 const Page: FC = () => {
   return (
@@ -56,7 +75,7 @@ const Page: FC = () => {
       </h1>
 
       <p style={{ lineHeight: 1.8, marginBottom: "24px" }}>
-        「日本三百名山」は、二百名山選定からさらに約20年後の2002年、日本山岳会によって選定されました。百名山、二百名山に続く、日本の山岳のさらなる可能性を探求するリストとして誕生しました。
+        「日本三百名山」は、日本山岳会によって1978年に選定された300座のリストです。以前の本文にあった「2002年選定」は原典系の説明と合わないため、この点を修正しました。
       </p>
 
       <h2
@@ -70,9 +89,7 @@ const Page: FC = () => {
         他のリストとの違い
       </h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
-        百名山（深田久弥）、二百名山（山と溪谷社）に対し、三百名山は
-        <strong>「日本山岳会」</strong>
-        という学術的・専門的団体によって選定された点が大きな特徴です。単なる観光的な選定にとどまらず、山岳の地理的広がりや学術的な側面も考慮されています。
+        三百名山は、深田久弥の百名山に新たな200座を加えた枠組みとして理解されています。その後、1984年に二百名山が別に整備されたため、現在は「百名山」「二百名山」「三百名山」の三つが並び立つ形で語られることが多くなりました。
       </p>
 
       <h2
@@ -86,12 +103,14 @@ const Page: FC = () => {
         選定の意義
       </h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
-        三百名山が加わったことで、日本の主要な山岳300座を制覇する「三百名山巡り」は、日本全国の地形、気候、文化の多様性を体験する究極の山岳巡礼とも言えるスケールとなりました。
+        ヤマレコの解説では、三百名山に含まれる山上ヶ岳は二百名山から外れ、その代わりに荒沢岳が入るため、二百名山に未収録の側だけを見ると101座になると整理されています。本サイトの三百名山ページが101件ベースなのは、この現在流通している整理に合わせたためです。
       </p>
 
       <p style={{ lineHeight: 1.8 }}>
-        百名山・二百名山で磨いた技術と経験を持ち寄り、さらなる未知の山々に挑む登山家たちの目標として、三百名山は今日の登山文化において重要な位置を占めています。
+        つまり三百名山は、百名山の拡張版であると同時に、後年の二百名山や各種ガイドの基準にもなった土台です。成立史と現在の実用整理を切り分けて理解すると、三つのリストの関係がかなり見通しやすくなります。
       </p>
+
+      <ArticleSources sources={sources} />
     </div>
   )
 }
