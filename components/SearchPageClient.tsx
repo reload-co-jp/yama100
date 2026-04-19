@@ -6,6 +6,7 @@ import mountains100 from "../public/mountains.json"
 import mountains200 from "../public/mountains200.json"
 import mountains300 from "../public/mountains300.json"
 import mountainsFlowers from "../public/mountains_flowers.json"
+import mountainsMinor12 from "../public/mountains_minor12.json"
 
 type Mountain = {
   id: number
@@ -41,6 +42,11 @@ const SOURCES = [
     category: "花の百名山",
     hrefPrefix: "/mountains_flowers/",
     mountains: mountainsFlowers as Mountain[],
+  },
+  {
+    category: "マイナー12名山",
+    hrefPrefix: "/mountains_minor12/",
+    mountains: mountainsMinor12 as Mountain[],
   },
 ] as const
 
@@ -81,7 +87,7 @@ export default function SearchPageClient() {
           山名検索
         </h1>
         <p style={{ color: "#aaa", lineHeight: 1.7, margin: 0 }}>
-          百名山・二百名山・三百名山・花の百名山を横断して検索します。
+          百名山・二百名山・三百名山・花の百名山・マイナー12名山を横断して検索します。
         </p>
       </div>
 

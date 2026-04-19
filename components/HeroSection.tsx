@@ -99,6 +99,18 @@ const CONFIG = {
     link: "/articles/flowers/",
     linkLabel: "花の百名山とは →",
   },
+  yama_minor12: {
+    bg: "linear-gradient(180deg, #1a1205 0%, #2a1b0c 35%, #3a2410 65%, #2e2218 100%)",
+    subColor: "#ffcc80",
+    progressColor: "linear-gradient(90deg, #ff9800, #ffb74d)",
+    progressLabelColor: "#ffb74d",
+    title: "マイナー12名山",
+    subtitle: "Minor 12 Mountains",
+    desc: "『岳人 2002年4月号』で紹介された、\n創造的登山を要する12の難峰。あなたはいくつ登頂しましたか？",
+    stars: STARS,
+    link: "https://www.yamareco.com/modules/yamainfo/ptlist.php?groupid=55",
+    linkLabel: "ヤマレコの原典一覧 →",
+  },
 } as const
 
 export default function HeroSection({
