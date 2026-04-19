@@ -111,6 +111,18 @@ const CONFIG = {
     link: "https://www.yamareco.com/modules/yamainfo/ptlist.php?groupid=55",
     linkLabel: "ヤマレコの原典一覧 →",
   },
+  yama_new100: {
+    bg: "linear-gradient(180deg, #041616 0%, #0b2323 35%, #103333 65%, #17312f 100%)",
+    subColor: "#80cbc4",
+    progressColor: "linear-gradient(90deg, #26a69a, #4db6ac)",
+    progressLabelColor: "#4db6ac",
+    title: "新日本百名山",
+    subtitle: "New 100 Famous Mountains of Japan",
+    desc: "岩崎元郎が中高年にも登りやすい視点を加味して選んだ、\n新しい百名山の100座。あなたはいくつ登頂しましたか？",
+    stars: STARS,
+    link: "https://ja.wikipedia.org/wiki/%E6%96%B0%E6%97%A5%E6%9C%AC%E7%99%BE%E5%90%8D%E5%B1%B1",
+    linkLabel: "Wikipedia の一覧 →",
+  },
 } as const
 
 export default function HeroSection({
