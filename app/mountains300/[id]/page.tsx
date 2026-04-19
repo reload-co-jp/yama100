@@ -3,6 +3,7 @@ import Link from "next/link"
 import mountainsData from "../../../public/mountains300.json"
 import MountainDetailClient from "../../../components/MountainDetailClient"
 import DetailMap from "../../../components/DetailMap"
+import RelatedMountainLinks from "../../../components/RelatedMountainLinks"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
 type Mountain = {
@@ -167,6 +168,8 @@ export default async function Mountain300Page({
           >
             {mountain.description}
           </p>
+
+          <RelatedMountainLinks currentList="mountains300" mountain={mountain} />
 
           <DetailMap mountain={mountain} storageKey="yama300" />
         </div>

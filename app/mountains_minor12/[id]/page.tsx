@@ -3,6 +3,7 @@ import Link from "next/link"
 import mountainsData from "../../../public/mountains_minor12.json"
 import MountainDetailClient from "../../../components/MountainDetailClient"
 import DetailMap from "../../../components/DetailMap"
+import RelatedMountainLinks from "../../../components/RelatedMountainLinks"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
 type Mountain = {
@@ -167,6 +168,11 @@ export default async function MountainMinor12Page({
           >
             {mountain.description}
           </p>
+
+          <RelatedMountainLinks
+            currentList="mountains_minor12"
+            mountain={mountain}
+          />
 
           <DetailMap mountain={mountain} storageKey="yama_minor12" />
         </div>
