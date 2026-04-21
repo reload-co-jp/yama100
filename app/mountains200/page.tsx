@@ -1,35 +1,25 @@
-import { FC, Suspense } from "react"
-import MountainApp from "components/MountainApp"
 import mountainsData from "../../public/mountains200.json"
-import { SITE_URL } from "../../lib/site"
+import MountainListPage from "../../components/MountainListPage"
+import {
+  buildMountainListJsonLd,
+  MountainListPageConfig,
+} from "../../lib/mountainListPage"
+import { MountainRecord } from "../../lib/mountainCatalog"
 
-type Mountain = {
-  id: number
-  name: string
-  description: string
-  location: string[]
-  latitude: number
-  longitude: number
-  elevation: number
-}
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "日本二百名山",
-  description:
+const config: MountainListPageConfig = {
+  listName: "日本二百名山",
+  jsonLdDescription:
     "山と渓谷社が選定した日本を代表する200の名峰のうち、百名山以外の100峰の一覧",
-  url: `${SITE_URL}/mountains200/`,
+  urlPath: "/mountains200/",
+  pathPrefix: "/mountains200/",
   numberOfItems: 100,
-  itemListElement: [...(mountainsData as Mountain[])]
-    .sort((a, b) => a.id - b.id)
-    .map((m, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: m.name,
-    url: `${SITE_URL}/mountains200/${m.id}/`,
-    })),
+  storageKey: "yama200",
+  themeColor: "#4caf50",
+  totalCount: 100,
+  idOffset: 100,
 }
+
+const jsonLd = buildMountainListJsonLd(mountainsData as MountainRecord[], config)
 
 export const metadata = {
   title: "日本二百名山チェックリスト",
@@ -38,25 +28,12 @@ export const metadata = {
   alternates: { canonical: "/mountains200/" },
 }
 
-const Page: FC = () => {
+export default function Page() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Suspense fallback={null}>
-        <MountainApp
-          mountains={mountainsData as Mountain[]}
-          storageKey="yama200"
-          themeColor="#4caf50"
-          pathPrefix="/mountains200/"
-          totalCount={100}
-          idOffset={100}
-        />
-      </Suspense>
-    </>
+    <MountainListPage
+      config={config}
+      mountains={mountainsData as MountainRecord[]}
+      jsonLd={jsonLd}
+    />
   )
 }
-
-export default Page
