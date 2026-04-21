@@ -79,6 +79,7 @@ export default function MountainApp({
   )
   const [copied, setCopied] = useState(false)
   const [isDigestDismissed, setIsDigestDismissed] = useState(false)
+  const [hoveredId, setHoveredId] = useState<number | null>(null)
 
   const handleShare = useCallback(async () => {
     const params = new URLSearchParams()
@@ -172,6 +173,7 @@ export default function MountainApp({
               mountains={mountains}
               checked={checked}
               onToggle={toggle}
+              hoveredId={hoveredId}
             />
           </Suspense>
         </div>
@@ -308,6 +310,7 @@ export default function MountainApp({
                         mountain={mountain}
                         isChecked={checked.has(mountain.id)}
                         onToggle={toggle}
+                        onHover={setHoveredId}
                         themeColor={themeColor}
                         pathPrefix={pathPrefix}
                       />
@@ -332,6 +335,7 @@ export default function MountainApp({
                   mountain={mountain}
                   isChecked={checked.has(mountain.id)}
                   onToggle={toggle}
+                  onHover={setHoveredId}
                   themeColor={themeColor}
                   pathPrefix={pathPrefix}
                 />
@@ -348,17 +352,21 @@ function MountainListItem({
   mountain,
   isChecked,
   onToggle,
+  onHover,
   themeColor,
   pathPrefix,
 }: {
   mountain: Mountain
   isChecked: boolean
   onToggle: (id: number) => void
+  onHover: (id: number | null) => void
   themeColor: string
   pathPrefix: string
 }) {
   return (
     <li
+      onMouseEnter={() => onHover(mountain.id)}
+      onMouseLeave={() => onHover(null)}
       style={{
         background: isChecked ? "#1b3a1c" : "#2a2a2a",
         borderLeft: `4px solid ${isChecked ? themeColor : "#555"}`,

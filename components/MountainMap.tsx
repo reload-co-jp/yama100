@@ -18,6 +18,7 @@ type Props = {
   onToggle: (id: number) => void
   center?: [number, number]
   zoom?: number
+  hoveredId?: number | null
 }
 
 function markerStyle(isChecked: boolean) {
@@ -30,11 +31,13 @@ function markerStyle(isChecked: boolean) {
   }
 }
 
-export default function MountainMap({ mountains, checked, onToggle, center, zoom }: Props) {
+export default function MountainMap({ mountains, checked, onToggle, center, zoom, hoveredId }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<LeafletMap | null>(null)
   const markersRef = useRef(new Map<number, CircleMarker>())
   const onToggleRef = useRef(onToggle)
+  const defaultCenterRef = useRef<[number, number]>(center || [37, 137])
+  const defaultZoomRef = useRef<number>(zoom || (mountains.length === 1 ? 12 : 5))
 
   useEffect(() => {
     onToggleRef.current = onToggle
@@ -104,6 +107,20 @@ export default function MountainMap({ mountains, checked, onToggle, center, zoom
       marker.setStyle(markerStyle(isChecked))
     })
   }, [checked])
+
+  // Zoom to hovered mountain
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+    if (hoveredId != null) {
+      const mountain = mountains.find((m) => m.id === hoveredId)
+      if (mountain) {
+        map.setView([mountain.latitude, mountain.longitude], 10, { animate: true })
+      }
+    } else {
+      map.setView(defaultCenterRef.current, defaultZoomRef.current, { animate: true })
+    }
+  }, [hoveredId, mountains])
 
   return <div ref={containerRef} style={{ height: "100%", width: "100%" }} />
 }
