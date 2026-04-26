@@ -180,7 +180,7 @@ export default function HeroSection({
         >
           {c.subtitle}
         </p>
-        <h2
+        <h1
           style={{
             color: "#ffffff",
             fontSize: "clamp(2rem, 5vw, 3.5rem)",
@@ -192,7 +192,7 @@ export default function HeroSection({
           }}
         >
           {c.title}
-        </h2>
+        </h1>
         <p
           style={{
             color: "#a8c4d4",

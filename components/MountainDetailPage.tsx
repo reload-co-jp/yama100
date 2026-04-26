@@ -6,6 +6,7 @@ import {
   MountainDetailPageConfig,
 } from "../lib/mountainDetailPage"
 import { MountainRecord } from "../lib/mountainCatalog"
+import { SITE_URL } from "../lib/site"
 
 type Props = {
   config: MountainDetailPageConfig
@@ -41,6 +42,11 @@ export default function MountainDetailPage({
       "@type": "PropertyValue",
       name: "標高",
       value: `${mountain.elevation.toLocaleString()}m`,
+    },
+    isPartOf: {
+      "@type": "ItemList",
+      name: config.listTitle,
+      url: `${SITE_URL}${config.backHref}`,
     },
   }
 

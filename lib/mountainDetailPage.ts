@@ -42,8 +42,8 @@ export async function buildMountainMetadata(
   const ogTitle = `${mountain.name}（${mountain.elevation.toLocaleString()}m）- ${config.listTitle}`
 
   return {
-    title: mountain.name,
-    description: mountain.description,
+    title: `${mountain.name}（${config.listTitle}）`,
+    description: `${config.listTitle}の${mountain.name}（${mountain.elevation.toLocaleString()}m）。${mountain.description}`,
     alternates: { canonical: canonicalPath },
     openGraph: {
       title: ogTitle,
