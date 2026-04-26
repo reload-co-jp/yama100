@@ -13,6 +13,8 @@ export type MountainRecord = {
   latitude: number
   longitude: number
   elevation: number
+  access?: string
+  model_course?: string
 }
 
 export type MountainListKey =

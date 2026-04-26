@@ -131,6 +131,63 @@ export default function MountainDetailPage({
             mountain={mountain}
           />
 
+          {(mountain.access || mountain.model_course) && (
+            <div style={{ marginTop: "24px" }}>
+              {mountain.access && (
+                <div style={{ marginBottom: "16px" }}>
+                  <h2
+                    style={{
+                      color: "#aaa",
+                      fontSize: ".8rem",
+                      fontWeight: 600,
+                      letterSpacing: ".08em",
+                      margin: "0 0 8px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    アクセス
+                  </h2>
+                  <p
+                    style={{
+                      color: "#ccc",
+                      fontSize: ".9rem",
+                      lineHeight: 1.7,
+                      margin: 0,
+                    }}
+                  >
+                    {mountain.access}
+                  </p>
+                </div>
+              )}
+              {mountain.model_course && (
+                <div>
+                  <h2
+                    style={{
+                      color: "#aaa",
+                      fontSize: ".8rem",
+                      fontWeight: 600,
+                      letterSpacing: ".08em",
+                      margin: "0 0 8px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    モデルコース
+                  </h2>
+                  <p
+                    style={{
+                      color: "#ccc",
+                      fontSize: ".9rem",
+                      lineHeight: 1.7,
+                      margin: 0,
+                    }}
+                  >
+                    {mountain.model_course}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
           <DetailMap mountain={mountain} storageKey={config.storageKey} />
         </div>
       </div>
