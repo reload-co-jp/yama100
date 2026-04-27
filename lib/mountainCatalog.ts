@@ -4,6 +4,7 @@ import mountains300 from "../public/mountains300.json"
 import mountainsFlowers from "../public/mountains_flowers.json"
 import mountainsMinor12 from "../public/mountains_minor12.json"
 import mountainsNew100 from "../public/mountains_new100.json"
+import mountainsKanto100 from "../public/mountains_kanto100.json"
 
 export type MountainRecord = {
   id: number
@@ -24,6 +25,7 @@ export type MountainListKey =
   | "mountains_flowers"
   | "mountains_minor12"
   | "mountains_new100"
+  | "mountains_kanto100"
 
 type MountainListMeta = {
   key: MountainListKey
@@ -68,6 +70,12 @@ export const MOUNTAIN_LISTS: readonly MountainListMeta[] = [
     label: "新日本百名山",
     hrefPrefix: "/mountains_new100/",
     mountains: mountainsNew100 as MountainRecord[],
+  },
+  {
+    key: "mountains_kanto100",
+    label: "関東百名山",
+    hrefPrefix: "/mountains_kanto100/",
+    mountains: mountainsKanto100 as MountainRecord[],
   },
 ] as const
 

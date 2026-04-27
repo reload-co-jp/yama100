@@ -5,6 +5,7 @@ import mountains300Data from "../public/mountains300.json"
 import mountainsFlowersData from "../public/mountains_flowers.json"
 import mountainsMinor12Data from "../public/mountains_minor12.json"
 import mountainsNew100Data from "../public/mountains_new100.json"
+import mountainsKanto100Data from "../public/mountains_kanto100.json"
 import { SITE_URL } from "../lib/site"
 
 export const dynamic = "force-static"
@@ -42,6 +43,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const new100Pages = (mountainsNew100Data as { id: number }[]).map((m) => ({
     url: `${SITE_URL}/mountains_new100/${m.id}/`,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }))
+
+  const kanto100Pages = (mountainsKanto100Data as { id: number }[]).map((m) => ({
+    url: `${SITE_URL}/mountains_kanto100/${m.id}/`,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }))
@@ -94,6 +101,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/mountains_kanto100/`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...articlePages,
     ...mountainPages,
     ...mountain200Pages,
@@ -101,5 +113,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...flowerPages,
     ...minor12Pages,
     ...new100Pages,
+    ...kanto100Pages,
   ]
 }

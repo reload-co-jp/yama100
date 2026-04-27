@@ -182,6 +182,18 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                   新百名山
                 </Link>
                 <Link
+                  href="/mountains_kanto100/"
+                  style={{
+                    borderRadius: "4px",
+                    color: "#ccc",
+                    fontSize: ".8rem",
+                    padding: "4px 10px",
+                    textDecoration: "none",
+                  }}
+                >
+                  関東百名山
+                </Link>
+                <Link
                   href="/articles/"
                   style={{
                     borderRadius: "4px",
@@ -233,6 +245,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <Link href="/articles/flowers/" style={{ color: "#aaa", textDecoration: "none" }}>花の百名山</Link>
             <Link href="/mountains_minor12/" style={{ color: "#aaa", textDecoration: "none" }}>マイナー12名山</Link>
             <Link href="/mountains_new100/" style={{ color: "#aaa", textDecoration: "none" }}>新日本百名山</Link>
+            <Link href="/mountains_kanto100/" style={{ color: "#aaa", textDecoration: "none" }}>関東百名山</Link>
           </div>
         </footer>
       </body>

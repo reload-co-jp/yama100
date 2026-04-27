@@ -123,6 +123,18 @@ const CONFIG = {
     link: "https://ja.wikipedia.org/wiki/%E6%96%B0%E6%97%A5%E6%9C%AC%E7%99%BE%E5%90%8D%E5%B1%B1",
     linkLabel: "Wikipedia の一覧 →",
   },
+  yama_kanto100: {
+    bg: "linear-gradient(180deg, #1a0505 0%, #2d0a0a 35%, #401010 65%, #4a1515 100%)",
+    subColor: "#ff8a80",
+    progressColor: "linear-gradient(90deg, #c62828, #ef5350)",
+    progressLabelColor: "#ef5350",
+    title: "関東百名山",
+    subtitle: "100 Famous Mountains of Kanto",
+    desc: "関東一都六県を中心に選定された100の名峰。\nあなたはいくつ登頂しましたか？",
+    stars: STARS,
+    link: "https://www.yamareco.com/modules/yamainfo/ptlist.php?groupid=19",
+    linkLabel: "ヤマレコの原典一覧 →",
+  },
 } as const
 
 export default function HeroSection({
