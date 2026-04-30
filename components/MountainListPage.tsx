@@ -21,7 +21,6 @@ const MountainListPage: FC<Props> = ({ config, mountains, jsonLd }) => {
           mountains={mountains}
           storageKey={config.storageKey}
           themeColor={config.themeColor}
-          pathPrefix={config.pathPrefix}
           totalCount={config.totalCount}
           idOffset={config.idOffset}
         />

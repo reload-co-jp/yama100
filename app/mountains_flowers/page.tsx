@@ -10,7 +10,6 @@ const config: MountainListPageConfig = {
   listName: "花の百名山",
   jsonLdDescription: "田中澄江が選定した季節の花を楽しめる100の名峰の一覧",
   urlPath: "/mountains_flowers/",
-  pathPrefix: "/mountains_flowers/",
   numberOfItems: 100,
   storageKey: "yama_flowers",
   themeColor: "#e91e63",

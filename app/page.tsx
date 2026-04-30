@@ -10,7 +10,6 @@ const config: MountainListPageConfig = {
   listName: "日本百名山",
   jsonLdDescription: "深田久弥が選定した日本を代表する100の名峰の一覧",
   urlPath: "/",
-  pathPrefix: "/mountains/",
   numberOfItems: 100,
   storageKey: "yama100",
   themeColor: "#4caf50",

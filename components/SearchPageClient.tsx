@@ -2,59 +2,10 @@
 
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import mountains100 from "../public/mountains.json"
-import mountains200 from "../public/mountains200.json"
-import mountains300 from "../public/mountains300.json"
-import mountainsFlowers from "../public/mountains_flowers.json"
-import mountainsMinor12 from "../public/mountains_minor12.json"
-import mountainsNew100 from "../public/mountains_new100.json"
-
-type Mountain = {
-  id: number
-  name: string
-  description: string
-  location: string[]
-  elevation: number
-}
-
-type SearchResult = {
-  category: string
-  hrefPrefix: string
-  mountain: Mountain
-}
-
-const SOURCES = [
-  {
-    category: "日本百名山",
-    hrefPrefix: "/mountains/",
-    mountains: mountains100 as Mountain[],
-  },
-  {
-    category: "日本二百名山",
-    hrefPrefix: "/mountains200/",
-    mountains: mountains200 as Mountain[],
-  },
-  {
-    category: "日本三百名山",
-    hrefPrefix: "/mountains300/",
-    mountains: mountains300 as Mountain[],
-  },
-  {
-    category: "花の百名山",
-    hrefPrefix: "/mountains_flowers/",
-    mountains: mountainsFlowers as Mountain[],
-  },
-  {
-    category: "マイナー12名山",
-    hrefPrefix: "/mountains_minor12/",
-    mountains: mountainsMinor12 as Mountain[],
-  },
-  {
-    category: "新日本百名山",
-    hrefPrefix: "/mountains_new100/",
-    mountains: mountainsNew100 as Mountain[],
-  },
-] as const
+import {
+  CANONICAL_MOUNTAINS,
+  getMountainPagePath,
+} from "../lib/mountainCatalog"
 
 function normalize(text: string) {
   return text.normalize("NFKC").toLowerCase()
@@ -65,12 +16,10 @@ export default function SearchPageClient() {
   const query = (searchParams.get("q") ?? "").trim()
   const normalizedQuery = normalize(query)
 
-  const results: SearchResult[] = query
-    ? SOURCES.flatMap(({ category, hrefPrefix, mountains }) =>
-        mountains
-          .filter((mountain) => normalize(mountain.name).includes(normalizedQuery))
-          .map((mountain) => ({ category, hrefPrefix, mountain }))
-      ).sort((a, b) => a.mountain.name.localeCompare(b.mountain.name, "ja"))
+  const results = query
+    ? CANONICAL_MOUNTAINS.filter((mountain) =>
+        normalize(mountain.name).includes(normalizedQuery)
+      ).sort((a, b) => a.name.localeCompare(b.name, "ja"))
     : []
 
   return (
@@ -120,9 +69,9 @@ export default function SearchPageClient() {
                   padding: 0,
                 }}
               >
-                {results.map(({ category, hrefPrefix, mountain }) => (
+                {results.map((mountain) => (
                   <li
-                    key={`${category}-${mountain.id}`}
+                    key={mountain.canonicalName}
                     style={{
                       background: "#242424",
                       borderLeft: "4px solid #4caf50",
@@ -140,7 +89,7 @@ export default function SearchPageClient() {
                       }}
                     >
                       <Link
-                        href={`${hrefPrefix}${mountain.id}/`}
+                        href={getMountainPagePath(mountain.name)}
                         style={{
                           color: "#fff",
                           fontSize: "1rem",
@@ -153,12 +102,32 @@ export default function SearchPageClient() {
                       <span style={{ color: "#aaa", fontSize: ".85rem" }}>
                         {mountain.elevation.toLocaleString()}m
                       </span>
-                      <span style={{ color: "#7ecfb3", fontSize: ".8rem" }}>
-                        {category}
-                      </span>
                       <span style={{ color: "#777", fontSize: ".8rem" }}>
                         {mountain.location.join("・")}
                       </span>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "6px",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      {mountain.memberships.map((membership) => (
+                        <span
+                          key={`${mountain.canonicalName}-${membership.listKey}`}
+                          style={{
+                            background: "#303030",
+                            borderRadius: "999px",
+                            color: "#7ecfb3",
+                            fontSize: ".75rem",
+                            padding: "4px 10px",
+                          }}
+                        >
+                          {membership.label}
+                        </span>
+                      ))}
                     </div>
                     <p
                       style={{

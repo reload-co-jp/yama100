@@ -10,6 +10,7 @@ import {
   encodeChecked,
 } from "../hooks/useMountainState"
 import HeroSection from "./HeroSection"
+import { getMountainPagePath } from "../lib/mountainCatalog"
 
 const MountainMap = lazy(() => import("./MountainMap"))
 
@@ -27,7 +28,6 @@ type MountainAppProps = {
   mountains: Mountain[]
   storageKey: string
   themeColor: string
-  pathPrefix: string
   totalCount: number
   idOffset: number
 }
@@ -68,7 +68,6 @@ export default function MountainApp({
   mountains,
   storageKey,
   themeColor,
-  pathPrefix,
   totalCount,
   idOffset,
 }: MountainAppProps) {
@@ -312,7 +311,6 @@ export default function MountainApp({
                         onToggle={toggle}
                         onHover={setHoveredId}
                         themeColor={themeColor}
-                        pathPrefix={pathPrefix}
                       />
                     ))}
                   </ul>
@@ -337,7 +335,6 @@ export default function MountainApp({
                   onToggle={toggle}
                   onHover={setHoveredId}
                   themeColor={themeColor}
-                  pathPrefix={pathPrefix}
                 />
               ))}
             </ul>
@@ -354,14 +351,12 @@ function MountainListItem({
   onToggle,
   onHover,
   themeColor,
-  pathPrefix,
 }: {
   mountain: Mountain
   isChecked: boolean
   onToggle: (id: number) => void
   onHover: (id: number | null) => void
   themeColor: string
-  pathPrefix: string
 }) {
   return (
     <li
@@ -437,7 +432,7 @@ function MountainListItem({
             </p>
           </label>
           <Link
-            href={`${pathPrefix}${mountain.id}/`}
+            href={getMountainPagePath(mountain.name)}
             style={{
               background: "#3a3a3a",
               borderRadius: "4px",

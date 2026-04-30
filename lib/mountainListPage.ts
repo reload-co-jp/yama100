@@ -1,11 +1,10 @@
 import { SITE_URL } from "./site"
-import { MountainRecord } from "./mountainCatalog"
+import { getMountainPagePath, MountainRecord } from "./mountainCatalog"
 
 export type MountainListPageConfig = {
   listName: string
   jsonLdDescription: string
   urlPath: string
-  pathPrefix: string
   numberOfItems: number
   storageKey: string
   themeColor: string
@@ -30,7 +29,7 @@ export function buildMountainListJsonLd(
         "@type": "ListItem",
         position: i + 1,
         name: m.name,
-        url: `${SITE_URL}${config.pathPrefix}${m.id}/`,
+        url: `${SITE_URL}${getMountainPagePath(m.name)}`,
       })),
   }
 }

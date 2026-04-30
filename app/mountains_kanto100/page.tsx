@@ -11,7 +11,6 @@ const config: MountainListPageConfig = {
   jsonLdDescription:
     "関東一都六県（東京・神奈川・埼玉・千葉・茨城・栃木・群馬）を中心に選定された100の名峰の一覧",
   urlPath: "/mountains_kanto100/",
-  pathPrefix: "/mountains_kanto100/",
   numberOfItems: 100,
   storageKey: "yama_kanto100",
   themeColor: "#c62828",

@@ -11,7 +11,6 @@ const config: MountainListPageConfig = {
   jsonLdDescription:
     "岩崎元郎が選定した新日本百名山の一覧。中高年にも登りやすい視点を加味した100座をチェックできます。",
   urlPath: "/mountains_new100/",
-  pathPrefix: "/mountains_new100/",
   numberOfItems: 100,
   storageKey: "yama_new100",
   themeColor: "#26a69a",

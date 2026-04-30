@@ -11,7 +11,6 @@ const config: MountainListPageConfig = {
   jsonLdDescription:
     "山と渓谷社が選定した日本を代表する200の名峰のうち、百名山以外の100峰の一覧",
   urlPath: "/mountains200/",
-  pathPrefix: "/mountains200/",
   numberOfItems: 100,
   storageKey: "yama200",
   themeColor: "#4caf50",

@@ -11,7 +11,6 @@ const config: MountainListPageConfig = {
   jsonLdDescription:
     "ヤマレコ準拠のマイナー12名山一覧。『岳人 2002年4月号』で紹介された創造的登山を要する12座をチェックできます。",
   urlPath: "/mountains_minor12/",
-  pathPrefix: "/mountains_minor12/",
   numberOfItems: 12,
   storageKey: "yama_minor12",
   themeColor: "#ff9800",
