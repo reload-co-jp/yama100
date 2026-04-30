@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation"
 import mountainsData from "../../../public/mountains_kanto100.json"
 import { buildMountainStaticParams } from "../../../lib/mountainDetailPage"
-import { getMountainPagePath } from "../../../lib/mountainCatalog"
+import { getMountainPagePathForRecord } from "../../../lib/mountainCatalog"
 
 const mountains = mountainsData
 
@@ -26,5 +26,5 @@ export default async function MountainKanto100Page({
   const { id } = await params
   const mountain = mountains.find((item) => item.id === Number(id))
   if (!mountain) notFound()
-  redirect(getMountainPagePath(mountain.name))
+  redirect(getMountainPagePathForRecord(mountain))
 }

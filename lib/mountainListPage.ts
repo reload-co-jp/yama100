@@ -1,5 +1,5 @@
 import { SITE_URL } from "./site"
-import { getMountainPagePath, MountainRecord } from "./mountainCatalog"
+import { getMountainPagePathForRecord, MountainRecord } from "./mountainCatalog"
 
 export type MountainListPageConfig = {
   listName: string
@@ -29,7 +29,7 @@ export function buildMountainListJsonLd(
         "@type": "ListItem",
         position: i + 1,
         name: m.name,
-        url: `${SITE_URL}${getMountainPagePath(m.name)}`,
+        url: `${SITE_URL}${getMountainPagePathForRecord(m)}`,
       })),
   }
 }

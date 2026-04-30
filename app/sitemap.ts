@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next"
-import { CANONICAL_MOUNTAINS, getMountainPagePath } from "../lib/mountainCatalog"
+import { CANONICAL_MOUNTAINS } from "../lib/mountainCatalog"
 import { SITE_URL } from "../lib/site"
 
 export const dynamic = "force-static"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const mountainPages = CANONICAL_MOUNTAINS.map((mountain) => ({
-    url: `${SITE_URL}${getMountainPagePath(mountain.name)}`,
+    url: `${SITE_URL}/mountain/${mountain.slug}/`,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }))

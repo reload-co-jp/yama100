@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation"
 import mountainsData from "../../../public/mountains300.json"
 import { buildMountainStaticParams } from "../../../lib/mountainDetailPage"
-import { getMountainPagePath } from "../../../lib/mountainCatalog"
+import { getMountainPagePathForRecord } from "../../../lib/mountainCatalog"
 
 const mountains = mountainsData
 
@@ -25,5 +25,5 @@ export default async function Mountain300Page({
   const { id } = await params
   const mountain = mountains.find((m) => m.id === Number(id))
   if (!mountain) notFound()
-  redirect(getMountainPagePath(mountain.name))
+  redirect(getMountainPagePathForRecord(mountain))
 }

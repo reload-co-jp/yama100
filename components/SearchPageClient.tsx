@@ -4,7 +4,6 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import {
   CANONICAL_MOUNTAINS,
-  getMountainPagePath,
 } from "../lib/mountainCatalog"
 
 function normalize(text: string) {
@@ -89,7 +88,7 @@ export default function SearchPageClient() {
                       }}
                     >
                       <Link
-                        href={getMountainPagePath(mountain.name)}
+                        href={`/mountain/${mountain.slug}/`}
                         style={{
                           color: "#fff",
                           fontSize: "1rem",

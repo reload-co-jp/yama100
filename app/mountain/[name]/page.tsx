@@ -6,6 +6,71 @@ import {
 } from "../../../lib/mountainCatalog"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
+function SourceSection({
+  entries,
+  hideLabels,
+  title,
+}: {
+  entries: { label: string; text: string }[]
+  hideLabels?: string[]
+  title: string
+}) {
+  if (entries.length === 0) return null
+
+  return (
+    <div
+      style={{
+        background: "#2a2a2a",
+        borderRadius: "12px",
+        marginTop: "16px",
+        padding: "20px",
+      }}
+    >
+      <h2
+        style={{
+          color: "#fff",
+          fontSize: "1.05rem",
+          margin: "0 0 14px",
+        }}
+      >
+        {title}
+      </h2>
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {entries.map((entry) => {
+          const visibleLabels = entry.label
+            .split(" / ")
+            .filter((label) => !hideLabels?.includes(label))
+          return (
+          <div key={`${title}-${entry.label}-${entry.text.slice(0, 24)}`}>
+            {visibleLabels.length > 0 && (
+              <p
+                style={{
+                  color: "#7ecfb3",
+                  fontSize: ".8rem",
+                  fontWeight: 700,
+                  margin: "0 0 6px",
+                }}
+              >
+                {visibleLabels.join(" / ")}
+              </p>
+            )}
+            <p
+              style={{
+                color: "#ccc",
+                fontSize: ".95rem",
+                lineHeight: 1.8,
+                margin: 0,
+              }}
+            >
+              {entry.text}
+            </p>
+          </div>
+        )})}
+      </div>
+    </div>
+  )
+}
+
 export function generateStaticParams() {
   return CANONICAL_MOUNTAINS.map((mountain) => ({ name: mountain.slug }))
 }
@@ -111,6 +176,12 @@ export default async function CanonicalMountainPage({
         {mountain.location.join("・")}
       </p>
 
+      {mountain.aliases.length > 1 && (
+        <p style={{ color: "#777", fontSize: ".85rem", margin: "0 0 16px" }}>
+          別名・表記: {mountain.aliases.join(" / ")}
+        </p>
+      )}
+
       <p
         style={{
           color: "#ccc",
@@ -125,6 +196,18 @@ export default async function CanonicalMountainPage({
       <CanonicalMountainDetailClient
         mountain={mountain}
         memberships={mountain.memberships}
+      />
+
+      <SourceSection
+        title="アクセス"
+        entries={mountain.accessSources}
+        hideLabels={["日本百名山"]}
+      />
+
+      <SourceSection
+        title="モデルコース"
+        entries={mountain.courseSources}
+        hideLabels={["日本百名山"]}
       />
 
       <div

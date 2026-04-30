@@ -10,7 +10,7 @@ import {
   encodeChecked,
 } from "../hooks/useMountainState"
 import HeroSection from "./HeroSection"
-import { getMountainPagePath } from "../lib/mountainCatalog"
+import { getMountainPagePathForRecord } from "../lib/mountainCatalog"
 
 const MountainMap = lazy(() => import("./MountainMap"))
 
@@ -432,7 +432,7 @@ function MountainListItem({
             </p>
           </label>
           <Link
-            href={getMountainPagePath(mountain.name)}
+            href={getMountainPagePathForRecord(mountain)}
             style={{
               background: "#3a3a3a",
               borderRadius: "4px",

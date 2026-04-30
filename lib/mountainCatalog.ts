@@ -45,9 +45,18 @@ export type CanonicalMountainMembership = {
   themeColor: string
 }
 
+export type CanonicalMountainSourceText = {
+  label: string
+  text: string
+}
+
 export type CanonicalMountain = MountainRecord & {
   canonicalName: string
   slug: string
+  aliases: string[]
+  descriptionSources: CanonicalMountainSourceText[]
+  accessSources: CanonicalMountainSourceText[]
+  courseSources: CanonicalMountainSourceText[]
   memberships: CanonicalMountainMembership[]
 }
 
@@ -136,6 +145,31 @@ export function getMountainPagePath(name: string) {
   return `/mountain/${getMountainSlug(name)}/`
 }
 
+function getSourceTextEntries(
+  records: { list: MountainListMeta; mountain: MountainRecord }[],
+  field: "description" | "access" | "model_course"
+) {
+  const byText = new Map<string, CanonicalMountainSourceText>()
+  const entries: CanonicalMountainSourceText[] = []
+  for (const { list, mountain } of records) {
+    const text = mountain[field]?.trim()
+    if (!text) continue
+    const existing = byText.get(text)
+    if (existing) {
+      existing.label = `${existing.label} / ${list.label}`
+      continue
+    }
+    const entry = { label: list.label, text }
+    byText.set(text, entry)
+    entries.push(entry)
+  }
+  return entries
+}
+
+function mergeSourceTexts(entries: CanonicalMountainSourceText[]) {
+  return entries.map((entry) => entry.text).join(" ")
+}
+
 function chooseRepresentative(records: MountainRecord[]) {
   return [...records].sort((a, b) => {
     const accessScore = (b.access ? 1 : 0) - (a.access ? 1 : 0)
@@ -144,22 +178,59 @@ function chooseRepresentative(records: MountainRecord[]) {
   })[0]
 }
 
+function getMountainRecordKey(mountain: Pick<MountainRecord, "name" | "latitude" | "longitude" | "elevation">) {
+  return [
+    normalizeMountainName(mountain.name),
+    mountain.latitude.toFixed(6),
+    mountain.longitude.toFixed(6),
+    mountain.elevation,
+  ].join("|")
+}
+
+function distanceKm(a: Pick<MountainRecord, "latitude" | "longitude">, b: Pick<MountainRecord, "latitude" | "longitude">) {
+  const latKm = (a.latitude - b.latitude) * 111
+  const lngKm = (a.longitude - b.longitude) * 91
+  return Math.sqrt(latKm * latKm + lngKm * lngKm)
+}
+
+function buildCanonicalSlug(
+  canonicalName: string,
+  representative: MountainRecord,
+  needsDisambiguation: boolean
+) {
+  const raw = needsDisambiguation
+    ? `${canonicalName}-${representative.location.join("-")}`
+    : canonicalName
+  return encodeURIComponent(raw)
+}
+
+type CanonicalGroup = {
+  records: { list: MountainListMeta; mountain: MountainRecord }[]
+  memberships: CanonicalMountainMembership[]
+}
+
 const canonicalMap = new Map<
   string,
-  {
-    memberships: CanonicalMountainMembership[]
-    records: MountainRecord[]
-  }
+  CanonicalGroup[]
 >()
+
+const CLUSTER_DISTANCE_KM = 30
 
 for (const list of MOUNTAIN_LISTS) {
   for (const mountain of list.mountains) {
     const canonicalName = normalizeMountainName(mountain.name)
     if (!canonicalMap.has(canonicalName)) {
-      canonicalMap.set(canonicalName, { memberships: [], records: [] })
+      canonicalMap.set(canonicalName, [])
     }
-    const group = canonicalMap.get(canonicalName)!
-    group.records.push(mountain)
+    const groups = canonicalMap.get(canonicalName)!
+    let group = groups.find((candidate) =>
+      candidate.records.some((record) => distanceKm(record.mountain, mountain) <= CLUSTER_DISTANCE_KM)
+    )
+    if (!group) {
+      group = { records: [], memberships: [] }
+      groups.push(group)
+    }
+    group.records.push({ list, mountain })
     group.memberships.push({
       id: mountain.id,
       label: list.label,
@@ -171,20 +242,30 @@ for (const list of MOUNTAIN_LISTS) {
   }
 }
 
-export const CANONICAL_MOUNTAINS: readonly CanonicalMountain[] = Array.from(
-  canonicalMap.entries()
-)
-  .map(([canonicalName, group]) => {
-    const representative = chooseRepresentative(group.records)
-    return {
-      ...representative,
-      canonicalName,
-      slug: getMountainSlug(canonicalName),
-      memberships: group.memberships.sort((a, b) =>
-        a.label.localeCompare(b.label, "ja")
-      ),
-    }
-  })
+export const CANONICAL_MOUNTAINS: readonly CanonicalMountain[] = Array.from(canonicalMap.entries())
+  .flatMap(([canonicalName, groups]) =>
+    groups.map((group) => {
+      const representative = chooseRepresentative(group.records.map((entry) => entry.mountain))
+      const descriptionSources = getSourceTextEntries(group.records, "description")
+      const accessSources = getSourceTextEntries(group.records, "access")
+      const courseSources = getSourceTextEntries(group.records, "model_course")
+      return {
+        ...representative,
+        description: mergeSourceTexts(descriptionSources) || representative.description,
+        canonicalName,
+        slug: buildCanonicalSlug(canonicalName, representative, groups.length > 1),
+        aliases: [...new Set(group.records.map((entry) => entry.mountain.name))].sort((a, b) =>
+          a.localeCompare(b, "ja")
+        ),
+        descriptionSources,
+        accessSources,
+        courseSources,
+        memberships: group.memberships.sort((a, b) =>
+          a.label.localeCompare(b.label, "ja")
+        ),
+      }
+    })
+  )
   .sort((a, b) => a.canonicalName.localeCompare(b.canonicalName, "ja"))
 
 const canonicalByName = new Map(
@@ -200,4 +281,36 @@ export function findCanonicalMountainByName(name: string) {
 
 export function findCanonicalMountainBySlug(slug: string) {
   return canonicalBySlug.get(slug) ?? null
+}
+
+const canonicalByRecordKey = new Map<string, CanonicalMountain>()
+
+for (const mountain of CANONICAL_MOUNTAINS) {
+  canonicalByRecordKey.set(getMountainRecordKey(mountain), mountain)
+}
+
+for (const list of MOUNTAIN_LISTS) {
+  for (const mountain of list.mountains) {
+    const recordKey = getMountainRecordKey(mountain)
+    if (canonicalByRecordKey.has(recordKey)) continue
+    const canonical = CANONICAL_MOUNTAINS.find(
+      (candidate) =>
+        candidate.canonicalName === normalizeMountainName(mountain.name) &&
+        distanceKm(candidate, mountain) <= CLUSTER_DISTANCE_KM
+    )
+    if (canonical) canonicalByRecordKey.set(recordKey, canonical)
+  }
+}
+
+export function findCanonicalMountainByRecord(
+  mountain: Pick<MountainRecord, "name" | "latitude" | "longitude" | "elevation">
+) {
+  return canonicalByRecordKey.get(getMountainRecordKey(mountain)) ?? null
+}
+
+export function getMountainPagePathForRecord(
+  mountain: Pick<MountainRecord, "name" | "latitude" | "longitude" | "elevation">
+) {
+  const canonical = findCanonicalMountainByRecord(mountain)
+  return canonical ? `/mountain/${canonical.slug}/` : getMountainPagePath(mountain.name)
 }
