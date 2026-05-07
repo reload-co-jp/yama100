@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation"
+
+export const dynamicParams = false
 import CanonicalMountainDetailClient from "../../../components/CanonicalMountainDetailClient"
 import {
   CANONICAL_MOUNTAINS,
-  findCanonicalMountainBySlug,
+  findCanonicalMountainById,
 } from "../../../lib/mountainCatalog"
 import { fetchWikiThumbnail } from "../../../lib/site"
 
@@ -72,20 +74,20 @@ function SourceSection({
 }
 
 export function generateStaticParams() {
-  return CANONICAL_MOUNTAINS.map((mountain) => ({ name: mountain.slug }))
+  return CANONICAL_MOUNTAINS.map((mountain) => ({ id: String(mountain.id) }))
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ name: string }>
+  params: Promise<{ id: string }>
 }) {
-  const { name } = await params
-  const mountain = findCanonicalMountainBySlug(name)
+  const { id } = await params
+  const mountain = findCanonicalMountainById(Number(id))
   if (!mountain) return {}
 
   const imageUrl = await fetchWikiThumbnail(mountain.name)
-  const canonicalPath = `/mountain/${mountain.slug}/`
+  const canonicalPath = `/mountain/${mountain.id}/`
 
   return {
     title: mountain.name,
@@ -111,10 +113,10 @@ export async function generateMetadata({
 export default async function CanonicalMountainPage({
   params,
 }: {
-  params: Promise<{ name: string }>
+  params: Promise<{ id: string }>
 }) {
-  const { name } = await params
-  const mountain = findCanonicalMountainBySlug(name)
+  const { id } = await params
+  const mountain = findCanonicalMountainById(Number(id))
   if (!mountain) notFound()
 
   const jsonLd = {
@@ -122,7 +124,7 @@ export default async function CanonicalMountainPage({
     "@type": "Place",
     name: mountain.name,
     description: mountain.description,
-    url: `/mountain/${mountain.slug}/`,
+    url: `/mountain/${mountain.id}/`,
     geo: {
       "@type": "GeoCoordinates",
       latitude: mountain.latitude,

@@ -52,7 +52,6 @@ export type CanonicalMountainSourceText = {
 
 export type CanonicalMountain = MountainRecord & {
   canonicalName: string
-  slug: string
   aliases: string[]
   descriptionSources: CanonicalMountainSourceText[]
   accessSources: CanonicalMountainSourceText[]
@@ -141,10 +140,6 @@ export function getMountainSlug(name: string) {
   return encodeURIComponent(normalizeMountainName(name))
 }
 
-export function getMountainPagePath(name: string) {
-  return `/mountain/${getMountainSlug(name)}/`
-}
-
 function getSourceTextEntries(
   records: { list: MountainListMeta; mountain: MountainRecord }[],
   field: "description" | "access" | "model_course"
@@ -191,17 +186,6 @@ function distanceKm(a: Pick<MountainRecord, "latitude" | "longitude">, b: Pick<M
   const latKm = (a.latitude - b.latitude) * 111
   const lngKm = (a.longitude - b.longitude) * 91
   return Math.sqrt(latKm * latKm + lngKm * lngKm)
-}
-
-function buildCanonicalSlug(
-  canonicalName: string,
-  representative: MountainRecord,
-  needsDisambiguation: boolean
-) {
-  const raw = needsDisambiguation
-    ? `${canonicalName}-${representative.location.join("-")}`
-    : canonicalName
-  return encodeURIComponent(raw)
 }
 
 type CanonicalGroup = {
@@ -253,7 +237,6 @@ export const CANONICAL_MOUNTAINS: readonly CanonicalMountain[] = Array.from(cano
         ...representative,
         description: mergeSourceTexts(descriptionSources) || representative.description,
         canonicalName,
-        slug: buildCanonicalSlug(canonicalName, representative, groups.length > 1),
         aliases: [...new Set(group.records.map((entry) => entry.mountain.name))].sort((a, b) =>
           a.localeCompare(b, "ja")
         ),
@@ -271,16 +254,16 @@ export const CANONICAL_MOUNTAINS: readonly CanonicalMountain[] = Array.from(cano
 const canonicalByName = new Map(
   CANONICAL_MOUNTAINS.map((mountain) => [mountain.canonicalName, mountain])
 )
-const canonicalBySlug = new Map(
-  CANONICAL_MOUNTAINS.map((mountain) => [mountain.slug, mountain])
+const canonicalById = new Map(
+  CANONICAL_MOUNTAINS.map((mountain) => [mountain.id, mountain])
 )
 
 export function findCanonicalMountainByName(name: string) {
   return canonicalByName.get(normalizeMountainName(name)) ?? null
 }
 
-export function findCanonicalMountainBySlug(slug: string) {
-  return canonicalBySlug.get(slug) ?? null
+export function findCanonicalMountainById(id: number) {
+  return canonicalById.get(id) ?? null
 }
 
 const canonicalByRecordKey = new Map<string, CanonicalMountain>()
@@ -309,8 +292,8 @@ export function findCanonicalMountainByRecord(
 }
 
 export function getMountainPagePathForRecord(
-  mountain: Pick<MountainRecord, "name" | "latitude" | "longitude" | "elevation">
+  mountain: Pick<MountainRecord, "name" | "latitude" | "longitude" | "elevation" | "id">
 ) {
   const canonical = findCanonicalMountainByRecord(mountain)
-  return canonical ? `/mountain/${canonical.slug}/` : getMountainPagePath(mountain.name)
+  return canonical ? `/mountain/${canonical.id}/` : `/mountain/${mountain.id}/`
 }

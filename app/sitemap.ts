@@ -6,7 +6,7 @@ export const dynamic = "force-static"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const mountainPages = CANONICAL_MOUNTAINS.map((mountain) => ({
-    url: `${SITE_URL}/mountain/${mountain.slug}/`,
+    url: `${SITE_URL}/mountain/${mountain.id}/`,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }))

@@ -88,7 +88,7 @@ export default function SearchPageClient() {
                       }}
                     >
                       <Link
-                        href={`/mountain/${mountain.slug}/`}
+                        href={`/mountain/${mountain.id}/`}
                         style={{
                           color: "#fff",
                           fontSize: "1rem",
