@@ -232,7 +232,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <p style={{ margin: 0 }}>&copy; Yama100</p>
-            <Link href="/about/" style={{ color: "#7ecfb3", textDecoration: "none" }}>このサイトについて</Link>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "flex-end" }}>
+              <Link href="/about/" style={{ color: "#7ecfb3", textDecoration: "none" }}>このサイトについて</Link>
+              <a href="https://reload.co.jp/" style={{ color: "#7ecfb3", textDecoration: "none" }}>運営会社</a>
+            </div>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
             <Link href="/articles/" style={{ color: "#aaa", textDecoration: "none" }}>読み物一覧</Link>
