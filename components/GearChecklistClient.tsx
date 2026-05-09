@@ -2,10 +2,15 @@
 
 import { FC, useEffect, useMemo, useState } from "react"
 
+type Accommodation = "day" | "hut" | "tent"
+type Season = "summer" | "winter"
+
 type GearItem = {
   id: string
   label: string
   note?: string
+  accommodation?: Accommodation[]
+  season?: Season[]
 }
 
 type GearCategory = {
@@ -56,8 +61,8 @@ const categories: GearCategory[] = [
       { id: "lunch", label: "行動食・昼食" },
       { id: "emergency-food", label: "非常食" },
       { id: "trash", label: "ゴミ袋" },
-      { id: "stove", label: "バーナー・燃料", note: "使う日だけ" },
-      { id: "cup", label: "カップ・箸" },
+      { id: "stove", label: "バーナー・燃料", accommodation: ["hut", "tent"] },
+      { id: "cup", label: "カップ・箸", accommodation: ["hut", "tent"] },
     ],
   },
   {
@@ -70,7 +75,7 @@ const categories: GearCategory[] = [
       { id: "towel", label: "タオル" },
       { id: "sunscreen", label: "日焼け止め" },
       { id: "sunglasses", label: "サングラス" },
-      { id: "bug", label: "虫よけ" },
+      { id: "bug", label: "虫よけ", season: ["summer"] },
       { id: "toilet", label: "携帯トイレ・紙" },
     ],
   },
@@ -79,10 +84,10 @@ const categories: GearCategory[] = [
     title: "季節・山域",
     items: [
       { id: "gaiters", label: "ゲイター" },
-      { id: "spikes", label: "チェーンスパイク・軽アイゼン" },
-      { id: "winter-gloves", label: "防寒手袋" },
-      { id: "warm-hat", label: "ニット帽" },
-      { id: "bear-bell", label: "熊鈴" },
+      { id: "spikes", label: "チェーンスパイク・軽アイゼン", season: ["winter"] },
+      { id: "winter-gloves", label: "防寒手袋", season: ["winter"] },
+      { id: "warm-hat", label: "ニット帽", season: ["winter"] },
+      { id: "bear-bell", label: "熊鈴", season: ["summer"] },
       { id: "helmet", label: "ヘルメット" },
       { id: "route-doc", label: "登山届" },
     ],
@@ -91,26 +96,43 @@ const categories: GearCategory[] = [
     id: "stay",
     title: "山小屋・テント泊",
     items: [
-      { id: "reservation", label: "予約確認" },
-      { id: "liner", label: "インナーシーツ" },
-      { id: "earplugs", label: "耳栓" },
-      { id: "tent", label: "テント一式" },
-      { id: "sleeping-bag", label: "寝袋" },
-      { id: "mat", label: "マット" },
-      { id: "lamp", label: "ランタン" },
+      { id: "reservation", label: "予約確認", accommodation: ["hut"] },
+      { id: "liner", label: "インナーシーツ", accommodation: ["hut"] },
+      { id: "earplugs", label: "耳栓", accommodation: ["hut"] },
+      { id: "tent", label: "テント一式", accommodation: ["tent"] },
+      { id: "sleeping-bag", label: "寝袋", accommodation: ["hut", "tent"] },
+      { id: "mat", label: "マット", accommodation: ["tent"] },
+      { id: "lamp", label: "ランタン", accommodation: ["tent"] },
     ],
   },
 ]
 
-const allItems = categories.flatMap((category) => category.items)
+const ALL_ACCOMMODATIONS: Accommodation[] = ["day", "hut", "tent"]
+const ALL_SEASONS: Season[] = ["summer", "winter"]
+
+const isItemVisible = (item: GearItem, accommodation: Accommodation, season: Season) =>
+  (item.accommodation ?? ALL_ACCOMMODATIONS).includes(accommodation) &&
+  (item.season ?? ALL_SEASONS).includes(season)
+
+const ACCOMMODATION_LABELS: Record<Accommodation, string> = {
+  day: "日帰り",
+  hut: "山小屋泊",
+  tent: "テント泊",
+}
+
+const SEASON_LABELS: Record<Season, string> = {
+  summer: "春〜秋",
+  winter: "秋冬",
+}
 
 const GearChecklistClient: FC = () => {
+  const [accommodation, setAccommodation] = useState<Accommodation>("day")
+  const [season, setSeason] = useState<Season>("summer")
+
   const [checked, setChecked] = useState<Record<string, boolean>>(() => {
     if (typeof window === "undefined") return {}
-
     const saved = window.localStorage.getItem(STORAGE_KEY)
     if (!saved) return {}
-
     try {
       return JSON.parse(saved)
     } catch {
@@ -123,11 +145,28 @@ const GearChecklistClient: FC = () => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(checked))
   }, [checked])
 
-  const checkedCount = useMemo(
-    () => allItems.filter((item) => checked[item.id]).length,
-    [checked],
+  const visibleCategories = useMemo(
+    () =>
+      categories
+        .map((cat) => ({
+          ...cat,
+          items: cat.items.filter((item) => isItemVisible(item, accommodation, season)),
+        }))
+        .filter((cat) => cat.items.length > 0),
+    [accommodation, season],
   )
-  const progress = Math.round((checkedCount / allItems.length) * 100)
+
+  const allVisibleItems = useMemo(
+    () => visibleCategories.flatMap((cat) => cat.items),
+    [visibleCategories],
+  )
+
+  const checkedCount = useMemo(
+    () => allVisibleItems.filter((item) => checked[item.id]).length,
+    [allVisibleItems, checked],
+  )
+
+  const progress = allVisibleItems.length === 0 ? 0 : Math.round((checkedCount / allVisibleItems.length) * 100)
 
   const toggleItem = (id: string) => {
     setChecked((current) => ({ ...current, [id]: !current[id] }))
@@ -230,6 +269,53 @@ const GearChecklistClient: FC = () => {
         .gear-button.secondary {
           background: #343d38;
           color: #d4d8d1;
+        }
+
+        .gear-filters {
+          border-bottom: 1px solid #384139;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          padding: 20px 0;
+        }
+
+        .gear-filter-group {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .gear-filter-label {
+          color: #7ecfb3;
+          font-size: .78rem;
+          font-weight: 700;
+          letter-spacing: .06em;
+          white-space: nowrap;
+        }
+
+        .gear-filter-btn {
+          background: #29302c;
+          border: 1px solid #3d4842;
+          border-radius: 999px;
+          color: #91a196;
+          cursor: pointer;
+          font: inherit;
+          font-size: .85rem;
+          font-weight: 600;
+          padding: 6px 14px;
+          transition: background .12s, color .12s, border-color .12s;
+        }
+
+        .gear-filter-btn:hover {
+          border-color: #7ecfb3;
+          color: #d4d8d1;
+        }
+
+        .gear-filter-btn.active {
+          background: #7ecfb3;
+          border-color: #7ecfb3;
+          color: #10221b;
         }
 
         .gear-grid {
@@ -349,8 +435,37 @@ const GearChecklistClient: FC = () => {
         </div>
       </section>
 
+      <div className="gear-filters">
+        <div className="gear-filter-group">
+          <span className="gear-filter-label">スタイル</span>
+          {ALL_ACCOMMODATIONS.map((a) => (
+            <button
+              className={`gear-filter-btn${accommodation === a ? " active" : ""}`}
+              key={a}
+              onClick={() => setAccommodation(a)}
+              type="button"
+            >
+              {ACCOMMODATION_LABELS[a]}
+            </button>
+          ))}
+        </div>
+        <div className="gear-filter-group">
+          <span className="gear-filter-label">季節</span>
+          {ALL_SEASONS.map((s) => (
+            <button
+              className={`gear-filter-btn${season === s ? " active" : ""}`}
+              key={s}
+              onClick={() => setSeason(s)}
+              type="button"
+            >
+              {SEASON_LABELS[s]}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="gear-grid">
-        {categories.map((category) => {
+        {visibleCategories.map((category) => {
           const categoryCheckedCount = category.items.filter((item) => checked[item.id]).length
 
           return (
