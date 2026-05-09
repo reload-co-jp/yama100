@@ -142,6 +142,26 @@ const Page: FC = () => {
           </div>
         </Link>
         <Link
+          href="/gear-checklist/"
+          style={{
+            background: "#2a2a2a",
+            borderRadius: "8px",
+            padding: "20px",
+            color: "#fff",
+            textDecoration: "none",
+            display: "block",
+          }}
+        >
+          <div
+            style={{ fontSize: "1.2rem", fontWeight: 600, marginBottom: "8px" }}
+          >
+            山装備 忘れ物チェックリスト
+          </div>
+          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+            登山前に必携品、ウェア、水・食料、季節装備、泊まり装備を確認
+          </div>
+        </Link>
+        <Link
           href="/articles/flowers/"
           style={{
             background: "#2a2a2a",
