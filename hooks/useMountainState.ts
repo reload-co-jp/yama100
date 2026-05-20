@@ -13,7 +13,10 @@ function readCheckedFromStorage(storageKey: string) {
   const stored = localStorage.getItem(storageKey)
   if (stored) {
     const { checked: ids } = JSON.parse(stored)
-    if (Array.isArray(ids)) return new Set<number>(ids)
+    if (Array.isArray(ids))
+      return new Set<number>(
+        ids.map(Number).filter((n) => Number.isInteger(n) && n > 0)
+      )
   }
   return new Set<number>()
 }
