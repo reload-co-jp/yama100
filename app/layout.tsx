@@ -1,4 +1,5 @@
 import HeaderSearch from "components/HeaderSearch"
+import PWAInstallBanner from "components/PWAInstallBanner"
 import ServiceWorkerRegistration from "components/ServiceWorkerRegistration"
 import { Title } from "components/elements/layout"
 import Link from "next/link"
@@ -69,6 +70,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       </head>
       <body>
         <ServiceWorkerRegistration />
+        <PWAInstallBanner />
         <style>{`
           .site-header-inner {
             align-items: center;
