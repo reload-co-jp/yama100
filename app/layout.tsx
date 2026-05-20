@@ -1,4 +1,5 @@
 import HeaderSearch from "components/HeaderSearch"
+import ServiceWorkerRegistration from "components/ServiceWorkerRegistration"
 import { Title } from "components/elements/layout"
 import Link from "next/link"
 import { Suspense } from "react"
@@ -31,6 +32,16 @@ export const metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "apple-mobile-web-app-title": "Yama100",
+  },
+}
+
+export const viewport = {
+  themeColor: "#333333",
 }
 
 const GA_ID = "G-KY5MNFQJMW"
@@ -57,6 +68,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         )}
       </head>
       <body>
+        <ServiceWorkerRegistration />
         <style>{`
           .site-header-inner {
             align-items: center;
