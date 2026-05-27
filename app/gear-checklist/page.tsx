@@ -8,11 +8,19 @@ export const metadata: Metadata = {
     "登山前に地図、ヘッドランプ、レインウェア、水、食料、季節装備、山小屋泊・テント泊装備を確認できるチェックリスト。",
   alternates: { canonical: "/gear-checklist/" },
   openGraph: {
-    title: "山装備 忘れ物チェックリスト | Yama100",
+    title: "山装備 忘れ物チェックリスト",
     description:
       "登山前に地図、ヘッドランプ、レインウェア、水、食料、季節装備、山小屋泊・テント泊装備を確認できるチェックリスト。",
-    url: `${SITE_URL}/gear-checklist/`,
+    url: "/gear-checklist/",
     siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "山装備 忘れ物チェックリスト",
+    description:
+      "登山前に地図、ヘッドランプ、レインウェア、水、食料、季節装備、山小屋泊・テント泊装備を確認できるチェックリスト。",
   },
 }
 

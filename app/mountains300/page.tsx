@@ -25,6 +25,21 @@ export const metadata = {
   description:
     "山レコ準拠の日本三百名山一覧のうち、百名山・二百名山以外の101峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
   alternates: { canonical: "/mountains300/" },
+  openGraph: {
+    title: "日本三百名山チェックリスト",
+    description:
+      "山レコ準拠の日本三百名山一覧のうち、百名山・二百名山以外の101峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+    url: "/mountains300/",
+    siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "日本三百名山チェックリスト",
+    description:
+      "山レコ準拠の日本三百名山一覧のうち、百名山・二百名山以外の101峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+  },
 }
 
 export default function Page() {

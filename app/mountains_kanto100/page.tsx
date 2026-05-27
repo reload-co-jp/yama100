@@ -25,6 +25,21 @@ export const metadata = {
   description:
     "関東一都六県を中心に選定された関東百名山の100座。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
   alternates: { canonical: "/mountains_kanto100/" },
+  openGraph: {
+    title: "関東百名山チェックリスト",
+    description:
+      "関東一都六県を中心に選定された関東百名山の100座。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+    url: "/mountains_kanto100/",
+    siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "関東百名山チェックリスト",
+    description:
+      "関東一都六県を中心に選定された関東百名山の100座。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+  },
 }
 
 export default function Page() {

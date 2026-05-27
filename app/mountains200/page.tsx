@@ -25,6 +25,21 @@ export const metadata = {
   description:
     "山と渓谷社が選定した日本二百名山のうち、百名山以外の100峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
   alternates: { canonical: "/mountains200/" },
+  openGraph: {
+    title: "日本二百名山チェックリスト",
+    description:
+      "山と渓谷社が選定した日本二百名山のうち、百名山以外の100峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+    url: "/mountains200/",
+    siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "日本二百名山チェックリスト",
+    description:
+      "山と渓谷社が選定した日本二百名山のうち、百名山以外の100峰。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
+  },
 }
 
 export default function Page() {

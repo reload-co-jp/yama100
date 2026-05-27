@@ -25,6 +25,21 @@ export const metadata = {
   description:
     "ヤマレコ準拠のマイナー12名山一覧。ログイン不要で登頂記録をチェックしてURLで共有できます。",
   alternates: { canonical: "/mountains_minor12/" },
+  openGraph: {
+    title: "マイナー12名山チェックリスト",
+    description:
+      "ヤマレコ準拠のマイナー12名山一覧。ログイン不要で登頂記録をチェックしてURLで共有できます。",
+    url: "/mountains_minor12/",
+    siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "マイナー12名山チェックリスト",
+    description:
+      "ヤマレコ準拠のマイナー12名山一覧。ログイン不要で登頂記録をチェックしてURLで共有できます。",
+  },
 }
 
 export default function Page() {

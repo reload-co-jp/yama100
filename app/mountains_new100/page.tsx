@@ -25,6 +25,21 @@ export const metadata = {
   description:
     "岩崎元郎が選んだ新日本百名山100座のチェックリスト。ログイン不要で登頂記録をURL共有できます。",
   alternates: { canonical: "/mountains_new100/" },
+  openGraph: {
+    title: "新日本百名山チェックリスト",
+    description:
+      "岩崎元郎が選んだ新日本百名山100座のチェックリスト。ログイン不要で登頂記録をURL共有できます。",
+    url: "/mountains_new100/",
+    siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "新日本百名山チェックリスト",
+    description:
+      "岩崎元郎が選んだ新日本百名山100座のチェックリスト。ログイン不要で登頂記録をURL共有できます。",
+  },
 }
 
 export default function Page() {

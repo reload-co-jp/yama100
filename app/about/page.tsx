@@ -4,6 +4,20 @@ import Link from "next/link"
 export const metadata = {
   title: "日本百名山とは",
   description: "日本百名山についての説明と、このサイトの目的、運営会社について",
+  alternates: { canonical: "/about/" },
+  openGraph: {
+    title: "日本百名山とは",
+    description: "日本百名山についての説明と、このサイトの目的、運営会社について",
+    url: "/about/",
+    siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "日本百名山とは",
+    description: "日本百名山についての説明と、このサイトの目的、運営会社について",
+  },
 }
 
 const Page: FC = () => {

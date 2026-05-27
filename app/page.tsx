@@ -5,6 +5,7 @@ import {
   MountainListPageConfig,
 } from "../lib/mountainListPage"
 import { MountainRecord } from "../lib/mountainCatalog"
+import { SITE_URL } from "../lib/site"
 
 const config: MountainListPageConfig = {
   listName: "日本百名山",
@@ -19,12 +20,30 @@ const config: MountainListPageConfig = {
 
 const jsonLd = buildMountainListJsonLd(mountainsData as MountainRecord[], config)
 
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Yama100",
+  url: SITE_URL,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: `${SITE_URL}/search/?q={search_term_string}` },
+    "query-input": "required name=search_term_string",
+  },
+}
+
 export default function Page() {
   return (
-    <MountainListPage
-      config={config}
-      mountains={mountainsData as MountainRecord[]}
-      jsonLd={jsonLd}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
+      />
+      <MountainListPage
+        config={config}
+        mountains={mountainsData as MountainRecord[]}
+        jsonLd={jsonLd}
+      />
+    </>
   )
 }

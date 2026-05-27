@@ -6,6 +6,7 @@ export const metadata = {
   description:
     "百名山・二百名山・三百名山・花の百名山・マイナー12名山・新日本百名山を横断して山名検索できます。",
   alternates: { canonical: "/search/" },
+  robots: { index: false, follow: true },
 }
 
 export default function SearchPage() {
