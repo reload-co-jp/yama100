@@ -128,6 +128,9 @@ export function useMountainState(
 
   const setSort = useCallback((nextSort: SortOrder) => {
     setSortOverride(nextSort)
+    const url = new URL(window.location.href)
+    url.searchParams.set("sort", nextSort)
+    window.history.replaceState(null, "", url.toString())
   }, [])
 
   const saveToStorage = useCallback(
