@@ -4,13 +4,21 @@ import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
-  title: "深田久弥について | Yama100",
+  title: "深田久弥について",
   description: "日本百名山の著者、深田久弥の生涯と功績についての解説",
+  alternates: { canonical: "/articles/fukada/" },
   openGraph: {
-    title: "深田久弥について | Yama100",
+    title: "深田久弥について",
     description: "日本百名山の著者、深田久弥の生涯と功績についての解説",
-    url: "https://yama100.reload.co.jp/articles/fukada",
+    url: "/articles/fukada/",
     siteName: "Yama100",
+    locale: "ja_JP",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "深田久弥について",
+    description: "日本百名山の著者、深田久弥の生涯と功績についての解説",
   },
 }
 

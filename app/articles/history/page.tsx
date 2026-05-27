@@ -4,13 +4,21 @@ import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
-  title: "百名山の成立について | Yama100",
+  title: "百名山の成立について",
   description: "日本百名山の歴史と深田久弥による選定の背景",
+  alternates: { canonical: "/articles/history/" },
   openGraph: {
-    title: "百名山の成立について | Yama100",
+    title: "百名山の成立について",
     description: "日本百名山の歴史と深田久弥による選定の背景",
-    url: "https://yama100.reload.co.jp/articles/history",
+    url: "/articles/history/",
     siteName: "Yama100",
+    locale: "ja_JP",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "百名山の成立について",
+    description: "日本百名山の歴史と深田久弥による選定の背景",
   },
 }
 

@@ -4,13 +4,21 @@ import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
-  title: "二百名山について | Yama100",
+  title: "二百名山について",
   description: "日本二百名山の歴史と百名山との違いについての解説",
+  alternates: { canonical: "/articles/mountains200/" },
   openGraph: {
-    title: "二百名山について | Yama100",
+    title: "二百名山について",
     description: "日本二百名山の歴史と百名山との違いについての解説",
-    url: "https://yama100.reload.co.jp/articles/mountains200",
+    url: "/articles/mountains200/",
     siteName: "Yama100",
+    locale: "ja_JP",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "二百名山について",
+    description: "日本二百名山の歴史と百名山との違いについての解説",
   },
 }
 

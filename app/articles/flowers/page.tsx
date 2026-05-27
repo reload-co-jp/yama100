@@ -4,13 +4,21 @@ import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
-  title: "花の百名山について | Yama100",
+  title: "花の百名山について",
   description: "田中澄江が選定した「花の百名山」の歴史とコンセプトの解説",
+  alternates: { canonical: "/articles/flowers/" },
   openGraph: {
-    title: "花の百名山について | Yama100",
+    title: "花の百名山について",
     description: "田中澄江が選定した「花の百名山」の歴史とコンセプトの解説",
-    url: "https://yama100.reload.co.jp/articles/flowers",
+    url: "/articles/flowers/",
     siteName: "Yama100",
+    locale: "ja_JP",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "花の百名山について",
+    description: "田中澄江が選定した「花の百名山」の歴史とコンセプトの解説",
   },
 }
 

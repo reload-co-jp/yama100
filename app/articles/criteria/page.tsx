@@ -4,13 +4,21 @@ import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
-  title: "百名山の選考基準について | Yama100",
+  title: "百名山の選考基準について",
   description: "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
+  alternates: { canonical: "/articles/criteria/" },
   openGraph: {
-    title: "百名山の選考基準について | Yama100",
+    title: "百名山の選考基準について",
     description: "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
-    url: "https://yama100.reload.co.jp/articles/criteria",
+    url: "/articles/criteria/",
     siteName: "Yama100",
+    locale: "ja_JP",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "百名山の選考基準について",
+    description: "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
   },
 }
 

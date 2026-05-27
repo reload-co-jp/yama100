@@ -4,6 +4,20 @@ import Link from "next/link"
 export const metadata = {
   title: "読み物一覧",
   description: "日本百名山や登山に関する読み物・記事一覧",
+  alternates: { canonical: "/articles/" },
+  openGraph: {
+    title: "読み物一覧",
+    description: "日本百名山や登山に関する読み物・記事一覧",
+    url: "/articles/",
+    siteName: "Yama100",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "読み物一覧",
+    description: "日本百名山や登山に関する読み物・記事一覧",
+  },
 }
 
 const Page: FC = () => {

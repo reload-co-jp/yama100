@@ -4,13 +4,21 @@ import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
 
 export const metadata: Metadata = {
-  title: "深田久弥が登った山々 | Yama100",
+  title: "深田久弥が登った山々",
   description: "深田久弥の山行の記録と日本百名山への道",
+  alternates: { canonical: "/articles/mountains/" },
   openGraph: {
-    title: "深田久弥が登った山々 | Yama100",
+    title: "深田久弥が登った山々",
     description: "深田久弥の山行の記録と日本百名山への道",
-    url: "https://yama100.reload.co.jp/articles/mountains",
+    url: "/articles/mountains/",
     siteName: "Yama100",
+    locale: "ja_JP",
+    type: "article",
+  },
+  twitter: {
+    card: "summary",
+    title: "深田久弥が登った山々",
+    description: "深田久弥の山行の記録と日本百名山への道",
   },
 }
 

@@ -6,7 +6,11 @@ import {
   CANONICAL_MOUNTAINS,
   findCanonicalMountainById,
 } from "../../../lib/mountainCatalog"
-import { fetchWikiThumbnail } from "../../../lib/site"
+import { fetchWikiThumbnail, SITE_URL } from "../../../lib/site"
+
+function truncateDescription(text: string, maxLen = 155): string {
+  return text.length > maxLen ? text.slice(0, maxLen - 1) + "…" : text
+}
 
 function SourceSection({
   entries,
@@ -88,14 +92,15 @@ export async function generateMetadata({
 
   const imageUrl = await fetchWikiThumbnail(mountain.name)
   const canonicalPath = `/mountain/${mountain.id}/`
+  const description = truncateDescription(mountain.description)
 
   return {
     title: mountain.name,
-    description: mountain.description,
+    description,
     alternates: { canonical: canonicalPath },
     openGraph: {
       title: `${mountain.name}（${mountain.elevation.toLocaleString()}m）`,
-      description: mountain.description,
+      description,
       url: canonicalPath,
       locale: "ja_JP",
       type: "article",
@@ -104,7 +109,7 @@ export async function generateMetadata({
     twitter: {
       card: imageUrl ? "summary_large_image" : "summary",
       title: `${mountain.name}（${mountain.elevation.toLocaleString()}m）`,
-      description: mountain.description,
+      description,
       ...(imageUrl ? { images: [imageUrl] } : {}),
     },
   }
@@ -118,6 +123,15 @@ export default async function CanonicalMountainPage({
   const { id } = await params
   const mountain = findCanonicalMountainById(Number(id))
   if (!mountain) notFound()
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: mountain.name, item: `${SITE_URL}/mountain/${mountain.id}/` },
+    ],
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -148,6 +162,10 @@ export default async function CanonicalMountainPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       <div
