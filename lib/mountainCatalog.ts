@@ -129,6 +129,8 @@ const NAME_ALIASES: Record<string, string> = {
   蔵王山: "蔵王山",
   九重連山: "九重山",
   九重山: "九重山",
+  大和葛城山: "大和葛城山",
+  葛城山: "大和葛城山",
 }
 
 export function normalizeMountainName(name: string) {
