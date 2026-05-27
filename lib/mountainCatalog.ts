@@ -131,6 +131,16 @@ const NAME_ALIASES: Record<string, string> = {
   九重山: "九重山",
   大和葛城山: "大和葛城山",
   葛城山: "大和葛城山",
+  穂高岳: "奥穂高岳",
+  奥穂高岳: "奥穂高岳",
+  八ヶ岳: "赤岳",
+  赤岳: "赤岳",
+  雲仙岳: "普賢岳",
+  普賢岳: "普賢岳",
+  蒜山: "上蒜山",
+  上蒜山: "上蒜山",
+  赤城山: "黒檜山",
+  黒檜山: "黒檜山",
 }
 
 export function normalizeMountainName(name: string) {
