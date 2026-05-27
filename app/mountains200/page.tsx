@@ -5,6 +5,7 @@ import {
   MountainListPageConfig,
 } from "../../lib/mountainListPage"
 import { MountainRecord } from "../../lib/mountainCatalog"
+import { SITE_URL } from "../../lib/site"
 
 const config: MountainListPageConfig = {
   listName: "日本二百名山",
@@ -19,6 +20,15 @@ const config: MountainListPageConfig = {
 }
 
 const jsonLd = buildMountainListJsonLd(mountainsData as MountainRecord[], config)
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "日本二百名山チェックリスト", item: `${SITE_URL}/mountains200/` },
+  ],
+}
 
 export const metadata = {
   title: "日本二百名山チェックリスト",
@@ -44,10 +54,13 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <MountainListPage
-      config={config}
-      mountains={mountainsData as MountainRecord[]}
-      jsonLd={jsonLd}
-    />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <MountainListPage
+        config={config}
+        mountains={mountainsData as MountainRecord[]}
+        jsonLd={jsonLd}
+      />
+    </>
   )
 }

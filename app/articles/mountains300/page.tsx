@@ -2,6 +2,7 @@ import { FC } from "react"
 import Link from "next/link"
 import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
+import { SITE_URL } from "lib/site"
 
 export const metadata: Metadata = {
   title: "三百名山について",
@@ -25,11 +26,23 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yama100.reload.co.jp" },
-    { "@type": "ListItem", "position": 2, "name": "読み物一覧", "item": "https://yama100.reload.co.jp/articles" },
-    { "@type": "ListItem", "position": 3, "name": "三百名山について", "item": "https://yama100.reload.co.jp/articles/mountains300" }
-  ]
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "読み物一覧", item: `${SITE_URL}/articles/` },
+    { "@type": "ListItem", position: 3, name: "三百名山について", item: `${SITE_URL}/articles/mountains300/` },
+  ],
+}
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "三百名山について",
+  description: "日本三百名山の歴史と百名山・二百名山との違いについての解説",
+  url: `${SITE_URL}/articles/mountains300/`,
+  datePublished: "2026-04-14",
+  dateModified: "2026-04-18",
+  author: { "@type": "Organization", name: "Yama100", url: SITE_URL },
+  publisher: { "@type": "Organization", name: "Yama100", url: SITE_URL },
 }
 
 const sources = [
@@ -60,10 +73,8 @@ const Page: FC = () => {
         color: "#ccc",
       }}
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <Link
         href="/articles/"
         style={{ color: "#7ecfb3", textDecoration: "none" }}

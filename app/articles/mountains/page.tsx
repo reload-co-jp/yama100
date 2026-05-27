@@ -2,6 +2,7 @@ import { FC } from "react"
 import Link from "next/link"
 import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
+import { SITE_URL } from "lib/site"
 
 export const metadata: Metadata = {
   title: "深田久弥が登った山々",
@@ -25,11 +26,23 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yama100.reload.co.jp" },
-    { "@type": "ListItem", "position": 2, "name": "読み物一覧", "item": "https://yama100.reload.co.jp/articles" },
-    { "@type": "ListItem", "position": 3, "name": "深田久弥が登った山々", "item": "https://yama100.reload.co.jp/articles/mountains" }
-  ]
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "読み物一覧", item: `${SITE_URL}/articles/` },
+    { "@type": "ListItem", position: 3, name: "深田久弥が登った山々", item: `${SITE_URL}/articles/mountains/` },
+  ],
+}
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "深田久弥が登った山々",
+  description: "深田久弥の山行の記録と日本百名山への道",
+  url: `${SITE_URL}/articles/mountains/`,
+  datePublished: "2026-04-14",
+  dateModified: "2026-04-18",
+  author: { "@type": "Organization", name: "Yama100", url: SITE_URL },
+  publisher: { "@type": "Organization", name: "Yama100", url: SITE_URL },
 }
 
 const sources = [
@@ -53,10 +66,8 @@ const sources = [
 const Page: FC = () => {
   return (
     <div style={{ maxWidth: "720px", margin: "40px auto", padding: "0 24px", color: "#ccc" }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <Link href="/articles/" style={{ color: "#7ecfb3", textDecoration: "none" }}>
         ← 読み物一覧に戻る
       </Link>

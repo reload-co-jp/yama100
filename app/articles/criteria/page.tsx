@@ -2,6 +2,7 @@ import { FC } from "react"
 import Link from "next/link"
 import { Metadata } from "next"
 import ArticleSources from "components/articles/ArticleSources"
+import { SITE_URL } from "lib/site"
 
 export const metadata: Metadata = {
   title: "百名山の選考基準について",
@@ -25,11 +26,23 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yama100.reload.co.jp" },
-    { "@type": "ListItem", "position": 2, "name": "読み物一覧", "item": "https://yama100.reload.co.jp/articles" },
-    { "@type": "ListItem", "position": 3, "name": "百名山の選考基準について", "item": "https://yama100.reload.co.jp/articles/criteria" }
-  ]
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "読み物一覧", item: `${SITE_URL}/articles/` },
+    { "@type": "ListItem", position: 3, name: "百名山の選考基準について", item: `${SITE_URL}/articles/criteria/` },
+  ],
+}
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "百名山の選考基準について",
+  description: "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
+  url: `${SITE_URL}/articles/criteria/`,
+  datePublished: "2026-04-14",
+  dateModified: "2026-04-18",
+  author: { "@type": "Organization", name: "Yama100", url: SITE_URL },
+  publisher: { "@type": "Organization", name: "Yama100", url: SITE_URL },
 }
 
 const sources = [
@@ -55,10 +68,8 @@ const Page: FC = () => {
         color: "#ccc",
       }}
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <Link
         href="/articles/"
         style={{ color: "#7ecfb3", textDecoration: "none" }}

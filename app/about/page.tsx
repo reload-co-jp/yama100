@@ -1,5 +1,6 @@
 import { FC } from "react"
 import Link from "next/link"
+import { SITE_URL } from "lib/site"
 
 export const metadata = {
   title: "日本百名山とは",
@@ -20,9 +21,22 @@ export const metadata = {
   },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "日本百名山とは",
+  description: "日本百名山についての説明と、このサイトの目的、運営会社について",
+  url: `${SITE_URL}/about/`,
+  isPartOf: { "@type": "WebSite", name: "Yama100", url: SITE_URL },
+}
+
 const Page: FC = () => {
   return (
     <div style={{ maxWidth: "720px", margin: "40px auto", padding: "0 24px", color: "#ccc" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/" style={{ color: "#7ecfb3", textDecoration: "none" }}>
         ← 一覧に戻る
       </Link>

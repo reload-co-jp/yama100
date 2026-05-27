@@ -104,13 +104,15 @@ export async function generateMetadata({
       url: canonicalPath,
       locale: "ja_JP",
       type: "article",
-      ...(imageUrl ? { images: [{ url: imageUrl, alt: mountain.name }] } : {}),
+      images: imageUrl
+        ? [{ url: imageUrl, alt: mountain.name }]
+        : [{ url: "/opengraph-image", alt: "Yama100" }],
     },
     twitter: {
-      card: imageUrl ? "summary_large_image" : "summary",
+      card: imageUrl ? "summary_large_image" : "summary_large_image",
       title: `${mountain.name}（${mountain.elevation.toLocaleString()}m）`,
       description,
-      ...(imageUrl ? { images: [imageUrl] } : {}),
+      images: imageUrl ? [imageUrl] : ["/opengraph-image"],
     },
   }
 }
@@ -123,6 +125,10 @@ export default async function CanonicalMountainPage({
   const { id } = await params
   const mountain = findCanonicalMountainById(Number(id))
   if (!mountain) notFound()
+
+  const idx = CANONICAL_MOUNTAINS.findIndex((m) => m.id === mountain.id)
+  const prevMountain = idx > 0 ? CANONICAL_MOUNTAINS[idx - 1] : null
+  const nextMountain = idx < CANONICAL_MOUNTAINS.length - 1 ? CANONICAL_MOUNTAINS[idx + 1] : null
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -287,6 +293,55 @@ export default async function CanonicalMountainPage({
           YAMAP →
         </a>
       </div>
+
+      {(prevMountain || nextMountain) && (
+        <nav
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "24px",
+            gap: "8px",
+          }}
+        >
+          {prevMountain ? (
+            <a
+              href={`/mountain/${prevMountain.id}/`}
+              style={{
+                background: "#2a2a2a",
+                borderRadius: "8px",
+                color: "#ccc",
+                fontSize: ".875rem",
+                maxWidth: "48%",
+                padding: "12px 16px",
+                textDecoration: "none",
+              }}
+            >
+              <div style={{ color: "#7ecfb3", fontSize: ".75rem", marginBottom: "4px" }}>← 前の山</div>
+              <div>{prevMountain.name}</div>
+              <div style={{ color: "#888", fontSize: ".8rem" }}>{prevMountain.elevation.toLocaleString()}m</div>
+            </a>
+          ) : <div />}
+          {nextMountain ? (
+            <a
+              href={`/mountain/${nextMountain.id}/`}
+              style={{
+                background: "#2a2a2a",
+                borderRadius: "8px",
+                color: "#ccc",
+                fontSize: ".875rem",
+                maxWidth: "48%",
+                padding: "12px 16px",
+                textAlign: "right",
+                textDecoration: "none",
+              }}
+            >
+              <div style={{ color: "#7ecfb3", fontSize: ".75rem", marginBottom: "4px" }}>次の山 →</div>
+              <div>{nextMountain.name}</div>
+              <div style={{ color: "#888", fontSize: ".8rem" }}>{nextMountain.elevation.toLocaleString()}m</div>
+            </a>
+          ) : <div />}
+        </nav>
+      )}
     </div>
   )
 }

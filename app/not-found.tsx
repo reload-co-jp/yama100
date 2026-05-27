@@ -1,6 +1,10 @@
 import Link from "next/link"
 import type { CSSProperties } from "react"
 
+export const metadata = {
+  robots: { index: false, follow: false },
+}
+
 const linkStyle = {
   background: "#4caf50",
   borderRadius: "4px",
