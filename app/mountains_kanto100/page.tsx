@@ -16,7 +16,7 @@ const config: MountainListPageConfig = {
   storageKey: "yama_kanto100",
   themeColor: "#c62828",
   totalCount: 100,
-  idOffset: 0,
+  idOffset: 501,
 }
 
 const jsonLd = buildMountainListJsonLd(mountainsData as MountainRecord[], config)
