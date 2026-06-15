@@ -8,7 +8,7 @@
 - **二百名山チェックリスト** (`/mountains200/`) — 山と渓谷社選定のうち百名山を除く100峰
 - **各山の詳細ページ** — Wikipedia サムネイル・国土地理院地図・外部リンク
 - **並び順切り替え** — 北から順 / 五十音順 / 標高順 / 都道府県別
-- **地図表示** — Leaflet + 国土地理院地図（一覧と連動）
+- **地図表示** — MapLibre GL JS + 国土地理院地図（一覧と連動）
 - **進捗表示** — 登頂数 / 100・進捗バー
 - **URLシェア** — 登頂状態と並び順をビットエンコードしてURL化
 - **localStorage 保存** — ログイン不要、ブラウザ内で状態を保持
@@ -19,7 +19,7 @@
 |------|------|
 | フレームワーク | Next.js 16 (App Router) |
 | UI | React 19 + TypeScript |
-| 地図 | Leaflet |
+| 地図 | MapLibre GL JS |
 | データ | 静的 JSON (`public/mountains.json`, `public/mountains200.json`) |
 | 状態管理 | React state + localStorage |
 | パッケージマネージャ | pnpm |

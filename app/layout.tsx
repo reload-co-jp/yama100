@@ -4,6 +4,7 @@ import ServiceWorkerRegistration from "components/ServiceWorkerRegistration"
 import { Title } from "components/elements/layout"
 import Link from "next/link"
 import { Suspense } from "react"
+import "maplibre-gl/dist/maplibre-gl.css"
 import "./reset.css"
 
 import { SITE_URL } from "../lib/site"
