@@ -156,10 +156,12 @@ export default function MountainApp({
               <div
                 style={{
                   alignItems: "center",
-                  background: "#2a2a2a",
-                  borderRadius: "8px",
-                  color: "#aaa",
+                  background: "#111",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  borderRadius: "10px",
+                  color: "#333",
                   display: "flex",
+                  fontSize: ".8rem",
                   height: "100%",
                   justifyContent: "center",
                 }}
@@ -180,37 +182,39 @@ export default function MountainApp({
         <div style={{ flex: 1, minWidth: 0 }}>
           <div
             style={{
-              background: "#2a2a2a",
-              borderRadius: "8px",
+              background: "#111",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "10px",
               display: "flex",
               flexDirection: "column",
-              gap: "12px",
+              gap: "14px",
               marginBottom: "16px",
-              padding: "16px",
+              padding: "16px 20px",
             }}
           >
-            <div style={{ alignItems: "center", display: "flex", gap: "12px" }}>
-              <span style={{ fontSize: "1.25rem", fontWeight: "bold" }}>
-                {count} / {totalCount}
+            <div style={{ alignItems: "baseline", display: "flex", gap: "10px" }}>
+              <span style={{ fontSize: "1.375rem", fontWeight: 600, letterSpacing: "-.02em" }}>
+                {count}
+                <span style={{ color: "#444", fontWeight: 400, fontSize: "1rem" }}> / {totalCount}</span>
               </span>
-              <span style={{ color: "#aaa", fontSize: ".875rem" }}>
-                登頂済 ({percent}%)
+              <span style={{ color: "#555", fontSize: ".8rem", fontVariantNumeric: "tabular-nums" }}>
+                {percent}% 登頂済
               </span>
             </div>
             <div
               style={{
-                background: "#444",
-                borderRadius: "4px",
-                height: "8px",
+                background: "rgba(255,255,255,0.06)",
+                borderRadius: "2px",
+                height: "3px",
                 overflow: "hidden",
               }}
             >
               <div
                 style={{
                   background: themeColor,
-                  borderRadius: "4px",
+                  borderRadius: "2px",
                   height: "100%",
-                  transition: "width .3s ease",
+                  transition: "width .4s ease",
                   width: `${percent}%`,
                 }}
               />
@@ -224,22 +228,22 @@ export default function MountainApp({
               }}
             >
               <label
-                style={{ color: "#ccc", fontSize: ".875rem" }}
+                style={{ color: "#555", fontSize: ".8rem" }}
                 htmlFor="sort"
               >
-                並び順：
+                並び順
               </label>
               <select
                 id="sort"
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortOrder)}
                 style={{
-                  background: "#3a3a3a",
-                  border: "1px solid #555",
-                  borderRadius: "4px",
-                  color: "#f0f0f0",
-                  fontSize: ".875rem",
-                  padding: "4px 8px",
+                  background: "#161616",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: "6px",
+                  color: "#aaa",
+                  fontSize: ".8rem",
+                  padding: "5px 8px",
                 }}
               >
                 <option value="number">番号順</option>
@@ -251,17 +255,17 @@ export default function MountainApp({
               <button
                 onClick={handleShare}
                 style={{
-                  background: copied ? "#388e3c" : "#1976d2",
-                  border: "none",
-                  borderRadius: "4px",
-                  color: "#fff",
+                  background: copied ? "rgba(74,222,128,0.12)" : "rgba(255,255,255,0.06)",
+                  border: `1px solid ${copied ? "rgba(74,222,128,0.3)" : "rgba(255,255,255,0.1)"}`,
+                  borderRadius: "6px",
+                  color: copied ? "#4ade80" : "#888",
                   cursor: "pointer",
-                  fontSize: ".875rem",
-                  padding: "4px 12px",
-                  transition: "background .2s",
+                  fontSize: ".8rem",
+                  padding: "5px 12px",
+                  transition: "all .2s",
                 }}
               >
-                {copied ? "コピーしました！" : "URLをシェア"}
+                {copied ? "コピー完了" : "URLをシェア"}
               </button>
             </div>
           </div>
@@ -274,24 +278,27 @@ export default function MountainApp({
                 <div key={prefecture}>
                   <div
                     style={{
-                      borderBottom: "1px solid #444",
-                      color: "#7ecfb3",
-                      fontSize: ".875rem",
-                      fontWeight: "bold",
+                      borderBottom: "1px solid rgba(255,255,255,0.07)",
+                      color: "#888",
+                      fontSize: ".75rem",
+                      fontWeight: 500,
+                      letterSpacing: ".05em",
                       marginBottom: "8px",
-                      paddingBottom: "4px",
+                      paddingBottom: "6px",
+                      textTransform: "uppercase",
                     }}
                   >
                     {prefecture}
                     <span
                       style={{
-                        color: "#666",
+                        color: "#444",
                         fontWeight: "normal",
                         marginLeft: "8px",
+                        textTransform: "none",
+                        letterSpacing: 0,
                       }}
                     >
-                      {prefMountains.filter((m) => checked.has(m.id)).length} /{" "}
-                      {prefMountains.length}
+                      {prefMountains.filter((m) => checked.has(m.id)).length} / {prefMountains.length}
                     </span>
                   </div>
                   <ul
@@ -363,10 +370,10 @@ function MountainListItem({
       onMouseEnter={() => onHover(mountain.id)}
       onMouseLeave={() => onHover(null)}
       style={{
-        background: isChecked ? "#1b3a1c" : "#2a2a2a",
-        borderLeft: `4px solid ${isChecked ? themeColor : "#555"}`,
-        borderRadius: "6px",
-        padding: "12px",
+        background: isChecked ? "rgba(74,222,128,0.04)" : "#111",
+        border: `1px solid ${isChecked ? "rgba(74,222,128,0.15)" : "rgba(255,255,255,0.07)"}`,
+        borderRadius: "8px",
+        padding: "12px 14px",
         transition: "background .2s, border-color .2s",
       }}
     >
@@ -380,9 +387,9 @@ function MountainListItem({
             accentColor: themeColor,
             cursor: "pointer",
             flexShrink: 0,
-            height: "18px",
-            marginTop: "2px",
-            width: "18px",
+            height: "16px",
+            marginTop: "3px",
+            width: "16px",
           }}
         />
         <div style={{ flex: 1, minWidth: 0 }}>
@@ -395,33 +402,34 @@ function MountainListItem({
                 alignItems: "baseline",
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "8px",
+                gap: "6px",
                 marginBottom: "4px",
               }}
             >
               <span
                 style={{
-                  fontSize: "1rem",
-                  fontWeight: "bold",
-                  opacity: isChecked ? 0.6 : 1,
+                  fontSize: ".9375rem",
+                  fontWeight: 500,
+                  letterSpacing: "-.01em",
+                  opacity: isChecked ? 0.4 : 1,
                   textDecoration: isChecked ? "line-through" : "none",
                 }}
               >
                 {mountain.name}
               </span>
-              <span style={{ color: "#aaa", fontSize: ".875rem" }}>
+              <span style={{ color: "#444", fontSize: ".8rem", fontVariantNumeric: "tabular-nums" }}>
                 {mountain.elevation.toLocaleString()}m
               </span>
-              <span style={{ color: "#888", fontSize: ".875rem" }}>
+              <span style={{ color: "#3a3a3a", fontSize: ".8rem" }}>
                 {mountain.location.join("・")}
               </span>
             </div>
             <p
               style={{
-                color: "#bbb",
-                fontSize: ".875rem",
-                lineHeight: 1.5,
-                opacity: isChecked ? 0.5 : 1,
+                color: "#555",
+                fontSize: ".8125rem",
+                lineHeight: 1.6,
+                opacity: isChecked ? 0.4 : 1,
                 overflow: "hidden",
                 WebkitBoxOrient: "vertical",
                 WebkitLineClamp: 2,
@@ -434,12 +442,13 @@ function MountainListItem({
           <Link
             href={getMountainPagePathForRecord(mountain)}
             style={{
-              background: "#3a3a3a",
-              borderRadius: "4px",
-              color: "#aaa",
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "5px",
+              color: "#555",
               display: "inline-block",
               fontSize: ".75rem",
-              padding: "3px 10px",
+              padding: "2px 9px",
               textDecoration: "none",
             }}
           >

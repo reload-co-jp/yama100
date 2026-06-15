@@ -43,7 +43,7 @@ export const metadata = {
 }
 
 export const viewport = {
-  themeColor: "#333333",
+  themeColor: "#0a0a0a",
 }
 
 const GA_ID = "G-KY5MNFQJMW"
@@ -79,6 +79,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             flex-wrap: wrap;
             gap: 16px;
             justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
           }
 
           .site-header-tools {
@@ -86,14 +89,29 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             display: flex;
             flex: 1 1 520px;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
           }
 
           .site-header-nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 2px;
             justify-content: flex-end;
+          }
+
+          .site-header-nav a {
+            border-radius: 6px;
+            color: #888;
+            font-size: .8rem;
+            letter-spacing: .01em;
+            padding: 5px 10px;
+            text-decoration: none;
+            transition: color .15s, background .15s;
+          }
+
+          .site-header-nav a:hover {
+            background: rgba(255,255,255,0.06);
+            color: #ededed;
           }
 
           @media (min-width: 980px) {
@@ -111,173 +129,77 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         `}</style>
         <header
           style={{
-            backgroundColor: "#333",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            padding: ".5rem 1rem",
+            backgroundColor: "#0a0a0a",
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
+            padding: ".625rem 1rem",
             position: "relative",
           }}
         >
           <div className="site-header-inner">
-            <Title>Yama100</Title>
+            <Title style={{ fontSize: "1rem", fontWeight: 600, letterSpacing: "-.01em", color: "#ededed" }}>Yama100</Title>
             <div className="site-header-tools">
               <Suspense fallback={<div style={{ maxWidth: "360px", width: "100%" }} />}>
                 <HeaderSearch />
               </Suspense>
               <nav className="site-header-nav">
-                <Link
-                  href="/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  百名山
-                </Link>
-                <Link
-                  href="/mountains200/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  二百名山
-                </Link>
-                <Link
-                  href="/mountains300/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  三百名山
-                </Link>
-                <Link
-                  href="/mountains_flowers/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  花の百名山
-                </Link>
-                <Link
-                  href="/mountains_minor12/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  マイナー12
-                </Link>
-                <Link
-                  href="/mountains_new100/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  新百名山
-                </Link>
-                <Link
-                  href="/mountains_kanto100/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  関東百名山
-                </Link>
-                <Link
-                  href="/articles/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  読み物
-                </Link>
-                <Link
-                  href="/gear-checklist/"
-                  style={{
-                    borderRadius: "4px",
-                    color: "#ccc",
-                    fontSize: ".8rem",
-                    padding: "4px 10px",
-                    textDecoration: "none",
-                  }}
-                >
-                  山装備
-                </Link>
+                <Link href="/">百名山</Link>
+                <Link href="/mountains200/">二百名山</Link>
+                <Link href="/mountains300/">三百名山</Link>
+                <Link href="/mountains_flowers/">花の百名山</Link>
+                <Link href="/mountains_minor12/">マイナー12</Link>
+                <Link href="/mountains_new100/">新百名山</Link>
+                <Link href="/mountains_kanto100/">関東百名山</Link>
+                <Link href="/articles/">読み物</Link>
+                <Link href="/gear-checklist/">山装備</Link>
               </nav>
             </div>
           </div>
         </header>
         <main
           style={{
-            background: "#222",
+            background: "#0a0a0a",
             minHeight: "calc(100dvh - 5.625rem)",
-            padding: "1rem",
+            padding: "1.5rem 1rem",
           }}
         >
           {children}
         </main>
         <footer
           style={{
-            backgroundColor: "#333",
-            boxShadow: "0 -4px 6px rgba(0, 0, 0, 0.1)",
+            backgroundColor: "#0a0a0a",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
             fontSize: ".75rem",
-            padding: "1rem",
-            color: "#ccc",
+            padding: "1.5rem 1rem",
+            color: "#555",
             display: "flex",
             flexDirection: "column",
-            gap: "12px",
+            gap: "16px",
+            maxWidth: "1400px",
+            margin: "0 auto",
+            width: "100%",
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <p style={{ margin: 0 }}>&copy; Yama100</p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "flex-end" }}>
-              <Link href="/about/" style={{ color: "#7ecfb3", textDecoration: "none" }}>このサイトについて</Link>
-              <a href="https://reload.co.jp/" style={{ color: "#7ecfb3", textDecoration: "none" }}>運営会社</a>
+            <p style={{ margin: 0, color: "#444" }}>&copy; Yama100</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px", justifyContent: "flex-end" }}>
+              <Link href="/about/" style={{ color: "#666", textDecoration: "none" }}>このサイトについて</Link>
+              <a href="https://reload.co.jp/" style={{ color: "#666", textDecoration: "none" }}>運営会社</a>
             </div>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
-            <Link href="/articles/" style={{ color: "#aaa", textDecoration: "none" }}>読み物一覧</Link>
-            <Link href="/articles/history/" style={{ color: "#aaa", textDecoration: "none" }}>百名山の成立</Link>
-            <Link href="/articles/criteria/" style={{ color: "#aaa", textDecoration: "none" }}>選考基準</Link>
-            <Link href="/articles/fukada/" style={{ color: "#aaa", textDecoration: "none" }}>深田久弥</Link>
-            <Link href="/articles/mountains/" style={{ color: "#aaa", textDecoration: "none" }}>登った山々</Link>
-            <Link href="/articles/mountains200/" style={{ color: "#aaa", textDecoration: "none" }}>二百名山</Link>
-            <Link href="/articles/mountains300/" style={{ color: "#aaa", textDecoration: "none" }}>三百名山</Link>
-            <Link href="/articles/flowers/" style={{ color: "#aaa", textDecoration: "none" }}>花の百名山</Link>
-            <Link href="/gear-checklist/" style={{ color: "#aaa", textDecoration: "none" }}>山装備チェック</Link>
-            <Link href="/settings/" style={{ color: "#aaa", textDecoration: "none" }}>データ管理</Link>
-            <Link href="/mountains_minor12/" style={{ color: "#aaa", textDecoration: "none" }}>マイナー12名山</Link>
-            <Link href="/mountains_new100/" style={{ color: "#aaa", textDecoration: "none" }}>新日本百名山</Link>
-            <Link href="/mountains_kanto100/" style={{ color: "#aaa", textDecoration: "none" }}>関東百名山</Link>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+            <Link href="/articles/" style={{ color: "#444", textDecoration: "none" }}>読み物一覧</Link>
+            <Link href="/articles/history/" style={{ color: "#444", textDecoration: "none" }}>百名山の成立</Link>
+            <Link href="/articles/criteria/" style={{ color: "#444", textDecoration: "none" }}>選考基準</Link>
+            <Link href="/articles/fukada/" style={{ color: "#444", textDecoration: "none" }}>深田久弥</Link>
+            <Link href="/articles/mountains/" style={{ color: "#444", textDecoration: "none" }}>登った山々</Link>
+            <Link href="/articles/mountains200/" style={{ color: "#444", textDecoration: "none" }}>二百名山</Link>
+            <Link href="/articles/mountains300/" style={{ color: "#444", textDecoration: "none" }}>三百名山</Link>
+            <Link href="/articles/flowers/" style={{ color: "#444", textDecoration: "none" }}>花の百名山</Link>
+            <Link href="/gear-checklist/" style={{ color: "#444", textDecoration: "none" }}>山装備チェック</Link>
+            <Link href="/settings/" style={{ color: "#444", textDecoration: "none" }}>データ管理</Link>
+            <Link href="/mountains_minor12/" style={{ color: "#444", textDecoration: "none" }}>マイナー12名山</Link>
+            <Link href="/mountains_new100/" style={{ color: "#444", textDecoration: "none" }}>新日本百名山</Link>
+            <Link href="/mountains_kanto100/" style={{ color: "#444", textDecoration: "none" }}>関東百名山</Link>
           </div>
         </footer>
       </body>
