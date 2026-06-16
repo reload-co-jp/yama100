@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.reload.yama100"
+    namespace = "jp.co.reload.yama100"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.reload.yama100"
+        applicationId "jp.co.reload.yama100"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
