@@ -136,7 +136,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           }}
         >
           <div className="site-header-inner">
-            <Title style={{ fontSize: "1rem", fontWeight: 600, letterSpacing: "-.01em", color: "#ededed" }}>Yama100</Title>
+            <Title style={{ fontSize: "1rem", fontWeight: 600, letterSpacing: "-.01em", color: "#ededed" }}>
+              Yama100
+              <span style={{ fontSize: ".65rem", fontWeight: 400, color: "#888", marginLeft: "6px" }}>
+                百名山チェックリストアプリ
+              </span>
+            </Title>
             <div className="site-header-tools">
               <Suspense fallback={<div style={{ maxWidth: "360px", width: "100%" }} />}>
                 <HeaderSearch />
