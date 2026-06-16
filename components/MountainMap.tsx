@@ -8,6 +8,7 @@ import type {
   MapLayerMouseEvent,
   Popup,
 } from "maplibre-gl"
+import type { Feature, FeatureCollection, Point } from "geojson"
 
 type Mountain = {
   id: number
@@ -27,8 +28,8 @@ type Props = {
   hoveredId?: number | null
 }
 
-type MountainFeature = GeoJSON.Feature<
-  GeoJSON.Point,
+type MountainFeature = Feature<
+  Point,
   {
     id: number
     name: string
@@ -59,8 +60,8 @@ function toFeatureCollection(mountains: Mountain[], checked: Set<number>) {
         checked: checked.has(mountain.id),
       },
     })),
-  } satisfies GeoJSON.FeatureCollection<
-    GeoJSON.Point,
+  } satisfies FeatureCollection<
+    Point,
     MountainFeature["properties"]
   >
 }

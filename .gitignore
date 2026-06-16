@@ -2,6 +2,7 @@
 node_modules
 .npm
 .next
+.gradle
 
 # misc
 .DS_Store

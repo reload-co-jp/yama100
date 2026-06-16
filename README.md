@@ -38,6 +38,27 @@ pnpm build
 pnpm start
 ```
 
+## Android アプリ
+
+Capacitor で静的エクスポート済み Next.js を Android WebView アプリ化。
+
+```bash
+pnpm android:sync
+pnpm android:open
+```
+
+debug APK 作成:
+
+```bash
+pnpm android:build
+```
+
+出力先:
+
+```text
+android/app/build/outputs/apk/debug/app-debug.apk
+```
+
 ## データ形式
 
 ```json
