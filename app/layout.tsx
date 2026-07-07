@@ -47,6 +47,7 @@ export const viewport = {
 }
 
 const GA_ID = "G-KY5MNFQJMW"
+const ADSENSE_CLIENT_ID = "ca-pub-6542845006087970"
 const isProduction = process.env.NODE_ENV === "production"
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
@@ -56,6 +57,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         {isProduction && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              async
+              crossOrigin="anonymous"
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+            />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
