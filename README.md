@@ -53,10 +53,18 @@ debug APK 作成:
 pnpm android:build
 ```
 
+release APK/AAB 作成:
+
+```bash
+pnpm android:release
+```
+
 出力先:
 
 ```text
 android/app/build/outputs/apk/debug/app-debug.apk
+android/app/build/outputs/apk/release/app-release-unsigned.apk
+android/app/build/outputs/bundle/release/app-release.aab
 ```
 
 ## データ形式

@@ -11,6 +11,7 @@
     "android:sync": "pnpm build && GRADLE_USER_HOME=.gradle cap sync android",
     "android:open": "cap open android",
     "android:build": "pnpm build && GRADLE_USER_HOME=.gradle cap sync android && cd android && GRADLE_USER_HOME=../.gradle ./gradlew assembleDebug",
+    "android:release": "pnpm build && GRADLE_USER_HOME=.gradle cap sync android && cd android && GRADLE_USER_HOME=../.gradle ./gradlew assembleRelease bundleRelease",
     "start": "next start",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"
