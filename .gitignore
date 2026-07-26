@@ -45,3 +45,6 @@ lib-cov
 out/
 
 next-env.d.ts
+
+# enrich-mountains.mjs のレビュー用草案出力
+scripts/output/

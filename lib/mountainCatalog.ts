@@ -6,6 +6,21 @@ import mountainsMinor12 from "../public/mountains_minor12.json"
 import mountainsNew100 from "../public/mountains_new100.json"
 import mountainsKanto100 from "../public/mountains_kanto100.json"
 
+export type MountainSourcedText = {
+  text: string
+  source: string
+}
+
+export type MountainDifficulty = {
+  level: string
+  basis: string
+  source: string
+  referenceLinks: {
+    yamap: string
+    yamareco: string
+  }
+}
+
 export type MountainRecord = {
   id: number
   name: string
@@ -16,6 +31,10 @@ export type MountainRecord = {
   elevation: number
   access?: string
   model_course?: string
+  history?: MountainSourcedText | null
+  vegetation?: MountainSourcedText | null
+  nationalPark?: MountainSourcedText | null
+  difficulty?: MountainDifficulty | null
 }
 
 export type MountainListKey =

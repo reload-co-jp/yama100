@@ -14,7 +14,8 @@
     "android:release": "pnpm build && GRADLE_USER_HOME=.gradle cap sync android && cd android && GRADLE_USER_HOME=../.gradle ./gradlew assembleRelease bundleRelease",
     "start": "next start",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "enrich:mountains": "node scripts/enrich-mountains.mjs"
   },
   "keywords": [],
   "author": "",

@@ -8,7 +8,11 @@
     ],
     "latitude": 37.512268498846,
     "longitude": 139.26608905869,
-    "elevation": 1257.5
+    "elevation": 1257.5,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 603,
@@ -19,7 +23,11 @@
     ],
     "latitude": 42.40210961344,
     "longitude": 142.96676274204,
-    "elevation": 1630
+    "elevation": 1630,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 604,
@@ -30,7 +38,20 @@
     ],
     "latitude": 36.960490211204,
     "longitude": 139.14538621902,
-    "elevation": 1958.9
+    "elevation": 1958.9,
+    "history": {
+      "text": "山名は「多くの田代（湿原）がある山」を意味するとされ、由来には諸説ある。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%85%AB%E7%94%B2%E7%94%B0%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "湿原にミズバショウやモウセンゴケが群生し、山腹はアオモリトドマツの森。大正期に酸ヶ湯温泉の郡場フミが植物採集で功績を残し、山麓に東北大学の植物実験所が設けられた。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%85%AB%E7%94%B2%E7%94%B0%E5%B1%B1"
+    },
+    "nationalPark": {
+      "text": "十和田八幡平国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E5%85%AB%E7%94%B2%E7%94%B0%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 605,
@@ -41,7 +62,17 @@
     ],
     "latitude": 37.17263381606501,
     "longitude": 139.33478539665998,
-    "elevation": 1819.9
+    "elevation": 1819.9,
+    "history": null,
+    "vegetation": {
+      "text": "日本アルプスに匹敵する高山帯が広大に広がる、国内屈指の高山植物の宝庫。永久凍土や周氷河地形も残り、日本一早い紅葉が9月から楽しめる。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9B%AA%E5%B1%B1"
+    },
+    "nationalPark": {
+      "text": "大雪山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9B%AA%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 606,
@@ -53,7 +84,11 @@
     ],
     "latitude": 37.256674962191,
     "longitude": 139.17517096978,
-    "elevation": 1517.1
+    "elevation": 1517.1,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 607,
@@ -64,7 +99,11 @@
     ],
     "latitude": 37.81372737113299,
     "longitude": 139.59732234478,
-    "elevation": 1572.9
+    "elevation": 1572.9,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 608,
@@ -75,7 +114,11 @@
     ],
     "latitude": 37.011361804779,
     "longitude": 139.03337361039,
-    "elevation": 1794
+    "elevation": 1794,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 609,
@@ -87,7 +130,11 @@
     ],
     "latitude": 38.355230396173,
     "longitude": 139.80418394288,
-    "elevation": 1505.9
+    "elevation": 1505.9,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 610,
@@ -98,7 +145,11 @@
     ],
     "latitude": 30.358958498526,
     "longitude": 130.48588117366,
-    "elevation": 1549
+    "elevation": 1549,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 611,
@@ -109,7 +160,11 @@
     ],
     "latitude": 36.611776362159,
     "longitude": 137.66099722754,
-    "elevation": 2353
+    "elevation": 2353,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 612,
@@ -120,7 +175,11 @@
     ],
     "latitude": 43.684784648851,
     "longitude": 141.48769696898,
-    "elevation": 1376.3
+    "elevation": 1376.3,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 613,
@@ -131,6 +190,13 @@
     ],
     "latitude": 39.610130047105,
     "longitude": 140.77313921528,
-    "elevation": 1376
+    "elevation": 1376,
+    "history": null,
+    "vegetation": {
+      "text": "開発が及ばず調査も遅れていた奥山だったが、1990年代のダム計画を機に学術調査会が発足。約10年かけた調査でその自然の価値が明らかになり、ダム計画中止や保護区指定につながった。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%92%8C%E8%B3%80%E5%B1%B1%E5%A1%8A"
+    },
+    "nationalPark": null,
+    "difficulty": null
   }
 ]

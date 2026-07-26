@@ -5,6 +5,8 @@ import CanonicalMountainDetailClient from "../../../components/CanonicalMountain
 import {
   CANONICAL_MOUNTAINS,
   findCanonicalMountainById,
+  type MountainDifficulty,
+  type MountainSourcedText,
 } from "../../../lib/mountainCatalog"
 import { fetchWikiThumbnail, SITE_URL } from "../../../lib/site"
 
@@ -72,6 +74,106 @@ function SourceSection({
             </p>
           </div>
         )})}
+      </div>
+    </div>
+  )
+}
+
+function TextWithSource({
+  title,
+  entry,
+}: {
+  title: string
+  entry: MountainSourcedText | null | undefined
+}) {
+  if (!entry) return null
+
+  return (
+    <div
+      style={{
+        background: "#2a2a2a",
+        borderRadius: "12px",
+        marginTop: "16px",
+        padding: "20px",
+      }}
+    >
+      <h2 style={{ color: "#fff", fontSize: "1.05rem", margin: "0 0 14px" }}>{title}</h2>
+      <p
+        style={{
+          color: "#ccc",
+          fontSize: ".95rem",
+          lineHeight: 1.8,
+          margin: "0 0 10px",
+          whiteSpace: "pre-line",
+        }}
+      >
+        {entry.text}
+      </p>
+      <a
+        href={entry.source}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "#7ecfb3", fontSize: ".75rem", textDecoration: "none" }}
+      >
+        出典: Wikipedia →
+      </a>
+    </div>
+  )
+}
+
+function DifficultySection({
+  difficulty,
+}: {
+  difficulty: MountainDifficulty | null | undefined
+}) {
+  if (!difficulty) return null
+
+  return (
+    <div
+      style={{
+        background: "#2a2a2a",
+        borderRadius: "12px",
+        marginTop: "16px",
+        padding: "20px",
+      }}
+    >
+      <h2 style={{ color: "#fff", fontSize: "1.05rem", margin: "0 0 14px" }}>難易度目安</h2>
+      <p style={{ color: "#fff", fontSize: "1.2rem", fontWeight: 700, margin: "0 0 6px" }}>
+        {difficulty.level}
+      </p>
+      <p style={{ color: "#ccc", fontSize: ".85rem", margin: "0 0 10px" }}>{difficulty.basis}</p>
+      <p style={{ color: "#888", fontSize: ".75rem", margin: "0 0 14px" }}>{difficulty.source}</p>
+      <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+        <a
+          href={difficulty.referenceLinks.yamap}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            background: "#3a3a3a",
+            borderRadius: "4px",
+            color: "#ccc",
+            fontSize: ".8rem",
+            padding: "6px 12px",
+            textDecoration: "none",
+          }}
+        >
+          YAMAPで調べる →
+        </a>
+        <a
+          href={difficulty.referenceLinks.yamareco}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            background: "#3a3a3a",
+            borderRadius: "4px",
+            color: "#ccc",
+            fontSize: ".8rem",
+            padding: "6px 12px",
+            textDecoration: "none",
+          }}
+        >
+          ヤマレコで調べる →
+        </a>
       </div>
     </div>
   )
@@ -200,6 +302,9 @@ export default async function CanonicalMountainPage({
 
       <p style={{ color: "#888", fontSize: ".875rem", margin: "0 0 16px" }}>
         {mountain.location.join("・")}
+        {mountain.nationalPark && (
+          <span style={{ color: "#7ecfb3" }}> ・ {mountain.nationalPark.text}</span>
+        )}
       </p>
 
       {mountain.aliases.length > 1 && (
@@ -223,6 +328,12 @@ export default async function CanonicalMountainPage({
         mountain={mountain}
         memberships={mountain.memberships}
       />
+
+      <DifficultySection difficulty={mountain.difficulty} />
+
+      <TextWithSource title="歴史" entry={mountain.history} />
+
+      <TextWithSource title="植生" entry={mountain.vegetation} />
 
       <SourceSection
         title="アクセス"

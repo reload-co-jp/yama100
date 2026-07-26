@@ -8,7 +8,14 @@
     ],
     "latitude": 43.5467,
     "longitude": 143.0222,
-    "elevation": 1967
+    "elevation": 1967,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "大雪山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E7%8B%A9%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 102,
@@ -19,7 +26,11 @@
     ],
     "latitude": 43.2358,
     "longitude": 142.2836,
-    "elevation": 1726
+    "elevation": 1726,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 103,
@@ -30,7 +41,14 @@
     ],
     "latitude": 42.625,
     "longitude": 142.7664,
-    "elevation": 1979
+    "elevation": 1979,
+    "history": {
+      "text": "アイヌ語に由来する山名だが、アイヌによる命名ではない。1929年、北海道大学の伊藤秀五郎らが幌尻岳登頂の際、案内人の勘違いでこの地名が山名として定着した。",
+      "source": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%A0%E3%82%A4%E3%82%A8%E3%82%AF%E3%82%A6%E3%83%81%E3%82%AB%E3%82%A6%E3%82%B7%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 104,
@@ -41,7 +59,14 @@
     ],
     "latitude": 42.0633,
     "longitude": 140.6772,
-    "elevation": 1131
+    "elevation": 1131,
+    "history": null,
+    "vegetation": {
+      "text": "20世紀の度重なる噴火で山体の植生は失われたが、1990年代以降カラマツやエゾマツなどの先駆樹種が回復。裾野にはミズバショウやフクジュソウが咲く。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%8C%97%E6%B5%B7%E9%81%93%E9%A7%92%E3%83%B6%E5%B2%B3"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 105,
@@ -52,7 +77,11 @@
     ],
     "latitude": 43.7158,
     "longitude": 141.5231,
-    "elevation": 1492
+    "elevation": 1492,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 106,
@@ -63,7 +92,17 @@
     ],
     "latitude": 42.6906,
     "longitude": 141.3767,
-    "elevation": 1041
+    "elevation": 1041,
+    "history": {
+      "text": "山名はアイヌ語で「川岸の高いところ」を意味するとされる。地元では「たるまいさん」と呼ばれ、自生するイワブクロは別名「タルマイソウ」。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%A8%BD%E5%89%8D%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "支笏洞爺国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E6%A8%BD%E5%89%8D%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 107,
@@ -74,7 +113,11 @@
     ],
     "latitude": 43.9644,
     "longitude": 142.8881,
-    "elevation": 1558
+    "elevation": 1558,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 108,
@@ -85,7 +128,14 @@
     ],
     "latitude": 43.4558,
     "longitude": 143.0322,
-    "elevation": 2013
+    "elevation": 2013,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "大雪山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E3%83%8B%E3%83%9A%E3%82%BD%E3%83%84%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 109,
@@ -96,7 +146,11 @@
     ],
     "latitude": 42.4994,
     "longitude": 142.8711,
-    "elevation": 1736
+    "elevation": 1736,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 110,
@@ -107,7 +161,17 @@
     ],
     "latitude": 43.0997,
     "longitude": 142.2511,
-    "elevation": 1668
+    "elevation": 1668,
+    "history": {
+      "text": "1888年、地質学者ライマンが石炭鉱脈を発見し夕張炭鉱が開かれた。1996年、高山植物群落と蛇紋岩地質が国の天然記念物に指定されたが、翌年には希少種の大量盗掘事件も起きている。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%95%E5%BC%B5%E5%B2%B3"
+    },
+    "vegetation": {
+      "text": "蛇紋岩地帯特有の固有種の宝庫で、田中澄江は『花の百名山』でユウバリソウを紹介。ユウバリコザクラなど「ユウバリ」を冠する固有種が多く、盗掘や食害からの保護が課題となっている。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%95%E5%BC%B5%E5%B2%B3"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 111,
@@ -118,7 +182,14 @@
     ],
     "latitude": 37.2211,
     "longitude": 139.3397,
-    "elevation": 1624
+    "elevation": 1624,
+    "history": {
+      "text": "周囲の集落は深い谷にあるため日の出が遅いが、この山だけは早朝から日が差すことが山名の由来とされる。",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BC%9A%E6%B4%A5%E6%9C%9D%E6%97%A5%E5%B2%B3"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 112,
@@ -129,7 +200,14 @@
     ],
     "latitude": 39.7611,
     "longitude": 140.7994,
-    "elevation": 1637
+    "elevation": 1637,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "十和田八幡平国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E7%A7%8B%E7%94%B0%E9%A7%92%E3%83%B6%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 113,
@@ -141,7 +219,14 @@
     ],
     "latitude": 38.3431,
     "longitude": 139.8492,
-    "elevation": 1772
+    "elevation": 1772,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "磐梯朝日国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BB%A5%E6%9D%B1%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 114,
@@ -153,7 +238,11 @@
     ],
     "latitude": 38.9022,
     "longitude": 140.4922,
-    "elevation": 1365
+    "elevation": 1365,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 115,
@@ -165,7 +254,11 @@
     ],
     "latitude": 38.9608,
     "longitude": 140.7883,
-    "elevation": 1626
+    "elevation": 1626,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 116,
@@ -176,7 +269,14 @@
     ],
     "latitude": 40.5075,
     "longitude": 140.0183,
-    "elevation": 1235
+    "elevation": 1235,
+    "history": {
+      "text": "1645年の絵図に「しらかみの嶽」と記されたのが記録上の初見。地元では旧暦8月1日に登拝する信仰の山で、津軽平野を北東の冷風「やませ」から守る盾ともされてきた。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%99%BD%E7%A5%9E%E5%B2%B3"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 117,
@@ -188,7 +288,14 @@
     ],
     "latitude": 36.9697,
     "longitude": 139.46,
-    "elevation": 2060
+    "elevation": 2060,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "尾瀬国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E5%B8%9D%E9%87%88%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 118,
@@ -199,7 +306,11 @@
     ],
     "latitude": 39.8442,
     "longitude": 141.2469,
-    "elevation": 1124
+    "elevation": 1124,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 119,
@@ -211,7 +322,14 @@
     ],
     "latitude": 38.4556,
     "longitude": 140.6197,
-    "elevation": 1500
+    "elevation": 1500,
+    "history": null,
+    "vegetation": {
+      "text": "奥山ゆえ開発を免れ、原生的なブナ林が広がる。1965年頃から国有林の伐採が進み一時は森が縮小したが、住民運動を経て21世紀に入り再生に向かっている。",
+      "source": "https://ja.wikipedia.org/wiki/%E8%88%B9%E5%BD%A2%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 120,
@@ -222,7 +340,14 @@
     ],
     "latitude": 39.9767,
     "longitude": 140.5442,
-    "elevation": 1454
+    "elevation": 1454,
+    "history": null,
+    "vegetation": {
+      "text": "樹齢250〜350年のブナ原生林にツキノワグマやクマゲラが生息し、国指定鳥獣保護区に指定。6月は稜線をミズバショウやチングルマが彩り、冬は日本三大樹氷の一つに数えられる巨大な樹氷群で知られる。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%A3%AE%E5%90%89%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 121,
@@ -233,7 +358,11 @@
     ],
     "latitude": 39.1636,
     "longitude": 140.8289,
-    "elevation": 1547
+    "elevation": 1547,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 122,
@@ -245,7 +374,14 @@
     ],
     "latitude": 39.5703,
     "longitude": 140.7542,
-    "elevation": 1439
+    "elevation": 1439,
+    "history": null,
+    "vegetation": {
+      "text": "開発が及ばず調査も遅れていた奥山だったが、1990年代のダム計画を機に学術調査会が発足。約10年かけた調査でその自然の価値が明らかになり、ダム計画中止や保護区指定につながった。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%92%8C%E8%B3%80%E5%B1%B1%E5%A1%8A"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 123,
@@ -256,7 +392,14 @@
     ],
     "latitude": 36.4536,
     "longitude": 138.6525,
-    "elevation": 1757
+    "elevation": 1757,
+    "history": {
+      "text": "中之条や東吾妻方面から見ると浅間山を隠してしまうことが山名の由来とされる。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%B5%85%E9%96%93%E9%9A%A0%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 124,
@@ -268,7 +411,11 @@
     ],
     "latitude": 36.2039,
     "longitude": 138.6372,
-    "elevation": 1423
+    "elevation": 1423,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 125,
@@ -279,7 +426,11 @@
     ],
     "latitude": 35.7653,
     "longitude": 139.1303,
-    "elevation": 1266
+    "elevation": 1266,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 126,
@@ -291,7 +442,11 @@
     ],
     "latitude": 36.7381,
     "longitude": 138.6933,
-    "elevation": 2140
+    "elevation": 2140,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 127,
@@ -302,7 +457,14 @@
     ],
     "latitude": 35.8994,
     "longitude": 138.8781,
-    "elevation": 2036
+    "elevation": 2036,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "富士箱根伊豆国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 128,
@@ -314,7 +476,17 @@
     ],
     "latitude": 36.8175,
     "longitude": 138.8394,
-    "elevation": 2026
+    "elevation": 2026,
+    "history": {
+      "text": "「セン」は沢、「クラ」は峰を意味し、滝のある山を表すとされる。1920年、日本山岳会の藤島敏男らが土樽側から登頂し、近代登山として初の記録を残した。",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BB%99%E3%83%8E%E5%80%89%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "上信越高原国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BB%99%E3%83%8E%E5%80%89%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 129,
@@ -325,7 +497,11 @@
     ],
     "latitude": 36.8114,
     "longitude": 139.5364,
-    "elevation": 2483
+    "elevation": 2483,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 130,
@@ -336,7 +512,11 @@
     ],
     "latitude": 36.4744,
     "longitude": 138.9006,
-    "elevation": 1449
+    "elevation": 1449,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 131,
@@ -347,7 +527,20 @@
     ],
     "latitude": 35.9517,
     "longitude": 139.0978,
-    "elevation": 1304
+    "elevation": 1304,
+    "history": {
+      "text": "日本武尊が東征成功を祈願して武具・甲を山に奉納したという伝説が、山名「武甲山」の由来とされる。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B2%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "石灰岩質の山特有の山野草が豊富。採掘が進む北斜面は植生に乏しいが、他斜面は豊かな森林が残り、埼玉県希少種のチチブイワザクラも自生する。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B2%E5%B1%B1"
+    },
+    "nationalPark": {
+      "text": "秩父多摩甲斐国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B2%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 132,
@@ -358,7 +551,11 @@
     ],
     "latitude": 36.2986,
     "longitude": 138.7489,
-    "elevation": 1104
+    "elevation": 1104,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 133,
@@ -369,7 +566,14 @@
     ],
     "latitude": 36.4617,
     "longitude": 137.6033,
-    "elevation": 2864
+    "elevation": 2864,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%89%9B%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 134,
@@ -380,7 +584,11 @@
     ],
     "latitude": 37.1006,
     "longitude": 139.1481,
-    "elevation": 1969
+    "elevation": 1969,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 135,
@@ -391,7 +599,17 @@
     ],
     "latitude": 36.3911,
     "longitude": 137.7706,
-    "elevation": 2268
+    "elevation": 2268,
+    "history": {
+      "text": "天照大神が隠れた岩戸がこの山に落ちたという伝説が山名の由来の一説。「信濃富士」とも呼ばれる霊山で、西行や藤原定家ら多くの歌人に詠まれた。1721年に修験者・宥快が開山したと伝わる。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%9C%89%E6%98%8E%E5%B1%B1%20(%E5%AE%89%E6%9B%87%E9%87%8E%E5%B8%82%E3%83%BB%E6%9D%BE%E5%B7%9D%E6%9D%91)"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E6%9C%89%E6%98%8E%E5%B1%B1%20(%E5%AE%89%E6%9B%87%E9%87%8E%E5%B8%82%E3%83%BB%E6%9D%BE%E5%B7%9D%E6%9D%91)"
+    },
+    "difficulty": null
   },
   {
     "id": 136,
@@ -402,7 +620,11 @@
     ],
     "latitude": 35.6306,
     "longitude": 137.7744,
-    "elevation": 2363
+    "elevation": 2363,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 137,
@@ -413,7 +635,14 @@
     ],
     "latitude": 36.7394,
     "longitude": 138.1336,
-    "elevation": 1917
+    "elevation": 1917,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "妙高戸隠連山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E7%B8%84%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 138,
@@ -425,7 +654,11 @@
     ],
     "latitude": 35.3303,
     "longitude": 138.0383,
-    "elevation": 2392
+    "elevation": 2392,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 139,
@@ -436,7 +669,11 @@
     ],
     "latitude": 36.7419,
     "longitude": 138.5594,
-    "elevation": 2295
+    "elevation": 2295,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 140,
@@ -447,7 +684,14 @@
     ],
     "latitude": 37.9425,
     "longitude": 139.6089,
-    "elevation": 1636
+    "elevation": 1636,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "磐梯朝日国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E6%9C%B3%E5%B7%AE%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 141,
@@ -459,7 +703,17 @@
     ],
     "latitude": 36.4794,
     "longitude": 137.6508,
-    "elevation": 2628
+    "elevation": 2628,
+    "history": {
+      "text": "山頂の花崗岩が烏帽子の形に似ることが山名の由来。古くは「折岳」、江戸期の絵図では木材盗掘者の名にちなみ「三吉岳」と呼ばれた。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%83%8F%E5%B8%BD%E5%AD%90%E5%B2%B3%20(%E9%A3%9B%E9%A8%A8%E5%B1%B1%E8%84%88)"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E7%83%8F%E5%B8%BD%E5%AD%90%E5%B2%B3%20(%E9%A3%9B%E9%A8%A8%E5%B1%B1%E8%84%88)"
+    },
+    "difficulty": null
   },
   {
     "id": 142,
@@ -470,7 +724,11 @@
     ],
     "latitude": 36.0339,
     "longitude": 138.6067,
-    "elevation": 2112
+    "elevation": 2112,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 143,
@@ -481,7 +739,17 @@
     ],
     "latitude": 36.365,
     "longitude": 137.7011,
-    "elevation": 2922
+    "elevation": 2922,
+    "history": {
+      "text": "江戸時代の絵図では「神明岳」と記され、麓では「てんしょう」などと呼ばれてきた。「御天上（御天所）」に由来する山名とされる。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%A4%A9%E4%BA%95%E5%B2%B3"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%A4%A9%E4%BA%95%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 144,
@@ -492,7 +760,14 @@
     ],
     "latitude": 36.4472,
     "longitude": 137.7361,
-    "elevation": 2647
+    "elevation": 2647,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%A4%93%E9%AC%BC%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 145,
@@ -503,7 +778,14 @@
     ],
     "latitude": 36.2211,
     "longitude": 137.6406,
-    "elevation": 2646
+    "elevation": 2646,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%9C%9E%E6%B2%A2%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 146,
@@ -515,7 +797,14 @@
     ],
     "latitude": 35.3897,
     "longitude": 138.1528,
-    "elevation": 2803
+    "elevation": 2803,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "南アルプス国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%B2%B3%E5%86%85%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 147,
@@ -526,7 +815,11 @@
     ],
     "latitude": 35.795,
     "longitude": 138.5139,
-    "elevation": 1704
+    "elevation": 1704,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 148,
@@ -537,7 +830,11 @@
     ],
     "latitude": 35.9128,
     "longitude": 137.8625,
-    "elevation": 2296
+    "elevation": 2296,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 149,
@@ -548,7 +845,11 @@
     ],
     "latitude": 35.5867,
     "longitude": 138.3692,
-    "elevation": 2052
+    "elevation": 2052,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 150,
@@ -559,7 +860,14 @@
     ],
     "latitude": 36.8133,
     "longitude": 138.1272,
-    "elevation": 2053
+    "elevation": 2053,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "妙高戸隠連山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%BB%92%E5%A7%AB%E5%B1%B1%20(%E9%95%B7%E9%87%8E%E7%9C%8C)"
+    },
+    "difficulty": null
   },
   {
     "id": 151,
@@ -571,7 +879,11 @@
     ],
     "latitude": 35.4158,
     "longitude": 138.5439,
-    "elevation": 1964
+    "elevation": 1964,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 152,
@@ -582,7 +894,11 @@
     ],
     "latitude": 35.8231,
     "longitude": 138.715,
-    "elevation": 2031
+    "elevation": 2031,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 153,
@@ -594,7 +910,14 @@
     ],
     "latitude": 35.7856,
     "longitude": 137.3969,
-    "elevation": 1982
+    "elevation": 1982,
+    "history": null,
+    "vegetation": {
+      "text": "山頂付近はクマザサの笹原と針葉樹が混じり、春はアカヤシオやオオヤマレンゲ、初夏はサラサドウダンやシャクナゲが咲く。オコジョが見られることもある。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%B0%8F%E7%A7%80%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 154,
@@ -606,7 +929,14 @@
     ],
     "latitude": 36.7722,
     "longitude": 138.6706,
-    "elevation": 2192
+    "elevation": 2192,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "上信越高原国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BD%90%E6%AD%A6%E6%B5%81%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 155,
@@ -617,7 +947,11 @@
     ],
     "latitude": 35.3694,
     "longitude": 138.3489,
-    "elevation": 1989
+    "elevation": 1989,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 156,
@@ -628,7 +962,11 @@
     ],
     "latitude": 37.3978,
     "longitude": 139.1367,
-    "elevation": 1537
+    "elevation": 1537,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 157,
@@ -639,7 +977,14 @@
     ],
     "latitude": 36.4069,
     "longitude": 137.7128,
-    "elevation": 2763
+    "elevation": 2763,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E7%87%95%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 158,
@@ -650,7 +995,11 @@
     ],
     "latitude": 36.0192,
     "longitude": 138.3556,
-    "elevation": 2646
+    "elevation": 2646,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 159,
@@ -661,7 +1010,17 @@
     ],
     "latitude": 36.7703,
     "longitude": 138.055,
-    "elevation": 1904
+    "elevation": 1904,
+    "history": {
+      "text": "天照大神が隠れた天の岩戸を天手力雄命がここまで投げ飛ばしたという伝説が山名の由来。かつては天台宗と真言宗が覇を競う修験の霊山で、中腹には修験者の使った洞窟「三十三窟」が残る。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%88%B8%E9%9A%A0%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "妙高戸隠連山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E6%88%B8%E9%9A%A0%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 160,
@@ -672,7 +1031,11 @@
     ],
     "latitude": 36.8392,
     "longitude": 138.5839,
-    "elevation": 2038
+    "elevation": 2038,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 161,
@@ -683,7 +1046,14 @@
     ],
     "latitude": 37.0853,
     "longitude": 139.0775,
-    "elevation": 2085
+    "elevation": 2085,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "大雪山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9B%AA%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 162,
@@ -694,7 +1064,14 @@
     ],
     "latitude": 37.8997,
     "longitude": 139.4992,
-    "elevation": 1420
+    "elevation": 1420,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "磐梯朝日国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BA%8C%E7%8E%8B%E5%AD%90%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 163,
@@ -706,7 +1083,14 @@
     ],
     "latitude": 35.6211,
     "longitude": 138.2369,
-    "elevation": 3026
+    "elevation": 3026,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "南アルプス国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E8%BE%B2%E9%B3%A5%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 164,
@@ -718,7 +1102,14 @@
     ],
     "latitude": 35.7789,
     "longitude": 138.21,
-    "elevation": 2685
+    "elevation": 2685,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "南アルプス国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%8B%B8%E5%B2%B3%20(%E8%B5%A4%E7%9F%B3%E5%B1%B1%E8%84%88)"
+    },
+    "difficulty": null
   },
   {
     "id": 165,
@@ -729,7 +1120,11 @@
     ],
     "latitude": 37.1039,
     "longitude": 139.0247,
-    "elevation": 1778
+    "elevation": 1778,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 166,
@@ -741,7 +1136,17 @@
     ],
     "latitude": 36.5381,
     "longitude": 137.6844,
-    "elevation": 2821
+    "elevation": 2821,
+    "history": {
+      "text": "大正初期、日本山岳会の辻本満丸が針ノ木峠にちなみ命名。峠は古くから信州と越中を結ぶ要路で、1584年には佐々成政が厳冬期にここを越えたという「さらさら越え」の伝説が残る。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%87%9D%E3%83%8E%E6%9C%A8%E5%B2%B3"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%87%9D%E3%83%8E%E6%9C%A8%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 167,
@@ -752,7 +1157,14 @@
     ],
     "latitude": 37.5219,
     "longitude": 139.4258,
-    "elevation": 1386
+    "elevation": 1386,
+    "history": {
+      "text": "紀元前の四道将軍伝説に由来するという伊佐須美神社の縁起が伝わる、古くからの信仰の山。山中には「雨乞峰」「山伏尾根」など修験にちなむ地名が残る。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E7%A5%9E%E6%A5%BD%E5%B2%B3"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 168,
@@ -763,7 +1175,11 @@
     ],
     "latitude": 35.4869,
     "longitude": 138.9317,
-    "elevation": 1681
+    "elevation": 1681,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 169,
@@ -774,7 +1190,11 @@
     ],
     "latitude": 35.5492,
     "longitude": 138.8092,
-    "elevation": 1785
+    "elevation": 1785,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 170,
@@ -785,7 +1205,11 @@
     ],
     "latitude": 35.7014,
     "longitude": 137.8108,
-    "elevation": 2841
+    "elevation": 2841,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 171,
@@ -797,7 +1221,14 @@
     ],
     "latitude": 36.7947,
     "longitude": 137.7542,
-    "elevation": 2611
+    "elevation": 2611,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%9B%AA%E5%80%89%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 172,
@@ -810,7 +1241,17 @@
     ],
     "latitude": 36.2986,
     "longitude": 136.7922,
-    "elevation": 1841
+    "elevation": 1841,
+    "history": {
+      "text": "修験者が背負う「笈」に似た山容が山名の由来。泰澄上人の開山伝説が伝わり、1905年の三角点設置時には山頂から経筒や仏像など多数の遺物が出土した。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%AC%88%E3%83%B6%E5%B2%B3"
+    },
+    "vegetation": null,
+    "nationalPark": {
+      "text": "白山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E7%AC%88%E3%83%B6%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 173,
@@ -821,7 +1262,11 @@
     ],
     "latitude": 36.5983,
     "longitude": 137.5808,
-    "elevation": 2611
+    "elevation": 2611,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 174,
@@ -832,7 +1277,20 @@
     ],
     "latitude": 36.7011,
     "longitude": 137.5908,
-    "elevation": 2415
+    "elevation": 2415,
+    "history": {
+      "text": "夏の水不足の際に融雪を促そうと人々が雪渓を鍬で崩したという「毛勝谷」の故事が山名の由来とされる。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%AF%9B%E5%8B%9D%E4%B8%89%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "標高1400〜1500m地点に残る万年雪は、海から20kmの距離にあるものとしては国内唯一とされる。麓の南又には立山杉の巨木群「洞杉」が茂る。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%AF%9B%E5%8B%9D%E4%B8%89%E5%B1%B1"
+    },
+    "nationalPark": {
+      "text": "中部山岳国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E6%AF%9B%E5%8B%9D%E4%B8%89%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 175,
@@ -843,7 +1301,17 @@
     ],
     "latitude": 36.3789,
     "longitude": 137.0489,
-    "elevation": 1650
+    "elevation": 1650,
+    "history": {
+      "text": "金剛蔵王権現を祀る山岳信仰の霊峰で、役小角による開山伝説が富山県の山では唯一伝わる。1853年には富山藩主前田利保が登頂し歌を詠んだ。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%89%9B%E5%A0%82%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "池塘にクロサンショウウオやモリアオガエルが生息し、山頂草原にはニッコウキスゲなどの高山植物が咲く。山麓のブナ原生林にはギンリョウソウも見られる。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%87%91%E5%89%9B%E5%A0%82%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 176,
@@ -854,7 +1322,14 @@
     ],
     "latitude": 35.2381,
     "longitude": 138.7939,
-    "elevation": 1504
+    "elevation": 1504,
+    "history": null,
+    "vegetation": {
+      "text": "標高800m以上にピンク色のアシタカツツジが咲き、環境省の特定植物群落に選ばれたブナの原生林も残る。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%84%9B%E9%B7%B9%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 177,
@@ -865,7 +1340,14 @@
     ],
     "latitude": 36.0383,
     "longitude": 137.1967,
-    "elevation": 1529
+    "elevation": 1529,
+    "history": {
+      "text": "岐阜県の県木イチイの原生林がある霊山。位山のイチイが笏の材料として朝廷に献上され一位の官位を賜ったことが山名の由来とされ、現在も天皇即位の際に位山のイチイの笏が用いられる。",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BD%8D%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 178,
@@ -877,7 +1359,14 @@
     ],
     "latitude": 35.0206,
     "longitude": 136.4178,
-    "elevation": 1212
+    "elevation": 1212,
+    "history": {
+      "text": "1858年、植物学者・伊藤圭介が調査のため登頂。1959年に御在所ロープウェイが開業し、1964年には鈴鹿セブンマウンテンの登山大会が始まった。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E5%9C%A8%E6%89%80%E5%B2%B3"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 179,
@@ -889,7 +1378,11 @@
     ],
     "latitude": 35.4242,
     "longitude": 138.2594,
-    "elevation": 2629
+    "elevation": 2629,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 180,
@@ -900,7 +1393,14 @@
     ],
     "latitude": 36.0014,
     "longitude": 136.8378,
-    "elevation": 1709
+    "elevation": 1709,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "白山国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%97%A5%E3%83%B6%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 181,
@@ -911,7 +1411,11 @@
     ],
     "latitude": 35.2561,
     "longitude": 138.1617,
-    "elevation": 2330
+    "elevation": 2330,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 182,
@@ -923,7 +1427,14 @@
     ],
     "latitude": 35.7625,
     "longitude": 136.5142,
-    "elevation": 1617
+    "elevation": 1617,
+    "history": {
+      "text": "718年、泰澄上人による開基と伝わる。1965年の集中豪雨で麓の谷が土砂に埋まり、2018年の台風では山頂の神社奥宮が倒壊した。",
+      "source": "https://ja.wikipedia.org/wiki/%E8%83%BD%E9%83%B7%E7%99%BD%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 183,
@@ -934,7 +1445,11 @@
     ],
     "latitude": 34.0775,
     "longitude": 135.6508,
-    "elevation": 1344
+    "elevation": 1344,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 184,
@@ -945,7 +1460,11 @@
     ],
     "latitude": 34.4194,
     "longitude": 135.6731,
-    "elevation": 1125
+    "elevation": 1125,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 185,
@@ -956,7 +1475,14 @@
     ],
     "latitude": 34.1144,
     "longitude": 135.9031,
-    "elevation": 1800
+    "elevation": 1800,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "吉野熊野国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%87%88%E8%BF%A6%E3%83%B6%E5%B2%B3%20(%E5%A5%88%E8%89%AF%E7%9C%8C)"
+    },
+    "difficulty": null
   },
   {
     "id": 186,
@@ -968,7 +1494,11 @@
     ],
     "latitude": 35.3539,
     "longitude": 134.5139,
-    "elevation": 1510
+    "elevation": 1510,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 187,
@@ -979,7 +1509,11 @@
     ],
     "latitude": 35.2647,
     "longitude": 135.8969,
-    "elevation": 1214
+    "elevation": 1214,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 188,
@@ -991,7 +1525,14 @@
     ],
     "latitude": 35.325,
     "longitude": 133.6633,
-    "elevation": 1202
+    "elevation": 1202,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "大山隠岐国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E8%92%9C%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 189,
@@ -1002,7 +1543,14 @@
     ],
     "latitude": 35.1406,
     "longitude": 132.6217,
-    "elevation": 1126
+    "elevation": 1126,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "大山隠岐国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E4%B8%89%E7%93%B6%E5%B1%B1"
+    },
+    "difficulty": null
   },
   {
     "id": 190,
@@ -1014,7 +1562,14 @@
     ],
     "latitude": 33.8281,
     "longitude": 133.2747,
-    "elevation": 1860
+    "elevation": 1860,
+    "history": null,
+    "vegetation": {
+      "text": "ブナ林からダケカンバ、シコクシラベ、山頂のシコクザサ群落へと帯状に植生が移り変わる。1982年に笹ヶ峰自然環境保全地域に指定された。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%AC%B9%E3%83%B6%E5%B3%B0"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 191,
@@ -1025,7 +1580,14 @@
     ],
     "latitude": 33.875,
     "longitude": 133.375,
-    "elevation": 1706
+    "elevation": 1706,
+    "history": null,
+    "vegetation": {
+      "text": "頂上稜線のカンラン岩地帯に固有種オトメシャジンなど高山植物が咲く。標高1500〜1700mながら北アルプス並みの花々が見られる、貴重な岩場の植生。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%9D%B1%E8%B5%A4%E7%9F%B3%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 192,
@@ -1037,7 +1599,14 @@
     ],
     "latitude": 33.8394,
     "longitude": 133.9878,
-    "elevation": 1894
+    "elevation": 1894,
+    "history": null,
+    "vegetation": {
+      "text": "ブナやミズナラの落葉広葉樹林から、標高1500m以上ではクマザサの笹原にコメツツジが点在する高原状の景観へ。近年はニホンジカの食害が課題となっている。",
+      "source": "https://ja.wikipedia.org/wiki/%E4%B8%89%E5%B6%BA"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 193,
@@ -1049,7 +1618,14 @@
     ],
     "latitude": 32.3117,
     "longitude": 131.1011,
-    "elevation": 1721
+    "elevation": 1721,
+    "history": null,
+    "vegetation": {
+      "text": "豪雨地帯で、山頂付近にわずかに残る原生林にはブナ林も見られる。固有種ツクシイワシャジンなど8,000種以上の植物が生育し、4月下旬にはアケボノツツジが見頃を迎える。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%B8%82%E6%88%BF%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 194,
@@ -1060,7 +1636,14 @@
     ],
     "latitude": 32.76,
     "longitude": 130.2922,
-    "elevation": 1359
+    "elevation": 1359,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "雲仙天草国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%9B%B2%E4%BB%99%E5%B2%B3"
+    },
+    "difficulty": null
   },
   {
     "id": 195,
@@ -1071,7 +1654,14 @@
     ],
     "latitude": 32.7378,
     "longitude": 131.5131,
-    "elevation": 1644
+    "elevation": 1644,
+    "history": null,
+    "vegetation": {
+      "text": "モミ・ツガ・ブナ・カエデの原生林が広がり、ニホンカモシカが生息する。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B4%A9%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 196,
@@ -1082,7 +1672,17 @@
     ],
     "latitude": 32.2992,
     "longitude": 131.4267,
-    "elevation": 1405
+    "elevation": 1405,
+    "history": {
+      "text": "山の神が白馬に乗り鈴の音とともに麓の神社を参詣したという伝説が山名の由来とされる。古くから山岳信仰の対象で、江戸期には林業が盛んだった。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E9%88%B4%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "標高に応じてイチイガシからブナ林へと植生が移り変わり、世界でここにしかないキバナノツキヌキホトトギスなど固有種も分布する。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%B0%BE%E9%88%B4%E5%B1%B1"
+    },
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 197,
@@ -1093,7 +1693,17 @@
     ],
     "latitude": 31.5886,
     "longitude": 130.6547,
-    "elevation": 1117
+    "elevation": 1117,
+    "history": null,
+    "vegetation": {
+      "text": "噴火を繰り返してきたため独特の植生遷移が見られる。溶岩の年代ごとに地衣類からクロマツ林、常緑広葉樹林へと段階的に植生が変化する様子を一度に観察できる貴重な場所。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%A1%9C%E5%B3%B6"
+    },
+    "nationalPark": {
+      "text": "霧島錦江湾国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E6%A1%9C%E5%B3%B6"
+    },
+    "difficulty": null
   },
   {
     "id": 198,
@@ -1104,7 +1714,17 @@
     ],
     "latitude": 31.8864,
     "longitude": 130.9189,
-    "elevation": 1574
+    "elevation": 1574,
+    "history": null,
+    "vegetation": {
+      "text": "火山活動が続くため土壌は貧弱で、御鉢に近い西側は荒れ地や草原。標高1,000m以上の荒れ地にはミヤマキリシマが咲き、東麓の御池周辺には野鳥が飛来する。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%8D%83%E7%A9%82%E5%B3%B0"
+    },
+    "nationalPark": {
+      "text": "霧島錦江湾国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%8D%83%E7%A9%82%E5%B3%B0"
+    },
+    "difficulty": null
   },
   {
     "id": 199,
@@ -1116,7 +1736,14 @@
     ],
     "latitude": 33.4761,
     "longitude": 130.9261,
-    "elevation": 1199
+    "elevation": 1199,
+    "history": {
+      "text": "羽黒山・大峰山と並ぶ「日本三大修験山」の一つ。最盛期には数千の僧兵を擁する一大勢力だったが、1581年に大友氏の焼き討ちを受け多くの坊舎を失った。",
+      "source": "https://ja.wikipedia.org/wiki/%E8%8B%B1%E5%BD%A6%E5%B1%B1"
+    },
+    "vegetation": null,
+    "nationalPark": null,
+    "difficulty": null
   },
   {
     "id": 200,
@@ -1127,6 +1754,13 @@
     ],
     "latitude": 33.2822,
     "longitude": 131.3903,
-    "elevation": 1583
+    "elevation": 1583,
+    "history": null,
+    "vegetation": null,
+    "nationalPark": {
+      "text": "阿蘇くじゅう国立公園",
+      "source": "https://ja.wikipedia.org/wiki/%E7%94%B1%E5%B8%83%E5%B2%B3"
+    },
+    "difficulty": null
   }
 ]
