@@ -150,8 +150,8 @@ function splitSections(extract) {
   return sections.map((s) => ({ heading: s.heading, text: s.body.join("\n").trim() })).filter((s) => s.text)
 }
 
-const HISTORY_HEADING_RE = /登山史|沿革|歴史|由来/
-const VEGETATION_HEADING_RE = /植生|動植物|自然|高山植物|生態/
+const HISTORY_HEADING_RE = /登山史|沿革|歴史|由来|伝説|起源|名称/
+const VEGETATION_HEADING_RE = /植生|動植物|自然|高山植物|生態|花|樹木|森林|動物|植物/
 
 function pickSectionText(sections, re) {
   const matched = sections.filter((s) => re.test(s.heading))
@@ -236,7 +236,10 @@ function estimateDifficultyFromCourse(mountain) {
 
   let level = "不明"
   const reasons = []
+  let precise = false
+
   if (hours != null) {
+    precise = true
     reasons.push(`コースタイム約${hours}時間`)
     if (hours <= 4) level = "初級"
     else if (hours <= 8) level = "中級"
@@ -246,12 +249,22 @@ function estimateDifficultyFromCourse(mountain) {
     reasons.push(`標高${mountain.elevation}m`)
     if (level === "初級") level = "中級"
   }
-  if (level === "不明") return null
+
+  // コースタイム情報がない場合（百名山以外は model_course/access 自体を持たない）は、
+  // 標高帯のみによる粗い目安にフォールバックする。精度は低いため basis と source で明示する。
+  if (level === "不明") {
+    reasons.push(`標高${mountain.elevation}m`)
+    if (mountain.elevation < 1000) level = "初級"
+    else if (mountain.elevation < 2000) level = "中級"
+    else level = "上級"
+  }
 
   return {
     level,
     basis: reasons.join("、"),
-    source: "自動推定（標高・モデルコースの所要時間からの簡易算出、要人手確認）",
+    source: precise
+      ? "自動推定（標高・モデルコースの所要時間からの簡易算出、要人手確認）"
+      : "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
     referenceLinks: {
       yamap: `https://yamap.com/search/mountains?q=${encodeURIComponent(mountain.name)}`,
       yamareco: `https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=${encodeURIComponent(

@@ -42,7 +42,10 @@
     "elevation": 1661,
     "access": "JR知床斜里駅からバス → 羅臼温泉登山口",
     "model_course": "羅臼温泉登山口 → 羅臼平 → 山頂（往復約8時間）",
-    "history": null,
+    "history": {
+      "text": "アイヌ語名ではチャチャヌㇷ゚リ (chacha-nupri) と呼ばれる。これは「親爺・山」の意で、アイヌ語研究者の山田秀三は「知床半島の最高峰なのでそう呼ばれたのだろうか」としている。\n知床富士とも呼ばれている。また、漢字表記については良牛岳と記されたこともある。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%BE%85%E8%87%BC%E5%B2%B3"
+    },
     "vegetation": null,
     "nationalPark": {
       "text": "知床国立公園",
@@ -73,7 +76,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1547m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%96%9C%E9%87%8C%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%96%9C%E9%87%8C%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 4,
@@ -130,7 +141,15 @@
       "text": "大雪山国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9B%AA%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2291m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E9%9B%AA%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E9%9B%AA%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 6,
@@ -296,7 +315,15 @@
       "text": "十和田八幡平国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%85%AB%E7%94%B2%E7%94%B0%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1585m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%85%AB%E7%94%B2%E7%94%B0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%85%AB%E7%94%B2%E7%94%B0%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 12,
@@ -317,7 +344,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1614m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%85%AB%E5%B9%A1%E5%B9%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%85%AB%E5%B9%A1%E5%B9%B3"
+      }
+    }
   },
   {
     "id": 13,
@@ -359,7 +394,10 @@
     "elevation": 1917,
     "access": "JR花巻駅からバス → 小田越登山口",
     "model_course": "小田越登山口 → 御座走り → 早池峰山山頂（往復約5時間）",
-    "history": null,
+    "history": {
+      "text": "岩手山や姫神山との三角関係を描いた神話が伝わる山。『遠野物語』にも、力士に力を授けたという早池峰山の女神の逸話が残る。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%97%A9%E6%B1%A0%E5%B3%B0%E5%B1%B1"
+    },
     "vegetation": {
       "text": "全山が蛇紋岩でできた特異な地質から、ハヤチネウスユキソウなど固有種率の高い植物群落が発達。本州唯一のアカエゾマツ自生地としても国の天然記念物に指定されている。",
       "source": "https://ja.wikipedia.org/wiki/%E6%97%A9%E6%B1%A0%E5%B3%B0%E5%B1%B1"
@@ -388,7 +426,10 @@
     "elevation": 2236,
     "access": "JR酒田駅または象潟駅からバス → 鉾立登山口",
     "model_course": "鉾立登山口 → 賽の河原 → 七五三掛 → 御室 → 鳥海山山頂（往復約8時間）",
-    "history": null,
+    "history": {
+      "text": "山名を冠した艦船が大日本帝国海軍や海上自衛隊に存在するほか、上野と秋田・青森を結ぶ夜行列車の愛称としても古くから親しまれてきた。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%B3%A5%E6%B5%B7%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": null,
     "difficulty": {
@@ -413,7 +454,10 @@
     "elevation": 1984,
     "access": "JR鶴岡駅からバス → 姥沢登山口またはリフト利用",
     "model_course": "姥沢登山口 → リフト → 姥ヶ岳 → 牛首 → 月山山頂（往復約4時間）",
-    "history": null,
+    "history": {
+      "text": "月山 (日本刀)\n月山 (列車) - かつて陸羽西線で運行されていた。\n月山道路\n月山 (力士) - 元力士で新十両時に「月山一行」を名乗った。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%9C%88%E5%B1%B1"
+    },
     "vegetation": {
       "text": "高層湿原と高山植物が広がり、オゼコウホネやウサギギクのほか、オコジョ・イワヒバリなど貴重な動物も生息。天然保護区域に指定されている。",
       "source": "https://ja.wikipedia.org/wiki/%E6%9C%88%E5%B1%B1"
@@ -480,7 +524,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1841m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%94%B5%E7%8E%8B%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%94%B5%E7%8E%8B%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 19,
@@ -505,7 +557,15 @@
       "text": "磐梯朝日国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%A3%AF%E8%B1%8A%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2105m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%A3%AF%E8%B1%8A%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%A3%AF%E8%B1%8A%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 20,
@@ -520,7 +580,10 @@
     "elevation": 2035,
     "access": "JR米沢駅からバス → 天元台ロープウェイ",
     "model_course": "天元台高原 → リフト3本乗継 → 北望台 → 西吾妻山（往復約4時間）",
-    "history": null,
+    "history": {
+      "text": "急行「あづま」\n上野 - 福島・仙台間を東北本線経由で運行した急行列車。1958年（昭和33年）10月運行開始、東北新幹線開業後の1985年（昭和60年）3月廃止。\n装甲巡洋艦「吾妻」\n日露戦争開戦前の主力艦12隻のうちの1隻、「吾妻」。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%90%BE%E5%A6%BB%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": {
       "text": "磐梯朝日国立公園",
@@ -554,7 +617,15 @@
       "text": "磐梯朝日国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%AE%89%E9%81%94%E5%A4%AA%E8%89%AF%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1728m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%AE%89%E9%81%94%E5%A4%AA%E8%89%AF%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%AE%89%E9%81%94%E5%A4%AA%E8%89%AF%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 22,
@@ -716,7 +787,10 @@
     "elevation": 1967,
     "access": "JR六日町駅からバス → 清水登山口",
     "model_course": "清水登山口 → 5合目 → 9合目（ニセ巻機山） → 巻機山山頂（往復約8時間）",
-    "history": null,
+    "history": {
+      "text": "女性的な山容と麓の織物業から機織りの神として信仰される山。機を織る娘に出会った男が正体を見てしまい娘が去ったという伝説が各地の神社に伝わる。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%B7%BB%E6%A9%9F%E5%B1%B1"
+    },
     "vegetation": {
       "text": "昭和の登山ブームで踏み荒らされた池塘や植生は、地元山岳会やナショナルトラストによる保全活動で近年回復しつつある。",
       "source": "https://ja.wikipedia.org/wiki/%E5%B7%BB%E6%A9%9F%E5%B1%B1"
@@ -775,7 +849,15 @@
       "text": "尾瀬国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%87%B3%E4%BB%8F%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2228m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%87%B3%E4%BB%8F%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%87%B3%E4%BB%8F%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 30,
@@ -905,7 +987,10 @@
       "text": "シラネアオイやシラネニンジンなど、和名に「シラネ」を冠する植物の基準産地として知られる。",
       "source": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "日光白根山が基準産地となるなど、和名の名前の由来となっている植物に、次のようなものがある。\n\nシラネアオイ（キンポウゲ科シラネアオイ属）\nシラネニンジン（セリ科シラネニンジン属）\nシラネセンキュウ（セリ科シシウド属）\nシラネアザミ（キク科トウヒレン属）\nシラネニガナ（キク科ニガナ属）",
+      "source": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1"
+    },
     "nationalPark": {
       "text": "日光国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1"
@@ -932,7 +1017,10 @@
     "elevation": 2160,
     "access": "JR長野原草津口駅からバス → 草津温泉 → さらにバス → 白根火山バスターミナル",
     "model_course": "白根火山バスターミナル → 湯釜展望 → 本白根山最高点（往復約2時間）",
-    "history": null,
+    "history": {
+      "text": "ここでは、火山活動を含む当地域についての全ての事象を対象とした全史を取り扱う。火山活動史を第一に表し、それに関係する地域史と関係しない地域史（地域開発史、防災史、火山活動と関係の薄い天災と人災、事件、その他諸々）を第二に表す。",
+      "source": "https://ja.wikipedia.org/wiki/%E8%8D%89%E6%B4%A5%E7%99%BD%E6%A0%B9%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": {
       "text": "上信越高原国立公園",
@@ -992,8 +1080,14 @@
     "elevation": 2454,
     "access": "JR妙高高原駅からバス → 燕温泉",
     "model_course": "燕温泉 → 黄金の湯 → 北地獄谷 → 光善寺池 → 妙高山（往復約7時間）",
-    "history": null,
-    "vegetation": null,
+    "history": {
+      "text": "重巡洋艦「妙高」\n大日本帝国海軍の妙高型重巡洋艦の1番艦\n護衛艦「みょうこう」\n海上自衛隊のこんごう型護衛艦の3番艦\n国鉄・JR東日本の列車愛称「妙高」。1950年 - 1993年、2002年 - 2015年。\n新潟県上越市・妙高酒造株式会社の日本酒「妙高山」",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A6%99%E9%AB%98%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "1978年5月 白田切川で土石流災害、推定土砂量620,000立方メートルの土石流が発生し、死者13名、全半壊家屋18戸、国道18号、国鉄信越本線を寸断。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A6%99%E9%AB%98%E5%B1%B1"
+    },
     "nationalPark": {
       "text": "妙高戸隠連山国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A6%99%E9%AB%98%E5%B1%B1"
@@ -1167,10 +1261,24 @@
     "elevation": 1828,
     "access": "JR前橋駅からバス → 赤城山頂大沼",
     "model_course": "赤城山ビジターセンター → 黒檜山 → 駒ヶ岳 → 大洞（周回約4時間）",
-    "history": null,
-    "vegetation": null,
+    "history": {
+      "text": "男体山の神と赤城山の神が大蛇と大ムカデに姿を変えて戦ったという伝説が万葉集の時代から伝わる。近代には侠客・国定忠治の物語で山名が全国に広まった。",
+      "source": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E5%9F%8E%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "大沼\n小沼\n覚満淵\n不動大滝\n赤城温泉郷",
+      "source": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E5%9F%8E%E5%B1%B1"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1828m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%BB%92%E6%AA%9C%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%BB%92%E6%AA%9C%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 44,
@@ -1190,7 +1298,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高877m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%AD%91%E6%B3%A2%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%AD%91%E6%B3%A2%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 65,
@@ -1324,7 +1440,10 @@
     "elevation": 2230,
     "access": "JR韮崎駅からバス → 瑞牆山荘",
     "model_course": "瑞牆山荘 → 富士見平小屋 → 天鳥川 → 瑞牆山（往復約5時間）",
-    "history": null,
+    "history": {
+      "text": "「瑞牆」とは神社の周囲の垣根（玉垣）のことだが、山名の由来は山稜を三分割する「みつなぎ」の転訛説や、崖を意味する「がき」に由来する説などがある。江戸時代後期に成立した『甲斐国志』では、玉塁と呼ばれる金峰山に対し、瑞塁を呼び習わしたとする説が紹介されている。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%91%9E%E7%89%86%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": {
       "text": "秩父多摩甲斐国立公園",
@@ -1355,7 +1474,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2057m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E8%8F%A9%E8%96%A9%E5%B6%BA",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E8%8F%A9%E8%96%A9%E5%B6%BA"
+      }
+    }
   },
   {
     "id": 71,
@@ -1447,7 +1574,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E5%9F%8E%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1406m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A9%E5%9F%8E%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A9%E5%9F%8E%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 77,
@@ -1540,7 +1675,15 @@
       "text": "南アルプス国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%B3%B3%E5%87%B0%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2840m、標高2840m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%B3%B3%E5%87%B0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%B3%B3%E5%87%B0%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 80,
@@ -1630,7 +1773,15 @@
       "text": "南アルプス国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A1%A9%E8%A6%8B%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高3052m、標高3052m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A1%A9%E8%A6%8B%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A1%A9%E8%A6%8B%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 83,
@@ -1653,7 +1804,15 @@
       "text": "南アルプス国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%8D%92%E5%B7%9D%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高3141m、標高3141m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%82%AA%E6%B2%A2%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%82%AA%E6%B2%A2%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 84,
@@ -1677,7 +1836,15 @@
       "text": "南アルプス国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E7%9F%B3%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高3120m、標高3120m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%B5%A4%E7%9F%B3%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%B5%A4%E7%9F%B3%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 85,
@@ -1701,7 +1868,15 @@
       "text": "南アルプス国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%81%96%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高3013m、標高3013m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%81%96%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%81%96%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 86,
@@ -1725,7 +1900,15 @@
       "text": "南アルプス国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%85%89%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2591m、標高2591m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%85%89%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%85%89%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 74,
@@ -1748,7 +1931,15 @@
       "source": "https://ja.wikipedia.org/wiki/%E6%9C%A8%E6%9B%BD%E9%A7%92%E3%83%B6%E5%B2%B3"
     },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2956m、標高2956m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%9C%A8%E6%9B%BD%E9%A7%92%E3%83%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%9C%A8%E6%9B%BD%E9%A7%92%E3%83%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 75,
@@ -1827,7 +2018,10 @@
       "text": "富士山と並ぶ庶民信仰の霊山で、1785年に覚明行者が黒沢口の登拝道を開いたことで軽装の登拝が広まった。江戸後期から多数の「御嶽講」が組織され、今も参道には数千基の霊神碑が並ぶ。",
       "source": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E5%B6%BD%E5%B1%B1"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "江戸期には高山植物が「御神草」として珍重され、コマクサは薬用に乱獲されたが再生活動が進む。オンタデはこの山で最初に発見された固有種で、山名の由来となった。ライチョウの生息地でもあるが縄張りは減少傾向。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E5%B6%BD%E5%B1%B1"
+    },
     "nationalPark": null,
     "difficulty": {
       "level": "中級",
@@ -1928,7 +2122,15 @@
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%A9%82%E9%AB%98%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高3190m、標高3190m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A5%A5%E7%A9%82%E9%AB%98%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A5%A5%E7%A9%82%E9%AB%98%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 54,
@@ -2050,7 +2252,15 @@
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E6%B0%B4%E6%99%B6%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2986m、標高2986m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%B0%B4%E6%99%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%B0%B4%E6%99%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 53,
@@ -2074,7 +2284,15 @@
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%B7%B2%E7%BE%BD%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2924m、標高2924m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%B7%B2%E7%BE%BD%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%B7%B2%E7%BE%BD%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 51,
@@ -2094,7 +2312,10 @@
       "text": "「五郎」は大岩がゴロゴロした地形を指す「ゴーロ」に由来。1909年、山岳画家・中村清太郎の登頂記を機に「黒部五郎岳」の名が定着した。",
       "source": "https://ja.wikipedia.org/wiki/%E9%BB%92%E9%83%A8%E4%BA%94%E9%83%8E%E5%B2%B3"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "周辺の登山道では、アオノツガザクラ、イワイチョウ、クルマユリ、コバイケイソウ、シナノキンバイ、チングルマ、ハクサンフウロなどの多くの高山植物が見られる。黒部五郎小舎周辺ではウラジロナナカマドやダケカンバ、山頂周辺ではハイマツなどの樹木が自生している。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%BB%92%E9%83%A8%E4%BA%94%E9%83%8E%E5%B2%B3"
+    },
     "nationalPark": {
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%BB%92%E9%83%A8%E4%BA%94%E9%83%8E%E5%B2%B3"
@@ -2225,7 +2446,10 @@
       "text": "麓の鹿島集落の名にちなみ、大正初期に陸地測量部が命名。信州側では双耳峰の姿から「背比べ岳」とも呼ばれた。",
       "source": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%B3%B6%E6%A7%8D%E3%83%B6%E5%B2%B3"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "森林限界のハイマツ帯にオヤマノエンドウやチングルマなど高山植物が咲き、ライチョウやホシガラスが生息する豪雪地帯。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%B3%B6%E6%A7%8D%E3%83%B6%E5%B2%B3"
+    },
     "nationalPark": {
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%B9%BF%E5%B3%B6%E6%A7%8D%E3%83%B6%E5%B2%B3"
@@ -2257,7 +2481,10 @@
       "text": "越中側ではかつて「後立山」とも呼ばれ、「ごりゅう」が「五竜」に転じたとされる。1908年、三枝威之助が初登頂し「五竜」の字を当てた。",
       "source": "https://ja.wikipedia.org/wiki/%E4%BA%94%E7%AB%9C%E5%B2%B3"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "登山口の白馬五竜高山植物園では、コマクサやニッコウキスゲなど200種以上の高山植物が初夏から秋にかけて楽しめる。",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BA%94%E7%AB%9C%E5%B2%B3"
+    },
     "nationalPark": {
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E4%BA%94%E7%AB%9C%E5%B2%B3"
@@ -2289,7 +2516,10 @@
       "text": "山名は春に現れる「代掻き馬」の雪形に由来するとされる。1915年の地形図改訂で「代馬岳」から「白馬岳」の表記に改められた。",
       "source": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%A6%AC%E5%B2%B3"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "「高山植物の宝庫」として知られ、特別天然記念物「白馬連山高山植物帯」に指定。シロウマアサツキなど「シロウマ」を冠する固有種も多い。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%A6%AC%E5%B2%B3"
+    },
     "nationalPark": {
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%99%BD%E9%A6%AC%E5%B2%B3"
@@ -2320,7 +2550,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2899m、標高2899m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%B5%A4%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%B5%A4%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 63,
@@ -2362,7 +2600,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2034m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%BE%8E%E3%83%B6%E5%8E%9F",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%BE%8E%E3%83%B6%E5%8E%9F"
+      }
+    }
   },
   {
     "id": 62,
@@ -2380,9 +2626,20 @@
       "text": "黒曜石の産地で旧石器〜縄文時代の遺跡が残る。中世には御射山の祭りで武士が弓術を競い、明治以降は美しい花の景勝地として知られるようになった。",
       "source": "https://ja.wikipedia.org/wiki/%E9%9C%A7%E3%83%B6%E5%B3%B0"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "霧ヶ峰の植生は草原、湿原、樹叢に分けることができる。\n\n霧ヶ峰には約40種の哺乳類、39種の鳥類が確認されている。ニホンジカの増加による花芽や樹皮の食害が懸念されている。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%9C%A7%E3%83%B6%E5%B3%B0"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1925m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%9C%A7%E3%83%B6%E5%B3%B0",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%9C%A7%E3%83%B6%E5%B3%B0"
+      }
+    }
   },
   {
     "id": 87,
@@ -2461,7 +2718,10 @@
     "access": "JR近江長岡駅からバス → 上野登山口または伊吹山ドライブウェイ山頂",
     "model_course": "上野登山口 → 3合目 → 5合目 → 山頂（往復約5時間）",
     "history": null,
-    "vegetation": null,
+    "vegetation": {
+      "text": "石灰岩の山であることから植物相が豊かで、高尾山に次ぐ種数の多さを誇る。織田信長がハーブガーデンを作った際に持ち込まれた西洋由来の帰化植物も自生する。",
+      "source": "https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E5%B1%B1"
+    },
     "nationalPark": null,
     "difficulty": {
       "level": "中級",
@@ -2495,7 +2755,15 @@
       "text": "吉野熊野国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%8F%B0%E3%83%B6%E5%8E%9F%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1695m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E5%8F%B0%E3%83%B6%E5%8E%9F%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E5%8F%B0%E3%83%B6%E5%8E%9F%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 91,
@@ -2571,7 +2839,15 @@
       "source": "https://ja.wikipedia.org/wiki/%E5%89%A3%E5%B1%B1"
     },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1955m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%89%A3%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%89%A3%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 94,
@@ -2625,7 +2901,15 @@
       "text": "阿蘇くじゅう国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E4%B9%9D%E9%87%8D%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1791m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%B9%9D%E9%87%8D%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%B9%9D%E9%87%8D%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 96,
@@ -2640,8 +2924,14 @@
     "elevation": 1756,
     "access": "JR豊肥本線豊後竹田駅からバスまたはタクシー → 北谷登山口",
     "model_course": "北谷登山口 → 国観峠 → 祖母山（往復約6時間）",
-    "history": null,
-    "vegetation": null,
+    "history": {
+      "text": "神武天皇が海戦の際、祖母である豊玉姫の故国とされるこの山に祈って難を逃れたという伝説が山名の由来とされる。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%A5%96%E6%AF%8D%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "標高により常緑広葉樹林からツガの原生林、ブナ林へと明瞭に移り変わる。祖母山の別名「姥岳」にちなみ命名されたウバタケニンジンなど固有種も自生する。",
+      "source": "https://ja.wikipedia.org/wiki/%E7%A5%96%E6%AF%8D%E5%B1%B1"
+    },
     "nationalPark": null,
     "difficulty": {
       "level": "中級",
@@ -2665,7 +2955,10 @@
     "elevation": 1592,
     "access": "JR阿蘇駅からバス → 阿蘇山上広場（火山活動規制状況要確認）",
     "model_course": "阿蘇山上広場 → ロープウェイ → 火口西駅 → 高岳 → 中岳（往復約3時間、規制状況要確認）",
-    "history": null,
+    "history": {
+      "text": "祭神・健磐龍命と従者鬼八にまつわる伝説が数多く残る山。鬼八を祀る霜宮神社では、今も幼い女子が火を絶やさず籠る神事が続けられている。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%98%BF%E8%98%87%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": {
       "text": "阿蘇くじゅう国立公園",

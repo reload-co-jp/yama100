@@ -15,7 +15,15 @@
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E6%9C%9D%E6%97%A5%E5%B2%B3%20(%E9%A3%9B%E9%A8%A8%E5%B1%B1%E8%84%88)"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1945m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%9C%9D%E6%97%A5%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%9C%9D%E6%97%A5%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 503,
@@ -34,7 +42,15 @@
       "text": "上信越高原国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%B0%B7%E5%B7%9D%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1977m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%B0%B7%E5%B7%9D%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%B0%B7%E5%B7%9D%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 504,
@@ -56,7 +72,15 @@
       "text": "上信越高原国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E4%BB%99%E3%83%8E%E5%80%89%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2026m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%BB%99%E3%83%8E%E5%80%89%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%BB%99%E3%83%8E%E5%80%89%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 505,
@@ -72,7 +96,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2140m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%99%BD%E7%A0%82%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%99%BD%E7%A0%82%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 506,
@@ -84,13 +116,24 @@
     "latitude": 36.622,
     "longitude": 138.534,
     "elevation": 2160,
-    "history": null,
+    "history": {
+      "text": "ここでは、火山活動を含む当地域についての全ての事象を対象とした全史を取り扱う。火山活動史を第一に表し、それに関係する地域史と関係しない地域史（地域開発史、防災史、火山活動と関係の薄い天災と人災、事件、その他諸々）を第二に表す。",
+      "source": "https://ja.wikipedia.org/wiki/%E8%8D%89%E6%B4%A5%E7%99%BD%E6%A0%B9%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": {
       "text": "上信越高原国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%8D%89%E6%B4%A5%E7%99%BD%E6%A0%B9%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2160m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%8D%89%E6%B4%A5%E7%99%BD%E6%A0%B9%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%8D%89%E6%B4%A5%E7%99%BD%E6%A0%B9%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 507,
@@ -112,7 +155,15 @@
       "text": "上信越高原国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E6%B5%85%E9%96%93%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2404m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%BB%92%E6%96%91%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%BB%92%E6%96%91%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 508,
@@ -131,7 +182,15 @@
       "text": "大雪山国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%9B%AA%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2101m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%B9%AF%E3%83%8E%E4%B8%B8%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%B9%AF%E3%83%8E%E4%B8%B8%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 509,
@@ -147,7 +206,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1655m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%BC%BB%E6%9B%B2%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%BC%BB%E6%9B%B2%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 510,
@@ -165,7 +232,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1757m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%B5%85%E9%96%93%E9%9A%A0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%B5%85%E9%96%93%E9%9A%A0%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 511,
@@ -177,10 +252,21 @@
     "latitude": 36.284,
     "longitude": 138.749,
     "elevation": 1104,
-    "history": null,
+    "history": {
+      "text": "群馬県内の小学校では、運動会の組分けを上毛三山の名前を用いて、「赤城団」「榛名団」「妙義団」の3組とし、対抗させる例が多数存在する。\n妙義山北麓を流れる中木川に建設された中木ダムのダム湖は、妙義山にちなみ妙義湖と名付けられた。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A6%99%E7%BE%A9%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1104m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A6%99%E7%BE%A9%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A6%99%E7%BE%A9%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 512,
@@ -196,7 +282,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1423m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%8D%92%E8%88%B9%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%8D%92%E8%88%B9%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 513,
@@ -211,7 +305,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1265m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%AB%8B%E5%B2%A9",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%AB%8B%E5%B2%A9"
+      }
+    }
   },
   {
     "id": 514,
@@ -223,10 +325,21 @@
     "latitude": 36.226,
     "longitude": 138.761,
     "elevation": 1015,
-    "history": null,
+    "history": {
+      "text": "群馬県内の小学校では、運動会の組分けを上毛三山の名前を用いて、「赤城団」「榛名団」「妙義団」の3組とし、対抗させる例が多数存在する。\n妙義山北麓を流れる中木川に建設された中木ダムのダム湖は、妙義山にちなみ妙義湖と名付けられた。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A6%99%E7%BE%A9%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1015m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%B9%BF%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%B9%BF%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 515,
@@ -245,7 +358,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1619m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%B8%B3%E4%BB%98%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%B8%B3%E4%BB%98%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 516,
@@ -260,7 +381,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1550m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%AB%8F%E8%A8%AA%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%AB%8F%E8%A8%AA%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 517,
@@ -275,7 +404,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1370m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%A8%B2%E5%90%AB%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%A8%B2%E5%90%AB%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 518,
@@ -290,7 +427,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1286m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%BE%A1%E8%8D%B7%E9%89%BE%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%BE%A1%E8%8D%B7%E9%89%BE%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 519,
@@ -305,7 +450,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高980m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%B3%B4%E7%A5%9E%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%B3%B4%E7%A5%9E%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 520,
@@ -317,10 +470,21 @@
     "latitude": 36.472,
     "longitude": 138.878,
     "elevation": 1449,
-    "history": null,
+    "history": {
+      "text": "戦艦「榛名」や護衛艦「はるな」に山名が使われたほか、群馬の小学校運動会では上毛三山にちなむ組分けの名として今も使われている。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%A6%9B%E5%90%8D%E5%B1%B1"
+    },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1449m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%A6%9B%E5%90%8D%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%A6%9B%E5%90%8D%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 521,
@@ -341,7 +505,15 @@
       "source": "https://ja.wikipedia.org/wiki/%E5%AD%90%E6%8C%81%E5%B1%B1"
     },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1296m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%AD%90%E6%8C%81%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%AD%90%E6%8C%81%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 40,
@@ -353,10 +525,24 @@
     "latitude": 36.555,
     "longitude": 139.178,
     "elevation": 1828,
-    "history": null,
-    "vegetation": null,
+    "history": {
+      "text": "男体山の神と赤城山の神が大蛇と大ムカデに姿を変えて戦ったという伝説が万葉集の時代から伝わる。近代には侠客・国定忠治の物語で山名が全国に広まった。",
+      "source": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E5%9F%8E%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "大沼\n小沼\n覚満淵\n不動大滝\n赤城温泉郷",
+      "source": "https://ja.wikipedia.org/wiki/%E8%B5%A4%E5%9F%8E%E5%B1%B1"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1828m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%BB%92%E6%AA%9C%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%BB%92%E6%AA%9C%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 523,
@@ -374,7 +560,15 @@
       "text": "大雪山国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E8%89%AF%E9%87%8E%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1123m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%B8%89%E5%B3%B0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%B8%89%E5%B3%B0%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 524,
@@ -392,7 +586,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2158m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%AD%A6%E5%B0%8A%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%AD%A6%E5%B0%8A%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 525,
@@ -407,7 +609,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1341m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%90%BE%E5%A6%BB%E8%80%B6%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%90%BE%E5%A6%BB%E8%80%B6%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 526,
@@ -428,7 +638,15 @@
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%AC%A0%E3%83%B6%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2058m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%AC%A0%E3%83%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%AC%A0%E3%83%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 527,
@@ -446,7 +664,15 @@
       "text": "尾瀬国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%87%B3%E4%BB%8F%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2228m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%87%B3%E4%BB%8F%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%87%B3%E4%BB%8F%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 528,
@@ -462,7 +688,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2354m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%9B%9B%E9%98%BF%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%9B%9B%E9%98%BF%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 529,
@@ -476,9 +710,20 @@
     "longitude": 139.168,
     "elevation": 2141,
     "history": null,
-    "vegetation": null,
+    "vegetation": {
+      "text": "湿潤な湿原部にはミズバショウやキンコウカ、モウセンゴケが自生し、乾いた場所はシラビソなどの木本が中心。尾瀬より標高が高いため花期はやや遅い。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%AC%BC%E6%80%92%E6%B2%BC"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2141m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%AC%BC%E6%80%92%E6%B2%BC%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%AC%BC%E6%80%92%E6%B2%BC%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 530,
@@ -496,7 +741,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2368m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%AA%E9%83%8E%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%AA%E9%83%8E%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 531,
@@ -513,12 +766,23 @@
       "text": "シラネアオイやシラネニンジンなど、和名に「シラネ」を冠する植物の基準産地として知られる。",
       "source": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "日光白根山が基準産地となるなど、和名の名前の由来となっている植物に、次のようなものがある。\n\nシラネアオイ（キンポウゲ科シラネアオイ属）\nシラネニンジン（セリ科シラネニンジン属）\nシラネセンキュウ（セリ科シシウド属）\nシラネアザミ（キク科トウヒレン属）\nシラネニガナ（キク科ニガナ属）",
+      "source": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1"
+    },
     "nationalPark": {
       "text": "日光国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2578m、標高2578m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%97%A5%E5%85%89%E7%99%BD%E6%A0%B9%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 532,
@@ -533,7 +797,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2483m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A5%B3%E5%B3%B0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A5%B3%E5%B3%B0%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 533,
@@ -551,7 +823,15 @@
       "text": "日光国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%94%B7%E4%BD%93%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2486m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%94%B7%E4%BD%93%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%94%B7%E4%BD%93%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 534,
@@ -567,7 +847,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2144m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%9A%87%E6%B5%B7%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%9A%87%E6%B5%B7%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 535,
@@ -586,7 +874,15 @@
       "text": "日光国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%A2%88%E8%A3%9F%E4%B8%B8%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1961m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%A2%88%E8%A3%9F%E4%B8%B8%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%A2%88%E8%A3%9F%E4%B8%B8%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 536,
@@ -605,7 +901,15 @@
       "text": "吉野熊野国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B3%B0%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1199m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%A0%B9%E6%9C%AC%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%A0%B9%E6%9C%AC%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 537,
@@ -623,7 +927,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1378m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%8F%A4%E5%B3%B0%E3%83%B6%E5%8E%9F",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%8F%A4%E5%B3%B0%E3%83%B6%E5%8E%9F"
+      }
+    }
   },
   {
     "id": 538,
@@ -638,7 +950,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高880m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%9F%B3%E8%A3%82%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%9F%B3%E8%A3%82%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 539,
@@ -653,7 +973,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高583m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%8F%A4%E8%B3%80%E5%BF%97%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%8F%A4%E8%B3%80%E5%BF%97%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 540,
@@ -668,7 +996,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高419m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%99%83%E7%9F%B3%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%99%83%E7%9F%B3%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 541,
@@ -686,7 +1022,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高229m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%B8%89%E6%AF%B3%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%B8%89%E6%AF%B3%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 542,
@@ -701,7 +1045,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高442m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%B6%B3%E5%88%A9%E8%A1%8C%E9%81%93%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%B6%B3%E5%88%A9%E8%A1%8C%E9%81%93%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 543,
@@ -719,7 +1071,15 @@
       "text": "日光国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%8E%9F%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1795m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%AB%98%E5%8E%9F%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%AB%98%E5%8E%9F%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 544,
@@ -734,7 +1094,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1849m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%97%A5%E7%95%99%E8%B3%80%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%97%A5%E7%95%99%E8%B3%80%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 545,
@@ -756,7 +1124,15 @@
       "text": "日光国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E4%B8%89%E6%9C%AC%E6%A7%8D%E5%B2%B3"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1917m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%B8%89%E6%9C%AC%E6%A7%8D%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%B8%89%E6%9C%AC%E6%A7%8D%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 546,
@@ -774,7 +1150,15 @@
       "text": "南アルプス国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E8%8C%B6%E8%87%BC%E5%B2%B3%20(%E8%B5%A4%E7%9F%B3%E5%B1%B1%E8%84%88)"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1915m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%8C%B6%E8%87%BC%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%8C%B6%E8%87%BC%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 547,
@@ -792,7 +1176,15 @@
       "text": "日光国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%94%B7%E4%BD%93%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高654m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%94%B7%E4%BD%93%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%94%B7%E4%BD%93%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 548,
@@ -811,7 +1203,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1022m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%85%AB%E6%BA%9D%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%85%AB%E6%BA%9D%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 549,
@@ -829,7 +1229,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高658m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%AB%AA%E7%A0%B4%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%AB%AA%E7%A0%B4%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 550,
@@ -844,7 +1252,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高518m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%90%BE%E5%9B%BD%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%90%BE%E5%9B%BD%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 551,
@@ -862,7 +1278,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高709m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%8A%A0%E6%B3%A2%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%8A%A0%E6%B3%A2%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 552,
@@ -880,7 +1304,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高877m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%AD%91%E6%B3%A2%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%AD%91%E6%B3%A2%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 553,
@@ -895,7 +1327,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高329m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%8B%B8%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%8B%B8%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 554,
@@ -910,7 +1350,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高315m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%AB%98%E5%AE%95%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%AB%98%E5%AE%95%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 555,
@@ -926,12 +1374,23 @@
       "text": "「トヤマ」の地名は室町期の文書に「外山郷」として現れるのが初見。立山連峰を望み山に富むことに由来するなど、由来には諸説ある。",
       "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%B1%B1%E5%B8%82"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "神通峡\n常虹の滝\n立山カルデラ\n雲ノ平\n大転石",
+      "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%B1%B1%E5%B8%82"
+    },
     "nationalPark": {
       "text": "中部山岳国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%B1%B1%E5%B8%82"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高349m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%AF%8C%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%AF%8C%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 556,
@@ -946,7 +1405,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高336m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%BC%8A%E4%BA%88%E3%83%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%BC%8A%E4%BA%88%E3%83%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 557,
@@ -967,7 +1434,15 @@
       "source": "https://ja.wikipedia.org/wiki/%E5%87%BD%E9%A4%A8%E5%B1%B1"
     },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高364m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%BE%A1%E6%AE%BF%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%BE%A1%E6%AE%BF%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 558,
@@ -982,7 +1457,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高305m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%97%A5%E5%92%8C%E7%94%B0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%97%A5%E5%92%8C%E7%94%B0%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 559,
@@ -994,13 +1477,27 @@
     "latitude": 36.054,
     "longitude": 139.186,
     "elevation": 837,
-    "history": null,
-    "vegetation": null,
+    "history": {
+      "text": "山名の由来は、越中側から見た山容が編笠状であるためとされている。加賀側からは、山頂直下に広い平地があることから「千丈平山」と呼ばれていた。金沢市方面からその端正な三角形の山容を望むことができる。国土地理院の地形図では、南西に「千丈平」と呼ばれる平坦地がある。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E7%AC%A0%E5%B1%B1"
+    },
+    "vegetation": {
+      "text": "初夏に登山道では、コブシ、ホンシャクナゲの広葉樹の花が見られる。上部に行くにつれて、ブナ林からダケカンバやオオシラビソへと植生が変わる。また上部では、クマザサが多く見られる。またイワウチワ、イワカガミ、タテヤマリンドウ、ニッコウキスゲ、ハクサンコザクラなどの高山植物も見られる。",
+      "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E7%AC%A0%E5%B1%B1"
+    },
     "nationalPark": {
       "text": "白山国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E7%AC%A0%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高837m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%AC%A0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%AC%A0%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 560,
@@ -1015,7 +1512,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高767m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E9%9C%A7%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E9%9C%A7%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 561,
@@ -1030,7 +1535,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高330m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%90%98%E6%92%9E%E5%A0%82%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%90%98%E6%92%9E%E5%A0%82%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 562,
@@ -1045,7 +1558,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1038m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%9F%8E%E5%B3%AF%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%9F%8E%E5%B3%AF%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 563,
@@ -1058,9 +1579,20 @@
     "longitude": 138.928,
     "elevation": 1166,
     "history": null,
-    "vegetation": null,
+    "vegetation": {
+      "text": "「若ノ花物語・土俵の鬼」（1957年／日活 若乃花幹士本人主演）\n「土俵の鬼・若乃花物語」（1992年10月5日／テレビ朝日）\n倉田てつを - 青年期（花田勝治役）\n滝田栄 - 現役時代～引退後（若乃花幹士～二子山勝治）",
+      "source": "https://ja.wikipedia.org/wiki/%E8%8B%A5%E4%B9%83%E8%8A%B1%E5%B9%B9%E5%A3%AB%20(%E5%88%9D%E4%BB%A3)"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1166m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%BA%8C%E5%AD%90%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%BA%8C%E5%AD%90%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 564,
@@ -1084,7 +1616,15 @@
       "text": "秩父多摩甲斐国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E4%B8%A1%E7%A5%9E%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1723m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%B8%A1%E7%A5%9E%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%B8%A1%E7%A5%9E%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 565,
@@ -1101,7 +1641,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2475m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%94%B2%E6%AD%A6%E4%BF%A1%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%94%B2%E6%AD%A6%E4%BF%A1%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 566,
@@ -1116,7 +1664,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2036m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%92%8C%E5%90%8D%E5%80%89%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%92%8C%E5%90%8D%E5%80%89%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 567,
@@ -1134,7 +1690,15 @@
       "text": "吉野熊野国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B3%B0%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1329m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A6%99%E6%B3%95%E3%83%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A6%99%E6%B3%95%E3%83%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 568,
@@ -1152,7 +1716,15 @@
       "text": "秩父多摩甲斐国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%A7%A9%E7%88%B6%E5%B1%B1%E5%9C%B0"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1081m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%A7%A9%E7%88%B6%E5%BE%A1%E5%B2%B3%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%A7%A9%E7%88%B6%E5%BE%A1%E5%B2%B3%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 569,
@@ -1176,7 +1748,15 @@
       "text": "秩父多摩甲斐国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E6%AD%A6%E7%94%B2%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1304m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%AD%A6%E7%94%B2%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%AD%A6%E7%94%B2%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 570,
@@ -1191,7 +1771,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1294m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E6%8C%81%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E6%8C%81%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 571,
@@ -1206,7 +1794,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1052m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%AD%A6%E5%B7%9D%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%AD%A6%E5%B7%9D%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 572,
@@ -1221,7 +1817,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高851m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%BC%8A%E8%B1%86%E3%83%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%BC%8A%E8%B1%86%E3%83%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 573,
@@ -1236,7 +1840,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高497m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%AE%9D%E7%99%BB%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%AE%9D%E7%99%BB%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 574,
@@ -1254,7 +1866,15 @@
       "text": "秩父多摩甲斐国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%9B%B2%E5%8F%96%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1737m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%B7%B9%E3%83%8E%E5%B7%A3%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%B7%B9%E3%83%8E%E5%B7%A3%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 575,
@@ -1274,7 +1894,15 @@
       "text": "秩父多摩甲斐国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%9B%B2%E5%8F%96%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "上級",
+      "basis": "標高2017m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%9B%B2%E5%8F%96%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%9B%B2%E5%8F%96%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 576,
@@ -1289,7 +1917,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1363m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%B7%9D%E8%8B%94%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%B7%9D%E8%8B%94%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 577,
@@ -1304,7 +1940,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高793m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%AB%98%E6%B0%B4%E4%B8%89%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%AB%98%E6%B0%B4%E4%B8%89%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 578,
@@ -1322,7 +1966,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高929m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%BE%A1%E5%B2%B3%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%BE%A1%E5%B2%B3%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 579,
@@ -1337,7 +1989,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1266m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E5%B2%B3%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E5%B2%B3%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 580,
@@ -1352,7 +2012,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1405m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%BE%A1%E5%89%8D%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%BE%A1%E5%89%8D%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 581,
@@ -1368,7 +2036,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1531m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E4%B8%89%E9%A0%AD%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E4%B8%89%E9%A0%AD%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 582,
@@ -1381,12 +2057,23 @@
     "longitude": 139.015,
     "elevation": 903,
     "history": null,
-    "vegetation": null,
+    "vegetation": {
+      "text": "浅間山はシラビソやオオシラビソを中心とした亜高山帯の自然植生を残し、その周辺にカラマツの天然林が広がり、野生の動物が多数生息している。その中でも、イヌワシやツキノワグマなどの生息地として重要であることから国指定浅間鳥獣保護区（大規模生息地）に指定されている（面積32,218ha、うち特別保護地区947ha）。",
+      "source": "https://ja.wikipedia.org/wiki/%E6%B5%85%E9%96%93%E5%B1%B1"
+    },
     "nationalPark": {
       "text": "上信越高原国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E6%B5%85%E9%96%93%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高903m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%B5%85%E9%96%93%E5%B6%BA",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%B5%85%E9%96%93%E5%B6%BA"
+      }
+    }
   },
   {
     "id": 583,
@@ -1400,9 +2087,20 @@
     "longitude": 139.136,
     "elevation": 855,
     "history": null,
-    "vegetation": null,
+    "vegetation": {
+      "text": "周辺は非常に多くの種類の植物が自生しており、田中澄江により花の百名山に選定されている。代表する花としてフクジュソウを紹介している。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B0%BE%E5%B1%B1"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高855m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%99%A3%E9%A6%AC%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%99%A3%E9%A6%AC%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 584,
@@ -1418,9 +2116,20 @@
       "text": "元は修験道の霊場で、744年に行基が開山したと伝わる。1927年にケーブルカーが開業し、都市部近郊ながら豊かな森林が守られたことでミシュランガイド三つ星にも選ばれている。",
       "source": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B0%BE%E5%B1%B1"
     },
-    "vegetation": null,
+    "vegetation": {
+      "text": "周辺は非常に多くの種類の植物が自生しており、田中澄江により花の百名山に選定されている。代表する花としてフクジュソウを紹介している。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B0%BE%E5%B1%B1"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高599m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%AB%98%E5%B0%BE%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%AB%98%E5%B0%BE%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 585,
@@ -1436,7 +2145,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高969m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%A3%92%E3%83%8E%E6%8A%98%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%A3%92%E3%83%8E%E6%8A%98%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 586,
@@ -1449,9 +2166,20 @@
     "longitude": 139.1,
     "elevation": 990,
     "history": null,
-    "vegetation": null,
+    "vegetation": {
+      "text": "周辺は非常に多くの種類の植物が自生しており、田中澄江により花の百名山に選定されている。代表する花としてフクジュソウを紹介している。",
+      "source": "https://ja.wikipedia.org/wiki/%E9%AB%98%E5%B0%BE%E5%B1%B1"
+    },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高990m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%94%9F%E8%97%A4%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%94%9F%E8%97%A4%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 587,
@@ -1469,7 +2197,15 @@
       "text": "瀬戸内海国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E5%85%AD%E7%94%B2%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高572m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A9%E4%B8%8A%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A9%E4%B8%8A%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 588,
@@ -1484,7 +2220,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高694m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%9F%B3%E8%80%81%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%9F%B3%E8%80%81%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 589,
@@ -1499,7 +2243,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高723m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E9%87%8E%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E9%87%8E%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 590,
@@ -1514,7 +2266,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1252m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 591,
@@ -1529,7 +2289,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1491m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A1%94%E3%83%8E%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A1%94%E3%83%8E%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 592,
@@ -1547,7 +2315,15 @@
     },
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1673m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E8%9B%AD%E3%83%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E8%9B%AD%E3%83%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 593,
@@ -1568,7 +2344,15 @@
       "source": "https://ja.wikipedia.org/wiki/%E6%AA%9C%E6%B4%9E%E4%B8%B8"
     },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1601m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%AA%9C%E6%B4%9E%E4%B8%B8",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%AA%9C%E6%B4%9E%E4%B8%B8"
+      }
+    }
   },
   {
     "id": 594,
@@ -1587,7 +2371,15 @@
       "source": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%AE%A4%E5%B1%B1%20(%E4%B8%B9%E6%B2%A2)"
     },
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1587m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E5%AE%A4%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E5%AE%A4%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 595,
@@ -1605,7 +2397,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%99%82%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高870m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%9F%A2%E5%80%89%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%9F%A2%E5%80%89%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 596,
@@ -1624,7 +2424,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E9%87%91%E6%99%82%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1213m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E9%87%91%E6%99%82%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E9%87%91%E6%99%82%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 597,
@@ -1645,7 +2453,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%AE%B1%E6%A0%B9%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1169m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E6%98%8E%E7%A5%9E%E3%83%B6%E5%B2%B3",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E6%98%8E%E7%A5%9E%E3%83%B6%E5%B2%B3"
+      }
+    }
   },
   {
     "id": 598,
@@ -1666,7 +2482,15 @@
       "text": "富士箱根伊豆国立公園",
       "source": "https://ja.wikipedia.org/wiki/%E7%AE%B1%E6%A0%B9%E5%B1%B1"
     },
-    "difficulty": null
+    "difficulty": {
+      "level": "中級",
+      "basis": "標高1438m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E7%A5%9E%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E7%A5%9E%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 599,
@@ -1681,7 +2505,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高626m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%B9%95%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%B9%95%E5%B1%B1"
+      }
+    }
   },
   {
     "id": 600,
@@ -1696,7 +2528,15 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高159m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A9%E5%9C%92",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A9%E5%9C%92"
+      }
+    }
   },
   {
     "id": 601,
@@ -1711,6 +2551,14 @@
     "history": null,
     "vegetation": null,
     "nationalPark": null,
-    "difficulty": null
+    "difficulty": {
+      "level": "初級",
+      "basis": "標高241m",
+      "source": "自動推定（標高のみからの粗い算出、コースタイム情報なし、要人手確認）",
+      "referenceLinks": {
+        "yamap": "https://yamap.com/search/mountains?q=%E5%A4%A7%E6%A5%A0%E5%B1%B1",
+        "yamareco": "https://www.yamareco.com/modules/yamainfo/ptinfo.php?mode=name&word=%E5%A4%A7%E6%A5%A0%E5%B1%B1"
+      }
+    }
   }
 ]

@@ -2,12 +2,15 @@
 // enrich-mountains.mjs が生成した草案(scripts/output/mountain-enrichment-draft.json)を
 // public/mountains*.json 本体へ反映する。
 //
-// 草案でnullだった項目（Wikipediaに該当節がない等）はそのままnullとして反映し、
-// 後日の手動補完に委ねる。既存の description/access/model_course は変更しない。
+// デフォルトでは、本体側で既に値が入っているフィールド（文体統一済みの手直し済み
+// テキストなど）は上書きせず、null のフィールドのみ草案の値で埋める。
+// 草案側も null の場合はそのまま null を維持する。
+// 既存の description/access/model_course は変更しない。
 //
 // 使い方:
-//   node scripts/apply-enrichment.mjs --list mountains   # mountains.jsonのみ反映
-//   node scripts/apply-enrichment.mjs                    # 全リストへ反映
+//   node scripts/apply-enrichment.mjs --list mountains   # mountains.jsonのみ、欠損分を反映
+//   node scripts/apply-enrichment.mjs                    # 全リストへ、欠損分を反映
+//   node scripts/apply-enrichment.mjs --overwrite         # 既存値も含め草案で全て上書き
 
 import { readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
@@ -29,11 +32,12 @@ const LIST_FILE_MAP = {
 }
 
 function parseArgs(argv) {
-  const opts = { list: null, draft: DEFAULT_DRAFT }
+  const opts = { list: null, draft: DEFAULT_DRAFT, overwrite: false }
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]
     if (a === "--list") opts.list = argv[++i]
     else if (a === "--draft") opts.draft = path.resolve(argv[++i])
+    else if (a === "--overwrite") opts.overwrite = true
   }
   return opts
 }
@@ -57,14 +61,17 @@ async function main() {
     const merged = mountains.map((mountain) => {
       const d = draftById.get(mountain.id)
       if (!d) return mountain
-      updated++
-      return {
-        ...mountain,
-        history: d.history ?? null,
-        vegetation: d.vegetation ?? null,
-        nationalPark: d.nationalPark ?? null,
-        difficulty: d.difficulty ?? null,
+
+      const next = { ...mountain }
+      let changed = false
+      for (const field of ["history", "vegetation", "nationalPark", "difficulty"]) {
+        if (!opts.overwrite && mountain[field]) continue
+        const value = d[field] ?? null
+        if (value !== null) changed = true
+        next[field] = value
       }
+      if (changed) updated++
+      return next
     })
 
     await writeFile(filePath, JSON.stringify(merged, null, 2), "utf8")
