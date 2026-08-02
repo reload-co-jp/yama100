@@ -180,7 +180,8 @@ export default function MountainMap({
           if (!feature) return
 
           const coordinates = feature.geometry.coordinates as [number, number]
-          const { id, name, elevation, location } = feature.properties
+          const { id, name, elevation, location, checked: isChecked } =
+            feature.properties
 
           popupRef.current?.remove()
           popupRef.current = new maplibregl.Popup({ maxWidth: "200px" })
@@ -188,12 +189,21 @@ export default function MountainMap({
             .setHTML(
               `<div style="font-family:sans-serif;line-height:1.5;color:#1a1a1a">
                 <strong>${name}</strong><br>
-                ${elevation}m &nbsp;${location}
+                ${elevation}m &nbsp;${location}<br>
+                <button type="button" id="mountain-toggle-btn" style="margin-top:6px;padding:4px 10px;border:none;border-radius:4px;background:${isChecked ? "#4caf50" : "#1976d2"};color:#fff;cursor:pointer">
+                  ${isChecked ? "✓ 登頂済み" : "登頂済みにする"}
+                </button>
               </div>`
             )
             .addTo(map)
 
-          onToggleRef.current(id)
+          popupRef.current
+            .getElement()
+            ?.querySelector("#mountain-toggle-btn")
+            ?.addEventListener("click", () => {
+              onToggleRef.current(id)
+              popupRef.current?.remove()
+            })
         })
       })
     }
