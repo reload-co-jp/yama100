@@ -186,7 +186,7 @@ export default function MountainMap({
           popupRef.current = new maplibregl.Popup({ maxWidth: "200px" })
             .setLngLat(coordinates)
             .setHTML(
-              `<div style="font-family:sans-serif;line-height:1.5">
+              `<div style="font-family:sans-serif;line-height:1.5;color:#1a1a1a">
                 <strong>${name}</strong><br>
                 ${elevation}m &nbsp;${location}
               </div>`
