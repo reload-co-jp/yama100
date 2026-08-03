@@ -144,7 +144,19 @@ export default function MountainMap({
               "#1976d2",
             ],
             "circle-opacity": 0.85,
-            "circle-radius": 7,
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              4,
+              3,
+              8,
+              5,
+              12,
+              8,
+              16,
+              12,
+            ],
           },
         })
 
@@ -154,7 +166,19 @@ export default function MountainMap({
           source: MARKERS_SOURCE_ID,
           paint: {
             "circle-color": "transparent",
-            "circle-radius": 7,
+            "circle-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              4,
+              3,
+              8,
+              5,
+              12,
+              8,
+              16,
+              12,
+            ],
             "circle-stroke-color": [
               "case",
               ["boolean", ["get", "checked"], false],
