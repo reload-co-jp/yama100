@@ -370,27 +370,23 @@ function SummitDateInput({
   onChange: (dates: string[]) => void
   themeColor: string
 }) {
-  const [year, setYear] = useState("")
-  const [month, setMonth] = useState("")
-  const [day, setDay] = useState("")
+  const [precision, setPrecision] = useState<"day" | "month" | "year">("day")
+  const [value, setValue] = useState("")
 
   const addDate = () => {
-    if (!/^\d{4}$/.test(year)) return
-    let value = year
-    if (month) {
-      value += `-${month.padStart(2, "0")}`
-      if (day) value += `-${day.padStart(2, "0")}`
-    }
+    if (!value) return
+    if (precision === "year" && !/^\d{4}$/.test(value)) return
     if (!isValidSummitDate(value) || dates.includes(value)) return
     onChange([...dates, value].sort())
-    setYear("")
-    setMonth("")
-    setDay("")
+    setValue("")
   }
 
   const removeDate = (value: string) => {
     onChange(dates.filter((d) => d !== value))
   }
+
+  const canAdd =
+    precision === "year" ? /^\d{4}$/.test(value) : value.length > 0
 
   const inputStyle = {
     background: "#161616",
@@ -399,7 +395,6 @@ function SummitDateInput({
     color: "#aaa",
     fontSize: ".75rem",
     padding: "3px 5px",
-    width: "3.6em",
   }
 
   return (
@@ -442,49 +437,48 @@ function SummitDateInput({
           ))}
         </div>
       )}
-      <div style={{ alignItems: "center", display: "flex", gap: "4px" }}>
-        <input
-          type="number"
-          placeholder="年"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-          style={inputStyle}
-        />
-        <span style={{ color: "#444", fontSize: ".75rem" }}>年</span>
+      <div style={{ alignItems: "center", display: "flex", flexWrap: "wrap", gap: "4px" }}>
         <select
-          value={month}
+          value={precision}
           onChange={(e) => {
-            setMonth(e.target.value)
-            if (!e.target.value) setDay("")
+            setPrecision(e.target.value as "day" | "month" | "year")
+            setValue("")
           }}
           style={inputStyle}
         >
-          <option value="">-</option>
-          {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
-            <option key={m} value={m}>
-              {m}
-            </option>
-          ))}
+          <option value="day">年月日</option>
+          <option value="month">年月</option>
+          <option value="year">年のみ</option>
         </select>
-        <span style={{ color: "#444", fontSize: ".75rem" }}>月</span>
-        <select
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
-          disabled={!month}
-          style={{ ...inputStyle, opacity: month ? 1 : 0.4 }}
-        >
-          <option value="">-</option>
-          {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
-            <option key={d} value={d}>
-              {d}
-            </option>
-          ))}
-        </select>
-        <span style={{ color: "#444", fontSize: ".75rem" }}>日</span>
+        {precision === "day" && (
+          <input
+            type="date"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            style={inputStyle}
+          />
+        )}
+        {precision === "month" && (
+          <input
+            type="month"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            style={inputStyle}
+          />
+        )}
+        {precision === "year" && (
+          <input
+            type="number"
+            placeholder="例: 2024"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            style={{ ...inputStyle, width: "5em" }}
+          />
+        )}
         <button
           type="button"
           onClick={addDate}
-          disabled={!/^\d{4}$/.test(year)}
+          disabled={!canAdd}
           style={{
             background: "transparent",
             border: `1px solid ${themeColor}`,
@@ -493,7 +487,7 @@ function SummitDateInput({
             cursor: "pointer",
             fontSize: ".75rem",
             marginLeft: "4px",
-            opacity: /^\d{4}$/.test(year) ? 1 : 0.4,
+            opacity: canAdd ? 1 : 0.4,
             padding: "3px 8px",
           }}
         >
