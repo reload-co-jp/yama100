@@ -42,7 +42,14 @@ function getCache(key: string) {
 
 function writeChecked(key: string, next: Set<number>) {
   _caches[key] = next
-  localStorage.setItem(key, JSON.stringify({ checked: [...next] }))
+  let dates: unknown
+  try {
+    const stored = localStorage.getItem(key)
+    if (stored) dates = JSON.parse(stored).dates
+  } catch {
+    // ignore parse errors
+  }
+  localStorage.setItem(key, JSON.stringify({ checked: [...next], dates }))
   _listeners[key]?.forEach((l) => l())
 }
 

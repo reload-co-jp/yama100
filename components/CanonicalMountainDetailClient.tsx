@@ -23,7 +23,17 @@ function readChecked(storageKey: string) {
 }
 
 function writeChecked(storageKey: string, checked: Set<number>) {
-  localStorage.setItem(storageKey, JSON.stringify({ checked: [...checked] }))
+  let dates: unknown
+  try {
+    const stored = localStorage.getItem(storageKey)
+    if (stored) dates = JSON.parse(stored).dates
+  } catch {
+    // ignore parse errors
+  }
+  localStorage.setItem(
+    storageKey,
+    JSON.stringify({ checked: [...checked], dates })
+  )
   _listeners[storageKey]?.forEach((listener) => listener())
 }
 

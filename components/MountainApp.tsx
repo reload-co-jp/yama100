@@ -8,6 +8,7 @@ import {
   useMountainState,
   SortOrder,
   encodeChecked,
+  isValidSummitDate,
 } from "../hooks/useMountainState"
 import HeroSection from "./HeroSection"
 import { getMountainPagePathForRecord } from "../lib/mountainCatalog"
@@ -71,11 +72,8 @@ export default function MountainApp({
   totalCount,
   idOffset,
 }: MountainAppProps) {
-  const { checked, sort, setSort, digestChecked, toggle } = useMountainState(
-    storageKey,
-    totalCount,
-    idOffset
-  )
+  const { checked, sort, setSort, digestChecked, toggle, dates, setSummitDates } =
+    useMountainState(storageKey, totalCount, idOffset)
   const [copied, setCopied] = useState(false)
   const [isDigestDismissed, setIsDigestDismissed] = useState(false)
   const [hoveredId, setHoveredId] = useState<number | null>(null)
@@ -318,6 +316,8 @@ export default function MountainApp({
                         onToggle={toggle}
                         onHover={setHoveredId}
                         themeColor={themeColor}
+                        summitDates={dates[mountain.id] ?? []}
+                        onSummitDatesChange={setSummitDates}
                       />
                     ))}
                   </ul>
@@ -342,11 +342,163 @@ export default function MountainApp({
                   onToggle={toggle}
                   onHover={setHoveredId}
                   themeColor={themeColor}
+                  summitDates={dates[mountain.id] ?? []}
+                  onSummitDatesChange={setSummitDates}
                 />
               ))}
             </ul>
           )}
         </div>
+      </div>
+    </div>
+  )
+}
+
+function formatSummitDate(date: string): string {
+  const [y, m, d] = date.split("-")
+  if (d) return `${y}年${Number(m)}月${Number(d)}日`
+  if (m) return `${y}年${Number(m)}月`
+  return `${y}年`
+}
+
+function SummitDateInput({
+  dates,
+  onChange,
+  themeColor,
+}: {
+  dates: string[]
+  onChange: (dates: string[]) => void
+  themeColor: string
+}) {
+  const [year, setYear] = useState("")
+  const [month, setMonth] = useState("")
+  const [day, setDay] = useState("")
+
+  const addDate = () => {
+    if (!/^\d{4}$/.test(year)) return
+    let value = year
+    if (month) {
+      value += `-${month.padStart(2, "0")}`
+      if (day) value += `-${day.padStart(2, "0")}`
+    }
+    if (!isValidSummitDate(value) || dates.includes(value)) return
+    onChange([...dates, value].sort())
+    setYear("")
+    setMonth("")
+    setDay("")
+  }
+
+  const removeDate = (value: string) => {
+    onChange(dates.filter((d) => d !== value))
+  }
+
+  const inputStyle = {
+    background: "#161616",
+    border: "1px solid rgba(255,255,255,0.1)",
+    borderRadius: "5px",
+    color: "#aaa",
+    fontSize: ".75rem",
+    padding: "3px 5px",
+    width: "3.6em",
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+      {dates.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          {dates.map((d) => (
+            <span
+              key={d}
+              style={{
+                alignItems: "center",
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "5px",
+                color: "#999",
+                display: "inline-flex",
+                fontSize: ".75rem",
+                gap: "5px",
+                padding: "2px 6px",
+              }}
+            >
+              {formatSummitDate(d)}
+              <button
+                type="button"
+                aria-label={`${formatSummitDate(d)}を削除`}
+                onClick={() => removeDate(d)}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#666",
+                  cursor: "pointer",
+                  fontSize: ".75rem",
+                  lineHeight: 1,
+                  padding: 0,
+                }}
+              >
+                ×
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+      <div style={{ alignItems: "center", display: "flex", gap: "4px" }}>
+        <input
+          type="number"
+          placeholder="年"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+          style={inputStyle}
+        />
+        <span style={{ color: "#444", fontSize: ".75rem" }}>年</span>
+        <select
+          value={month}
+          onChange={(e) => {
+            setMonth(e.target.value)
+            if (!e.target.value) setDay("")
+          }}
+          style={inputStyle}
+        >
+          <option value="">-</option>
+          {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
+            <option key={m} value={m}>
+              {m}
+            </option>
+          ))}
+        </select>
+        <span style={{ color: "#444", fontSize: ".75rem" }}>月</span>
+        <select
+          value={day}
+          onChange={(e) => setDay(e.target.value)}
+          disabled={!month}
+          style={{ ...inputStyle, opacity: month ? 1 : 0.4 }}
+        >
+          <option value="">-</option>
+          {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
+            <option key={d} value={d}>
+              {d}
+            </option>
+          ))}
+        </select>
+        <span style={{ color: "#444", fontSize: ".75rem" }}>日</span>
+        <button
+          type="button"
+          onClick={addDate}
+          disabled={!/^\d{4}$/.test(year)}
+          style={{
+            background: "transparent",
+            border: `1px solid ${themeColor}`,
+            borderRadius: "5px",
+            color: themeColor,
+            cursor: "pointer",
+            fontSize: ".75rem",
+            marginLeft: "4px",
+            opacity: /^\d{4}$/.test(year) ? 1 : 0.4,
+            padding: "3px 8px",
+          }}
+        >
+          追加
+        </button>
       </div>
     </div>
   )
@@ -358,12 +510,16 @@ function MountainListItem({
   onToggle,
   onHover,
   themeColor,
+  summitDates,
+  onSummitDatesChange,
 }: {
   mountain: Mountain
   isChecked: boolean
   onToggle: (id: number) => void
   onHover: (id: number | null) => void
   themeColor: string
+  summitDates: string[]
+  onSummitDatesChange: (id: number, dates: string[]) => void
 }) {
   return (
     <li
@@ -454,6 +610,13 @@ function MountainListItem({
           >
             詳細 →
           </Link>
+          <div style={{ marginTop: "10px" }}>
+            <SummitDateInput
+              dates={summitDates}
+              onChange={(next) => onSummitDatesChange(mountain.id, next)}
+              themeColor={themeColor}
+            />
+          </div>
         </div>
         <MountainPhoto name={mountain.name} />
       </div>
