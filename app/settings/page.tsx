@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import Link from "next/link"
 import DataTransferClient from "components/DataTransferClient"
 
 export const metadata: Metadata = {
@@ -24,6 +25,14 @@ export default function Page() {
         登頂記録をJSONファイルでバックアップ・復元できます。別デバイスへの移行にも使えます。
       </p>
       <DataTransferClient />
+      <p style={{ marginTop: "24px" }}>
+        <Link
+          href="/summary/"
+          style={{ color: "#4caf50", fontSize: ".875rem" }}
+        >
+          登頂まとめページを見る →
+        </Link>
+      </p>
     </div>
   )
 }

@@ -207,6 +207,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <Link href="/articles/mountains300/" style={{ color: "#444", textDecoration: "none" }}>三百名山</Link>
             <Link href="/articles/flowers/" style={{ color: "#444", textDecoration: "none" }}>花の百名山</Link>
             <Link href="/gear-checklist/" style={{ color: "#444", textDecoration: "none" }}>山装備チェック</Link>
+            <Link href="/summary/" style={{ color: "#444", textDecoration: "none" }}>登頂まとめ</Link>
             <Link href="/settings/" style={{ color: "#444", textDecoration: "none" }}>データ管理</Link>
             <Link href="/mountains_minor12/" style={{ color: "#444", textDecoration: "none" }}>マイナー12名山</Link>
             <Link href="/mountains_new100/" style={{ color: "#444", textDecoration: "none" }}>新日本百名山</Link>
