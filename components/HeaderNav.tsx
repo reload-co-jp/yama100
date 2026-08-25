@@ -13,6 +13,8 @@ const NAV_LINKS = [
   { href: "/mountains_kanto100/", label: "関東百名山" },
   { href: "/articles/", label: "読み物" },
   { href: "/gear-checklist/", label: "山装備" },
+  { href: "/summary/", label: "サマリー" },
+  { href: "/settings/", label: "設定" },
 ]
 
 export default function HeaderNav() {
