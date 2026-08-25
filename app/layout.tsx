@@ -1,3 +1,4 @@
+import HeaderNav from "components/HeaderNav"
 import HeaderSearch from "components/HeaderSearch"
 import PWAInstallBanner from "components/PWAInstallBanner"
 import ServiceWorkerRegistration from "components/ServiceWorkerRegistration"
@@ -98,26 +99,84 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             gap: 8px;
           }
 
-          .site-header-nav {
+          .drawer-toggle {
+            align-items: center;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 8px;
+            cursor: pointer;
             display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
+            flex-direction: column;
+            flex-shrink: 0;
+            gap: 4px;
+            height: 36px;
+            justify-content: center;
+            padding: 0;
+            width: 36px;
+          }
+
+          .drawer-toggle span {
+            background: #ededed;
+            border-radius: 2px;
+            display: block;
+            height: 2px;
+            width: 18px;
+          }
+
+          .drawer-overlay {
+            background: rgba(0,0,0,0.5);
+            bottom: 0;
+            display: flex;
             justify-content: flex-end;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 100;
           }
 
-          .site-header-nav a {
-            border-radius: 6px;
+          .drawer-panel {
+            background: #171717;
+            border-left: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            height: 100%;
+            max-width: 82vw;
+            overflow-y: auto;
+            padding: 8px;
+            width: 280px;
+          }
+
+          .drawer-header {
+            align-items: center;
             color: #888;
+            display: flex;
             font-size: .8rem;
-            letter-spacing: .01em;
-            padding: 5px 10px;
-            text-decoration: none;
-            transition: color .15s, background .15s;
+            justify-content: space-between;
+            padding: 8px 10px 12px;
           }
 
-          .site-header-nav a:hover {
-            background: rgba(255,255,255,0.06);
+          .drawer-close {
+            background: transparent;
+            border: none;
             color: #ededed;
+            cursor: pointer;
+            font-size: 1.25rem;
+            line-height: 1;
+            padding: 4px;
+          }
+
+          .drawer-panel a {
+            border-radius: 8px;
+            color: #ededed;
+            font-size: .95rem;
+            padding: 12px 10px;
+            text-decoration: none;
+          }
+
+          .drawer-panel a:hover {
+            background: rgba(255,255,255,0.06);
           }
 
           @media (min-width: 980px) {
@@ -126,10 +185,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               flex-direction: row;
               flex-wrap: wrap;
               justify-content: flex-end;
-            }
-
-            .site-header-nav {
-              align-items: center;
             }
           }
         `}</style>
@@ -152,17 +207,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <Suspense fallback={<div style={{ maxWidth: "360px", width: "100%" }} />}>
                 <HeaderSearch />
               </Suspense>
-              <nav className="site-header-nav">
-                <Link href="/">百名山</Link>
-                <Link href="/mountains200/">二百名山</Link>
-                <Link href="/mountains300/">三百名山</Link>
-                <Link href="/mountains_flowers/">花の百名山</Link>
-                <Link href="/mountains_minor12/">マイナー12</Link>
-                <Link href="/mountains_new100/">新百名山</Link>
-                <Link href="/mountains_kanto100/">関東百名山</Link>
-                <Link href="/articles/">読み物</Link>
-                <Link href="/gear-checklist/">山装備</Link>
-              </nav>
+              <HeaderNav />
             </div>
           </div>
         </header>
