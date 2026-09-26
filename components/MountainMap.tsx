@@ -217,6 +217,7 @@ export default function MountainMap({
                 <button type="button" id="mountain-toggle-btn" style="margin-top:6px;padding:4px 10px;border:none;border-radius:4px;background:${isChecked ? "#4caf50" : "#1976d2"};color:#fff;cursor:pointer">
                   ${isChecked ? "✓ 登頂済み" : "登頂済みにする"}
                 </button>
+                <a href="/mountain/${id}/" style="display:inline-block;margin-top:6px;margin-left:6px;color:#1976d2">詳細</a>
               </div>`
             )
             .addTo(map)
