@@ -84,7 +84,11 @@ const categories: GearCategory[] = [
     title: "季節・山域",
     items: [
       { id: "gaiters", label: "ゲイター" },
-      { id: "spikes", label: "チェーンスパイク・軽アイゼン", season: ["winter"] },
+      {
+        id: "spikes",
+        label: "チェーンスパイク・軽アイゼン",
+        season: ["winter"],
+      },
       { id: "winter-gloves", label: "防寒手袋", season: ["winter"] },
       { id: "warm-hat", label: "ニット帽", season: ["winter"] },
       { id: "bear-bell", label: "熊鈴", season: ["summer"] },
@@ -110,7 +114,11 @@ const categories: GearCategory[] = [
 const ALL_ACCOMMODATIONS: Accommodation[] = ["day", "hut", "tent"]
 const ALL_SEASONS: Season[] = ["summer", "winter"]
 
-const isItemVisible = (item: GearItem, accommodation: Accommodation, season: Season) =>
+const isItemVisible = (
+  item: GearItem,
+  accommodation: Accommodation,
+  season: Season
+) =>
   (item.accommodation ?? ALL_ACCOMMODATIONS).includes(accommodation) &&
   (item.season ?? ALL_SEASONS).includes(season)
 
@@ -150,23 +158,28 @@ const GearChecklistClient: FC = () => {
       categories
         .map((cat) => ({
           ...cat,
-          items: cat.items.filter((item) => isItemVisible(item, accommodation, season)),
+          items: cat.items.filter((item) =>
+            isItemVisible(item, accommodation, season)
+          ),
         }))
         .filter((cat) => cat.items.length > 0),
-    [accommodation, season],
+    [accommodation, season]
   )
 
   const allVisibleItems = useMemo(
     () => visibleCategories.flatMap((cat) => cat.items),
-    [visibleCategories],
+    [visibleCategories]
   )
 
   const checkedCount = useMemo(
     () => allVisibleItems.filter((item) => checked[item.id]).length,
-    [allVisibleItems, checked],
+    [allVisibleItems, checked]
   )
 
-  const progress = allVisibleItems.length === 0 ? 0 : Math.round((checkedCount / allVisibleItems.length) * 100)
+  const progress =
+    allVisibleItems.length === 0
+      ? 0
+      : Math.round((checkedCount / allVisibleItems.length) * 100)
 
   const toggleItem = (id: string) => {
     setChecked((current) => ({ ...current, [id]: !current[id] }))
@@ -180,14 +193,14 @@ const GearChecklistClient: FC = () => {
     <div className="gear-page">
       <style>{`
         .gear-page {
-          color: #d4d8d1;
+          color: var(--color-text-muted);
           margin: 32px auto;
           max-width: 980px;
           padding: 0 20px 48px;
         }
 
         .gear-hero {
-          border-bottom: 1px solid #384139;
+          border-bottom: 1px solid var(--color-border);
           display: grid;
           gap: 18px;
           grid-template-columns: minmax(0, 1fr);
@@ -195,29 +208,29 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-kicker {
-          color: #7ecfb3;
+          color: var(--color-forest-600);
           font-size: .82rem;
           font-weight: 700;
           letter-spacing: .08em;
         }
 
         .gear-title {
-          color: #fff;
+          color: var(--color-text);
           font-size: clamp(2rem, 7vw, 4.25rem);
           line-height: 1.05;
           margin: 0;
         }
 
         .gear-lead {
-          color: #b8c0b7;
+          color: var(--color-text-muted);
           font-size: 1rem;
           line-height: 1.8;
           max-width: 680px;
         }
 
         .gear-panel {
-          background: #29302c;
-          border: 1px solid #3d4842;
+          background: var(--color-surface);
+          border: 1px solid var(--color-border-strong);
           border-radius: 8px;
           padding: 16px;
         }
@@ -230,20 +243,20 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-progress-number {
-          color: #fff;
+          color: var(--color-text);
           font-size: 1.75rem;
           font-weight: 800;
         }
 
         .gear-progress-bar {
-          background: #1d231f;
+          background: var(--color-surface-sunken);
           border-radius: 999px;
           height: 10px;
           overflow: hidden;
         }
 
         .gear-progress-fill {
-          background: linear-gradient(90deg, #7ecfb3, #d8e879);
+          background: linear-gradient(90deg, var(--color-forest-600), var(--color-forest-500));
           height: 100%;
           transition: width .2s ease;
         }
@@ -256,10 +269,10 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-button {
-          background: #7ecfb3;
+          background: var(--color-forest-600);
           border: 0;
           border-radius: 6px;
-          color: #10221b;
+          color: #ffffff;
           cursor: pointer;
           font: inherit;
           font-weight: 700;
@@ -267,12 +280,12 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-button.secondary {
-          background: #343d38;
-          color: #d4d8d1;
+          background: var(--color-surface-muted);
+          color: var(--color-text-muted);
         }
 
         .gear-filters {
-          border-bottom: 1px solid #384139;
+          border-bottom: 1px solid var(--color-border);
           display: flex;
           flex-wrap: wrap;
           gap: 20px;
@@ -287,7 +300,7 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-filter-label {
-          color: #7ecfb3;
+          color: var(--color-forest-600);
           font-size: .78rem;
           font-weight: 700;
           letter-spacing: .06em;
@@ -295,10 +308,10 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-filter-btn {
-          background: #29302c;
-          border: 1px solid #3d4842;
+          background: var(--color-surface);
+          border: 1px solid var(--color-border-strong);
           border-radius: 999px;
-          color: #91a196;
+          color: var(--color-text-subtle);
           cursor: pointer;
           font: inherit;
           font-size: .85rem;
@@ -308,14 +321,14 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-filter-btn:hover {
-          border-color: #7ecfb3;
-          color: #d4d8d1;
+          border-color: var(--color-forest-600);
+          color: var(--color-text-muted);
         }
 
         .gear-filter-btn.active {
-          background: #7ecfb3;
-          border-color: #7ecfb3;
-          color: #10221b;
+          background: var(--color-forest-600);
+          border-color: var(--color-forest-600);
+          color: #ffffff;
         }
 
         .gear-grid {
@@ -326,29 +339,29 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-card {
-          background: #2a2a2a;
-          border: 1px solid #383838;
+          background: var(--color-surface);
+          border: 1px solid var(--color-border);
           border-radius: 8px;
           overflow: hidden;
         }
 
         .gear-card-header {
           align-items: center;
-          border-bottom: 1px solid #383838;
+          border-bottom: 1px solid var(--color-border);
           display: flex;
           justify-content: space-between;
           padding: 14px 16px;
         }
 
         .gear-card-title {
-          color: #fff;
+          color: var(--color-text);
           font-size: 1.05rem;
           font-weight: 800;
           margin: 0;
         }
 
         .gear-card-count {
-          color: #91a196;
+          color: var(--color-text-subtle);
           font-size: .82rem;
         }
 
@@ -358,7 +371,7 @@ const GearChecklistClient: FC = () => {
 
         .gear-item {
           align-items: flex-start;
-          border-bottom: 1px solid #353535;
+          border-bottom: 1px solid var(--color-border);
           cursor: pointer;
           display: grid;
           gap: 12px;
@@ -372,26 +385,26 @@ const GearChecklistClient: FC = () => {
         }
 
         .gear-checkbox {
-          accent-color: #7ecfb3;
+          accent-color: var(--color-forest-600);
           height: 18px;
           margin-top: 2px;
           width: 18px;
         }
 
         .gear-label {
-          color: #f3f5f1;
+          color: var(--color-text);
           display: block;
           font-weight: 700;
           line-height: 1.4;
         }
 
         .gear-label.checked {
-          color: #8f9a92;
+          color: var(--color-text-subtle);
           text-decoration: line-through;
         }
 
         .gear-note {
-          color: #9aa59c;
+          color: var(--color-text-subtle);
           display: block;
           font-size: .78rem;
           line-height: 1.5;
@@ -425,10 +438,17 @@ const GearChecklistClient: FC = () => {
             <span className="gear-progress-number">{progress}%</span>
           </div>
           <div className="gear-progress-bar">
-            <div className="gear-progress-fill" style={{ width: `${progress}%` }} />
+            <div
+              className="gear-progress-fill"
+              style={{ width: `${progress}%` }}
+            />
           </div>
           <div className="gear-actions">
-            <button className="gear-button secondary" type="button" onClick={clearAll}>
+            <button
+              className="gear-button secondary"
+              type="button"
+              onClick={clearAll}
+            >
               リセット
             </button>
           </div>
@@ -466,7 +486,9 @@ const GearChecklistClient: FC = () => {
 
       <div className="gear-grid">
         {visibleCategories.map((category) => {
-          const categoryCheckedCount = category.items.filter((item) => checked[item.id]).length
+          const categoryCheckedCount = category.items.filter(
+            (item) => checked[item.id]
+          ).length
 
           return (
             <section className="gear-card" key={category.id}>
@@ -489,10 +511,14 @@ const GearChecklistClient: FC = () => {
                         type="checkbox"
                       />
                       <span>
-                        <span className={`gear-label${isChecked ? " checked" : ""}`}>
+                        <span
+                          className={`gear-label${isChecked ? " checked" : ""}`}
+                        >
                           {item.label}
                         </span>
-                        {item.note && <span className="gear-note">{item.note}</span>}
+                        {item.note && (
+                          <span className="gear-note">{item.note}</span>
+                        )}
                       </span>
                     </label>
                   )

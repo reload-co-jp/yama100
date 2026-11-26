@@ -1,0 +1,32 @@
+.form {
+  position: relative;
+  width: 100%;
+}
+
+.icon {
+  color: var(--color-text-subtle);
+  left: 12px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input {
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.9375rem;
+  height: 40px;
+  padding: 0 14px 0 38px;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.input:focus {
+  background: var(--color-surface);
+  border-color: var(--color-forest-500);
+}

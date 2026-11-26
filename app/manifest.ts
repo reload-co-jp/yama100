@@ -4,13 +4,14 @@ export const dynamic = "force-static"
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Yama100 - 日本百名山チェックリスト",
+    name: "Yama100 - 日本百名山の登頂記録",
     short_name: "Yama100",
-    description: "深田久弥が選んだ日本百名山の登頂記録をチェックできるアプリ。ログイン不要でURLで共有できます。",
+    description:
+      "日本百名山などの登頂記録を管理・可視化・共有できる登山記録サービス。ログイン不要。",
     start_url: "/",
     display: "standalone",
-    background_color: "#222222",
-    theme_color: "#333333",
+    background_color: "#f6f5f0",
+    theme_color: "#1e4d3a",
     orientation: "portrait-primary",
     lang: "ja",
     icons: [

@@ -1,138 +1,59 @@
 "use client"
 
-import { useState, useCallback, useSyncExternalStore } from "react"
+import { useCallback, useSyncExternalStore } from "react"
+import {
+  EMPTY_LIST_STATE,
+  getAllListsSnapshot,
+  getServerAllListsSnapshot,
+  isValidSummitDate,
+  readListState,
+  setMountainDates,
+  subscribeAll,
+  subscribeList,
+  toggleMountainChecked,
+  type SummitDates,
+} from "../lib/summitStore"
 
-export type SortOrder =
-  | "number"
-  | "latitude"
-  | "name"
-  | "elevation"
-  | "prefecture"
+export { isValidSummitDate }
+export type { SummitDates }
 
-// 登頂日: "YYYY" | "YYYY-MM" | "YYYY-MM-DD"
-export type SummitDates = Record<number, string[]>
-
-const SUMMIT_DATE_RE = /^\d{4}(-\d{2}(-\d{2})?)?$/
-
-export function isValidSummitDate(value: string): boolean {
-  return SUMMIT_DATE_RE.test(value)
+export function useListState(storageKey: string) {
+  return useSyncExternalStore(
+    useCallback(
+      (listener: () => void) => subscribeList(storageKey, listener),
+      [storageKey]
+    ),
+    () => readListState(storageKey),
+    () => EMPTY_LIST_STATE
+  )
 }
 
-function readStateFromStorage(storageKey: string): {
-  checked: Set<number>
-  dates: SummitDates
-} {
-  const stored = localStorage.getItem(storageKey)
-  if (!stored) return { checked: new Set<number>(), dates: {} }
-
-  const parsed = JSON.parse(stored)
-  const ids = parsed.checked
-  const checked = Array.isArray(ids)
-    ? new Set<number>(
-        ids.map(Number).filter((n: number) => Number.isInteger(n) && n > 0)
-      )
-    : new Set<number>()
-
-  const dates: SummitDates = {}
-  if (parsed.dates && typeof parsed.dates === "object") {
-    for (const [key, value] of Object.entries(parsed.dates)) {
-      const id = Number(key)
-      if (!Number.isInteger(id) || !Array.isArray(value)) continue
-      const valid = value.filter(
-        (d): d is string => typeof d === "string" && isValidSummitDate(d)
-      )
-      if (valid.length) dates[id] = valid
-    }
-  }
-  return { checked, dates }
+export function useAllListsState() {
+  return useSyncExternalStore(
+    subscribeAll,
+    getAllListsSnapshot,
+    getServerAllListsSnapshot
+  )
 }
 
-const EMPTY = new Set<number>()
-const EMPTY_DATES: SummitDates = {}
-const _checkedListeners: Record<string, Set<() => void>> = {}
-const _checkedCache: Record<
-  string,
-  { raw: string | null; checked: Set<number>; dates: SummitDates }
-> = {}
-const _digestCache = new Map<string, Set<number> | null>()
-
-function getState(storageKey: string) {
-  try {
-    const raw = localStorage.getItem(storageKey)
-    const cached = _checkedCache[storageKey]
-    if (cached && cached.raw === raw) return cached
-
-    const { checked, dates } = raw
-      ? readStateFromStorage(storageKey)
-      : { checked: EMPTY, dates: EMPTY_DATES }
-    const entry = { raw, checked, dates }
-    _checkedCache[storageKey] = entry
-    return entry
-  } catch (error) {
-    console.error("Failed to parse stored mountain count:", error)
-    return { raw: null, checked: EMPTY, dates: EMPTY_DATES }
-  }
+export function useMountainCountState(storageKey: string) {
+  const { checked } = useListState(storageKey)
+  return { checked }
 }
 
-function getCheckedSnapshot(storageKey: string) {
-  return getState(storageKey).checked
-}
+// --- share digest (?data=) ------------------------------------------------
 
-function getDatesSnapshot(storageKey: string) {
-  return getState(storageKey).dates
-}
-
-function subscribeChecked(storageKey: string, listener: () => void) {
-  if (!_checkedListeners[storageKey]) _checkedListeners[storageKey] = new Set()
-  _checkedListeners[storageKey].add(listener)
-  return () => {
-    _checkedListeners[storageKey].delete(listener)
-  }
-}
-
-function writeState(
-  storageKey: string,
-  checked: Set<number>,
-  dates: SummitDates
-) {
-  const cleanedDates: SummitDates = {}
-  for (const [idStr, list] of Object.entries(dates)) {
-    if (list.length) cleanedDates[Number(idStr)] = list
-  }
-  const raw = JSON.stringify({ checked: [...checked], dates: cleanedDates })
-  _checkedCache[storageKey] = { raw, checked, dates: cleanedDates }
-  localStorage.setItem(storageKey, raw)
-  _checkedListeners[storageKey]?.forEach((listener) => listener())
-}
-
-function writeChecked(storageKey: string, checked: Set<number>) {
-  writeState(storageKey, checked, getState(storageKey).dates)
-}
-
-function readSortFromLocation() {
-  const sortParam = new URLSearchParams(window.location.search).get(
-    "sort"
-  ) as SortOrder | null
-  if (
-    sortParam &&
-    (
-      ["number", "latitude", "name", "elevation", "prefecture"] as SortOrder[]
-    ).includes(sortParam)
-  ) {
-    return sortParam
-  }
-  return "number"
-}
+const digestCache = new Map<string, Set<number> | null>()
 
 function readDigestFromLocation(totalMountains: number, idOffset: number) {
   const dataParam = new URLSearchParams(window.location.search).get("data")
   const cacheKey = `${dataParam ?? ""}:${totalMountains}:${idOffset}`
-  if (_digestCache.has(cacheKey)) return _digestCache.get(cacheKey) ?? null
+  if (digestCache.has(cacheKey)) return digestCache.get(cacheKey) ?? null
 
   const snapshot = dataParam
     ? decodeChecked(dataParam, totalMountains, idOffset)
     : null
-  _digestCache.set(cacheKey, snapshot)
+  digestCache.set(cacheKey, snapshot)
   return snapshot
 }
 
@@ -143,84 +64,33 @@ function subscribeLocation(listener: () => void) {
   }
 }
 
-export function useMountainCountState(storageKey: string) {
-  const checked = useSyncExternalStore(
-    (listener) => subscribeChecked(storageKey, listener),
-    () => getCheckedSnapshot(storageKey),
-    () => EMPTY
-  )
-
-  return { checked }
-}
-
 export function useMountainState(
   storageKey: string,
   totalMountains: number,
   idOffset: number = 0
 ) {
-  const checked = useSyncExternalStore(
-    (listener) => subscribeChecked(storageKey, listener),
-    () => getCheckedSnapshot(storageKey),
-    () => EMPTY
-  )
-  const dates = useSyncExternalStore(
-    (listener) => subscribeChecked(storageKey, listener),
-    () => getDatesSnapshot(storageKey),
-    () => EMPTY_DATES
-  )
-  const initialSort = useSyncExternalStore(
-    subscribeLocation,
-    readSortFromLocation,
-    (): SortOrder => "number"
-  )
+  const { checked, dates } = useListState(storageKey)
   const digestChecked = useSyncExternalStore(
     subscribeLocation,
     () => readDigestFromLocation(totalMountains, idOffset),
     () => null
   )
-  const [sortOverride, setSortOverride] = useState<SortOrder | null>(null)
-  const sort = sortOverride ?? initialSort
 
-  const setSort = useCallback((nextSort: SortOrder) => {
-    setSortOverride(nextSort)
-    const url = new URL(window.location.href)
-    url.searchParams.set("sort", nextSort)
-    window.history.replaceState(null, "", url.toString())
-  }, [])
-
-  const saveToStorage = useCallback(
-    (ids: Set<number>) => {
-      writeChecked(storageKey, ids)
-    },
+  const toggle = useCallback(
+    (id: number) => toggleMountainChecked(storageKey, id),
     [storageKey]
   )
 
-  const toggle = useCallback(
-    (id: number) => {
-      const next = new Set(checked)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
-      saveToStorage(next)
-    },
-    [checked, saveToStorage]
-  )
-
   const setSummitDates = useCallback(
-    (id: number, nextDates: string[]) => {
-      const nextAll = { ...dates }
-      if (nextDates.length) nextAll[id] = nextDates
-      else delete nextAll[id]
-      // 登頂日を追加したら自動で登頂済みにする
-      const nextChecked = nextDates.length
-        ? new Set(checked).add(id)
-        : checked
-      writeState(storageKey, nextChecked, nextAll)
-    },
-    [checked, dates, storageKey]
+    (id: number, nextDates: string[]) =>
+      setMountainDates(storageKey, id, nextDates),
+    [storageKey]
   )
 
-  return { checked, sort, setSort, digestChecked, toggle, dates, setSummitDates }
+  return { checked, digestChecked, toggle, dates, setSummitDates }
 }
+
+// --- share URL encoding (互換性維持のため形式は変更しない) ---------------------
 
 export function encodeChecked(
   checked: Set<number>,

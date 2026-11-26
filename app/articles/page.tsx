@@ -10,11 +10,14 @@ export const metadata = {
     description: "日本百名山や登山に関する読み物・記事一覧",
     url: "/articles/",
     siteName: "Yama100",
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "Yama100" },
+    ],
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "読み物一覧",
     description: "日本百名山や登山に関する読み物・記事一覧",
   },
@@ -27,10 +30,16 @@ const Page: FC = () => {
         maxWidth: "720px",
         margin: "40px auto",
         padding: "0 24px",
-        color: "#ccc",
+        color: "var(--color-text-muted)",
       }}
     >
-      <h1 style={{ color: "#fff", fontSize: "2rem", marginBottom: "32px" }}>
+      <h1
+        style={{
+          color: "var(--color-text)",
+          fontSize: "2rem",
+          marginBottom: "32px",
+        }}
+      >
         読み物
       </h1>
 
@@ -38,10 +47,11 @@ const Page: FC = () => {
         <Link
           href="/articles/history/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -51,17 +61,20 @@ const Page: FC = () => {
           >
             百名山について
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             日本百名山の歴史と深田久弥による選定の背景
           </div>
         </Link>
         <Link
           href="/articles/criteria/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -71,17 +84,20 @@ const Page: FC = () => {
           >
             百名山の選考基準について
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説
           </div>
         </Link>
         <Link
           href="/articles/fukada/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -91,17 +107,20 @@ const Page: FC = () => {
           >
             深田久弥について
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             日本百名山の著者、深田久弥の生涯と功績についての解説
           </div>
         </Link>
         <Link
           href="/articles/mountains/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -111,17 +130,20 @@ const Page: FC = () => {
           >
             深田久弥が登った山々
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             深田久弥の山行の記録と日本百名山への道
           </div>
         </Link>
         <Link
           href="/articles/mountains200/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -131,17 +153,20 @@ const Page: FC = () => {
           >
             二百名山について
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             日本二百名山の歴史と百名山との違いについての解説
           </div>
         </Link>
         <Link
           href="/articles/mountains300/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -151,17 +176,20 @@ const Page: FC = () => {
           >
             三百名山について
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             日本三百名山の歴史と百名山・二百名山との違いについての解説
           </div>
         </Link>
         <Link
           href="/gear-checklist/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -171,17 +199,20 @@ const Page: FC = () => {
           >
             山装備 忘れ物チェックリスト
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             登山前に必携品、ウェア、水・食料、季節装備、泊まり装備を確認
           </div>
         </Link>
         <Link
           href="/articles/flowers/"
           style={{
-            background: "#2a2a2a",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
             borderRadius: "8px",
             padding: "20px",
-            color: "#fff",
+            color: "var(--color-text)",
             textDecoration: "none",
             display: "block",
           }}
@@ -191,7 +222,9 @@ const Page: FC = () => {
           >
             花の百名山について
           </div>
-          <div style={{ fontSize: ".875rem", color: "#aaa" }}>
+          <div
+            style={{ fontSize: ".875rem", color: "var(--color-text-muted)" }}
+          >
             田中澄江が選定した「花の百名山」の歴史とコンセプトの解説
           </div>
         </Link>

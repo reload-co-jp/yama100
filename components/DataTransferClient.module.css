@@ -1,0 +1,48 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px;
+}
+
+.h2 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.text {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+}
+
+.divider {
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+}
+
+input:focus-visible + .fileLabel {
+  outline: 3px solid var(--color-sky-600);
+  outline-offset: 2px;
+}
+
+.success,
+.error {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-top: 8px;
+  min-height: 1.5em;
+}
+
+.success {
+  color: var(--color-forest-700);
+}
+
+.error {
+  color: var(--color-danger);
+}
+
+.note {
+  color: var(--color-text-subtle);
+  font-size: 0.75rem;
+}

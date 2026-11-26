@@ -10,16 +10,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "/articles/criteria/" },
   openGraph: {
     title: "百名山の選考基準について",
-    description: "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
+    description:
+      "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
     url: "/articles/criteria/",
     siteName: "Yama100",
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "Yama100" },
+    ],
     locale: "ja_JP",
     type: "article",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "百名山の選考基準について",
-    description: "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
+    description:
+      "深田久弥が選定に用いた「品格・歴史・個性」の基準についての解説",
   },
 }
 
@@ -28,8 +33,18 @@ const jsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "読み物一覧", item: `${SITE_URL}/articles/` },
-    { "@type": "ListItem", position: 3, name: "百名山の選考基準について", item: `${SITE_URL}/articles/criteria/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "読み物一覧",
+      item: `${SITE_URL}/articles/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "百名山の選考基準について",
+      item: `${SITE_URL}/articles/criteria/`,
+    },
   ],
 }
 
@@ -65,21 +80,27 @@ const Page: FC = () => {
         maxWidth: "720px",
         margin: "40px auto",
         padding: "0 24px",
-        color: "#ccc",
+        color: "var(--color-text-muted)",
       }}
     >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       <Link
         href="/articles/"
-        style={{ color: "#7ecfb3", textDecoration: "none" }}
+        style={{ color: "var(--color-forest-600)", textDecoration: "none" }}
       >
         ← 読み物一覧に戻る
       </Link>
 
       <h1
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "2rem",
           marginTop: "24px",
           marginBottom: "16px",
@@ -96,7 +117,7 @@ const Page: FC = () => {
 
       <h2
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "1.25rem",
           marginTop: "24px",
           marginBottom: "12px",
@@ -110,7 +131,7 @@ const Page: FC = () => {
 
       <h2
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "1.25rem",
           marginTop: "24px",
           marginBottom: "12px",
@@ -124,7 +145,7 @@ const Page: FC = () => {
 
       <h2
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "1.25rem",
           marginTop: "24px",
           marginBottom: "12px",

@@ -1,58 +1,107 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { usePathname } from "next/navigation"
+import { Suspense, useEffect, useRef, useState } from "react"
+import HeaderSearch from "./HeaderSearch"
+import { CloseIcon, MenuIcon } from "./ui/Icons"
+import {
+  GUIDE_NAV,
+  LIST_NAV,
+  OTHER_NAV,
+  PRIMARY_NAV,
+} from "./layout/navigation"
+import styles from "./HeaderNav.module.css"
 
-const NAV_LINKS = [
-  { href: "/", label: "百名山" },
-  { href: "/mountains200/", label: "二百名山" },
-  { href: "/mountains300/", label: "三百名山" },
-  { href: "/mountains_flowers/", label: "花の百名山" },
-  { href: "/mountains_minor12/", label: "マイナー12" },
-  { href: "/mountains_new100/", label: "新百名山" },
-  { href: "/mountains_kanto100/", label: "関東百名山" },
-  { href: "/articles/", label: "読み物" },
-  { href: "/gear-checklist/", label: "山装備" },
-  { href: "/summary/", label: "サマリー" },
-  { href: "/settings/", label: "設定" },
+const GROUPS = [
+  { title: "メニュー", links: PRIMARY_NAV },
+  { title: "山のリスト", links: LIST_NAV },
+  { title: "百名山ガイド", links: GUIDE_NAV },
+  { title: "その他", links: OTHER_NAV },
 ]
 
 export default function HeaderNav() {
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    closeRef.current?.focus()
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false)
+    }
+    window.addEventListener("keydown", onKey)
+    const toggle = toggleRef.current
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", onKey)
+      toggle?.focus()
+    }
+  }, [open])
 
   return (
     <>
       <button
         aria-controls="site-drawer"
         aria-expanded={open}
-        aria-label="メニュー"
-        className="drawer-toggle"
+        className={styles.toggle}
         onClick={() => setOpen(true)}
+        ref={toggleRef}
         type="button"
       >
-        <span />
-        <span />
-        <span />
+        <MenuIcon size={20} />
+        <span className={styles.toggleLabel}>メニュー</span>
       </button>
 
       {open && (
-        <div className="drawer-overlay" onClick={() => setOpen(false)}>
+        <div
+          className={styles.overlay}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setOpen(false)
+          }}
+          role="presentation"
+        >
           <nav
-            aria-label="メニュー"
-            className="drawer-panel"
+            aria-label="サイトメニュー"
+            className={styles.panel}
             id="site-drawer"
-            onClick={(e) => e.stopPropagation()}
           >
-            <div className="drawer-header">
-              <span>メニュー</span>
-              <button aria-label="閉じる" className="drawer-close" onClick={() => setOpen(false)} type="button">
-                ×
+            <div className={styles.panelHead}>
+              <span className={styles.panelTitle}>Yama100</span>
+              <button
+                aria-label="メニューを閉じる"
+                className={styles.close}
+                onClick={() => setOpen(false)}
+                ref={closeRef}
+                type="button"
+              >
+                <CloseIcon size={22} />
               </button>
             </div>
-            {NAV_LINKS.map((link) => (
-              <Link href={link.href} key={link.href} onClick={() => setOpen(false)}>
-                {link.label}
-              </Link>
+            <div className={styles.search}>
+              <Suspense fallback={null}>
+                <HeaderSearch id="drawer-search" />
+              </Suspense>
+            </div>
+            {GROUPS.map((group) => (
+              <div className={styles.group} key={group.title}>
+                <p className={styles.groupTitle}>{group.title}</p>
+                {group.links.map((link) => (
+                  <Link
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={styles.link}
+                    href={link.href}
+                    key={link.href}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             ))}
           </nav>
         </div>

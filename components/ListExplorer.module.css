@@ -1,0 +1,45 @@
+.summary {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+}
+
+.progress {
+  display: flex;
+  flex: 1 1 280px;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 520px;
+}
+
+.count {
+  align-items: baseline;
+  display: flex;
+  gap: 4px;
+}
+
+.count strong {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.total {
+  color: var(--color-text-subtle);
+  font-size: 0.9375rem;
+}
+
+.rate {
+  color: var(--color-forest-600);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  margin-left: 8px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

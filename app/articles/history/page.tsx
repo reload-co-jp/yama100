@@ -13,11 +13,14 @@ export const metadata: Metadata = {
     description: "日本百名山の歴史と深田久弥による選定の背景",
     url: "/articles/history/",
     siteName: "Yama100",
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "Yama100" },
+    ],
     locale: "ja_JP",
     type: "article",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "百名山の成立について",
     description: "日本百名山の歴史と深田久弥による選定の背景",
   },
@@ -28,8 +31,18 @@ const jsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "読み物一覧", item: `${SITE_URL}/articles/` },
-    { "@type": "ListItem", position: 3, name: "百名山の成立について", item: `${SITE_URL}/articles/history/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "読み物一覧",
+      item: `${SITE_URL}/articles/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "百名山の成立について",
+      item: `${SITE_URL}/articles/history/`,
+    },
   ],
 }
 
@@ -70,18 +83,27 @@ const Page: FC = () => {
         maxWidth: "720px",
         margin: "40px auto",
         padding: "0 24px",
-        color: "#ccc",
+        color: "var(--color-text-muted)",
       }}
     >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <Link href="/about/" style={{ color: "#7ecfb3", textDecoration: "none" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
+      <Link
+        href="/about/"
+        style={{ color: "var(--color-forest-600)", textDecoration: "none" }}
+      >
         ← このサイトについてに戻る
       </Link>
 
       <h1
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "2rem",
           marginTop: "24px",
           marginBottom: "16px",
@@ -96,7 +118,7 @@ const Page: FC = () => {
 
       <h2
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "1.25rem",
           marginTop: "24px",
           marginBottom: "12px",
@@ -110,7 +132,7 @@ const Page: FC = () => {
 
       <h2
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "1.25rem",
           marginTop: "24px",
           marginBottom: "12px",

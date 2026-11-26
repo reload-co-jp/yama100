@@ -13,11 +13,14 @@ export const metadata: Metadata = {
       "登山前に地図、ヘッドランプ、レインウェア、水、食料、季節装備、山小屋泊・テント泊装備を確認できるチェックリスト。",
     url: "/gear-checklist/",
     siteName: "Yama100",
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "Yama100" },
+    ],
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "山装備 忘れ物チェックリスト",
     description:
       "登山前に地図、ヘッドランプ、レインウェア、水、食料、季節装備、山小屋泊・テント泊装備を確認できるチェックリスト。",
@@ -31,8 +34,7 @@ const jsonLd = {
   url: `${SITE_URL}/gear-checklist/`,
   applicationCategory: "LifestyleApplication",
   operatingSystem: "Web",
-  description:
-    "登山前に装備の忘れ物を確認できるブラウザ用チェックリスト。",
+  description: "登山前に装備の忘れ物を確認できるブラウザ用チェックリスト。",
 }
 
 export default function Page() {

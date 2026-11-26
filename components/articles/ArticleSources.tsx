@@ -13,7 +13,7 @@ export default function ArticleSources({
     <section style={{ marginTop: "32px" }}>
       <h2
         style={{
-          color: "#fff",
+          color: "var(--color-text)",
           fontSize: "1.1rem",
           marginBottom: "12px",
         }}
@@ -22,7 +22,7 @@ export default function ArticleSources({
       </h2>
       <ul
         style={{
-          color: "#aaa",
+          color: "var(--color-text-muted)",
           lineHeight: 1.8,
           margin: 0,
           paddingLeft: "20px",
@@ -34,7 +34,10 @@ export default function ArticleSources({
               href={source.href}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: "#7ecfb3", textDecoration: "none" }}
+              style={{
+                color: "var(--color-forest-600)",
+                textDecoration: "none",
+              }}
             >
               {source.label}
             </a>

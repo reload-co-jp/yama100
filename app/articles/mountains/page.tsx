@@ -13,11 +13,14 @@ export const metadata: Metadata = {
     description: "深田久弥の山行の記録と日本百名山への道",
     url: "/articles/mountains/",
     siteName: "Yama100",
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "Yama100" },
+    ],
     locale: "ja_JP",
     type: "article",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "深田久弥が登った山々",
     description: "深田久弥の山行の記録と日本百名山への道",
   },
@@ -28,8 +31,18 @@ const jsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "読み物一覧", item: `${SITE_URL}/articles/` },
-    { "@type": "ListItem", position: 3, name: "深田久弥が登った山々", item: `${SITE_URL}/articles/mountains/` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "読み物一覧",
+      item: `${SITE_URL}/articles/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "深田久弥が登った山々",
+      item: `${SITE_URL}/articles/mountains/`,
+    },
   ],
 }
 
@@ -65,27 +78,68 @@ const sources = [
 
 const Page: FC = () => {
   return (
-    <div style={{ maxWidth: "720px", margin: "40px auto", padding: "0 24px", color: "#ccc" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <Link href="/articles/" style={{ color: "#7ecfb3", textDecoration: "none" }}>
+    <div
+      style={{
+        maxWidth: "720px",
+        margin: "40px auto",
+        padding: "0 24px",
+        color: "var(--color-text-muted)",
+      }}
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
+      <Link
+        href="/articles/"
+        style={{ color: "var(--color-forest-600)", textDecoration: "none" }}
+      >
         ← 読み物一覧に戻る
       </Link>
-      
-      <h1 style={{ color: "#fff", fontSize: "2rem", marginTop: "24px", marginBottom: "16px" }}>
+
+      <h1
+        style={{
+          color: "var(--color-text)",
+          fontSize: "2rem",
+          marginTop: "24px",
+          marginBottom: "16px",
+        }}
+      >
         深田久弥が登った山々
       </h1>
-      
+
       <p style={{ lineHeight: 1.8, marginBottom: "24px" }}>
         深田久弥の山行は、加賀の山々に親しんだ少年時代から始まり、日本各地の名峰、さらにヒマラヤ踏査へと広がっていきました。『日本百名山』は、その積み重ねのうえに生まれた本です。
       </p>
 
-      <h2 style={{ color: "#fff", fontSize: "1.25rem", marginTop: "24px", marginBottom: "12px" }}>加賀の山々から始まった歩み</h2>
+      <h2
+        style={{
+          color: "var(--color-text)",
+          fontSize: "1.25rem",
+          marginTop: "24px",
+          marginBottom: "12px",
+        }}
+      >
+        加賀の山々から始まった歩み
+      </h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
         深田の最初の登山は1914年の富士写ヶ岳、白山初登頂は1918年でした。ふるさとの山を見上げながら育った体験は、その後に全国の山を歩くようになっても消えず、文化館の解説でも白山を描く文章は彼の山の文学の白眉だと位置づけられています。
       </p>
 
-      <h2 style={{ color: "#fff", fontSize: "1.25rem", marginTop: "24px", marginBottom: "12px" }}>全国の山と、戦後の山岳随筆</h2>
+      <h2
+        style={{
+          color: "var(--color-text)",
+          fontSize: "1.25rem",
+          marginTop: "24px",
+          marginBottom: "12px",
+        }}
+      >
+        全国の山と、戦後の山岳随筆
+      </h2>
       <p style={{ lineHeight: 1.8, marginBottom: "16px" }}>
         東京帝大入学後も山への関心は続き、戦後には小説よりも山の文章を多く書くようになります。1958年にはジュガール・ヒマール、ランタン・ヒマールの踏査隊長を務め、1959年には『山と高原』で「日本百名山」の連載を開始しました。山行の範囲は、国内名山の歩きから海外踏査までかなり広いものでした。
       </p>
