@@ -1,0 +1,10 @@
+.listSection {
+  padding-block: 40px 0;
+  scroll-margin-top: var(--header-height);
+}
+
+@media (min-width: 768px) {
+  .listSection {
+    padding-block: 56px 0;
+  }
+}

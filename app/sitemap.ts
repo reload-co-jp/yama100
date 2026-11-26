@@ -4,7 +4,8 @@ import { SITE_URL } from "../lib/site"
 
 export const dynamic = "force-static"
 
-const LIST_UPDATED = new Date("2026-04-14")
+const LIST_UPDATED = new Date("2026-11-26")
+const GUIDE_UPDATED = new Date("2026-11-26")
 const ARTICLE_UPDATED = new Date("2026-04-18")
 const MOUNTAIN_UPDATED = new Date("2026-04-14")
 
@@ -25,6 +26,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.7,
     lastModified: MOUNTAIN_UPDATED,
+  }))
+
+  const guidePages = [
+    "/hyakumeizan/",
+    "/hyakumeizan/ranking/",
+    "/hyakumeizan/region/",
+    "/hyakumeizan/prefecture/",
+    "/hyakumeizan/difficulty/",
+    "/hyakumeizan/day-trip/",
+    "/hyakumeizan/beginner/",
+  ].map((path) => ({
+    url: `${SITE_URL}${path}`,
+    changeFrequency: "monthly" as const,
+    priority: path === "/hyakumeizan/" ? 0.9 : 0.8,
+    lastModified: GUIDE_UPDATED,
   }))
 
   const articles = Object.keys(ARTICLE_DATES)
@@ -91,6 +107,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       lastModified: LIST_UPDATED,
     },
+    {
+      url: `${SITE_URL}/map/`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      lastModified: LIST_UPDATED,
+    },
+    ...guidePages,
     ...articlePages,
     ...mountainPages,
   ]

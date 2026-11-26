@@ -1,66 +1,9 @@
-import mountainsData from "../../public/mountains_kanto100.json"
-import MountainListPage from "../../components/MountainListPage"
-import {
-  buildMountainListJsonLd,
-  MountainListPageConfig,
-} from "../../lib/mountainListPage"
-import { MountainRecord } from "../../lib/mountainCatalog"
-import { SITE_URL } from "../../lib/site"
+import MountainListPage, {
+  buildListMetadata,
+} from "../../components/MountainListPage"
 
-const config: MountainListPageConfig = {
-  listName: "関東百名山",
-  jsonLdDescription:
-    "関東一都六県（東京・神奈川・埼玉・千葉・茨城・栃木・群馬）を中心に選定された100の名峰の一覧",
-  urlPath: "/mountains_kanto100/",
-  numberOfItems: 100,
-  storageKey: "yama_kanto100",
-  themeColor: "#c62828",
-  totalCount: 100,
-  idOffset: 501,
-}
-
-const jsonLd = buildMountainListJsonLd(mountainsData as MountainRecord[], config)
-
-const breadcrumbLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "ホーム", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "関東百名山チェックリスト", item: `${SITE_URL}/mountains_kanto100/` },
-  ],
-}
-
-export const metadata = {
-  title: "関東百名山チェックリスト",
-  description:
-    "関東一都六県を中心に選定された関東百名山の100座。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
-  alternates: { canonical: "/mountains_kanto100/" },
-  openGraph: {
-    title: "関東百名山チェックリスト",
-    description:
-      "関東一都六県を中心に選定された関東百名山の100座。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
-    url: "/mountains_kanto100/",
-    siteName: "Yama100",
-    locale: "ja_JP",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "関東百名山チェックリスト",
-    description:
-      "関東一都六県を中心に選定された関東百名山の100座。登頂記録をチェックできます。ログイン不要でURLで共有できます。",
-  },
-}
+export const metadata = buildListMetadata("mountains_kanto100")
 
 export default function Page() {
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
-      <MountainListPage
-        config={config}
-        mountains={mountainsData as MountainRecord[]}
-        jsonLd={jsonLd}
-      />
-    </>
-  )
+  return <MountainListPage listKey="mountains_kanto100" />
 }

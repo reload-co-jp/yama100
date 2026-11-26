@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import styles from "./MountainPhoto.module.css"
 
 // Wikipedia 記事名が山データの名称と異なるものの対応表
 const wikiTitleOverrides: Record<string, string> = {
@@ -14,120 +15,179 @@ const wikiTitleOverrides: Record<string, string> = {
   九重山: "九重連山",
 }
 
+type PhotoInfo = { thumb: string; page: string | null } | null
+
 // セッション中のキャッシュ（同じ山を複数回レンダリングしたときの再リクエスト防止）
-const cache = new Map<string, string | null>()
+const memoryCache = new Map<string, PhotoInfo>()
+const inflight = new Map<string, Promise<PhotoInfo>>()
+const SESSION_KEY = "yama100_photo_cache_v1"
+
+function readSessionCache(name: string): PhotoInfo | undefined {
+  try {
+    const all = JSON.parse(sessionStorage.getItem(SESSION_KEY) ?? "{}")
+    return name in all ? all[name] : undefined
+  } catch {
+    return undefined
+  }
+}
+
+function writeSessionCache(name: string, info: PhotoInfo) {
+  try {
+    const all = JSON.parse(sessionStorage.getItem(SESSION_KEY) ?? "{}")
+    all[name] = info
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(all))
+  } catch {
+    // ignore quota errors
+  }
+}
+
+export function getWikiTitle(name: string) {
+  return wikiTitleOverrides[name] ?? name
+}
+
+export function fetchMountainPhoto(name: string): Promise<PhotoInfo> {
+  if (memoryCache.has(name)) return Promise.resolve(memoryCache.get(name)!)
+  const session = readSessionCache(name)
+  if (session !== undefined) {
+    memoryCache.set(name, session)
+    return Promise.resolve(session)
+  }
+  if (inflight.has(name)) return inflight.get(name)!
+
+  const promise = fetch(
+    `https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(getWikiTitle(name))}`
+  )
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data): PhotoInfo => {
+      const thumb: string | undefined = data?.thumbnail?.source
+      if (!thumb) return null
+      return { thumb, page: data?.content_urls?.desktop?.page ?? null }
+    })
+    .catch(() => null)
+    .then((info) => {
+      memoryCache.set(name, info)
+      writeSessionCache(name, info)
+      inflight.delete(name)
+      return info
+    })
+  inflight.set(name, promise)
+  return promise
+}
+
+/** Wikimedia のサムネイル URL を指定幅のものに差し替える */
+function resizeThumb(url: string, width: number) {
+  return /\/\d+px-/.test(url) ? url.replace(/\/\d+px-/, `/${width}px-`) : url
+}
 
 type Props = {
   name: string
-  size?: "thumb" | "full"
+  /** 表示幅の目安（px）。サムネイル取得サイズの決定に使う */
+  width?: 330 | 500 | 960 | 1280
+  /** true のときビューポート外でも即座に取得する（ファーストビュー用） */
+  eager?: boolean
+  className?: string
+  alt?: string
+  onLoaded?: (info: PhotoInfo) => void
 }
 
-export default function MountainPhoto({ name, size = "thumb" }: Props) {
-  const [src, setSrc] = useState<string | null | "pending">(
-    cache.has(name) ? cache.get(name)! : "pending"
+const NO_PHOTO_ICON = (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M3 19 9.5 8l4 6.5L16 11l5 8Z" />
+    <circle cx="17" cy="6" r="1.6" />
+  </svg>
+)
+
+export default function MountainPhoto({
+  name,
+  width = 500,
+  eager = false,
+  className,
+  alt,
+  onLoaded,
+}: Props) {
+  const [info, setInfo] = useState<PhotoInfo | "pending">(
+    memoryCache.has(name) ? memoryCache.get(name)! : "pending"
   )
+  const [useFallback, setUseFallback] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const onLoadedRef = useRef(onLoaded)
 
   useEffect(() => {
-    if (src !== "pending") return
+    onLoadedRef.current = onLoaded
+  })
+
+  useEffect(() => {
+    let cancelled = false
     const el = containerRef.current
     if (!el) return
+
+    const load = () =>
+      fetchMountainPhoto(name).then((result) => {
+        if (cancelled) return
+        setInfo(result)
+        onLoadedRef.current?.(result)
+      })
+
+    if (eager || typeof IntersectionObserver === "undefined") {
+      load()
+      return () => {
+        cancelled = true
+      }
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return
         observer.disconnect()
-
-        const title = wikiTitleOverrides[name] ?? name
-        fetch(
-          `https://ja.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
-        )
-          .then((r) => r.json())
-          .then((data) => {
-            const url: string | null = data?.thumbnail?.source ?? null
-            cache.set(name, url)
-            setSrc(url)
-          })
-          .catch(() => {
-            cache.set(name, null)
-            setSrc(null)
-          })
+        load()
       },
-      { rootMargin: "400px" }
+      { rootMargin: "300px" }
     )
-
     observer.observe(el)
-    return () => observer.disconnect()
-  }, [name, src])
+    return () => {
+      cancelled = true
+      observer.disconnect()
+    }
+  }, [name, eager])
 
-  const isThumb = size === "thumb"
+  const src =
+    info && info !== "pending"
+      ? useFallback
+        ? info.thumb
+        : resizeThumb(info.thumb, width)
+      : null
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        background: "#3a3a3a",
-        borderRadius: isThumb ? "6px" : "0",
-        flexShrink: isThumb ? 0 : undefined,
-        height: isThumb ? "80px" : "100%",
-        overflow: "hidden",
-        width: isThumb ? "80px" : "100%",
-      }}
-    >
-      {src === "pending" && (
-        <div
-          style={{
-            animation: "pulse 1.5s ease-in-out infinite",
-            background:
-              "linear-gradient(90deg, #3a3a3a 25%, #484848 50%, #3a3a3a 75%)",
-            backgroundSize: "200% 100%",
-            height: "100%",
-            width: "100%",
-          }}
-        />
+    <div ref={containerRef} className={`${styles.frame} ${className ?? ""}`}>
+      {info === "pending" && (
+        <div className={styles.shimmer} aria-hidden="true" />
       )}
-      {src === null && (
-        <div
-          style={{
-            alignItems: "center",
-            display: "flex",
-            height: "100%",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="32"
-            height="32"
-            fill="none"
-            stroke="#666"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="3 17 9 7 14 13 17 9 21 17" />
-            <line x1="3" y1="20" x2="21" y2="20" />
-          </svg>
-        </div>
+      {info === null && (
+        <div className={styles.placeholder}>{NO_PHOTO_ICON}</div>
       )}
-      {src && src !== "pending" && (
+      {src && (
         <img
-          src={src}
-          alt={name}
-          style={{
-            height: "100%",
-            objectFit: "cover",
-            width: "100%",
+          alt={alt ?? `${name}の写真`}
+          className={`${styles.image} ${loaded ? styles.loaded : ""}`}
+          decoding="async"
+          fetchPriority={eager ? "high" : "auto"}
+          loading={eager ? "eager" : "lazy"}
+          onError={() => {
+            if (!useFallback) setUseFallback(true)
           }}
+          onLoad={() => setLoaded(true)}
+          src={src}
         />
       )}
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-      `}</style>
     </div>
   )
 }

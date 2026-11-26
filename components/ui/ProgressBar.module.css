@@ -1,0 +1,34 @@
+.track {
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-pill);
+  height: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.thin {
+  height: 6px;
+}
+
+.thick {
+  height: 14px;
+}
+
+.bar {
+  background: linear-gradient(
+    90deg,
+    var(--color-forest-600),
+    var(--color-forest-500)
+  );
+  border-radius: inherit;
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.onDark {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.onDark .bar {
+  background: linear-gradient(90deg, #8fd3ad, #d8f0c4);
+}

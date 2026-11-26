@@ -1,52 +1,81 @@
 "use client"
 
-import { useRef, useState, useCallback } from "react"
+import { useCallback, useRef, useState } from "react"
+import { MOUNTAIN_LISTS } from "../lib/mountainCatalog"
+import {
+  getAllNotes,
+  replaceAllNotes,
+  type MountainNote,
+} from "../lib/recordStore"
+import {
+  isValidSummitDate,
+  readListState,
+  writeListState,
+  type SummitDates,
+} from "../lib/summitStore"
+import { DownloadIcon } from "./ui/Icons"
+import styles from "./DataTransferClient.module.css"
 
-const STORAGE_KEYS = [
-  "yama100",
-  "yama200",
-  "yama300",
-  "yama_kanto100",
-  "yama_new100",
-  "yama_flowers",
-  "yama_minor12",
-] as const
+const STORAGE_KEYS = MOUNTAIN_LISTS.map((list) => list.storageKey)
 
-type ExportData = {
+// v1: { version: 1, exportedAt, data: { [storageKey]: number[] } }  ← 既存形式（読み込み互換を維持）
+// v2: { version: 2, exportedAt, data: { [storageKey]: number[] }, dates: { [storageKey]: SummitDates }, notes }
+type ExportV1 = {
   version: 1
   exportedAt: string
   data: Record<string, number[]>
 }
+type ExportV2 = {
+  version: 2
+  exportedAt: string
+  data: Record<string, number[]>
+  dates: Record<string, SummitDates>
+  notes: Record<string, MountainNote>
+}
+
+function sanitizeIds(value: unknown): number[] {
+  return Array.isArray(value)
+    ? value.map(Number).filter((n) => Number.isInteger(n) && n > 0)
+    : []
+}
+
+function sanitizeDates(value: unknown): SummitDates {
+  const result: SummitDates = {}
+  if (!value || typeof value !== "object") return result
+  for (const [key, list] of Object.entries(value)) {
+    const id = Number(key)
+    if (!Number.isInteger(id) || !Array.isArray(list)) continue
+    const valid = list.filter(
+      (d): d is string => typeof d === "string" && isValidSummitDate(d)
+    )
+    if (valid.length) result[id] = valid
+  }
+  return result
+}
 
 export default function DataTransferClient() {
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const [importStatus, setImportStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle")
-  const [importMessage, setImportMessage] = useState("")
+  const [status, setStatus] = useState<{
+    type: "success" | "error"
+    message: string
+  } | null>(null)
 
   const handleExport = useCallback(() => {
     const data: Record<string, number[]> = {}
+    const dates: Record<string, SummitDates> = {}
     for (const key of STORAGE_KEYS) {
-      const raw = localStorage.getItem(key)
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw)
-          if (Array.isArray(parsed.checked)) {
-            data[key] = parsed.checked.map(Number).filter(Number.isInteger)
-          }
-        } catch {
-          // skip corrupted entry
-        }
-      }
+      const state = readListState(key)
+      if (state.raw === null) continue
+      data[key] = [...state.checked]
+      if (Object.keys(state.dates).length) dates[key] = state.dates
     }
-
-    const exportData: ExportData = {
-      version: 1,
+    const exportData: ExportV2 = {
+      version: 2,
       exportedAt: new Date().toISOString(),
       data,
+      dates,
+      notes: getAllNotes(),
     }
-
     const blob = new Blob([JSON.stringify(exportData, null, 2)], {
       type: "application/json",
     })
@@ -58,139 +87,126 @@ export default function DataTransferClient() {
     URL.revokeObjectURL(url)
   }, [])
 
-  const handleImport = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0]
-      if (!file) return
+  const handleImport = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
 
-      const reader = new FileReader()
-      reader.onload = (ev) => {
-        try {
-          const json = JSON.parse(ev.target?.result as string) as ExportData
-          if (json.version !== 1 || typeof json.data !== "object") {
-            setImportStatus("error")
-            setImportMessage("ファイル形式が不正")
-            return
-          }
-
-          const keys = Object.keys(json.data).filter((k) =>
-            (STORAGE_KEYS as readonly string[]).includes(k)
-          )
-          if (keys.length === 0) {
-            setImportStatus("error")
-            setImportMessage("インポート可能なデータなし")
-            return
-          }
-
-          const totalMountains = keys.reduce(
-            (sum, k) => sum + (json.data[k]?.length ?? 0),
-            0
-          )
-          const confirmed = window.confirm(
-            `${keys.length}種類のリスト、計${totalMountains}座のデータをインポートします。\n既存データは上書きされます。続けますか？`
-          )
-          if (!confirmed) return
-
-          for (const key of keys) {
-            const ids = json.data[key]
-            if (Array.isArray(ids)) {
-              localStorage.setItem(key, JSON.stringify({ checked: ids }))
-            }
-          }
-
-          window.dispatchEvent(new Event("storage"))
-
-          setImportStatus("success")
-          setImportMessage(`${keys.length}種類のリストをインポート完了`)
-          setTimeout(() => setImportStatus("idle"), 3000)
-        } catch {
-          setImportStatus("error")
-          setImportMessage("JSONの解析に失敗")
+    const reader = new FileReader()
+    reader.onload = (ev) => {
+      try {
+        const json = JSON.parse(ev.target?.result as string) as
+          | ExportV1
+          | ExportV2
+        if (
+          (json.version !== 1 && json.version !== 2) ||
+          !json.data ||
+          typeof json.data !== "object"
+        ) {
+          setStatus({
+            type: "error",
+            message: "ファイル形式が正しくありません",
+          })
+          return
         }
 
+        const keys = Object.keys(json.data).filter((k) =>
+          STORAGE_KEYS.includes(k)
+        )
+        if (keys.length === 0) {
+          setStatus({
+            type: "error",
+            message: "インポートできるデータがありません",
+          })
+          return
+        }
+
+        const totalMountains = keys.reduce(
+          (sum, k) => sum + sanitizeIds(json.data[k]).length,
+          0
+        )
+        const confirmed = window.confirm(
+          `${keys.length}種類のリスト、計${totalMountains}座のデータをインポートします。\n該当リストの既存データは上書きされます。続けますか？`
+        )
+        if (!confirmed) return
+
+        for (const key of keys) {
+          const checked = new Set(sanitizeIds(json.data[key]))
+          // v1 には登頂日が含まれないため、既存の登頂日を保持する
+          const dates =
+            json.version === 2
+              ? sanitizeDates(json.dates?.[key])
+              : readListState(key).dates
+          writeListState(key, checked, dates)
+        }
+        if (
+          json.version === 2 &&
+          json.notes &&
+          typeof json.notes === "object"
+        ) {
+          replaceAllNotes(json.notes)
+        }
+
+        window.dispatchEvent(new Event("storage"))
+        setStatus({
+          type: "success",
+          message: `${keys.length}種類のリストをインポートしました`,
+        })
+      } catch {
+        setStatus({ type: "error", message: "JSONの読み込みに失敗しました" })
+      } finally {
         if (fileInputRef.current) fileInputRef.current.value = ""
       }
-      reader.readAsText(file)
-    },
-    []
-  )
+    }
+    reader.readAsText(file)
+  }, [])
 
   return (
-    <div
-      style={{
-        background: "#2a2a2a",
-        borderRadius: "8px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-        maxWidth: "480px",
-        padding: "24px",
-      }}
-    >
-      <div>
-        <h2 style={{ color: "#f0f0f0", fontSize: "1rem", fontWeight: "bold", marginBottom: "8px" }}>
-          エクスポート
-        </h2>
-        <p style={{ color: "#aaa", fontSize: ".875rem", marginBottom: "12px" }}>
-          全リストの登頂記録をJSONファイルとして保存
+    <div className={`card ${styles.panel}`}>
+      <section>
+        <h2 className={styles.h2}>エクスポート</h2>
+        <p className={styles.text}>
+          全リストの登頂状況・登頂日・ルート・メモをJSONファイルとして保存します。
         </p>
         <button
+          className="btn btn-primary btn-sm"
           onClick={handleExport}
-          style={{
-            background: "#1976d2",
-            border: "none",
-            borderRadius: "6px",
-            color: "#fff",
-            cursor: "pointer",
-            fontSize: ".875rem",
-            padding: "8px 20px",
-          }}
+          type="button"
         >
+          <DownloadIcon size={16} />
           JSONをダウンロード
         </button>
-      </div>
+      </section>
 
-      <div style={{ borderTop: "1px solid #444", paddingTop: "16px" }}>
-        <h2 style={{ color: "#f0f0f0", fontSize: "1rem", fontWeight: "bold", marginBottom: "8px" }}>
-          インポート
-        </h2>
-        <p style={{ color: "#aaa", fontSize: ".875rem", marginBottom: "12px" }}>
-          別デバイスでエクスポートしたJSONファイルを読み込む
+      <section className={styles.divider}>
+        <h2 className={styles.h2}>インポート</h2>
+        <p className={styles.text}>
+          別の端末でエクスポートしたJSONファイルを読み込みます（旧形式のファイルにも対応）。
         </p>
         <input
+          accept=".json,application/json"
+          className="visually-hidden"
+          id="import-file-input"
+          onChange={handleImport}
           ref={fileInputRef}
           type="file"
-          accept=".json,application/json"
-          onChange={handleImport}
-          style={{ display: "none" }}
-          id="import-file-input"
         />
         <label
+          className={`btn btn-secondary btn-sm ${styles.fileLabel}`}
           htmlFor="import-file-input"
-          style={{
-            background: "#388e3c",
-            borderRadius: "6px",
-            color: "#fff",
-            cursor: "pointer",
-            display: "inline-block",
-            fontSize: ".875rem",
-            padding: "8px 20px",
-          }}
         >
           ファイルを選択
         </label>
-        {importStatus !== "idle" && (
-          <p
-            style={{
-              color: importStatus === "success" ? "#81c784" : "#e57373",
-              fontSize: ".875rem",
-              marginTop: "8px",
-            }}
-          >
-            {importMessage}
-          </p>
-        )}
-      </div>
+        <p
+          aria-live="polite"
+          className={status?.type === "error" ? styles.error : styles.success}
+        >
+          {status?.message ?? ""}
+        </p>
+      </section>
+
+      <p className={styles.note}>
+        ※ 写真はファイルサイズが大きいため、バックアップの対象外です。
+      </p>
     </div>
   )
 }

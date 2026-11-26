@@ -6,8 +6,8 @@ export const metadata = {
 }
 
 const linkStyle = {
-  background: "#4caf50",
-  borderRadius: "4px",
+  background: "var(--color-forest-700)",
+  borderRadius: "999px",
   color: "#fff",
   display: "inline-flex",
   fontSize: ".95rem",
@@ -17,7 +17,7 @@ const linkStyle = {
 } satisfies CSSProperties
 
 const secondaryLinkStyle = {
-  color: "#7ecfb3",
+  color: "var(--color-forest-600)",
   fontSize: ".9rem",
   textDecoration: "none",
 } satisfies CSSProperties
@@ -42,7 +42,7 @@ export default function NotFound() {
       >
         <p
           style={{
-            color: "#7ecfb3",
+            color: "var(--color-forest-600)",
             fontSize: ".875rem",
             fontWeight: 700,
             letterSpacing: "0",
@@ -51,19 +51,19 @@ export default function NotFound() {
         >
           404 Not Found
         </p>
-        <h2
+        <h1
           style={{
-            color: "#fff",
+            color: "var(--color-text)",
             fontSize: "clamp(2rem, 8vw, 3.5rem)",
             lineHeight: 1.1,
             marginBottom: "1rem",
           }}
         >
           山道が見つかりません
-        </h2>
+        </h1>
         <p
           style={{
-            color: "#ccc",
+            color: "var(--color-text-muted)",
             fontSize: "1rem",
             lineHeight: 1.8,
             margin: "0 auto 2rem",
@@ -83,7 +83,7 @@ export default function NotFound() {
           }}
         >
           <Link href="/" style={linkStyle}>
-            百名山へ戻る
+            トップページへ戻る
           </Link>
           <Link href="/articles/" style={secondaryLinkStyle}>
             読み物を見る
